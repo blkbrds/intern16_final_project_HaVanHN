@@ -43,6 +43,8 @@
 		A3F622F225062EB00024976E /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3F622F025062EB00024976E /* TutorialViewController.xib */; };
 		A3F622F4250637890024976E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F622F3250637890024976E /* ViewModel.swift */; };
 		A3F622F6250638B90024976E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F622F5250638B90024976E /* TabBarController.swift */; };
+		A3F622F8250698EE0024976E /* DataExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F622F7250698EE0024976E /* DataExt.swift */; };
+		A3F622FA25079C840024976E /* DictionaryExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F622F925079C840024976E /* DictionaryExt.swift */; };
 		F0B80806EE2988AB8FD419F5 /* Pods_EateryTour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB9E070476A7DE201E86FEE2 /* Pods_EateryTour.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +100,8 @@
 		A3F622F025062EB00024976E /* TutorialViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialViewController.xib; sourceTree = "<group>"; };
 		A3F622F3250637890024976E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		A3F622F5250638B90024976E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		A3F622F7250698EE0024976E /* DataExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExt.swift; sourceTree = "<group>"; };
+		A3F622F925079C840024976E /* DictionaryExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExt.swift; sourceTree = "<group>"; };
 		AA0F901A66F9E239770555B8 /* Pods-EateryTourTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EateryTourTests.release.xcconfig"; path = "Target Support Files/Pods-EateryTourTests/Pods-EateryTourTests.release.xcconfig"; sourceTree = "<group>"; };
 		BF939CA70214C3065067C1DA /* Pods-EateryTour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EateryTour.release.xcconfig"; path = "Target Support Files/Pods-EateryTour/Pods-EateryTour.release.xcconfig"; sourceTree = "<group>"; };
 		D757949E92DA8C67E0BA57E6 /* Pods-EateryTourTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EateryTourTests.debug.xcconfig"; path = "Target Support Files/Pods-EateryTourTests/Pods-EateryTourTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -194,6 +198,8 @@
 				A3F622E625062C9C0024976E /* StringExt.swift */,
 				A3F6228C25060E7F0024976E /* UIViewControllerExt.swift */,
 				A3F6228B25060E7F0024976E /* UIViewExt.swift */,
+				A3F622F7250698EE0024976E /* DataExt.swift */,
+				A3F622F925079C840024976E /* DictionaryExt.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -515,10 +521,12 @@
 				A3F622BC25060E800024976E /* Session.swift in Sources */,
 				A3F622BF25060E800024976E /* ApiManager.swift in Sources */,
 				A3F622E525062BC20024976E /* NSURLExt.swift in Sources */,
+				A3F622F8250698EE0024976E /* DataExt.swift in Sources */,
 				A3F622EC25062E700024976E /* HomeViewController.swift in Sources */,
 				A3F622E725062C9C0024976E /* StringExt.swift in Sources */,
 				A3F622B225060E800024976E /* CollectionViewHeaderView.swift in Sources */,
 				A3F622B325060E800024976E /* Label.swift in Sources */,
+				A3F622FA25079C840024976E /* DictionaryExt.swift in Sources */,
 				A3F622B725060E800024976E /* TableView.swift in Sources */,
 				A3F622B125060E800024976E /* CollectionCell.swift in Sources */,
 				A3F622B825060E800024976E /* TableCell.swift in Sources */,

@@ -9,7 +9,7 @@ def app_pods
   # Tool to enforce Swift style and conventions
   pod 'SwiftLint'
   # UI
-  pod 'SVProgressHUD', '2.2.5'
+  pod 'SVProgressHUD'
   # Utils
   pod 'SwifterSwift'
   pod 'IQKeyboardManagerSwift'
@@ -17,7 +17,7 @@ def app_pods
   pod 'ObjectMapper'
   pod 'RealmSwift'
   # Network
-  pod 'Alamofire'
+  pod 'Alamofire', '4.9.1'
 end
 
 target 'EateryTour' do

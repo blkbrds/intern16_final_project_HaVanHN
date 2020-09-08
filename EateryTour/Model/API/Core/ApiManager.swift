@@ -12,7 +12,6 @@ import Alamofire
 typealias JSObject = [String: Any]
 typealias JSArray = [JSObject]
 
-typealias Result = Alamofire.AFResult
 typealias Completion<Value> = (Result<Value>) -> Void
 typealias APICompletion = (APIResult) -> Void
 
@@ -22,6 +21,7 @@ enum APIResult {
 }
 
 // MARK: - Equatable
+
 extension APIResult: Equatable {
 
     public static func == (lhs: APIResult, rhs: APIResult) -> Bool {
@@ -53,10 +53,9 @@ let api = ApiManager()
 
 final class ApiManager {
 
-    var defaultHTTPHeaders: HTTPHeaders {
-        var headers: HTTPHeaders = HTTPHeaders([])
-        let header: HTTPHeader = HTTPHeader(name: "Content-Type", value: "application/json")
-        headers.add(header)
+    var defaultHTTPHeaders: [String: String] {
+        var headers: [String: String] = [:]
+        headers["Content-Type"] = "application/json"
         return headers
     }
 }

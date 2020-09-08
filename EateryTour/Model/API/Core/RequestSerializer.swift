@@ -16,32 +16,29 @@ extension ApiManager {
                  urlString: URLStringConvertible,
                  parameters: [String: Any]? = nil,
                  encoding: ParameterEncoding = URLEncoding.default,
-                 headers: HTTPHeader? = nil,
+                 headers: [String: String]? = nil,
                  completion: Completion<Any>?) -> Request? {
         guard Network.shared.isReachable else {
-            //completion?(.failure(Api.Error.network))
+            completion?(.failure(Api.Error.network))
             return nil
         }
 
-        var header: HTTPHeaders = api.defaultHTTPHeaders
+        var header = api.defaultHTTPHeaders
+        header.updateValues(headers)
 
-        if let headers = headers {
-            header.add(headers)
-        }
-
-        let request = AF.request(urlString.urlString,
-                                 method: method,
-                                 parameters: parameters,
-                                 encoding: encoding,
-                                 headers: header
+        let request = Alamofire.request(urlString.urlString,
+                                        method: method,
+                                        parameters: parameters,
+                                        encoding: encoding,
+                                        headers: header
         ).responseJSON { (response) in
             if let error = response.error,
                 error.code == Api.Error.connectionAbort.code || error.code == Api.Error.connectionWasLost.code {
-                AF.request(urlString.urlString,
-                           method: method,
-                           parameters: parameters,
-                           encoding: encoding,
-                           headers: header
+                Alamofire.request(urlString.urlString,
+                                  method: method,
+                                  parameters: parameters,
+                                  encoding: encoding,
+                                  headers: header
                 ).responseJSON { response in
                     completion?(response.result)
                 }
