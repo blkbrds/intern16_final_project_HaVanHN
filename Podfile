@@ -15,7 +15,7 @@ def app_pods
   pod 'IQKeyboardManagerSwift'
   # Data
   pod 'ObjectMapper'
-  pod 'RealmSwift'
+  pod 'RealmSwift', '5.3.0'
   # Network
   pod 'Alamofire', '4.9.1'
 end
