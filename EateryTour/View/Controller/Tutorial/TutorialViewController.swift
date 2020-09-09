@@ -10,8 +10,54 @@ import UIKit
 
 final class TutorialViewController: ViewController {
 
+    // MARK: - IBOutlets
+    @IBOutlet private weak var containView: UIView!
+    @IBOutlet private weak var scrollView: ScrollView!
+    @IBOutlet private weak var pageControl: UIPageControl!
+    @IBOutlet private weak var getStartedButton: Button!
+
+    // MARK: - Propeties
+    private var width = UIScreen.main.bounds.width
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configUI()
+        configScrollView()
+    }
+
+    // MARK: - Private functions
+    private func configUI() {
+        getStartedButton.layer.cornerRadius = 10
+        setNeedsStatusBarAppearanceUpdate()
+    }
+
+    private func configScrollView() {
+        scrollView.delegate = self
+    }
+
+    private func configFirstUse() {
+        UserDefaults.standard.set(true, forKey: "secondUse")
+    }
+
+    // MARK: - IBActions
+    @IBAction private func getStartedButtonTouchUpInside(_ sender: UIButton) {
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+extension TutorialViewController: UIScrollViewDelegate {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x < width && scrollView.contentOffset.x >= 0 {
+            pageControl.currentPage = 0
+        } else if scrollView.contentOffset.x < width * 2 && scrollView.contentOffset.x >= width {
+            pageControl.currentPage = 1
+        } else {
+            pageControl.currentPage = 2
+        }
     }
 }
