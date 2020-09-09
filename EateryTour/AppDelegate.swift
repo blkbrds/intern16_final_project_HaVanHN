@@ -8,22 +8,10 @@
 
 import UIKit
 
-enum RootType {
-    case tutorial
-    case tabbar
-}
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-    static var shared: AppDelegate = {
-        guard let shared = UIApplication.shared.delegate as? AppDelegate else {
-            fatalError("Can't cast UIApplication.shared.delegate to AppDelegate")
-        }
-        return shared
-    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         configWindow()
@@ -33,21 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configWindow() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
-        let secondUse: Bool = UserDefaults.standard.bool(forKey: "secondUse")
-        if secondUse {
-            changeRoot(rootType: .tabbar)
-        } else {
-            changeRoot(rootType: .tutorial)
-        }
+        let vc = TutorialViewController()
+        window?.rootViewController = vc
         window?.makeKeyAndVisible()
-    }
-
-    func changeRoot(rootType: RootType) {
-        switch rootType {
-        case .tutorial:
-            window?.rootViewController = TutorialViewController()
-        case .tabbar:
-            window?.rootViewController = TabbarViewController()
-        }
     }
 }

@@ -7,16 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5216ECC42508B03D00D04800 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5216ECC22508B03D00D04800 /* TabbarViewController.swift */; };
-		5216ECC52508B03D00D04800 /* TabbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5216ECC32508B03D00D04800 /* TabbarViewController.xib */; };
-		5216ECCC2508B1F100D04800 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5216ECCA2508B1F100D04800 /* SearchViewController.swift */; };
-		5216ECCD2508B1F100D04800 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5216ECCB2508B1F100D04800 /* SearchViewController.xib */; };
-		5216ECD02508B20B00D04800 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5216ECCE2508B20B00D04800 /* MapViewController.swift */; };
-		5216ECD12508B20B00D04800 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5216ECCF2508B20B00D04800 /* MapViewController.xib */; };
-		5216ECD42508B25100D04800 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5216ECD22508B25100D04800 /* SettingViewController.swift */; };
-		5216ECD52508B25100D04800 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5216ECD32508B25100D04800 /* SettingViewController.xib */; };
-		5216ECD82508B27B00D04800 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5216ECD62508B27B00D04800 /* FavoriteViewController.swift */; };
-		5216ECD92508B27B00D04800 /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5216ECD72508B27B00D04800 /* FavoriteViewController.xib */; };
 		5DDF4EECB3E18FE2AE0EE101 /* Pods_EateryTourTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88319D490829CB9599FF3C15 /* Pods_EateryTourTests.framework */; };
 		A3F6222E2505E0B80024976E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F6222D2505E0B80024976E /* AppDelegate.swift */; };
 		A3F622452505E0BF0024976E /* EateryTourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F622442505E0BF0024976E /* EateryTourTests.swift */; };
@@ -70,16 +60,6 @@
 
 /* Begin PBXFileReference section */
 		0C96F09816CD072C31584617 /* Pods-EateryTour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EateryTour.debug.xcconfig"; path = "Target Support Files/Pods-EateryTour/Pods-EateryTour.debug.xcconfig"; sourceTree = "<group>"; };
-		5216ECC22508B03D00D04800 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
-		5216ECC32508B03D00D04800 /* TabbarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabbarViewController.xib; sourceTree = "<group>"; };
-		5216ECCA2508B1F100D04800 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		5216ECCB2508B1F100D04800 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
-		5216ECCE2508B20B00D04800 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		5216ECCF2508B20B00D04800 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
-		5216ECD22508B25100D04800 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		5216ECD32508B25100D04800 /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
-		5216ECD62508B27B00D04800 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
-		5216ECD72508B27B00D04800 /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
 		88319D490829CB9599FF3C15 /* Pods_EateryTourTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EateryTourTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3F6222A2505E0B80024976E /* EateryTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EateryTour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3F6222D2505E0B80024976E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,51 +135,6 @@
 				88319D490829CB9599FF3C15 /* Pods_EateryTourTests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5216ECC62508B19400D04800 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				5216ECCA2508B1F100D04800 /* SearchViewController.swift */,
-				5216ECCB2508B1F100D04800 /* SearchViewController.xib */,
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
-		5216ECC72508B19F00D04800 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				5216ECCE2508B20B00D04800 /* MapViewController.swift */,
-				5216ECCF2508B20B00D04800 /* MapViewController.xib */,
-			);
-			path = Map;
-			sourceTree = "<group>";
-		};
-		5216ECC82508B1A800D04800 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				5216ECD22508B25100D04800 /* SettingViewController.swift */,
-				5216ECD32508B25100D04800 /* SettingViewController.xib */,
-			);
-			path = Setting;
-			sourceTree = "<group>";
-		};
-		5216ECC92508B1C900D04800 /* Favorite */ = {
-			isa = PBXGroup;
-			children = (
-				5216ECD62508B27B00D04800 /* FavoriteViewController.swift */,
-				5216ECD72508B27B00D04800 /* FavoriteViewController.xib */,
-			);
-			path = Favorite;
-			sourceTree = "<group>";
-		};
-		5216ECDA2508B2AE00D04800 /* Tabbar */ = {
-			isa = PBXGroup;
-			children = (
-				5216ECC22508B03D00D04800 /* TabbarViewController.swift */,
-				5216ECC32508B03D00D04800 /* TabbarViewController.xib */,
-			);
-			path = Tabbar;
 			sourceTree = "<group>";
 		};
 		A3F622212505E0B80024976E = {
@@ -281,11 +216,6 @@
 		A3F6229025060E7F0024976E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5216ECDA2508B2AE00D04800 /* Tabbar */,
-				5216ECC82508B1A800D04800 /* Setting */,
-				5216ECC92508B1C900D04800 /* Favorite */,
-				5216ECC72508B19F00D04800 /* Map */,
-				5216ECC62508B19400D04800 /* Search */,
 				A3F622E925062E5F0024976E /* Home */,
 				A3F622EE25062E9D0024976E /* Tutorial */,
 			);
@@ -474,13 +404,8 @@
 			files = (
 				A3F622DE250618310024976E /* LaunchScreen.storyboard in Resources */,
 				A3F622C225060E800024976E /* Assets.xcassets in Resources */,
-				5216ECCD2508B1F100D04800 /* SearchViewController.xib in Resources */,
-				5216ECC52508B03D00D04800 /* TabbarViewController.xib in Resources */,
-				5216ECD12508B20B00D04800 /* MapViewController.xib in Resources */,
 				A3F622F225062EB00024976E /* TutorialViewController.xib in Resources */,
 				A3F622ED25062E700024976E /* HomeViewController.xib in Resources */,
-				5216ECD52508B25100D04800 /* SettingViewController.xib in Resources */,
-				5216ECD92508B27B00D04800 /* FavoriteViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,19 +507,16 @@
 			files = (
 				A3F622B925060E800024976E /* ImageView.swift in Sources */,
 				A3F622B425060E800024976E /* ViewController.swift in Sources */,
-				5216ECC42508B03D00D04800 /* TabbarViewController.swift in Sources */,
 				A3F622E125061AB70024976E /* String.swift in Sources */,
 				A3F622F6250638B90024976E /* TabBarController.swift in Sources */,
 				A3F622AD25060E800024976E /* UIViewExt.swift in Sources */,
 				A3F622BA25060E800024976E /* Button.swift in Sources */,
 				A3F622C125060E800024976E /* Api.swift in Sources */,
-				5216ECD82508B27B00D04800 /* FavoriteViewController.swift in Sources */,
 				A3F622F4250637890024976E /* ViewModel.swift in Sources */,
 				A3F622AE25060E800024976E /* UIViewControllerExt.swift in Sources */,
 				A3F622C025060E800024976E /* ResponseSerializer.swift in Sources */,
 				A3F622B025060E800024976E /* NSErrorExt.swift in Sources */,
 				A3F622B625060E800024976E /* ScrollView.swift in Sources */,
-				5216ECD02508B20B00D04800 /* MapViewController.swift in Sources */,
 				A3F622BE25060E800024976E /* Error.swift in Sources */,
 				A3F622BC25060E800024976E /* Session.swift in Sources */,
 				A3F622BF25060E800024976E /* ApiManager.swift in Sources */,
@@ -602,9 +524,7 @@
 				A3F622F8250698EE0024976E /* DataExt.swift in Sources */,
 				A3F622EC25062E700024976E /* HomeViewController.swift in Sources */,
 				A3F622E725062C9C0024976E /* StringExt.swift in Sources */,
-				5216ECCC2508B1F100D04800 /* SearchViewController.swift in Sources */,
 				A3F622B225060E800024976E /* CollectionViewHeaderView.swift in Sources */,
-				5216ECD42508B25100D04800 /* SettingViewController.swift in Sources */,
 				A3F622B325060E800024976E /* Label.swift in Sources */,
 				A3F622FA25079C840024976E /* DictionaryExt.swift in Sources */,
 				A3F622B725060E800024976E /* TableView.swift in Sources */,
