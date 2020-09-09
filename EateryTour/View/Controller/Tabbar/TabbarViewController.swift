@@ -33,8 +33,7 @@ final class TabbarViewController: TabBarController {
         tabBar.tintColor = #colorLiteral(red: 0.10909646, green: 0.2660153806, blue: 0.2814711332, alpha: 1)
         tabBar.backgroundColor = UIColor.white
         tabBar.layer.borderColor = #colorLiteral(red: 0.10909646, green: 0.2660153806, blue: 0.2814711332, alpha: 1)
-        tabBar.layer.borderWidth = 1
+        tabBar.layer.borderWidth = 0.5
         tabBar.clipsToBounds = true
-        tabBar.frame(forAlignmentRect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
     }
 }

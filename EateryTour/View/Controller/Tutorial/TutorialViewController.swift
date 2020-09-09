@@ -27,6 +27,7 @@ final class TutorialViewController: ViewController {
         super.viewDidLoad()
         configUI()
         configScrollView()
+        configSecondUse()
     }
 
     // MARK: - Private functions
@@ -39,12 +40,13 @@ final class TutorialViewController: ViewController {
         scrollView.delegate = self
     }
 
-    private func configFirstUse() {
+    private func configSecondUse() {
         UserDefaults.standard.set(true, forKey: "secondUse")
     }
 
     // MARK: - IBActions
     @IBAction private func getStartedButtonTouchUpInside(_ sender: UIButton) {
+        AppDelegate.shared.changeRoot(rootType: .tabbar)
     }
 }
 
