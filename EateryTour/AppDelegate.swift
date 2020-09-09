@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configWindow() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
-        let vc = ViewController()
+        let vc = TutorialViewController()
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
     }
