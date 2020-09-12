@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RestaurantCell" customModule="EateryTour" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="170" height="247"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="170" height="247"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="macaron" translatesAutoresizingMaskIntoConstraints="NO" id="F7I-aT-22I">
+                        <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
+                        <color key="backgroundColor" red="0.26044052839999998" green="0.4870451093" blue="0.43136829139999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="F7I-aT-22I" secondAttribute="height" id="zVB-Pt-4NS"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="6" height="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1II-fT-vBx">
+                        <rect key="frame" x="5" y="175" width="160" height="16"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Kind" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rz1-uJ-EQg">
+                        <rect key="frame" x="5" y="199" width="126.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="$$$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFB-Ds-7cd">
+                        <rect key="frame" x="139.5" y="199" width="25.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="4.9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Azu-Ju-rcq">
+                        <rect key="frame" x="25" y="222.5" width="21.5" height="16"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Jcl-WQ-jjD">
+                        <rect key="frame" x="5" y="223" width="15" height="15"/>
+                        <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="EUG-h8-CrB"/>
+                            <constraint firstAttribute="width" constant="15" id="Fg7-xj-Uv2"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(123 reviewers)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ll-v0-Dqj">
+                        <rect key="frame" x="49.5" y="222.5" width="115.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Azu-Ju-rcq" firstAttribute="centerY" secondItem="Jcl-WQ-jjD" secondAttribute="centerY" id="1ig-0Y-h9L"/>
+                <constraint firstAttribute="trailing" secondItem="xFB-Ds-7cd" secondAttribute="trailing" constant="5" id="3mZ-Pj-rTz"/>
+                <constraint firstItem="Azu-Ju-rcq" firstAttribute="leading" secondItem="Jcl-WQ-jjD" secondAttribute="trailing" constant="5" id="76D-M5-mon"/>
+                <constraint firstItem="xFB-Ds-7cd" firstAttribute="leading" secondItem="rz1-uJ-EQg" secondAttribute="trailing" constant="8" id="81i-qc-OhP"/>
+                <constraint firstItem="rz1-uJ-EQg" firstAttribute="leading" secondItem="1II-fT-vBx" secondAttribute="leading" id="AKG-zz-QkV"/>
+                <constraint firstItem="Jcl-WQ-jjD" firstAttribute="top" secondItem="rz1-uJ-EQg" secondAttribute="bottom" constant="8" id="QXe-pa-PF4"/>
+                <constraint firstItem="5Ll-v0-Dqj" firstAttribute="trailing" secondItem="xFB-Ds-7cd" secondAttribute="trailing" id="S8f-Am-Yn1"/>
+                <constraint firstItem="1II-fT-vBx" firstAttribute="top" secondItem="F7I-aT-22I" secondAttribute="bottom" constant="5" id="TAl-hj-t3A"/>
+                <constraint firstItem="xFB-Ds-7cd" firstAttribute="top" secondItem="rz1-uJ-EQg" secondAttribute="top" id="Vhq-Fq-ILd"/>
+                <constraint firstAttribute="trailing" secondItem="1II-fT-vBx" secondAttribute="trailing" constant="5" id="bXc-ZU-5uX"/>
+                <constraint firstItem="Jcl-WQ-jjD" firstAttribute="leading" secondItem="rz1-uJ-EQg" secondAttribute="leading" id="cky-Td-gEg"/>
+                <constraint firstItem="F7I-aT-22I" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dxY-d6-4EO"/>
+                <constraint firstItem="1II-fT-vBx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="iYF-qY-iec"/>
+                <constraint firstAttribute="trailing" secondItem="F7I-aT-22I" secondAttribute="trailing" id="kTp-2g-kjr"/>
+                <constraint firstItem="rz1-uJ-EQg" firstAttribute="top" secondItem="1II-fT-vBx" secondAttribute="bottom" constant="8" id="nX2-if-OdW"/>
+                <constraint firstItem="5Ll-v0-Dqj" firstAttribute="top" secondItem="Azu-Ju-rcq" secondAttribute="top" id="vS3-tV-k4v"/>
+                <constraint firstItem="5Ll-v0-Dqj" firstAttribute="leading" secondItem="Azu-Ju-rcq" secondAttribute="trailing" constant="3" id="vcu-Wd-nre"/>
+                <constraint firstItem="F7I-aT-22I" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yFy-vC-0yr"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="170" height="247"/>
+            <connections>
+                <outlet property="RestaurantKindLabel" destination="rz1-uJ-EQg" id="Q8a-Gw-Z7F"/>
+                <outlet property="costLabel" destination="xFB-Ds-7cd" id="dAX-cZ-5EH"/>
+                <outlet property="imageView" destination="F7I-aT-22I" id="bw8-HL-oA4"/>
+                <outlet property="rateLabel" destination="Azu-Ju-rcq" id="zv5-b1-H5a"/>
+                <outlet property="restaurantNameLabel" destination="1II-fT-vBx" id="5La-LL-Rnz"/>
+            </connections>
+            <point key="canvasLocation" x="224.63768115942031" y="80.691964285714278"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="macaron" width="520" height="346.5"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+    </resources>
+</document>

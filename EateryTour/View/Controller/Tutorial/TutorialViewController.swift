@@ -18,9 +18,6 @@ final class TutorialViewController: ViewController {
 
     // MARK: - Propeties
     private var width = UIScreen.main.bounds.width
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -30,10 +27,14 @@ final class TutorialViewController: ViewController {
         configSecondUse()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        statusBarStyle = .lightContent
+    }
+
     // MARK: - Private functions
     private func configUI() {
         getStartedButton.layer.cornerRadius = 10
-        setNeedsStatusBarAppearanceUpdate()
     }
 
     private func configScrollView() {
@@ -45,7 +46,7 @@ final class TutorialViewController: ViewController {
     }
 
     // MARK: - IBActions
-    @IBAction private func getStartedButtonTouchUpInside(_ sender: UIButton) {
+    @IBAction private func getStartedButtonTouchUpInside(_ sender: Button) {
         AppDelegate.shared.changeRoot(rootType: .tabbar)
     }
 }
