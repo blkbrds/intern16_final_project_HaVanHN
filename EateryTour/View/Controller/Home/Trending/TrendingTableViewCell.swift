@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class TrendingTableViewCell: UITableViewCell {
+final class TrendingTableViewCell: TableCell {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var collectionView: UICollectionView!

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SliderCell: UICollectionViewCell {
+final class SliderCell: CollectionCell {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var image: UIImageView!

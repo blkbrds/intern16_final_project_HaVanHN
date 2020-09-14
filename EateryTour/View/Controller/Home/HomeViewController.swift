@@ -16,8 +16,8 @@ enum SectionType {
 final class HomeViewController: ViewController {
 
     // MARK: - IBOutlets
-    @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var tableView: TableView!
+    @IBOutlet private weak var collectionView: CollectionView!
 
     // MARK: - Propeties
     private var viewModel = HomeViewModel()
@@ -76,10 +76,10 @@ extension HomeViewController: UITableViewDataSource {
         let sectionType = viewModel.getSectionType(section: indexPath.section)
         switch sectionType {
         case .trending:
-            guard let trendingCell = tableView.dequeueReusableCell(withIdentifier: "trendingCell", for: indexPath) as? TrendingTableViewCell else { return UITableViewCell() }
+            guard let trendingCell = tableView.dequeueReusableCell(withIdentifier: "trendingCell", for: indexPath) as? TrendingTableViewCell else { return TableCell() }
             return trendingCell
         case .category:
-            guard let categoryCell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as? CategoryTableViewCell else { return UITableViewCell() }
+            guard let categoryCell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as? CategoryTableViewCell else { return TableCell() }
             return categoryCell
         }
     }
@@ -112,7 +112,7 @@ extension HomeViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let slideCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as? SliderCell else { return UICollectionViewCell() }
+        guard let slideCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as? SliderCell else { return CollectionCell() }
         slideCell.viewModel = viewModel.getImageForSlide(atIndexPath: indexPath)
         return slideCell
     }
