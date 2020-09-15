@@ -11,6 +11,17 @@ import MVVM
 
 class ViewController: UIViewController, MVVM.View {
 
+    // MARK: - Properties
+    var statusBarStyle: UIStatusBarStyle = .default {
+        didSet {
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return statusBarStyle
+    }
+
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -207,8 +207,8 @@
 		A3F6228F25060E7F0024976E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A3F6229025060E7F0024976E /* Controller */,
 				A3F6229225060E7F0024976E /* Base */,
+				A3F6229025060E7F0024976E /* Controller */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -679,13 +679,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X3G739MWT3;
+				DEVELOPMENT_TEAM = SUB6RGC6PM;
 				INFOPLIST_FILE = "$(SRCROOT)/EateryTour/Supports/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = havan.ios.com.EateryTour;
+				PRODUCT_BUNDLE_IDENTIFIER = havan.com.EateryTour;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -698,13 +699,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X3G739MWT3;
+				DEVELOPMENT_TEAM = SUB6RGC6PM;
 				INFOPLIST_FILE = "$(SRCROOT)/EateryTour/Supports/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = havan.ios.com.EateryTour;
+				PRODUCT_BUNDLE_IDENTIFIER = havan.com.EateryTour;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

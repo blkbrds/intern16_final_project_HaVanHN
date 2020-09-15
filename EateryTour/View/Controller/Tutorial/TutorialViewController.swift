@@ -18,14 +18,17 @@ final class TutorialViewController: ViewController {
 
     // MARK: - Propeties
     private var width = UIScreen.main.bounds.width
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
         configScrollView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        statusBarStyle = .lightContent
     }
 
     // MARK: - Private functions
@@ -36,6 +39,7 @@ final class TutorialViewController: ViewController {
 
     private func configScrollView() {
         scrollView.delegate = self
+        scrollView.showsHorizontalScrollIndicator = false
     }
 
     private func configFirstUse() {
@@ -51,7 +55,7 @@ final class TutorialViewController: ViewController {
 extension TutorialViewController: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x < width && scrollView.contentOffset.x >= 0 {
+        if scrollView.contentOffset.x < width {
             pageControl.currentPage = 0
         } else if scrollView.contentOffset.x < width * 2 && scrollView.contentOffset.x >= width {
             pageControl.currentPage = 1
