@@ -10,9 +10,13 @@ import UIKit
 
 final class TrendingTableViewCell: TableCell {
 
-    // MARK: - IBOutlets
-    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet weak var cellView: UIView!
+    @IBOutlet weak var restaurantImageView: UIImageView!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var restaurantNameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
 
+    // MARK: - IBOutlets
     // MARK: - Propeties
 
     // MARK: - Initialize
@@ -20,7 +24,7 @@ final class TrendingTableViewCell: TableCell {
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        configCollectionView()
+        configUI()
     }
 
     // MARK: - Override functions
@@ -29,44 +33,16 @@ final class TrendingTableViewCell: TableCell {
     }
 
     // MARK: - Private functions
-    private func configCollectionView() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        let restauRantCell = UINib(nibName: "RestaurantCell", bundle: Bundle.main)
-        collectionView.register(restauRantCell, forCellWithReuseIdentifier: "RestaurantCell")
+    private func configUI() {
+        cellView.layer.cornerRadius = 20
+        cellView.clipsToBounds = true
     }
     // MARK: - Public functions
 
     // MARK: - Objc functions
-
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 20, right: 10))
+    }
     // MARK: - IBActions
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-extension TrendingTableViewCell: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width / 2.5 - 10, height: 240)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 12, bottom: 5, right: 12)
-    }
-}
-
-// MARK: - UICollectionViewDataSource
-extension TrendingTableViewCell: UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let restaurantCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantCell", for: indexPath) as? RestaurantCell else { return UICollectionViewCell() }
-        return restaurantCell
-    }
 }

@@ -8,11 +8,6 @@
 
 import UIKit
 
-enum SectionType {
-    case trending
-    case category
-}
-
 final class HomeViewController: ViewController {
 
     // MARK: - IBOutlets
@@ -41,10 +36,8 @@ final class HomeViewController: ViewController {
         tableView.delegate = self
         let trendingCell = UINib(nibName: "TrendingTableViewCell", bundle: Bundle.main)
         tableView.register(trendingCell, forCellReuseIdentifier: "trendingCell")
-        let categoryCell = UINib(nibName: "CategoryTableViewCell", bundle: Bundle.main)
-        tableView.register(categoryCell, forCellReuseIdentifier: "categoryCell")
-        let header = UINib(nibName: "CustomHeaderView", bundle: Bundle.main)
-        tableView.register(header, forHeaderFooterViewReuseIdentifier: "header")
+        tableView.sectionIndexBackgroundColor = UIColor.white
+        tableView.sectionIndexTrackingBackgroundColor = UIColor.white
     }
 
     private func configCollectionView() {
@@ -64,31 +57,25 @@ final class HomeViewController: ViewController {
 // MARK: - UITableViewDataSource
 extension HomeViewController: UITableViewDataSource {
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 10
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let sectionType = viewModel.getSectionType(section: indexPath.section)
-        switch sectionType {
-        case .trending:
-            guard let trendingCell = tableView.dequeueReusableCell(withIdentifier: "trendingCell", for: indexPath) as? TrendingTableViewCell else { return TableCell() }
-            return trendingCell
-        case .category:
-            guard let categoryCell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as? CategoryTableViewCell else { return TableCell() }
-            return categoryCell
-        }
+        guard let trendingCell = tableView.dequeueReusableCell(withIdentifier: "trendingCell", for: indexPath) as? TrendingTableViewCell else { return TableCell() }
+        return trendingCell
     }
 
-    internal func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CustomHeaderView else { return UIView() }
-        let type = viewModel.getSectionType(section: section)
-        header.viewModel = viewModel.getConfigSection(sectionType: type)
-        return header
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let uiView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 50))
+        let label = UILabel(frame: CGRect(x: 15, y: 20, width: tableView.bounds.width, height: 30))
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.black,
+            .font: UIFont.boldSystemFont(ofSize: 20)
+        ]
+        label.attributedText = NSAttributedString(string: "Trending", attributes: attributes)
+        uiView.addSubview(label)
+        return uiView
     }
 }
 
