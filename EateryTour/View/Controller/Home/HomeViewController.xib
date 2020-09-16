@@ -37,7 +37,7 @@
                                 </collectionViewFlowLayout>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AY-vg-QPA">
-                                <rect key="frame" x="20" y="10" width="374" height="24"/>
+                                <rect key="frame" x="15" y="10" width="379" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                             <constraint firstItem="7AY-vg-QPA" firstAttribute="top" secondItem="6en-m0-RhP" secondAttribute="top" constant="10" id="RyN-ot-BS7"/>
                             <constraint firstAttribute="bottom" secondItem="dcg-og-4er" secondAttribute="bottom" id="SnK-Z2-Wep"/>
                             <constraint firstItem="dcg-og-4er" firstAttribute="top" secondItem="7AY-vg-QPA" secondAttribute="bottom" constant="10" id="ZM5-Jl-Y2w"/>
-                            <constraint firstItem="7AY-vg-QPA" firstAttribute="leading" secondItem="6en-m0-RhP" secondAttribute="leading" constant="20" id="snR-rh-ok4"/>
+                            <constraint firstItem="7AY-vg-QPA" firstAttribute="leading" secondItem="6en-m0-RhP" secondAttribute="leading" constant="15" id="snR-rh-ok4"/>
                         </constraints>
                     </view>
                 </tableView>

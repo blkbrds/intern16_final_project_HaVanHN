@@ -55,7 +55,7 @@ final class TutorialViewController: ViewController {
 extension TutorialViewController: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x < width && scrollView.contentOffset.x >= 0 {
+        if scrollView.contentOffset.x < width {
             pageControl.currentPage = 0
         } else if scrollView.contentOffset.x < width * 2 && scrollView.contentOffset.x >= width {
             pageControl.currentPage = 1

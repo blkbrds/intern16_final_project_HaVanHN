@@ -19,8 +19,6 @@
 		521A8EAD2508E716000FC4A3 /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EAB2508E716000FC4A3 /* FavoriteViewController.xib */; };
 		521A8EB6250922FD000FC4A3 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A8EB4250922FD000FC4A3 /* TutorialViewController.swift */; };
 		521A8EB7250922FD000FC4A3 /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EB5250922FD000FC4A3 /* TutorialViewController.xib */; };
-		52C86C02250F09C10076C757 /* API.Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C86C01250F09C10076C757 /* API.Restaurant.swift */; };
-		52C86C04250F0E930076C757 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C86C03250F0E930076C757 /* Restaurant.swift */; };
 		52E63B0C250A25FD001387AC /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E63B0A250A25FD001387AC /* CategoryTableViewCell.swift */; };
 		52E63B0D250A25FD001387AC /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E63B0B250A25FD001387AC /* CategoryTableViewCell.xib */; };
 		52E63B10250A260E001387AC /* TrendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E63B0E250A260E001387AC /* TrendingTableViewCell.swift */; };
@@ -99,8 +97,6 @@
 		521A8EAB2508E716000FC4A3 /* FavoriteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
 		521A8EB4250922FD000FC4A3 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		521A8EB5250922FD000FC4A3 /* TutorialViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialViewController.xib; sourceTree = "<group>"; };
-		52C86C01250F09C10076C757 /* API.Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.Restaurant.swift; sourceTree = "<group>"; };
-		52C86C03250F0E930076C757 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		52E63B0A250A25FD001387AC /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		52E63B0B250A25FD001387AC /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
 		52E63B0E250A260E001387AC /* TrendingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingTableViewCell.swift; sourceTree = "<group>"; };
@@ -434,7 +430,6 @@
 			isa = PBXGroup;
 			children = (
 				A3F622A025060E800024976E /* Session.swift */,
-				52C86C03250F0E930076C757 /* Restaurant.swift */,
 				A3F622A225060E800024976E /* API */,
 			);
 			path = Model;
@@ -456,7 +451,6 @@
 				A3F622A525060E800024976E /* Error.swift */,
 				A3F622A425060E800024976E /* RequestSerializer.swift */,
 				A3F622A725060E800024976E /* ResponseSerializer.swift */,
-				52C86C01250F09C10076C757 /* API.Restaurant.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -713,7 +707,6 @@
 				A3F622AE25060E800024976E /* UIViewControllerExt.swift in Sources */,
 				A3F622C025060E800024976E /* ResponseSerializer.swift in Sources */,
 				A3F622B025060E800024976E /* NSErrorExt.swift in Sources */,
-				52C86C04250F0E930076C757 /* Restaurant.swift in Sources */,
 				A3F622B625060E800024976E /* ScrollView.swift in Sources */,
 				A3F622BE25060E800024976E /* Error.swift in Sources */,
 				A3F622BC25060E800024976E /* Session.swift in Sources */,
@@ -728,7 +721,6 @@
 				A3F622B225060E800024976E /* CollectionViewHeaderView.swift in Sources */,
 				A3F622B325060E800024976E /* Label.swift in Sources */,
 				A3F622FA25079C840024976E /* DictionaryExt.swift in Sources */,
-				52C86C02250F09C10076C757 /* API.Restaurant.swift in Sources */,
 				A3F622B725060E800024976E /* TableView.swift in Sources */,
 				A3F622B125060E800024976E /* CollectionCell.swift in Sources */,
 				A3F622B825060E800024976E /* TableCell.swift in Sources */,
