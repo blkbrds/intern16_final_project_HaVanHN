@@ -15,10 +15,16 @@ final class TutorialViewController: ViewController {
     @IBOutlet private weak var scrollView: ScrollView!
     @IBOutlet private weak var pageControl: UIPageControl!
     @IBOutlet private weak var getStartedButton: Button!
-    @IBOutlet private weak var view1: UIView!
-    @IBOutlet private weak var view2: UIView!
-    @IBOutlet private weak var view3: UIView!
-    
+    @IBOutlet private weak var tutorial01ImageView: ImageView!
+    @IBOutlet private weak var tutorial02ImageView: ImageView!
+    @IBOutlet private weak var tutorial03ImageView: ImageView!
+    @IBOutlet private weak var title01Label: Label!
+    @IBOutlet private weak var title02Label: Label!
+    @IBOutlet private weak var title03Label: Label!
+    @IBOutlet private weak var description01Label: Label!
+    @IBOutlet private weak var description02Label: Label!
+    @IBOutlet private weak var description03Label: Label!
+
     // MARK: - Propeties
     private var width = UIScreen.main.bounds.width
 
@@ -57,12 +63,23 @@ final class TutorialViewController: ViewController {
 extension TutorialViewController: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x < width {
-            pageControl.currentPage = 0
-        } else if scrollView.contentOffset.x < width * 2 && scrollView.contentOffset.x >= width {
-            pageControl.currentPage = 1
+        let pageIndex = scrollView.contentOffset.x / width
+        pageControl.currentPage = Int(round(pageIndex))
+        let offsetX = scrollView.contentOffset.x
+        tutorial01ImageView.alpha = 1 - (offsetX / width)
+        title01Label.alpha = 1 - (offsetX / width)
+        description01Label.alpha = 1 - (offsetX / width)
+        tutorial03ImageView.alpha = (offsetX - width) / width
+        title03Label.alpha = (offsetX - width) / width
+        description03Label.alpha = (offsetX - width) / width
+        if offsetX <= width {
+            tutorial02ImageView.alpha = offsetX / width
+            title02Label.alpha = offsetX / width
+            description02Label.alpha = offsetX / width
         } else {
-            pageControl.currentPage = 2
+            tutorial02ImageView.alpha = 1 - (offsetX - width) / width
+            title02Label.alpha = 1 - (offsetX - width) / width
+            description02Label.alpha = 1 - (offsetX - width) / width
         }
     }
 }
