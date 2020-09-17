@@ -25,9 +25,6 @@ final class TutorialViewController: ViewController {
     @IBOutlet private weak var description02Label: Label!
     @IBOutlet private weak var description03Label: Label!
 
-    // MARK: - Propeties
-    private var width = UIScreen.main.bounds.width
-
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,23 +60,23 @@ final class TutorialViewController: ViewController {
 extension TutorialViewController: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let pageIndex = scrollView.contentOffset.x / width
+        let pageIndex = scrollView.contentOffset.x / screenSize.width
         pageControl.currentPage = Int(round(pageIndex))
         let offsetX = scrollView.contentOffset.x
-        tutorial01ImageView.alpha = 1 - (offsetX / width)
-        title01Label.alpha = 1 - (offsetX / width)
-        description01Label.alpha = 1 - (offsetX / width)
-        tutorial03ImageView.alpha = (offsetX - width) / width
-        title03Label.alpha = (offsetX - width) / width
-        description03Label.alpha = (offsetX - width) / width
-        if offsetX <= width {
-            tutorial02ImageView.alpha = offsetX / width
-            title02Label.alpha = offsetX / width
-            description02Label.alpha = offsetX / width
+        tutorial01ImageView.alpha = 1 - (offsetX / screenSize.width)
+        title01Label.alpha = 1 - (offsetX / screenSize.width)
+        description01Label.alpha = 1 - (offsetX / screenSize.width)
+        tutorial03ImageView.alpha = (offsetX - screenSize.width) / screenSize.width
+        title03Label.alpha = (offsetX - screenSize.width) / screenSize.width
+        description03Label.alpha = (offsetX - screenSize.width) / screenSize.width
+        if offsetX <= screenSize.width {
+            tutorial02ImageView.alpha = offsetX / screenSize.width
+            title02Label.alpha = offsetX / screenSize.width
+            description02Label.alpha = offsetX / screenSize.width
         } else {
-            tutorial02ImageView.alpha = 1 - (offsetX - width) / width
-            title02Label.alpha = 1 - (offsetX - width) / width
-            description02Label.alpha = 1 - (offsetX - width) / width
+            tutorial02ImageView.alpha = 1 - (offsetX - screenSize.width) / screenSize.width
+            title02Label.alpha = 1 - (offsetX - screenSize.width) / screenSize.width
+            description02Label.alpha = 1 - (offsetX - screenSize.width) / screenSize.width
         }
     }
 }

@@ -9,6 +9,8 @@
 import UIKit
 
 let ud = UserDefaults.standard
+let screenSize = UIScreen.main.bounds
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
