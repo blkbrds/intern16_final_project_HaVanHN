@@ -8,6 +8,9 @@
 
 import UIKit
 
+let ud = UserDefaults.standard
+let screenSize = UIScreen.main.bounds
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -21,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configWindow() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
-        let vc = ViewController()
+        let vc = TutorialViewController()
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
     }
