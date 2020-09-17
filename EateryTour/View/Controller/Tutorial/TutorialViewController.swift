@@ -15,7 +15,10 @@ final class TutorialViewController: ViewController {
     @IBOutlet private weak var scrollView: ScrollView!
     @IBOutlet private weak var pageControl: UIPageControl!
     @IBOutlet private weak var getStartedButton: Button!
-
+    @IBOutlet private weak var view1: UIView!
+    @IBOutlet private weak var view2: UIView!
+    @IBOutlet private weak var view3: UIView!
+    
     // MARK: - Propeties
     private var width = UIScreen.main.bounds.width
 
