@@ -8,6 +8,7 @@
 
 import UIKit
 
+let ud = UserDefaults.standard
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

@@ -34,7 +34,6 @@ final class TutorialViewController: ViewController {
     // MARK: - Private functions
     private func configUI() {
         getStartedButton.layer.cornerRadius = 10
-        setNeedsStatusBarAppearanceUpdate()
     }
 
     private func configScrollView() {
@@ -43,11 +42,11 @@ final class TutorialViewController: ViewController {
     }
 
     private func configFirstUse() {
-        UserDefaults.standard.set(true, forKey: "secondUse")
+        ud.set(true, forKey: UserDefaultKeys.secondUse)
     }
 
     // MARK: - IBActions
-    @IBAction private func getStartedButtonTouchUpInside(_ sender: UIButton) {
+    @IBAction private func getStartedButtonTouchUpInside(_ sender: Button) {
     }
 }
 
