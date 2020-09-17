@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="EateryTour" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="dcg-og-4er" id="lqg-Me-oLK"/>
+                <outlet property="pageControl" destination="ONC-1t-h4M" id="bgr-Rf-nG3"/>
                 <outlet property="tableView" destination="O1z-mi-wFS" id="VAK-kA-IM5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,7 +27,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="238"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="dcg-og-4er">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="dcg-og-4er">
                                 <rect key="frame" x="0.0" y="44" width="414" height="194"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uwJ-zf-Oya">
