@@ -19,8 +19,8 @@ class ViewController: UIViewController, MVVM.View {
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-           return statusBarStyle
-       }
+        return statusBarStyle
+    }
 
     // MARK: - Life cycle
     override func viewDidLoad() {
