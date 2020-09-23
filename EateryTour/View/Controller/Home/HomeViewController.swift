@@ -7,32 +7,36 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class HomeViewController: ViewController {
-    
+
     // MARK: - IBOutlets
     @IBOutlet private weak var tableView: TableView!
     @IBOutlet private weak var collectionView: CollectionView!
     @IBOutlet private weak var pageControl: UIPageControl!
-    
+
     // MARK: - Propeties
     private var viewModel = HomeViewModel()
     private var slideToRight: Bool = true
-    
+    private var location: CLLocation?
+
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        //getCurrentLocation()
         configTableView()
         customNavigationBar()
         configCollectionView()
         configSlide()
+        loadApi()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         statusBarStyle = .lightContent
     }
-    
+
     // MARK: - Private functions
     private func configTableView() {
         tableView.dataSource = self
@@ -42,20 +46,20 @@ final class HomeViewController: ViewController {
         tableView.sectionIndexBackgroundColor = UIColor.white
         tableView.sectionIndexTrackingBackgroundColor = UIColor.white
     }
-    
+
     private func configCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
         let slideCell = UINib(nibName: "SliderCell", bundle: Bundle.main)
         collectionView.register(slideCell, forCellWithReuseIdentifier: "SliderCell")
     }
-    
+
     private func customNavigationBar() {
-        title = "Eatery Tour"
+        navigationItem.title = "Eatery Tour"
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1602264941, green: 0.4939214587, blue: 0.4291425645, alpha: 1)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
-    
+
     private func configSlide() {
         Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
             if self.slideToRight {
@@ -73,20 +77,41 @@ final class HomeViewController: ViewController {
             }
         }
     }
+
+    private func loadApi() {
+        viewModel.getTrendingRestaurant { (done) in
+            if done {
+                self.tableView.reloadData()
+                for cell in self.tableView.visibleCells {
+                    if let cell = cell as? TrendingTableViewCell {
+                        cell.viewModel?.loadMoreInformation(completion: { done in
+                            if done {
+                                cell.getInformation()
+                            }
+                        })
+                    }
+                }
+            } else {
+                print("huhu")
+            }
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
 extension HomeViewController: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+       // print(viewModel.restaurant?.count)
+        return viewModel.restaurant?.count ?? 10
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let trendingCell = tableView.dequeueReusableCell(withIdentifier: "trendingCell", for: indexPath) as? TrendingTableViewCell else { return TableCell() }
+        trendingCell.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
         return trendingCell
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let uiView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 50))
         let label = UILabel(frame: CGRect(x: 15, y: 20, width: tableView.bounds.width, height: 30))
@@ -102,11 +127,11 @@ extension HomeViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 260
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
     }
@@ -114,11 +139,11 @@ extension HomeViewController: UITableViewDelegate {
 
 // MARK: - UICollectionViewDataSource
 extension HomeViewController: UICollectionViewDataSource {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.imageList.count
+        return viewModel.imageListSlide.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let slideCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as? SliderCell else { return CollectionCell() }
         slideCell.viewModel = viewModel.getImageForSlide(atIndexPath: indexPath)
@@ -128,11 +153,11 @@ extension HomeViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: collectionView.bounds.height)
     }

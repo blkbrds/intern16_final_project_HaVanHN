@@ -19,3 +19,7 @@ extension App {
 
 extension App.String {
 }
+
+struct UserDefaultKeys {
+    static let secondUse = "secondUse"
+}

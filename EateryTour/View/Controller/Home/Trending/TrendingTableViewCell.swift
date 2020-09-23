@@ -10,14 +10,21 @@ import UIKit
 
 final class TrendingTableViewCell: TableCell {
 
-    @IBOutlet weak var cellView: UIView!
-    @IBOutlet weak var restaurantImageView: UIImageView!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var restaurantNameLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-
     // MARK: - IBOutlets
+    @IBOutlet private weak var ratingLabel: Label!
+    @IBOutlet private weak var currencyLabel: Label!
+    @IBOutlet private weak var cellView: UIView!
+    @IBOutlet private weak var restaurantImageView: ImageView!
+    @IBOutlet private weak var distanceLabel: Label!
+    @IBOutlet private weak var restaurantNameLabel: Label!
+    @IBOutlet private weak var addressLabel: Label!
+
     // MARK: - Propeties
+    var viewModel: TrendingCellViewModel? {
+        didSet {
+            updateUI()
+        }
+    }
     // MARK: - Initialize
     // MARK: - Life cycle
     override func awakeFromNib() {
@@ -34,6 +41,20 @@ final class TrendingTableViewCell: TableCell {
     private func configUI() {
         cellView.layer.cornerRadius = 20
         cellView.clipsToBounds = true
+    }
+
+    private func updateUI() {
+        restaurantNameLabel.text = viewModel?.name
+        if let address = viewModel?.address, let city = viewModel?.city {
+            addressLabel.text = address + city + " - "
+        }
+    }
+
+    func getInformation() {
+        currencyLabel.text = viewModel?.currency
+        if let rating = viewModel?.rating {
+            ratingLabel.text = String(rating)
+        }
     }
     // MARK: - Public functions
     // MARK: - Objc functions

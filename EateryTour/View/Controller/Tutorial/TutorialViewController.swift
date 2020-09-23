@@ -25,6 +25,7 @@ final class TutorialViewController: ViewController {
         configUI()
         configScrollView()
         configSecondUse()
+        configLocationManager()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +36,10 @@ final class TutorialViewController: ViewController {
     // MARK: - Private functions
     private func configUI() {
         getStartedButton.layer.cornerRadius = 10
+    }
+
+    private func configLocationManager() {
+        LocationManager.shared.configLocationService()
     }
 
     private func configScrollView() {

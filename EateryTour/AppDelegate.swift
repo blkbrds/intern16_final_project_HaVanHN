@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func configWindow() {
+        LocationManager.shared.configLocationService()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
         let secondUse = UserDefaults.standard.bool(forKey: "secondUse")
