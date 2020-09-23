@@ -84,11 +84,14 @@ final class HomeViewController: ViewController {
                 self.tableView.reloadData()
                 for cell in self.tableView.visibleCells {
                     if let cell = cell as? TrendingTableViewCell {
-                        cell.viewModel?.loadMoreInformation(completion: { done in
-                            if done {
-                                cell.getInformation()
-                            }
-                        })
+                        if let isLoadAPI = cell.viewModel?.isCallAPI, !isLoadAPI {
+                            print("hihi")
+                            cell.viewModel?.loadMoreInformation(completion: { done in
+                                if done {
+                                    cell.getInformation()
+                                }
+                            })
+                        }
                     }
                 }
             } else {
@@ -102,7 +105,7 @@ final class HomeViewController: ViewController {
 extension HomeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       // print(viewModel.restaurant?.count)
+        // print(viewModel.restaurant?.count)
         return viewModel.restaurant?.count ?? 10
     }
 
