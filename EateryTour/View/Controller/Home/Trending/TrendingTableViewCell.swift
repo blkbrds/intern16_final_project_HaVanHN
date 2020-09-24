@@ -63,9 +63,9 @@ final class TrendingTableViewCell: TableCell {
                 if let rating = self.viewModel?.rating {
                     self.ratingLabel.text = String(rating)
                 }
-                completion(true," ")
-            case .failure:
-                completion(false, "abc" )
+                completion(true, " ")
+            case .failure(let error):
+                completion(false, error.localizedDescription)
             }
         })
     }

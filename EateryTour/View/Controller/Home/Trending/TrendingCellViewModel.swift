@@ -33,15 +33,15 @@ final class TrendingCellViewModel {
     func loadMoreInformation(completion: @escaping APICompletion) {
         guard let newId = id, !isCallAPI else {
             completion(.failure(Api.Error.invalid))
+            print("denied")
             return }
-        print("\(newId)")
         Api.Detail.getDetail(restaurantId: newId) { result in
             switch result {
             case .success(let data):
                 self.rating = data.rating
                 self.currency = data.currency
                 self.image = data.bestPhoto
-                self.isCallAPI = true
+                self.isCallAPI = false
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))

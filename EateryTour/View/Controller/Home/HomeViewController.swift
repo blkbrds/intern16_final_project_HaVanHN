@@ -85,17 +85,22 @@ final class HomeViewController: ViewController {
                 self.tableView.reloadData()
                 for cell in self.tableView.visibleCells {
                     if let cell = cell as? TrendingTableViewCell {
-                           cell.getInformation { (done, error) in
-                                if !done {
-                                    print(error)
-                                }
+                        cell.getInformation { (done, error) in
+                            if !done {
+                                self.showAlert(error: error)
                             }
-                            }
+                        }
                     }
-                } else {
-                print("huhu")
+                }
             }
         }
+    }
+
+    private func showAlert(error: String) {
+        let alert = UIAlertController(title: "Fail to get restaurant", message: error, preferredStyle: .alert)
+        let action = UIAlertAction(title: "error", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -164,14 +169,16 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - UIScrollViewDelegate
 extension HomeViewController: UIScrollViewDelegate {
+
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
             for cell in tableView.visibleCells {
                 if let cell = cell as? TrendingTableViewCell {
                     cell.getInformation { (done, error) in
                         if !done {
-                            print(error)
+                            self.showAlert(error: error)
                         }
                     }
                 }
@@ -182,9 +189,9 @@ extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         for cell in tableView.visibleCells {
             if let cell = cell as? TrendingTableViewCell {
-               cell.getInformation { (done, error) in
+                cell.getInformation { (done, error) in
                     if !done {
-                        print(error)
+                        self.showAlert(error: error)
                     }
                 }
             }
