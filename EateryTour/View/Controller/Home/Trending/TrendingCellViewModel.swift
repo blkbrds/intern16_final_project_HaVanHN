@@ -30,20 +30,21 @@ final class TrendingCellViewModel {
         self.city = city
     }
 
-    func loadMoreInformation(completion: @escaping CompletionResultRestaurant) {
-        guard let newId = id else {
-            completion(false)
+    func loadMoreInformation(completion: @escaping APICompletion) {
+        guard let newId = id, !isCallAPI else {
+            completion(.failure(Api.Error.invalid))
             return }
+        print("\(newId)")
         Api.Detail.getDetail(restaurantId: newId) { result in
             switch result {
-                case .success(let data):
-                    self.rating = data.rating
-                    self.currency = data.currency
-                    self.image = data.bestPhoto
-                    self.isCallAPI = true
-                completion(true)
-                case .failure(_):
-                    completion(false)
+            case .success(let data):
+                self.rating = data.rating
+                self.currency = data.currency
+                self.image = data.bestPhoto
+                self.isCallAPI = true
+                completion(.success)
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }

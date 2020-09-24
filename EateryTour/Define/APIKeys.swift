@@ -9,7 +9,7 @@
 import Foundation
 
 struct APIKeys {
-    static let client_id = "0ILKDES34SSAYOVJWYTE2Q10F1GTDPUCRX2SCJ42F4EJS3IV"
-    static let client_secret = "XTI5FHXE0XZJ3YFFDPULDNLLH1R1MWKCXXRFQ1IBXFTK1XWH"
+    static let client_id = "T3HTLCTIFMJKH3ZPVKLQDFHSMGBP54RIRRXPBHW0A3OAAZOS"
+    static let client_secret = "M1RPGOTSNFBCJNUOWPOXUWCGU5DH5T3WWFAGYGT2NJ2H4A1U"
     static let dateVersion = "20200910"
 }

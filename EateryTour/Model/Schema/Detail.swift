@@ -51,9 +51,9 @@ final class Detail: Mappable {
         var timeFrames: JSArray = [[:]]
         timeFrames <- map["response.venue.hours.timeframes"]
         if let firstTimeFrames = timeFrames.first {
-            guard let openDays: String = firstTimeFrames["days"] as? String else { fatalError() }
+            guard let openDays: String = firstTimeFrames["days"] as? String else { return }
             openDate = openDays
-            guard let open: JSArray = firstTimeFrames["open"] as? JSArray else { fatalError() }
+            guard let open: JSArray = firstTimeFrames["open"] as? JSArray else { return }
             if let firstElement: JSObject = open.first {
                 if let time = firstElement["renderedTime"] as? String {
                     openTime = time

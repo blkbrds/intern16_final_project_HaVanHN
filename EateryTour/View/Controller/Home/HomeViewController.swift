@@ -20,6 +20,7 @@ final class HomeViewController: ViewController {
     private var viewModel = HomeViewModel()
     private var slideToRight: Bool = true
     private var location: CLLocation?
+    private var trendingCell: TrendingTableViewCell?
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -84,17 +85,14 @@ final class HomeViewController: ViewController {
                 self.tableView.reloadData()
                 for cell in self.tableView.visibleCells {
                     if let cell = cell as? TrendingTableViewCell {
-                        if let isLoadAPI = cell.viewModel?.isCallAPI, !isLoadAPI {
-                            print("hihi")
-                            cell.viewModel?.loadMoreInformation(completion: { done in
-                                if done {
-                                    cell.getInformation()
+                           cell.getInformation { (done, error) in
+                                if !done {
+                                    print(error)
                                 }
-                            })
-                        }
+                            }
+                            }
                     }
-                }
-            } else {
+                } else {
                 print("huhu")
             }
         }
@@ -110,9 +108,9 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let trendingCell = tableView.dequeueReusableCell(withIdentifier: "trendingCell", for: indexPath) as? TrendingTableViewCell else { return TableCell() }
-        trendingCell.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
-        return trendingCell
+        trendingCell = tableView.dequeueReusableCell(withIdentifier: "trendingCell", for: indexPath) as? TrendingTableViewCell
+        trendingCell?.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
+        return trendingCell ?? UITableViewCell()
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -163,5 +161,33 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: collectionView.bounds.height)
+    }
+}
+
+extension HomeViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            for cell in tableView.visibleCells {
+                if let cell = cell as? TrendingTableViewCell {
+                    cell.getInformation { (done, error) in
+                        if !done {
+                            print(error)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        for cell in tableView.visibleCells {
+            if let cell = cell as? TrendingTableViewCell {
+               cell.getInformation { (done, error) in
+                    if !done {
+                        print(error)
+                    }
+                }
+            }
+        }
     }
 }

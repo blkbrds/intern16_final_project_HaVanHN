@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SDWebImage
+
+typealias CompletionCellResult = (Bool, String) -> Void
 
 final class TrendingTableViewCell: TableCell {
 
@@ -50,11 +53,21 @@ final class TrendingTableViewCell: TableCell {
         }
     }
 
-    func getInformation() {
-        currencyLabel.text = viewModel?.currency
-        if let rating = viewModel?.rating {
-            ratingLabel.text = String(rating)
-        }
+    func getInformation(completion: @escaping CompletionCellResult) {
+        viewModel?.loadMoreInformation(completion: { (result) in
+            switch result {
+            case .success:
+                guard let urlImage = URL(string: self.viewModel?.image ?? "") else { return }
+                self.restaurantImageView.sd_setImage(with: urlImage)
+                self.currencyLabel.text = self.viewModel?.currency
+                if let rating = self.viewModel?.rating {
+                    self.ratingLabel.text = String(rating)
+                }
+                completion(true," ")
+            case .failure:
+                completion(false, "abc" )
+            }
+        })
     }
     // MARK: - Public functions
     // MARK: - Objc functions
