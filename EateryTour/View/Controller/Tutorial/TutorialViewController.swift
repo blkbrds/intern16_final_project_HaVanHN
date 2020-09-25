@@ -53,6 +53,7 @@ final class TutorialViewController: ViewController {
 
     // MARK: - IBActions
     @IBAction private func getStartedButtonTouchUpInside(_ sender: Button) {
+        AppDelegate.shared.changeRoot(rootType: .tabbar)
     }
 }
 

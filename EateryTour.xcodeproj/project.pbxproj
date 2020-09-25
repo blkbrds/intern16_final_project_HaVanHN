@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		522A5C642519BCCB00829199 /* TabbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522A5C622519BCCB00829199 /* TabbarViewController.xib */; };
 		522A5C652519BCCB00829199 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A5C632519BCCB00829199 /* TabbarViewController.swift */; };
 		522A5C722519BCEB00829199 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A5C672519BCEB00829199 /* FavoriteViewController.swift */; };
 		522A5C732519BCEB00829199 /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522A5C682519BCEB00829199 /* FavoriteViewController.xib */; };
@@ -77,7 +76,6 @@
 
 /* Begin PBXFileReference section */
 		0C96F09816CD072C31584617 /* Pods-EateryTour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EateryTour.debug.xcconfig"; path = "Target Support Files/Pods-EateryTour/Pods-EateryTour.debug.xcconfig"; sourceTree = "<group>"; };
-		522A5C622519BCCB00829199 /* TabbarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabbarViewController.xib; sourceTree = "<group>"; };
 		522A5C632519BCCB00829199 /* TabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		522A5C672519BCEB00829199 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		522A5C682519BCEB00829199 /* FavoriteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 		522A5C612519BCCB00829199 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
-				522A5C622519BCCB00829199 /* TabbarViewController.xib */,
 				522A5C632519BCCB00829199 /* TabbarViewController.swift */,
 			);
 			path = Tabbar;
@@ -513,7 +510,6 @@
 				A3F622C225060E800024976E /* Assets.xcassets in Resources */,
 				522A5C752519BCEB00829199 /* SearchViewController.xib in Resources */,
 				522A5C772519BCEB00829199 /* SettingViewController.xib in Resources */,
-				522A5C642519BCCB00829199 /* TabbarViewController.xib in Resources */,
 				A3AED35C251355E200B5E6D0 /* SF-Pro-Text-Bold.otf in Resources */,
 				A3F622F225062EB00024976E /* TutorialViewController.xib in Resources */,
 				A3AED35E251355E200B5E6D0 /* SF-Pro-Text-Medium.otf in Resources */,
