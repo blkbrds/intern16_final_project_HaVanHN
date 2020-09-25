@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum RootType {
+    case tutorial
+    case tabbar
+}
+
 let ud = UserDefaults.standard
 let screenSize = UIScreen.main.bounds
 
@@ -15,6 +20,13 @@ let screenSize = UIScreen.main.bounds
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+
+    static var shared: AppDelegate = {
+        guard let shared = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Can't cast UIApplication.shared.delegate to AppDelegate")
+        }
+        return shared
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         configWindow()
@@ -24,8 +36,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configWindow() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
-        let vc = TutorialViewController()
-        window?.rootViewController = vc
+        let secondUse = UserDefaults.standard.bool(forKey: "secondUse")
+        print(secondUse)
+        if secondUse {
+            changeRoot(rootType: .tabbar)
+        } else {
+            changeRoot(rootType: .tutorial)
+        }
         window?.makeKeyAndVisible()
+    }
+
+    func changeRoot(rootType: RootType) {
+        switch rootType {
+        case .tutorial:
+            window?.rootViewController = TutorialViewController()
+        case .tabbar:
+            window?.rootViewController = TabbarViewController()
+        }
     }
 }

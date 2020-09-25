@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		522A5C652519BCCB00829199 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A5C632519BCCB00829199 /* TabbarViewController.swift */; };
+		522A5C722519BCEB00829199 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A5C672519BCEB00829199 /* FavoriteViewController.swift */; };
+		522A5C732519BCEB00829199 /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522A5C682519BCEB00829199 /* FavoriteViewController.xib */; };
+		522A5C742519BCEB00829199 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A5C6A2519BCEB00829199 /* SearchViewController.swift */; };
+		522A5C752519BCEB00829199 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522A5C6B2519BCEB00829199 /* SearchViewController.xib */; };
+		522A5C762519BCEB00829199 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A5C6D2519BCEB00829199 /* SettingViewController.swift */; };
+		522A5C772519BCEB00829199 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522A5C6E2519BCEB00829199 /* SettingViewController.xib */; };
+		522A5C782519BCEB00829199 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A5C702519BCEB00829199 /* MapViewController.swift */; };
+		522A5C792519BCEB00829199 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522A5C712519BCEB00829199 /* MapViewController.xib */; };
 		5DDF4EECB3E18FE2AE0EE101 /* Pods_EateryTourTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88319D490829CB9599FF3C15 /* Pods_EateryTourTests.framework */; };
 		A3AED35B251355E200B5E6D0 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3AED356251355E100B5E6D0 /* SF-Pro-Text-Light.otf */; };
 		A3AED35C251355E200B5E6D0 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3AED357251355E100B5E6D0 /* SF-Pro-Text-Bold.otf */; };
@@ -67,6 +76,15 @@
 
 /* Begin PBXFileReference section */
 		0C96F09816CD072C31584617 /* Pods-EateryTour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EateryTour.debug.xcconfig"; path = "Target Support Files/Pods-EateryTour/Pods-EateryTour.debug.xcconfig"; sourceTree = "<group>"; };
+		522A5C632519BCCB00829199 /* TabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		522A5C672519BCEB00829199 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		522A5C682519BCEB00829199 /* FavoriteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
+		522A5C6A2519BCEB00829199 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		522A5C6B2519BCEB00829199 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		522A5C6D2519BCEB00829199 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		522A5C6E2519BCEB00829199 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		522A5C702519BCEB00829199 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		522A5C712519BCEB00829199 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		88319D490829CB9599FF3C15 /* Pods_EateryTourTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EateryTourTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3AED356251355E100B5E6D0 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
 		A3AED357251355E100B5E6D0 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
@@ -149,6 +167,50 @@
 				88319D490829CB9599FF3C15 /* Pods_EateryTourTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		522A5C612519BCCB00829199 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				522A5C632519BCCB00829199 /* TabbarViewController.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		522A5C662519BCEB00829199 /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				522A5C672519BCEB00829199 /* FavoriteViewController.swift */,
+				522A5C682519BCEB00829199 /* FavoriteViewController.xib */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		522A5C692519BCEB00829199 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				522A5C6A2519BCEB00829199 /* SearchViewController.swift */,
+				522A5C6B2519BCEB00829199 /* SearchViewController.xib */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		522A5C6C2519BCEB00829199 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				522A5C6D2519BCEB00829199 /* SettingViewController.swift */,
+				522A5C6E2519BCEB00829199 /* SettingViewController.xib */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		522A5C6F2519BCEB00829199 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				522A5C702519BCEB00829199 /* MapViewController.swift */,
+				522A5C712519BCEB00829199 /* MapViewController.xib */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		A3AED355251355BE00B5E6D0 /* Font */ = {
@@ -251,7 +313,12 @@
 		A3F6229025060E7F0024976E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				522A5C662519BCEB00829199 /* Favorite */,
 				A3F622E925062E5F0024976E /* Home */,
+				522A5C6F2519BCEB00829199 /* Map */,
+				522A5C692519BCEB00829199 /* Search */,
+				522A5C6C2519BCEB00829199 /* Setting */,
+				522A5C612519BCCB00829199 /* Tabbar */,
 				A3F622EE25062E9D0024976E /* Tutorial */,
 			);
 			path = Controller;
@@ -441,11 +508,15 @@
 			files = (
 				A3F622DE250618310024976E /* LaunchScreen.storyboard in Resources */,
 				A3F622C225060E800024976E /* Assets.xcassets in Resources */,
+				522A5C752519BCEB00829199 /* SearchViewController.xib in Resources */,
+				522A5C772519BCEB00829199 /* SettingViewController.xib in Resources */,
 				A3AED35C251355E200B5E6D0 /* SF-Pro-Text-Bold.otf in Resources */,
 				A3F622F225062EB00024976E /* TutorialViewController.xib in Resources */,
 				A3AED35E251355E200B5E6D0 /* SF-Pro-Text-Medium.otf in Resources */,
 				A3F622ED25062E700024976E /* HomeViewController.xib in Resources */,
+				522A5C732519BCEB00829199 /* FavoriteViewController.xib in Resources */,
 				A3AED35F251355E200B5E6D0 /* SF-Pro-Text-Semibold.otf in Resources */,
+				522A5C792519BCEB00829199 /* MapViewController.xib in Resources */,
 				A3AED35B251355E200B5E6D0 /* SF-Pro-Text-Light.otf in Resources */,
 				A3AED35D251355E200B5E6D0 /* SF-Pro-Text-Regular.otf in Resources */,
 			);
@@ -566,11 +637,15 @@
 				A3F622E525062BC20024976E /* NSURLExt.swift in Sources */,
 				A3F622F8250698EE0024976E /* DataExt.swift in Sources */,
 				A3F622EC25062E700024976E /* HomeViewController.swift in Sources */,
+				522A5C782519BCEB00829199 /* MapViewController.swift in Sources */,
 				A3F622E725062C9C0024976E /* StringExt.swift in Sources */,
 				A3F622B225060E800024976E /* CollectionViewHeaderView.swift in Sources */,
 				A3AED3622513564E00B5E6D0 /* UIFontExt.swift in Sources */,
+				522A5C722519BCEB00829199 /* FavoriteViewController.swift in Sources */,
 				A3F622B325060E800024976E /* Label.swift in Sources */,
+				522A5C652519BCCB00829199 /* TabbarViewController.swift in Sources */,
 				A3F622FA25079C840024976E /* DictionaryExt.swift in Sources */,
+				522A5C742519BCEB00829199 /* SearchViewController.swift in Sources */,
 				A3F622B725060E800024976E /* TableView.swift in Sources */,
 				A3F622B125060E800024976E /* CollectionCell.swift in Sources */,
 				A3F622B825060E800024976E /* TableCell.swift in Sources */,
@@ -579,6 +654,7 @@
 				A3F622AF25060E800024976E /* CollectionExt.swift in Sources */,
 				A3F622BD25060E800024976E /* RequestSerializer.swift in Sources */,
 				A3F622E325061ABD0024976E /* App.swift in Sources */,
+				522A5C762519BCEB00829199 /* SettingViewController.swift in Sources */,
 				A3F622B525060E800024976E /* CollectionView.swift in Sources */,
 				A3F6222E2505E0B80024976E /* AppDelegate.swift in Sources */,
 			);
