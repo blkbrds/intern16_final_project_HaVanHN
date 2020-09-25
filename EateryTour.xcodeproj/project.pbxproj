@@ -222,8 +222,8 @@
 		52E27F42251D836A00678E52 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
-				52E27F43251D836A00678E52 /* TabbarViewController.xib */,
 				52E27F44251D836A00678E52 /* TabbarViewController.swift */,
+				52E27F43251D836A00678E52 /* TabbarViewController.xib */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -356,11 +356,11 @@
 			isa = PBXGroup;
 			children = (
 				52E27F39251D836A00678E52 /* Favorite */,
+				A3F622E925062E5F0024976E /* Home */,
 				52E27F3C251D836A00678E52 /* Map */,
 				52E27F3F251D836A00678E52 /* Search */,
 				52E27F36251D836A00678E52 /* Setting */,
 				52E27F42251D836A00678E52 /* Tabbar */,
-				A3F622E925062E5F0024976E /* Home */,
 				A3F622EE25062E9D0024976E /* Tutorial */,
 			);
 			path = Controller;
