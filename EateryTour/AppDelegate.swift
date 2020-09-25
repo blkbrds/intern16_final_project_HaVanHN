@@ -13,6 +13,9 @@ enum RootType {
     case tabbar
 }
 
+let ud = UserDefaults.standard
+let screenSize = UIScreen.main.bounds
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -34,12 +37,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
         let secondUse = UserDefaults.standard.bool(forKey: "secondUse")
-        print(secondUse)
         if secondUse {
             changeRoot(rootType: .tabbar)
         } else {
             changeRoot(rootType: .tutorial)
         }
+        let vc = TutorialViewController()
+        window?.rootViewController = vc
         window?.makeKeyAndVisible()
     }
 

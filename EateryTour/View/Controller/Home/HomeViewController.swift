@@ -48,7 +48,7 @@ final class HomeViewController: ViewController {
     }
 
     private func customNavigationBar() {
-        title = "Eatery Tour"
+        navigationItem.title = "Eatery Tour"
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1602264941, green: 0.4939214587, blue: 0.4291425645, alpha: 1)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
