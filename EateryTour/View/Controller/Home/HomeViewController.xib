@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="EateryTour" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="dcg-og-4er" id="lqg-Me-oLK"/>
+                <outlet property="pageControl" destination="ONC-1t-h4M" id="3aN-oA-TyY"/>
                 <outlet property="tableView" destination="O1z-mi-wFS" id="VAK-kA-IM5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

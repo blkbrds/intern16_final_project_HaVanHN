@@ -61,19 +61,12 @@ final class HomeViewController: ViewController {
 
     private func configSlide() {
         Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
-            if self.slideToRight {
+            if self.pageControl.currentPage <= 3 {
                 self.pageControl.currentPage += 1
-                self.collectionView.scrollToItem(at: IndexPath(item: self.pageControl.currentPage, section: 0), at: .right, animated: true)
-                if self.pageControl.currentPage == 4 {
-                    self.slideToRight = false
-                }
             } else {
-                self.pageControl.currentPage -= 1
-                self.collectionView.scrollToItem(at: IndexPath(item: self.pageControl.currentPage, section: 0), at: .left, animated: true)
-                if self.pageControl.currentPage == 0 {
-                    self.slideToRight = true
-                }
+                self.pageControl.currentPage = 0
             }
+            self.collectionView.scrollToItem(at: IndexPath(item: self.pageControl.currentPage, section: 0), at: .right, animated: true)
         }
     }
 
@@ -173,7 +166,7 @@ extension HomeViewController: UIScrollViewDelegate {
             if let cell = cell as? TrendingCell {
                 cell.getInformation { (done, error) in
                     if !done {
-                       print(error)
+                        print(error)
                     }
                 }
             }
@@ -181,7 +174,9 @@ extension HomeViewController: UIScrollViewDelegate {
     }
 }
 
+// MARK: - TrendingCellDelegate
 extension HomeViewController: TrendingCellDelegate {
+
     func cell(_ cell: TrendingCell, needsPerform action: TrendingCell.Action) {
         switch action {
         case .callApiSuccess(restaurant: let restaurant):
