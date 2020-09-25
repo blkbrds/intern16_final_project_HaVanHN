@@ -18,6 +18,8 @@ def app_pods
   pod 'RealmSwift', '5.3.0'
   # Network
   pod 'Alamofire', '4.9.1'
+  # Download Image
+  pod 'SDWebImage'
 end
 
 target 'EateryTour' do

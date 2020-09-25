@@ -9,60 +9,93 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="213" id="KGk-i7-Jjw" customClass="TrendingTableViewCell" customModule="EateryTour" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="394" height="213"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="235" id="KGk-i7-Jjw" customClass="TrendingTableViewCell" customModule="EateryTour" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="394" height="235"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="394" height="213"/>
+                <rect key="frame" x="0.0" y="0.0" width="394" height="235"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="macaron" translatesAutoresizingMaskIntoConstraints="NO" id="ebj-xZ-DK0">
-                        <rect key="frame" x="0.0" y="0.0" width="394" height="213"/>
+                        <rect key="frame" x="15" y="0.0" width="364" height="164.5"/>
                     </imageView>
-                    <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HtT-fF-sm4">
-                        <rect key="frame" x="0.0" y="149" width="394" height="64"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tokazaky Restaurant" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2c-Tn-nj3">
-                                <rect key="frame" x="8" y="8" width="378" height="20"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28 Hoàng Diệu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lsy-S0-loS">
-                                <rect key="frame" x="8" y="36" width="327.5" height="17"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="2.4 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rS-uv-xPp">
-                                <rect key="frame" x="343.5" y="36" width="42.5" height="17"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tokazaky Restaurant" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2c-Tn-nj3">
+                        <rect key="frame" x="15" y="169.5" width="179" height="21"/>
+                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28 Hoàng Diệu " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lsy-S0-loS">
+                        <rect key="frame" x="15" y="193.5" width="90.5" height="15"/>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
+                        <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(14 ratings)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ha-ws-wzU">
+                        <rect key="frame" x="59.5" y="216" width="66" height="15"/>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
+                        <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="6.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ql0-r3-Fq2">
+                        <rect key="frame" x="38" y="216" width="18.5" height="15"/>
+                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4FL-Fb-xxi">
+                        <rect key="frame" x="15" y="213" width="20" height="17"/>
+                        <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="y2c-Tn-nj3" firstAttribute="top" secondItem="HtT-fF-sm4" secondAttribute="top" constant="8" id="1SL-Bn-U5j"/>
-                            <constraint firstItem="y2c-Tn-nj3" firstAttribute="leading" secondItem="HtT-fF-sm4" secondAttribute="leading" constant="8" id="EGU-n4-ysr"/>
-                            <constraint firstAttribute="trailing" secondItem="y2c-Tn-nj3" secondAttribute="trailing" constant="8" id="QSC-ze-Snc"/>
-                            <constraint firstAttribute="trailing" secondItem="5rS-uv-xPp" secondAttribute="trailing" constant="8" id="Wh4-4d-U9n"/>
-                            <constraint firstItem="5rS-uv-xPp" firstAttribute="leading" secondItem="Lsy-S0-loS" secondAttribute="trailing" constant="8" id="coj-EF-Fk2"/>
-                            <constraint firstItem="Lsy-S0-loS" firstAttribute="leading" secondItem="y2c-Tn-nj3" secondAttribute="leading" id="glS-Eg-ZnS"/>
-                            <constraint firstItem="5rS-uv-xPp" firstAttribute="top" secondItem="Lsy-S0-loS" secondAttribute="top" id="khf-QI-rZM"/>
-                            <constraint firstItem="Lsy-S0-loS" firstAttribute="top" secondItem="y2c-Tn-nj3" secondAttribute="bottom" constant="8" id="pFO-2b-nda"/>
+                            <constraint firstAttribute="width" secondItem="4FL-Fb-xxi" secondAttribute="height" id="73e-Dv-CJY"/>
                         </constraints>
-                    </view>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="bold"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="- $$$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpl-xu-oDn">
+                        <rect key="frame" x="105.5" y="193.5" width="30" height="15"/>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
+                        <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jha-C8-zPc">
+                        <rect key="frame" x="301" y="129.5" width="70" height="27"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="2US-WR-9hi"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="2.4 km">
+                            <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="titleColorForDisabled">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="titleColorForHighlighted">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ebj-xZ-DK0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="48j-z0-i9i"/>
-                    <constraint firstAttribute="bottom" secondItem="HtT-fF-sm4" secondAttribute="bottom" id="BFt-1W-Zji"/>
-                    <constraint firstItem="ebj-xZ-DK0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ChM-Nl-qQo"/>
-                    <constraint firstAttribute="trailing" secondItem="HtT-fF-sm4" secondAttribute="trailing" id="EmH-iU-f0a"/>
-                    <constraint firstItem="HtT-fF-sm4" firstAttribute="height" secondItem="ebj-xZ-DK0" secondAttribute="height" multiplier="0.3" id="IDm-2i-z6G"/>
-                    <constraint firstAttribute="trailing" secondItem="ebj-xZ-DK0" secondAttribute="trailing" id="XwE-0A-gUQ"/>
-                    <constraint firstItem="HtT-fF-sm4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="tXd-HL-IAT"/>
-                    <constraint firstAttribute="bottom" secondItem="ebj-xZ-DK0" secondAttribute="bottom" id="ucX-Td-WAU"/>
+                    <constraint firstItem="bpl-xu-oDn" firstAttribute="leading" secondItem="Lsy-S0-loS" secondAttribute="trailing" id="79L-cQ-zCn"/>
+                    <constraint firstItem="bpl-xu-oDn" firstAttribute="centerY" secondItem="Lsy-S0-loS" secondAttribute="centerY" id="Cqr-3K-T1m"/>
+                    <constraint firstItem="Ql0-r3-Fq2" firstAttribute="centerY" secondItem="4FL-Fb-xxi" secondAttribute="centerY" constant="2" id="G6M-KL-f0s"/>
+                    <constraint firstItem="4ha-ws-wzU" firstAttribute="centerY" secondItem="Ql0-r3-Fq2" secondAttribute="centerY" id="JTg-5X-yGI"/>
+                    <constraint firstItem="Lsy-S0-loS" firstAttribute="top" secondItem="y2c-Tn-nj3" secondAttribute="bottom" constant="3" id="NFd-2p-Htc"/>
+                    <constraint firstItem="ebj-xZ-DK0" firstAttribute="bottom" secondItem="Jha-C8-zPc" secondAttribute="bottom" constant="8" id="NLf-y4-uyR"/>
+                    <constraint firstItem="4ha-ws-wzU" firstAttribute="leading" secondItem="Ql0-r3-Fq2" secondAttribute="trailing" constant="3" id="OGR-UA-GgZ"/>
+                    <constraint firstItem="4FL-Fb-xxi" firstAttribute="top" secondItem="Lsy-S0-loS" secondAttribute="bottom" constant="3" id="OHU-UP-xn7"/>
+                    <constraint firstItem="ebj-xZ-DK0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="P3O-rX-bub"/>
+                    <constraint firstItem="Lsy-S0-loS" firstAttribute="leading" secondItem="y2c-Tn-nj3" secondAttribute="leading" id="PKz-rs-0mO"/>
+                    <constraint firstItem="Ql0-r3-Fq2" firstAttribute="leading" secondItem="4FL-Fb-xxi" secondAttribute="trailing" constant="3" id="Uhy-WO-K8j"/>
+                    <constraint firstAttribute="trailing" secondItem="ebj-xZ-DK0" secondAttribute="trailing" constant="15" id="VKT-lB-Vaf"/>
+                    <constraint firstItem="4FL-Fb-xxi" firstAttribute="leading" secondItem="Lsy-S0-loS" secondAttribute="leading" id="ZHA-3z-WlC"/>
+                    <constraint firstItem="y2c-Tn-nj3" firstAttribute="top" secondItem="ebj-xZ-DK0" secondAttribute="bottom" constant="5" id="kbP-mG-CVg"/>
+                    <constraint firstItem="ebj-xZ-DK0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="pTD-pw-rIr"/>
+                    <constraint firstItem="ebj-xZ-DK0" firstAttribute="trailing" secondItem="Jha-C8-zPc" secondAttribute="trailing" constant="8" id="sCN-K4-HaT"/>
+                    <constraint firstItem="ebj-xZ-DK0" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.7" id="uo1-yT-n9o"/>
+                    <constraint firstItem="y2c-Tn-nj3" firstAttribute="leading" secondItem="ebj-xZ-DK0" secondAttribute="leading" id="x8z-r7-T3c"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -75,14 +108,17 @@
             <connections>
                 <outlet property="addressLabel" destination="Lsy-S0-loS" id="Nfr-GC-OWb"/>
                 <outlet property="cellView" destination="H2p-sc-9uM" id="c95-26-1RZ"/>
-                <outlet property="distanceLabel" destination="5rS-uv-xPp" id="Q5G-bD-mGQ"/>
+                <outlet property="currencyLabel" destination="bpl-xu-oDn" id="mHJ-wd-52E"/>
+                <outlet property="distanceButton" destination="Jha-C8-zPc" id="O3G-uk-ems"/>
+                <outlet property="ratingLabel" destination="Ql0-r3-Fq2" id="UC4-mn-gt2"/>
                 <outlet property="restaurantImageView" destination="ebj-xZ-DK0" id="9ng-en-pif"/>
                 <outlet property="restaurantNameLabel" destination="y2c-Tn-nj3" id="boO-TF-s0n"/>
             </connections>
-            <point key="canvasLocation" x="136.23188405797103" y="49.888392857142854"/>
+            <point key="canvasLocation" x="136.23188405797103" y="57.254464285714285"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="macaron" width="520" height="346.5"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
     </resources>
 </document>
