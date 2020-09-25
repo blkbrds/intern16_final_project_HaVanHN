@@ -11,6 +11,7 @@ import ObjectMapper
 
 final class Detail: Mappable {
 
+    var id: String = ""
     var name: String = ""
     var address: String =  ""
     var lat: String = ""
@@ -29,6 +30,7 @@ final class Detail: Mappable {
     }
 
     func mapping(map: Map) {
+        id <- map["response.venue.id"]
         name <- map["response.venue.name"]
         address <- map["response.venue.location.address"]
         lat <- map["response.venue.location.lat"]

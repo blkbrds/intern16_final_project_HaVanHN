@@ -15,9 +15,15 @@ final class TutorialViewController: ViewController {
     @IBOutlet private weak var scrollView: ScrollView!
     @IBOutlet private weak var pageControl: UIPageControl!
     @IBOutlet private weak var getStartedButton: Button!
-
-    // MARK: - Propeties
-    private var width = UIScreen.main.bounds.width
+    @IBOutlet private weak var tutorial01ImageView: ImageView!
+    @IBOutlet private weak var tutorial02ImageView: ImageView!
+    @IBOutlet private weak var tutorial03ImageView: ImageView!
+    @IBOutlet private weak var title01Label: Label!
+    @IBOutlet private weak var title02Label: Label!
+    @IBOutlet private weak var title03Label: Label!
+    @IBOutlet private weak var description01Label: Label!
+    @IBOutlet private weak var description02Label: Label!
+    @IBOutlet private weak var description03Label: Label!
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -44,10 +50,11 @@ final class TutorialViewController: ViewController {
 
     private func configScrollView() {
         scrollView.delegate = self
+        scrollView.showsHorizontalScrollIndicator = false
     }
 
     private func configSecondUse() {
-        UserDefaults.standard.set(true, forKey: "secondUse")
+        ud.set(true, forKey: UserDefaultKeys.secondUse)
     }
 
     // MARK: - IBActions
@@ -60,12 +67,23 @@ final class TutorialViewController: ViewController {
 extension TutorialViewController: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x < width {
-            pageControl.currentPage = 0
-        } else if scrollView.contentOffset.x < width * 2 && scrollView.contentOffset.x >= width {
-            pageControl.currentPage = 1
+        let pageIndex = scrollView.contentOffset.x / screenSize.width
+        pageControl.currentPage = Int(round(pageIndex))
+        let offsetX = scrollView.contentOffset.x
+        tutorial01ImageView.alpha = 1 - (offsetX / screenSize.width)
+        title01Label.alpha = 1 - (offsetX / screenSize.width)
+        description01Label.alpha = 1 - (offsetX / screenSize.width)
+        tutorial03ImageView.alpha = (offsetX - screenSize.width) / screenSize.width
+        title03Label.alpha = (offsetX - screenSize.width) / screenSize.width
+        description03Label.alpha = (offsetX - screenSize.width) / screenSize.width
+        if offsetX <= screenSize.width {
+            tutorial02ImageView.alpha = offsetX / screenSize.width
+            title02Label.alpha = offsetX / screenSize.width
+            description02Label.alpha = offsetX / screenSize.width
         } else {
-            pageControl.currentPage = 2
+            tutorial02ImageView.alpha = 1 - (offsetX - screenSize.width) / screenSize.width
+            title02Label.alpha = 1 - (offsetX - screenSize.width) / screenSize.width
+            description02Label.alpha = 1 - (offsetX - screenSize.width) / screenSize.width
         }
     }
 }

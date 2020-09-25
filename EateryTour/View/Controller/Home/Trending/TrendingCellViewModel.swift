@@ -10,38 +10,37 @@ import Foundation
 
 final class TrendingCellViewModel {
 
-    var id: String?
-    var name: String?
-    var address: String?
-    var lat: Float?
-    var lng: Float?
-    var city: String?
-    var rating: Float?
-    var currency: String?
-    var image: String?
-    var isCallAPI: Bool = false
+    var id: String = ""
+    var name: String = ""
+    var address: String = ""
+    var lat: Float = 0.0
+    var lng: Float = 0.0
+    var city: String = ""
+    var rating: Float = 0.0
+    var currency: String = ""
+    var image: String = ""
+    var restaurant: Restaurant?
 
-    init(id: String, name: String, address: String, lat: Float, lng: Float, city: String) {
-        self.id = id
-        self.name = name
-        self.address = address
-        self.lat = lat
-        self.lng = lng
-        self.city = city
+    init( restaurant: Restaurant? = nil) {
+        self.restaurant = restaurant
+        if let a = restaurant?.image {
+            self.image = a
+        }
     }
 
     func loadMoreInformation(completion: @escaping APICompletion) {
-        guard let newId = id, !isCallAPI else {
+        guard let restaurant = restaurant, !restaurant.isLoadApiCompleted  else {
             completion(.failure(Api.Error.invalid))
-            print("denied")
             return }
-        Api.Detail.getDetail(restaurantId: newId) { result in
+        Api.Detail.getDetail(restaurantId: restaurant.id) { [weak self] result in
+            guard let this = self else { return }
             switch result {
             case .success(let data):
-                self.rating = data.rating
-                self.currency = data.currency
-                self.image = data.bestPhoto
-                self.isCallAPI = false
+                this.rating = data.rating
+                this.currency = data.currency
+                this.image = data.bestPhoto
+                this.restaurant?.isLoadApiCompleted = true
+                this.restaurant?.image = data.bestPhoto
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))

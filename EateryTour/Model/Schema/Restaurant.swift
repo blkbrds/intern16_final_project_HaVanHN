@@ -18,6 +18,9 @@ final class Restaurant: Mappable {
     var lng: Float = 0.0
     var distance: Int = 0
     var city: String = ""
+    var detail: Detail?
+    var isLoadApiCompleted: Bool = false
+    var image: String = ""
 
     init?(map: Map) {
     }

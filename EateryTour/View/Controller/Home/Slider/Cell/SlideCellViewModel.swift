@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 final class SlideCellViewModel {
-    let image: UIImage
+
+    private(set) var image: UIImage
 
     init(image: UIImage) {
         self.image = image

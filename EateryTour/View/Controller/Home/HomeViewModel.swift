@@ -16,7 +16,7 @@ final class HomeViewModel: ViewModel {
 
     // MARK: - Properties
     var imageListSlide: [UIImage] = [#imageLiteral(resourceName: "slideFood3"), #imageLiteral(resourceName: "slideFood1"), #imageLiteral(resourceName: "slideFood4"), #imageLiteral(resourceName: "slideFood5"), #imageLiteral(resourceName: "slideFood2")]
-    var restaurant: [Restaurant]?
+    var restaurants: [Restaurant] = []
     var location: CLLocation?
 
     // MARK: - Public functions
@@ -28,7 +28,7 @@ final class HomeViewModel: ViewModel {
         Api.Trending.getTrending { result in
             switch result {
             case .success(let rest):
-                self.restaurant = rest
+                self.restaurants = rest
                 completion(true)
             case .failure(let err):
                 print(err.errorsString)
@@ -37,12 +37,14 @@ final class HomeViewModel: ViewModel {
         }
     }
 
-    func getCellForRowAt(atIndexPath indexPath: IndexPath) -> TrendingCellViewModel? {
-        guard let restaurantList = restaurant else { return nil }
-        return TrendingCellViewModel( id: restaurantList[indexPath.row].id, name: restaurantList[indexPath.row].name,
-                                     address: restaurantList[indexPath.row].address,
-                                     lat: restaurantList[indexPath.row].lat,
-                                     lng: restaurantList[indexPath.row].lng,
-                                     city: restaurantList[indexPath.row].city )
+    func updateApiSuccess(newRestaurant: Restaurant) {
+        for (index, restaurant) in restaurants.enumerated() where restaurant.id == newRestaurant.id {
+            restaurants[index].isLoadApiCompleted = newRestaurant.isLoadApiCompleted
+            restaurants[index].image = newRestaurant.image
+        }
+    }
+
+    func getCellForRowAt(atIndexPath indexPath: IndexPath) -> TrendingCellViewModel {
+        return TrendingCellViewModel(restaurant: restaurants[indexPath.row])
     }
 }

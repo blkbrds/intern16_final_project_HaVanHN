@@ -20,7 +20,6 @@ def app_pods
   pod 'Alamofire', '4.9.1'
   # Download Image
   pod 'SDWebImage'
-  
 end
 
 target 'EateryTour' do

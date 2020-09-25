@@ -20,12 +20,10 @@ final class HomeViewController: ViewController {
     private var viewModel = HomeViewModel()
     private var slideToRight: Bool = true
     private var location: CLLocation?
-    private var trendingCell: TrendingTableViewCell?
 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        //getCurrentLocation()
         configTableView()
         customNavigationBar()
         configCollectionView()
@@ -42,8 +40,8 @@ final class HomeViewController: ViewController {
     private func configTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        let trendingCell = UINib(nibName: "TrendingTableViewCell", bundle: Bundle.main)
-        tableView.register(trendingCell, forCellReuseIdentifier: "trendingCell")
+        let trendingCell = UINib(nibName: "TrendingCell", bundle: Bundle.main)
+        tableView.register(trendingCell, forCellReuseIdentifier: "TrendingCell")
         tableView.sectionIndexBackgroundColor = UIColor.white
         tableView.sectionIndexTrackingBackgroundColor = UIColor.white
     }
@@ -84,10 +82,10 @@ final class HomeViewController: ViewController {
             if done {
                 self.tableView.reloadData()
                 for cell in self.tableView.visibleCells {
-                    if let cell = cell as? TrendingTableViewCell {
+                    if let cell = cell as? TrendingCell {
                         cell.getInformation { (done, error) in
                             if !done {
-                                self.showAlert(error: error)
+                                print(error)
                             }
                         }
                     }
@@ -108,13 +106,13 @@ final class HomeViewController: ViewController {
 extension HomeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // print(viewModel.restaurant?.count)
-        return viewModel.restaurant?.count ?? 10
+        return viewModel.restaurants.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        trendingCell = tableView.dequeueReusableCell(withIdentifier: "trendingCell", for: indexPath) as? TrendingTableViewCell
+        let trendingCell = tableView.dequeueReusableCell(withIdentifier: "TrendingCell", for: indexPath) as? TrendingCell
         trendingCell?.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
+        trendingCell?.delegate = self
         return trendingCell ?? UITableViewCell()
     }
 
@@ -175,10 +173,10 @@ extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
             for cell in tableView.visibleCells {
-                if let cell = cell as? TrendingTableViewCell {
+                if let cell = cell as? TrendingCell {
                     cell.getInformation { (done, error) in
                         if !done {
-                            self.showAlert(error: error)
+                            print(error)
                         }
                     }
                 }
@@ -188,13 +186,22 @@ extension HomeViewController: UIScrollViewDelegate {
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         for cell in tableView.visibleCells {
-            if let cell = cell as? TrendingTableViewCell {
+            if let cell = cell as? TrendingCell {
                 cell.getInformation { (done, error) in
                     if !done {
-                        self.showAlert(error: error)
+                       print(error)
                     }
                 }
             }
+        }
+    }
+}
+
+extension HomeViewController: TrendingCellDelegate {
+    func cell(_ cell: TrendingCell, needsPerform action: TrendingCell.Action) {
+        switch action {
+        case .callApiSuccess(restaurant: let restaurant):
+            viewModel.updateApiSuccess(newRestaurant: restaurant)
         }
     }
 }
