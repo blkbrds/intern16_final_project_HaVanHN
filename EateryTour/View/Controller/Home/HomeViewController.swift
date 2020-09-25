@@ -65,18 +65,6 @@ extension HomeViewController: UITableViewDataSource {
         guard let trendingCell = tableView.dequeueReusableCell(withIdentifier: "trendingCell", for: indexPath) as? TrendingTableViewCell else { return TableCell() }
         return trendingCell
     }
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let uiView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 50))
-        let label = UILabel(frame: CGRect(x: 15, y: 20, width: tableView.bounds.width, height: 30))
-        let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.black,
-            .font: UIFont.boldSystemFont(ofSize: 20)
-        ]
-        label.attributedText = NSAttributedString(string: "Trending", attributes: attributes)
-        uiView.addSubview(label)
-        return uiView
-    }
 }
 
 // MARK: - UITableViewDelegate
@@ -84,10 +72,6 @@ extension HomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 260
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
     }
 }
 
