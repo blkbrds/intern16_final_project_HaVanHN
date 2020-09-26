@@ -29,10 +29,7 @@ extension Api.Trending {
     }
     @discardableResult
     static func getTrending(params: QueryParams, completion: @escaping Completion<[Restaurant]>) -> Request? {
-       // guard let lat = LocationManager.shared.currentLatitude, let lng = LocationManager.shared.currentLongitude else { return nil }
-       // Api.Path.Trending.curentLocation = "\(lat),\(lng)"
         let path = Api.Path.Trending.path
-       // print(path)
         return api.request(method: .get, urlString: path, parameters: params.toJSON()) { result in
             DispatchQueue.main.async {
                 switch result {

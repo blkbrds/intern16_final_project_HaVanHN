@@ -28,8 +28,6 @@ final class Api {
 extension Api.Path {
 
     struct Trending {
-       // static var curentLocation: String = "16.060338,108.211546"
-//        static var filter: String { return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&v=\(APIKeys.dateVersion)&radius=10000&limit=10&query=restaurant&ll=\(curentLocation)" }
          static var filter: String { return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&v=\(APIKeys.dateVersion)&radius=10000" }
         static var path: String { return baseURL / "explore?\(filter)" }
     }
