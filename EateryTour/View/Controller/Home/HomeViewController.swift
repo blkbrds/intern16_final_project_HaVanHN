@@ -18,14 +18,17 @@ final class HomeViewController: ViewController {
 
     // MARK: - Propeties
     private var viewModel = HomeViewModel()
+    private var refreshControl = UIRefreshControl()
+    private var limitRestaurant: Int = 25
 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
-        customNavigationBar()
+        configNavigationBar()
         configCollectionView()
         configSlide()
+        configRefreshControl()
         loadApi()
     }
 
@@ -51,7 +54,7 @@ final class HomeViewController: ViewController {
         collectionView.register(slideCell, forCellWithReuseIdentifier: "SliderCell")
     }
 
-    private func customNavigationBar() {
+    private func configNavigationBar() {
         navigationItem.title = "Eatery Tour"
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1602264941, green: 0.4939214587, blue: 0.4291425645, alpha: 1)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -66,6 +69,17 @@ final class HomeViewController: ViewController {
             }
             self.collectionView.scrollToItem(at: IndexPath(item: self.pageControl.currentPage, section: 0), at: .right, animated: true)
         }
+    }
+
+    private func configRefreshControl() {
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        refreshControl.tintColor = #colorLiteral(red: 0.10909646, green: 0.2660153806, blue: 0.2814711332, alpha: 1)
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Restaurant Data ...", attributes: .none)
+        refreshControl.addTarget(self, action: #selector(refreshRestaurantData(_:)), for: .valueChanged)
     }
 
     private func loadApi() {
@@ -92,6 +106,15 @@ final class HomeViewController: ViewController {
         let action = UIAlertAction(title: "error", style: .default, handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
+    }
+
+    // MARK: - Objc functions
+    @objc private func refreshRestaurantData(_ sender: Any) {
+        limitRestaurant = 25
+        loadApi()
+        refreshControl.endRefreshing()
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.stopAnimating()
     }
 }
 
