@@ -10,41 +10,48 @@ import Foundation
 import UIKit
 import CoreLocation
 
-typealias CompletionResultRestaurant = (Bool) -> Void
+typealias CompletionResultRestaurant = (Bool, String) -> Void
 
 final class HomeViewModel: ViewModel {
 
     // MARK: - Properties
-    var imageListSlide: [UIImage] = [#imageLiteral(resourceName: "slideFood3"), #imageLiteral(resourceName: "slideFood1"), #imageLiteral(resourceName: "slideFood4"), #imageLiteral(resourceName: "slideFood5"), #imageLiteral(resourceName: "slideFood2")]
-    var restaurants: [Restaurant] = []
-    var location: CLLocation?
+    private(set) var imageListSlide: [UIImage] = [#imageLiteral(resourceName: "slideFood3"), #imageLiteral(resourceName: "slideFood1"), #imageLiteral(resourceName: "slideFood4"), #imageLiteral(resourceName: "slideFood5"), #imageLiteral(resourceName: "slideFood2")]
+    private var restaurants: [Restaurant] = []
 
     // MARK: - Public functions
     func getImageForSlide(atIndexPath indexPath: IndexPath) -> SlideCellViewModel? {
         return SlideCellViewModel(image: imageListSlide[indexPath.row])
     }
 
-    func getTrendingRestaurant(completion: @escaping CompletionResultRestaurant) {
-        Api.Trending.getTrending { result in
-            switch result {
-            case .success(let rest):
-                self.restaurants = rest
-                completion(true)
-            case .failure(let err):
-                print(err.errorsString)
-                completion(false)
+    func getTrendingRestaurant(limit: Int, completion: @escaping CompletionResultRestaurant) {
+        if let lat = LocationManager.shared.currentLatitude,
+            let lng = LocationManager.shared.currentLongitude {
+            let locationString = String(lat) + "," + String(lng)
+            print(locationString)
+            let params = Api.Trending.QueryParams(query: "restaurant", location: locationString, limit: String(limit))
+            Api.Trending.getTrending(params: params) { result in
+                switch result {
+                case .success(let rest):
+                    self.restaurants = rest
+                    completion(true, " ")
+                case .failure(let err):
+                    completion(false, err.localizedDescription)
+                }
             }
         }
     }
 
     func updateApiSuccess(newRestaurant: Restaurant) {
         for (index, restaurant) in restaurants.enumerated() where restaurant.id == newRestaurant.id {
-            restaurants[index].isLoadApiCompleted = newRestaurant.isLoadApiCompleted
-            restaurants[index].image = newRestaurant.image
+            restaurants[index] = newRestaurant
         }
     }
 
     func getCellForRowAt(atIndexPath indexPath: IndexPath) -> TrendingCellViewModel {
         return TrendingCellViewModel(restaurant: restaurants[indexPath.row])
+    }
+
+    func numberOfItems(inSection section: Int) -> Int {
+        return restaurants.count
     }
 }

@@ -57,7 +57,9 @@ final class TrendingCell: TableCell {
     private func updateUI() {
         guard let restaurant = viewModel.restaurant else { return }
         restaurantNameLabel.text = restaurant.name
-        addressLabel.text = restaurant.address + restaurant.city + " - "
+        if restaurant.address != "" || restaurant.city != "" {
+            addressLabel.text = restaurant.address + restaurant.city + " - "
+        }
         guard let urlImage = URL(string: viewModel.image) else { return }
         restaurantImageView.sd_setImage(with: urlImage)
     }

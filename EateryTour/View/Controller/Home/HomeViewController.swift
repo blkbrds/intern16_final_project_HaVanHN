@@ -18,8 +18,6 @@ final class HomeViewController: ViewController {
 
     // MARK: - Propeties
     private var viewModel = HomeViewModel()
-    private var slideToRight: Bool = true
-    private var location: CLLocation?
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -71,7 +69,7 @@ final class HomeViewController: ViewController {
     }
 
     private func loadApi() {
-        viewModel.getTrendingRestaurant { (done) in
+        viewModel.getTrendingRestaurant(limit: 20) { (done, error) in
             if done {
                 self.tableView.reloadData()
                 for cell in self.tableView.visibleCells {
@@ -83,6 +81,8 @@ final class HomeViewController: ViewController {
                         }
                     }
                 }
+            } else {
+                self.showAlert(error: error)
             }
         }
     }
@@ -99,7 +99,7 @@ final class HomeViewController: ViewController {
 extension HomeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.restaurants.count
+        return viewModel.numberOfItems(inSection: section)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

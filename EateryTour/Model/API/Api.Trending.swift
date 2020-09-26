@@ -13,13 +13,27 @@ import ObjectMapper
 
 extension Api.Trending {
 
+    struct QueryParams {
+        var query: String
+        var location: String
+        var limit: String
+
+        func toJSON() -> Parameters {
+            let parameters: Parameters = [
+                "limit": limit,
+                "query": query,
+                "ll": location
+            ]
+            return parameters
+        }
+    }
     @discardableResult
-    static func getTrending(completion: @escaping Completion<[Restaurant]>) -> Request? {
-        guard let lat = LocationManager.shared.currentLatitude, let lng = LocationManager.shared.currentLongitude else { return nil }
-        Api.Path.Trending.curentLocation = "\(lat),\(lng)"
+    static func getTrending(params: QueryParams, completion: @escaping Completion<[Restaurant]>) -> Request? {
+       // guard let lat = LocationManager.shared.currentLatitude, let lng = LocationManager.shared.currentLongitude else { return nil }
+       // Api.Path.Trending.curentLocation = "\(lat),\(lng)"
         let path = Api.Path.Trending.path
-        print(path)
-        return api.request(method: .get, urlString: path, parameters: nil) { result in
+       // print(path)
+        return api.request(method: .get, urlString: path, parameters: params.toJSON()) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
