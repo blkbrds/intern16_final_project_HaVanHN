@@ -19,7 +19,6 @@ final class HomeViewController: ViewController {
     // MARK: - Propeties
     private var viewModel = HomeViewModel()
     private var refreshControl = UIRefreshControl()
-    private var limitRestaurant: Int = 25
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -83,14 +82,14 @@ final class HomeViewController: ViewController {
     }
 
     private func loadApi() {
-        viewModel.getTrendingRestaurant(limit: 20) { (done, error) in
+        viewModel.getTrendingRestaurant(limit: 25) { (done, error) in
             if done {
                 self.tableView.reloadData()
                 for cell in self.tableView.visibleCells {
                     if let cell = cell as? TrendingCell {
                         cell.getInformation { (done, error) in
                             if !done {
-                                print(error)
+                                self.showAlert(error: error)
                             }
                         }
                     }
@@ -102,15 +101,14 @@ final class HomeViewController: ViewController {
     }
 
     private func showAlert(error: String) {
-        let alert = UIAlertController(title: "Fail to get restaurant", message: error, preferredStyle: .alert)
-        let action = UIAlertAction(title: "error", style: .default, handler: nil)
+        let alert = UIAlertController(title: "Fail to get restaurant", message: error + "\n Please come back later", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
 
     // MARK: - Objc functions
     @objc private func refreshRestaurantData(_ sender: Any) {
-        limitRestaurant = 25
         loadApi()
         refreshControl.endRefreshing()
         let activityIndicatorView = UIActivityIndicatorView()
@@ -126,10 +124,10 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let trendingCell = tableView.dequeueReusableCell(withIdentifier: "TrendingCell", for: indexPath) as? TrendingCell
-        trendingCell?.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
-        trendingCell?.delegate = self
-        return trendingCell ?? UITableViewCell()
+        guard let trendingCell = tableView.dequeueReusableCell(withIdentifier: "TrendingCell", for: indexPath) as? TrendingCell else { return UITableViewCell() }
+        trendingCell.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
+        trendingCell.delegate = self
+        return trendingCell
     }
 }
 
@@ -176,7 +174,7 @@ extension HomeViewController: UIScrollViewDelegate {
                 if let cell = cell as? TrendingCell {
                     cell.getInformation { (done, error) in
                         if !done {
-                            print(error)
+                            self.showAlert(error: error)
                         }
                     }
                 }
@@ -189,7 +187,7 @@ extension HomeViewController: UIScrollViewDelegate {
             if let cell = cell as? TrendingCell {
                 cell.getInformation { (done, error) in
                     if !done {
-                        print(error)
+                        self.showAlert(error: error)
                     }
                 }
             }

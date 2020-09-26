@@ -61,7 +61,8 @@ extension TabbarViewController: UITabBarControllerDelegate {
       bounceAnimation.duration = TimeInterval(0.4)
       return bounceAnimation
     }()
-    guard let index = tabBar.items?.firstIndex(of: item), tabBar.subviews.count > index + 1, let imageView = tabBar.subviews[index + 1].subviews.compactMap({ $0 as? UIImageView }).first else { return }
+    guard let index = tabBar.items?.firstIndex(of: item), tabBar.subviews.count > index + 1,
+          let imageView = tabBar.subviews[index + 1].subviews.compactMap({ $0 as? UIImageView }).first else { return }
     imageView.layer.add(bounceAnimation, forKey: nil)
   }
 }
