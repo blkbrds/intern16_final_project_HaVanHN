@@ -49,6 +49,8 @@ final class TrendingCell: CollectionCell {
         restaurantImageView.clipsToBounds = true
         distanceButton.layer.cornerRadius = 15
         distanceButton.clipsToBounds = true
+        self.layer.cornerRadius = 10
+        self.clipsToBounds = true
     }
 
     private func updateUI() {

@@ -33,7 +33,7 @@ final class HomeViewController: ViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        statusBarStyle = .lightContent
+        navigationController?.navigationBar.barStyle = .black
     }
 
     // MARK: - Private functions
@@ -42,8 +42,6 @@ final class HomeViewController: ViewController {
         tableView.delegate = self
         let recommendCell = UINib(nibName: "RecommendCell", bundle: Bundle.main)
         tableView.register(recommendCell, forCellReuseIdentifier: "RecommendCell")
-//        tableView.sectionIndexBackgroundColor = UIColor.white
-//        tableView.sectionIndexTrackingBackgroundColor = UIColor.white
     }
 
     private func configCollectionView() {
@@ -78,7 +76,7 @@ final class HomeViewController: ViewController {
             guard let this = self else { return }
             switch result {
             case .success:
-                this.tableView.reloadData()
+                this.collectionView.reloadData()
                 this.getMoreInformationForCell()
             case .failure(let error):
                 this.alert(msg: error.localizedDescription, handler: nil)
@@ -114,7 +112,7 @@ final class HomeViewController: ViewController {
 extension HomeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfItems(inSection: section)
+        return 10
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -149,7 +147,11 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width - 10, height: 260)
+        return CGSize(width: UIScreen.main.bounds.width / 1.5 + 20, height: 210)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     }
 }
 
