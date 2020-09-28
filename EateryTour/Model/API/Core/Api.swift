@@ -28,14 +28,14 @@ final class Api {
 extension Api.Path {
 
     struct Trending {
-         static var filter: String { return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&v=\(APIKeys.dateVersion)&radius=10000" }
+         static var filter: String { return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)&radius=10000" }
         static var path: String { return baseURL / "explore?\(filter)" }
     }
 
     struct Detail {
         static var id: String = "abc"
         static var filter: String {
-            return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&v=\(APIKeys.dateVersion)"
+            return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)"
         }
         static var path: String { return baseURL / "\(id)?\(filter)" }
     }

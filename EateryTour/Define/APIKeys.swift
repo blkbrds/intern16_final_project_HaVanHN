@@ -11,5 +11,6 @@ import Foundation
 struct APIKeys {
     static let client_id = "D0LXC2LCZHLUETBAQBEKLV2CDFM1CGQ1Y0FGEC3ZSPI01NIP"
     static let client_secret = "EMGSFML13103I2NZDW0XJ1KB5EPTZH2CHUQBDRNDGVAKPNGH"
+    static let oauth_token = "ITPR5WTYUTY3KEACYE3OMLZ5RH5DYPCXD3DNF1TOIWMUZN3S"
     static let dateVersion = "20200910"
 }
