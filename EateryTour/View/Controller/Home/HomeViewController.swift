@@ -26,7 +26,6 @@ final class HomeViewController: ViewController {
         configTableView()
         configNavigationBar()
         configCollectionView()
-        configSlide()
         configRefreshControl()
         configLocation()
         getTrendingRestaurant()
@@ -41,34 +40,23 @@ final class HomeViewController: ViewController {
     private func configTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        let trendingCell = UINib(nibName: "TrendingCell", bundle: Bundle.main)
-        tableView.register(trendingCell, forCellReuseIdentifier: "TrendingCell")
-        tableView.sectionIndexBackgroundColor = UIColor.white
-        tableView.sectionIndexTrackingBackgroundColor = UIColor.white
+        let recommendCell = UINib(nibName: "RecommendCell", bundle: Bundle.main)
+        tableView.register(recommendCell, forCellReuseIdentifier: "RecommendCell")
+//        tableView.sectionIndexBackgroundColor = UIColor.white
+//        tableView.sectionIndexTrackingBackgroundColor = UIColor.white
     }
 
     private func configCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
-        let slideCell = UINib(nibName: "SliderCell", bundle: Bundle.main)
-        collectionView.register(slideCell, forCellWithReuseIdentifier: "SliderCell")
+        let trendingCell = UINib(nibName: "TrendingCell", bundle: Bundle.main)
+        collectionView.register(trendingCell, forCellWithReuseIdentifier: "TrendingCell")
     }
 
     private func configNavigationBar() {
         navigationItem.title = "Eatery Tour"
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1602264941, green: 0.4939214587, blue: 0.4291425645, alpha: 1)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-    }
-
-    private func configSlide() {
-        Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
-            if self.pageControl.currentPage <= 3 {
-                self.pageControl.currentPage += 1
-            } else {
-                self.pageControl.currentPage = 0
-            }
-            self.collectionView.scrollToItem(at: IndexPath(item: self.pageControl.currentPage, section: 0), at: .right, animated: true)
-        }
     }
 
     private func configRefreshControl() {
@@ -99,7 +87,7 @@ final class HomeViewController: ViewController {
     }
 
     private func getMoreInformationForCell() {
-        for cell in tableView.visibleCells {
+        for cell in  collectionView.visibleCells {
             if let cell = cell as? TrendingCell {
                 cell.getInformation { (result) in
                     switch result {
@@ -130,10 +118,8 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let trendingCell = tableView.dequeueReusableCell(withIdentifier: "TrendingCell", for: indexPath) as? TrendingCell else { return UITableViewCell() }
-        trendingCell.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
-        trendingCell.delegate = self
-        return trendingCell
+        guard let recommendCell = tableView.dequeueReusableCell(withIdentifier: "RecommendCell", for: indexPath) as? RecommendCell else { return UITableViewCell() }
+        return recommendCell
     }
 }
 
@@ -141,7 +127,7 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 260
+        return 120
     }
 }
 
@@ -149,25 +135,21 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.imageListSlide.count
+        return viewModel.restaurants.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let slideCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as? SliderCell else { return CollectionCell() }
-        slideCell.viewModel = viewModel.getImageForSlide(atIndexPath: indexPath)
-        return slideCell
+        guard let trendingCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCell", for: indexPath) as? TrendingCell else { return CollectionCell() }
+        trendingCell.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
+        return trendingCell
     }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: collectionView.bounds.height)
+        return CGSize(width: UIScreen.main.bounds.width - 10, height: 260)
     }
 }
 

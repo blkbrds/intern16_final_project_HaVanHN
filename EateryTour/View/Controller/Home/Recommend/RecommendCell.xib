@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="114" id="KGk-i7-Jjw" customClass="RecommendCell" customModule="EateryTour" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="376" height="114"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="376" height="114"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="macaron" translatesAutoresizingMaskIntoConstraints="NO" id="gAf-af-2Gk" customClass="ImageView" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="10" y="10" width="94" height="94"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="gAf-af-2Gk" secondAttribute="height" id="VRY-qv-I6A"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant's Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ut5-Lf-fyu" customClass="Label" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="112" y="15" width="254" height="22"/>
+                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="18"/>
+                        <color key="textColor" red="0.1502830386" green="0.26241695879999999" blue="0.27843520049999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address - $$$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0w-fe-IoX" customClass="Label" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="112" y="45" width="254" height="16"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(125 ratings)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZo-MU-0zb" customClass="Label" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="154" y="68" width="194" height="16"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="13"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dYE-Ud-S53">
+                        <rect key="frame" x="112" y="68.5" width="15" height="15"/>
+                        <color key="tintColor" red="1" green="0.75335672799999998" blue="0.2887301243" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="b3Q-Fd-6lJ"/>
+                            <constraint firstAttribute="width" secondItem="dYE-Ud-S53" secondAttribute="height" id="wPf-K4-br0"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="6.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDe-5N-NC2" customClass="Label" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="130" y="68" width="21" height="16"/>
+                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ut5-Lf-fyu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="84d-wj-mUC"/>
+                    <constraint firstItem="gAf-af-2Gk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="BCG-AA-rvN"/>
+                    <constraint firstAttribute="trailing" secondItem="ut5-Lf-fyu" secondAttribute="trailing" constant="10" id="Dox-iV-qNq"/>
+                    <constraint firstItem="dYE-Ud-S53" firstAttribute="top" secondItem="r0w-fe-IoX" secondAttribute="bottom" constant="8" id="F9P-JJ-bkO"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="sZo-MU-0zb" secondAttribute="trailing" constant="8" id="H9z-48-3Zm"/>
+                    <constraint firstItem="r0w-fe-IoX" firstAttribute="leading" secondItem="ut5-Lf-fyu" secondAttribute="leading" id="KBc-Ly-Kl9"/>
+                    <constraint firstItem="MDe-5N-NC2" firstAttribute="bottom" secondItem="dYE-Ud-S53" secondAttribute="bottom" id="WrJ-Jf-aJe"/>
+                    <constraint firstItem="sZo-MU-0zb" firstAttribute="bottom" secondItem="dYE-Ud-S53" secondAttribute="bottom" id="Zhb-1u-E6n"/>
+                    <constraint firstItem="dYE-Ud-S53" firstAttribute="leading" secondItem="r0w-fe-IoX" secondAttribute="leading" id="aZn-PF-Lcv"/>
+                    <constraint firstItem="r0w-fe-IoX" firstAttribute="trailing" secondItem="ut5-Lf-fyu" secondAttribute="trailing" id="dhC-j7-GAB"/>
+                    <constraint firstItem="MDe-5N-NC2" firstAttribute="leading" secondItem="dYE-Ud-S53" secondAttribute="trailing" constant="3" id="nlW-t8-yeR"/>
+                    <constraint firstAttribute="bottom" secondItem="gAf-af-2Gk" secondAttribute="bottom" constant="10" id="pjL-Mt-kcD"/>
+                    <constraint firstItem="r0w-fe-IoX" firstAttribute="top" secondItem="ut5-Lf-fyu" secondAttribute="bottom" constant="8" id="s56-uO-Y2j"/>
+                    <constraint firstItem="gAf-af-2Gk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="uMD-BB-0eQ"/>
+                    <constraint firstItem="ut5-Lf-fyu" firstAttribute="leading" secondItem="gAf-af-2Gk" secondAttribute="trailing" constant="8" id="wLC-52-QXd"/>
+                    <constraint firstItem="sZo-MU-0zb" firstAttribute="leading" secondItem="MDe-5N-NC2" secondAttribute="trailing" constant="3" id="wYF-Zg-xBo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addressAndCurrencyLabel" destination="r0w-fe-IoX" id="ow6-5g-wdI"/>
+                <outlet property="amountOfRatingLabel" destination="sZo-MU-0zb" id="vx4-H9-V8Q"/>
+                <outlet property="nameLabel" destination="ut5-Lf-fyu" id="Y0B-uC-qoR"/>
+                <outlet property="ratingLabel" destination="MDe-5N-NC2" id="Wo1-x9-lKy"/>
+                <outlet property="restaurantImage" destination="gAf-af-2Gk" id="Fda-If-FRc"/>
+            </connections>
+            <point key="canvasLocation" x="178.2608695652174" y="40.848214285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="macaron" width="520" height="346.5"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+    </resources>
+</document>

@@ -16,14 +16,14 @@
 		522A5C772519BCEB00829199 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522A5C6E2519BCEB00829199 /* SettingViewController.xib */; };
 		522A5C782519BCEB00829199 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A5C702519BCEB00829199 /* MapViewController.swift */; };
 		522A5C792519BCEB00829199 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522A5C712519BCEB00829199 /* MapViewController.xib */; };
+		522D589425223E1300C4E6A3 /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D589225223E1300C4E6A3 /* RecommendCell.swift */; };
+		522D589525223E1300C4E6A3 /* RecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522D589325223E1300C4E6A3 /* RecommendCell.xib */; };
+		522D589925223E4C00C4E6A3 /* RecommendCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522D589825223E4C00C4E6A3 /* RecommendCellViewModel.swift */; };
 		52359A8725219BAD00CEB92D /* OptionalExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52359A8625219BAD00CEB92D /* OptionalExt.swift */; };
 		52359A8D25219CF500CEB92D /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52359A8C25219CF500CEB92D /* UserDefaultKeys.swift */; };
 		523F27A1251D8DD800373CAC /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F27A0251D8DD800373CAC /* TrendingCell.swift */; };
-		523F27A4251D8DF400373CAC /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F27A2251D8DF400373CAC /* SliderCell.swift */; };
-		523F27A5251D8DF400373CAC /* SlideCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F27A3251D8DF400373CAC /* SlideCellViewModel.swift */; };
 		52E27F68251D873000678E52 /* TrendingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E27F60251D873000678E52 /* TrendingCell.xib */; };
 		52E27F69251D873000678E52 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E27F61251D873000678E52 /* HomeViewModel.swift */; };
-		52E27F6C251D873000678E52 /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E27F66251D873000678E52 /* SliderCell.xib */; };
 		52E27F71251D8B5300678E52 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E27F6E251D8B5300678E52 /* Detail.swift */; };
 		52E27F72251D8B5300678E52 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E27F6F251D8B5300678E52 /* LocationManager.swift */; };
 		52E27F73251D8B5300678E52 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E27F70251D8B5300678E52 /* Restaurant.swift */; };
@@ -100,14 +100,14 @@
 		522A5C6E2519BCEB00829199 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		522A5C702519BCEB00829199 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		522A5C712519BCEB00829199 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		522D589225223E1300C4E6A3 /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
+		522D589325223E1300C4E6A3 /* RecommendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendCell.xib; sourceTree = "<group>"; };
+		522D589825223E4C00C4E6A3 /* RecommendCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCellViewModel.swift; sourceTree = "<group>"; };
 		52359A8625219BAD00CEB92D /* OptionalExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalExt.swift; sourceTree = "<group>"; };
 		52359A8C25219CF500CEB92D /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		523F27A0251D8DD800373CAC /* TrendingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
-		523F27A2251D8DF400373CAC /* SliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
-		523F27A3251D8DF400373CAC /* SlideCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideCellViewModel.swift; sourceTree = "<group>"; };
 		52E27F60251D873000678E52 /* TrendingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrendingCell.xib; sourceTree = "<group>"; };
 		52E27F61251D873000678E52 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		52E27F66251D873000678E52 /* SliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
 		52E27F6E251D8B5300678E52 /* Detail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		52E27F6F251D8B5300678E52 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		52E27F70251D8B5300678E52 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
@@ -243,6 +243,16 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		522D589025223DF000C4E6A3 /* Recommend */ = {
+			isa = PBXGroup;
+			children = (
+				522D589225223E1300C4E6A3 /* RecommendCell.swift */,
+				522D589325223E1300C4E6A3 /* RecommendCell.xib */,
+				522D589825223E4C00C4E6A3 /* RecommendCellViewModel.swift */,
+			);
+			path = Recommend;
+			sourceTree = "<group>";
+		};
 		52E27F5E251D873000678E52 /* Trending */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,24 +261,6 @@
 				52E27F76251D8BA200678E52 /* TrendingCellViewModel.swift */,
 			);
 			path = Trending;
-			sourceTree = "<group>";
-		};
-		52E27F62251D873000678E52 /* Slider */ = {
-			isa = PBXGroup;
-			children = (
-				52E27F63251D873000678E52 /* Cell */,
-			);
-			path = Slider;
-			sourceTree = "<group>";
-		};
-		52E27F63251D873000678E52 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				523F27A2251D8DF400373CAC /* SliderCell.swift */,
-				52E27F66251D873000678E52 /* SliderCell.xib */,
-				523F27A3251D8DF400373CAC /* SlideCellViewModel.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		52E27F6D251D8B5300678E52 /* Schema */ = {
@@ -472,7 +464,7 @@
 				A3F622EA25062E700024976E /* HomeViewController.swift */,
 				A3F622EB25062E700024976E /* HomeViewController.xib */,
 				52E27F61251D873000678E52 /* HomeViewModel.swift */,
-				52E27F62251D873000678E52 /* Slider */,
+				522D589025223DF000C4E6A3 /* Recommend */,
 				52E27F5E251D873000678E52 /* Trending */,
 			);
 			path = Home;
@@ -589,13 +581,13 @@
 				522A5C772519BCEB00829199 /* SettingViewController.xib in Resources */,
 				A3AED35C251355E200B5E6D0 /* SF-Pro-Text-Bold.otf in Resources */,
 				A3F622F225062EB00024976E /* TutorialViewController.xib in Resources */,
+				522D589525223E1300C4E6A3 /* RecommendCell.xib in Resources */,
 				A3AED35E251355E200B5E6D0 /* SF-Pro-Text-Medium.otf in Resources */,
 				A3F622ED25062E700024976E /* HomeViewController.xib in Resources */,
 				522A5C732519BCEB00829199 /* FavoriteViewController.xib in Resources */,
 				A3AED35F251355E200B5E6D0 /* SF-Pro-Text-Semibold.otf in Resources */,
 				52E27F68251D873000678E52 /* TrendingCell.xib in Resources */,
 				522A5C792519BCEB00829199 /* MapViewController.xib in Resources */,
-				52E27F6C251D873000678E52 /* SliderCell.xib in Resources */,
 				A3AED35B251355E200B5E6D0 /* SF-Pro-Text-Light.otf in Resources */,
 				A3AED35D251355E200B5E6D0 /* SF-Pro-Text-Regular.otf in Resources */,
 			);
@@ -719,6 +711,7 @@
 				A3F622BC25060E800024976E /* Session.swift in Sources */,
 				A3F622BF25060E800024976E /* ApiManager.swift in Sources */,
 				52E27F72251D8B5300678E52 /* LocationManager.swift in Sources */,
+				522D589425223E1300C4E6A3 /* RecommendCell.swift in Sources */,
 				A3F622E525062BC20024976E /* NSURLExt.swift in Sources */,
 				52359A8725219BAD00CEB92D /* OptionalExt.swift in Sources */,
 				A3F622F8250698EE0024976E /* DataExt.swift in Sources */,
@@ -728,8 +721,8 @@
 				52E27F69251D873000678E52 /* HomeViewModel.swift in Sources */,
 				52E27F7A251D8BC800678E52 /* Api.Detail.swift in Sources */,
 				A3F622B225060E800024976E /* CollectionViewHeaderView.swift in Sources */,
-				523F27A4251D8DF400373CAC /* SliderCell.swift in Sources */,
 				A3AED3622513564E00B5E6D0 /* UIFontExt.swift in Sources */,
+				522D589925223E4C00C4E6A3 /* RecommendCellViewModel.swift in Sources */,
 				522A5C722519BCEB00829199 /* FavoriteViewController.swift in Sources */,
 				A3F622B325060E800024976E /* Label.swift in Sources */,
 				522A5C652519BCCB00829199 /* TabbarViewController.swift in Sources */,
@@ -737,7 +730,6 @@
 				52E27F73251D8B5300678E52 /* Restaurant.swift in Sources */,
 				522A5C742519BCEB00829199 /* SearchViewController.swift in Sources */,
 				A3F622B725060E800024976E /* TableView.swift in Sources */,
-				523F27A5251D8DF400373CAC /* SlideCellViewModel.swift in Sources */,
 				A3F622B125060E800024976E /* CollectionCell.swift in Sources */,
 				A3F622B825060E800024976E /* TableCell.swift in Sources */,
 				A3F622BB25060E800024976E /* Errors.swift in Sources */,

@@ -13,7 +13,7 @@ protocol TrendingCellDelegate: class {
     func cell(_ cell: TrendingCell, needsPerform action: TrendingCell.Action)
 }
 
-final class TrendingCell: TableCell {
+final class TrendingCell: CollectionCell {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var ratingLabel: Label!
