@@ -64,7 +64,6 @@ final class InformationCell: TableCell {
     // MARK: - IBActions
 
     @IBAction func favoriteButtonTouchUpInside(_ sender: Button) {
-        
-    }
     
+    }
 }

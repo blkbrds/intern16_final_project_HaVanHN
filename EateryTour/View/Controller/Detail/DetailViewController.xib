@@ -8,11 +8,6 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="SF-Pro-Text-Bold.otf">
-            <string>SFProText-Bold</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="EateryTour" customModuleProvider="target">
             <connections>
@@ -26,57 +21,22 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gm4-No-GP8" customClass="TableView" customModule="EateryTour" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qay-7l-UQu">
-                    <rect key="frame" x="0.0" y="44" width="414" height="100"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9U-Hd-mZU" customClass="Button" customModule="EateryTour" customModuleProvider="target">
-                            <rect key="frame" x="10" y="10" width="40" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="40" id="9PZ-VM-HHj"/>
-                                <constraint firstAttribute="height" constant="20" id="FCo-nY-qzb"/>
-                            </constraints>
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" image="arrow.backward" catalog="system">
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
-                            </state>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant's Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ur1-hK-yGJ">
-                            <rect key="frame" x="50" y="50" width="334" height="26.5"/>
-                            <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="22"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstItem="c9U-Hd-mZU" firstAttribute="top" secondItem="qay-7l-UQu" secondAttribute="top" constant="10" id="Epr-eO-Fkr"/>
-                        <constraint firstAttribute="height" constant="100" id="J3R-PC-FE0"/>
-                        <constraint firstAttribute="trailing" secondItem="ur1-hK-yGJ" secondAttribute="trailing" constant="30" id="KUr-o4-jXD"/>
-                        <constraint firstItem="ur1-hK-yGJ" firstAttribute="leading" secondItem="c9U-Hd-mZU" secondAttribute="trailing" id="TXz-hZ-j7g"/>
-                        <constraint firstItem="ur1-hK-yGJ" firstAttribute="top" secondItem="qay-7l-UQu" secondAttribute="top" constant="50" id="m0c-Ls-yJs"/>
-                        <constraint firstItem="c9U-Hd-mZU" firstAttribute="leading" secondItem="qay-7l-UQu" secondAttribute="leading" constant="10" id="rQe-wC-MUg"/>
-                    </constraints>
-                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="qay-7l-UQu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="46V-a4-TGn"/>
                 <constraint firstItem="gm4-No-GP8" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="G7y-tz-XDt"/>
                 <constraint firstItem="gm4-No-GP8" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="IbO-lu-cE8"/>
-                <constraint firstItem="qay-7l-UQu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="WJS-9d-QT7"/>
-                <constraint firstItem="qay-7l-UQu" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="cgf-NR-dHi"/>
                 <constraint firstItem="gm4-No-GP8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="erD-2w-wn8"/>
-                <constraint firstItem="gm4-No-GP8" firstAttribute="top" secondItem="qay-7l-UQu" secondAttribute="bottom" id="mVP-J8-kBi"/>
+                <constraint firstItem="gm4-No-GP8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="r53-4M-ZwS"/>
             </constraints>
             <point key="canvasLocation" x="111.59420289855073" y="75.669642857142847"/>
         </view>
     </objects>
     <resources>
-        <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

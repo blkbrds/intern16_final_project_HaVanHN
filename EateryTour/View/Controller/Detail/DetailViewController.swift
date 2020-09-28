@@ -19,6 +19,7 @@ final class DetailViewController: ViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configTableView()
     }
     // MARK: - Override functions
 
@@ -32,6 +33,10 @@ final class DetailViewController: ViewController {
         tableView.register(mapCell, forCellReuseIdentifier: "MapCell")
         let photoCell = UINib(nibName: "PhotoCollectionCell", bundle: Bundle.main)
         tableView.register(photoCell, forCellReuseIdentifier: "PhotoCollectionCell")
+    }
+    
+    private func configNavigationBar() {
+        navigationController?.navigationBar.isHidden = true
     }
     // MARK: - Public functions
 
@@ -67,11 +72,13 @@ extension DetailViewController: UITableViewDataSource {
             photoCell.viewModel = viewModel.getCellForRowAtPhotoSection(atIndexPath: indexPath)
             return photoCell
         }
-        return UITableViewCell()
     }
 }
 
 // MARK: - UITableViewDelegate
 extension DetailViewController: UITableViewDelegate {
-    
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
 }
