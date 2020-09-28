@@ -9,7 +9,7 @@
 import Foundation
 
 final class InformationCellViewModel {
-    
+
     private(set) var imageURL: String
     private(set) var name: String
     private(set) var currency: String

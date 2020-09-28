@@ -34,6 +34,7 @@ final class DetailViewController: ViewController {
         tableView.register(photoCell, forCellReuseIdentifier: "PhotoCollectionCell")
         tableView.delegate = self
         tableView.dataSource = self
+        //self.extendedLayoutIncludesOpaqueBars = .
     }
 
     private func configNavigationBar() {
@@ -86,7 +87,7 @@ extension DetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch viewModel.sectionType(atSection: indexPath.section) {
         case .information:
-            return 250
+            return 350
         case .map:
             return 250
         case .photo:
