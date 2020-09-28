@@ -16,6 +16,8 @@
 		522A5C772519BCEB00829199 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522A5C6E2519BCEB00829199 /* SettingViewController.xib */; };
 		522A5C782519BCEB00829199 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A5C702519BCEB00829199 /* MapViewController.swift */; };
 		522A5C792519BCEB00829199 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522A5C712519BCEB00829199 /* MapViewController.xib */; };
+		52359A8725219BAD00CEB92D /* OptionalExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52359A8625219BAD00CEB92D /* OptionalExt.swift */; };
+		52359A8D25219CF500CEB92D /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52359A8C25219CF500CEB92D /* UserDefaultKeys.swift */; };
 		523F27A1251D8DD800373CAC /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F27A0251D8DD800373CAC /* TrendingCell.swift */; };
 		523F27A4251D8DF400373CAC /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F27A2251D8DF400373CAC /* SliderCell.swift */; };
 		523F27A5251D8DF400373CAC /* SlideCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F27A3251D8DF400373CAC /* SlideCellViewModel.swift */; };
@@ -98,6 +100,8 @@
 		522A5C6E2519BCEB00829199 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		522A5C702519BCEB00829199 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		522A5C712519BCEB00829199 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		52359A8625219BAD00CEB92D /* OptionalExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalExt.swift; sourceTree = "<group>"; };
+		52359A8C25219CF500CEB92D /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		523F27A0251D8DD800373CAC /* TrendingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
 		523F27A2251D8DF400373CAC /* SliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
 		523F27A3251D8DF400373CAC /* SlideCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideCellViewModel.swift; sourceTree = "<group>"; };
@@ -297,6 +301,7 @@
 				A3F622F925079C840024976E /* DictionaryExt.swift */,
 				A3F6228E25060E7F0024976E /* NSErrorExt.swift */,
 				A3F622E425062BC20024976E /* NSURLExt.swift */,
+				52359A8625219BAD00CEB92D /* OptionalExt.swift */,
 				A3F622E625062C9C0024976E /* StringExt.swift */,
 				A3AED3612513564E00B5E6D0 /* UIFontExt.swift */,
 				A3F6228C25060E7F0024976E /* UIViewControllerExt.swift */,
@@ -415,6 +420,7 @@
 				A3F6229E25060E7F0024976E /* Errors.swift */,
 				A3F622E025061AB60024976E /* String.swift */,
 				A3AED363251356DA00B5E6D0 /* Font.swift */,
+				52359A8C25219CF500CEB92D /* UserDefaultKeys.swift */,
 			);
 			path = Define;
 			sourceTree = "<group>";
@@ -707,12 +713,14 @@
 				A3AED364251356DA00B5E6D0 /* Font.swift in Sources */,
 				52E27F77251D8BA200678E52 /* TrendingCellViewModel.swift in Sources */,
 				52E27F75251D8B8C00678E52 /* APIKeys.swift in Sources */,
+				52359A8D25219CF500CEB92D /* UserDefaultKeys.swift in Sources */,
 				A3F622BE25060E800024976E /* Error.swift in Sources */,
 				52E27F7B251D8BC800678E52 /* Api.Trending.swift in Sources */,
 				A3F622BC25060E800024976E /* Session.swift in Sources */,
 				A3F622BF25060E800024976E /* ApiManager.swift in Sources */,
 				52E27F72251D8B5300678E52 /* LocationManager.swift in Sources */,
 				A3F622E525062BC20024976E /* NSURLExt.swift in Sources */,
+				52359A8725219BAD00CEB92D /* OptionalExt.swift in Sources */,
 				A3F622F8250698EE0024976E /* DataExt.swift in Sources */,
 				A3F622EC25062E700024976E /* HomeViewController.swift in Sources */,
 				522A5C782519BCEB00829199 /* MapViewController.swift in Sources */,

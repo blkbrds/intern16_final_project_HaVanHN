@@ -9,8 +9,6 @@
 import UIKit
 import SDWebImage
 
-typealias CompletionCellResult = (Bool, String) -> Void
-
 protocol TrendingCellDelegate: class {
     func cell(_ cell: TrendingCell, needsPerform action: TrendingCell.Action)
 }
@@ -19,12 +17,11 @@ final class TrendingCell: TableCell {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var ratingLabel: Label!
-    @IBOutlet private weak var currencyLabel: Label!
     @IBOutlet private weak var cellView: UIView!
     @IBOutlet private weak var restaurantImageView: ImageView!
     @IBOutlet private weak var distanceButton: Button!
     @IBOutlet private weak var restaurantNameLabel: Label!
-    @IBOutlet private weak var addressLabel: Label!
+    @IBOutlet private weak var addressAndCurrencyLabel: Label!
 
     // MARK: - Propeties
     var viewModel = TrendingCellViewModel() {
@@ -58,14 +55,14 @@ final class TrendingCell: TableCell {
         guard let restaurant = viewModel.restaurant else { return }
         restaurantNameLabel.text = restaurant.name
         if restaurant.address != "" || restaurant.city != "" {
-            addressLabel.text = restaurant.address + restaurant.city + " - "
+            addressAndCurrencyLabel.text = restaurant.address + restaurant.city + " - "
         }
         guard let urlImage = URL(string: viewModel.image) else { return }
         restaurantImageView.sd_setImage(with: urlImage)
     }
 
     // MARK: - Public functions
-    func getInformation(completion: @escaping CompletionCellResult) {
+    func getInformation(completion: @escaping APICompletion) {
         viewModel.loadMoreInformation(completion: { [weak self] (result) in
             guard let this = self else { return }
             switch result {
@@ -75,11 +72,11 @@ final class TrendingCell: TableCell {
                     this.delegate?.cell(this, needsPerform: .callApiSuccess(restaurant: restaurant))
                 }
                 this.restaurantImageView.sd_setImage(with: urlImage)
-                this.currencyLabel.text = this.viewModel.currency
+                this.addressAndCurrencyLabel.text = this.viewModel.currency
                 this.ratingLabel.text = String(this.viewModel.rating)
-                completion(true, " ")
+                completion(.success)
             case .failure(let error):
-                completion(false, error.localizedDescription)
+                completion(.failure(error))
             }
         })
     }
