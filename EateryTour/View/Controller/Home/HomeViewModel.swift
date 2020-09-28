@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 import CoreLocation
 
-typealias CompletionResultRestaurant = (Bool, String) -> Void
-
 final class HomeViewModel: ViewModel {
 
     // MARK: - Properties
@@ -23,7 +21,7 @@ final class HomeViewModel: ViewModel {
         return SlideCellViewModel(image: imageListSlide[indexPath.row])
     }
 
-    func getTrendingRestaurant(limit: Int, completion: @escaping CompletionResultRestaurant) {
+    func getTrendingRestaurant(limit: Int, completion: @escaping APICompletion) {
         if let lat = LocationManager.shared.currentLatitude,
             let lng = LocationManager.shared.currentLongitude {
             let locationString = String(lat) + "," + String(lng)
@@ -33,9 +31,9 @@ final class HomeViewModel: ViewModel {
                 switch result {
                 case .success(let rest):
                     self.restaurants = rest
-                    completion(true, " ")
+                    completion(.success)
                 case .failure(let err):
-                    completion(false, err.localizedDescription)
+                    completion(.failure(err))
                 }
             }
         }

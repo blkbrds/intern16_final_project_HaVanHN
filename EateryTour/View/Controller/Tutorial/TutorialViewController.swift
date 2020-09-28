@@ -54,12 +54,12 @@ final class TutorialViewController: ViewController {
     }
 
     private func configSecondUse() {
-        ud.set(true, forKey: UserDefaultKeys.secondUse)
+        Session.shared.secondUse = true
     }
 
     // MARK: - IBActions
     @IBAction private func getStartedButtonTouchUpInside(_ sender: Button) {
-        AppDelegate.shared.changeRoot(rootType: .tabbar)
+        AppDelegate.shared.setRoot(rootType: .tabbar)
     }
 }
 

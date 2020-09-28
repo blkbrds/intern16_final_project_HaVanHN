@@ -34,21 +34,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func configWindow() {
-        LocationManager.shared.configLocationService()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
-        let secondUse = ud.bool(forKey: UserDefaultKeys.secondUse)
-        if secondUse {
-            changeRoot(rootType: .tabbar)
+        if Session.shared.secondUse {
+            setRoot(rootType: .tabbar)
         } else {
-            changeRoot(rootType: .tutorial)
+            setRoot(rootType: .tutorial)
         }
         let vc = TutorialViewController()
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
     }
 
-    func changeRoot(rootType: RootType) {
+    func setRoot(rootType: RootType) {
         switch rootType {
         case .tutorial:
             window?.rootViewController = TutorialViewController()

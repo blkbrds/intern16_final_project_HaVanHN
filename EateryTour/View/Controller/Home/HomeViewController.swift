@@ -28,7 +28,8 @@ final class HomeViewController: ViewController {
         configCollectionView()
         configSlide()
         configRefreshControl()
-        loadApi()
+        configLocation()
+        getTrendingRestaurant()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -77,39 +78,44 @@ final class HomeViewController: ViewController {
             tableView.addSubview(refreshControl)
         }
         refreshControl.tintColor = #colorLiteral(red: 0.10909646, green: 0.2660153806, blue: 0.2814711332, alpha: 1)
-        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Restaurant Data ...", attributes: .none)
         refreshControl.addTarget(self, action: #selector(refreshRestaurantData(_:)), for: .valueChanged)
     }
 
-    private func loadApi() {
-        viewModel.getTrendingRestaurant(limit: 25) { (done, error) in
-            if done {
-                self.tableView.reloadData()
-                for cell in self.tableView.visibleCells {
-                    if let cell = cell as? TrendingCell {
-                        cell.getInformation { (done, error) in
-                            if !done {
-                                self.showAlert(error: error)
-                            }
-                        }
-                    }
-                }
-            } else {
-                self.showAlert(error: error)
+    private func configLocation() {
+        LocationManager.shared.configLocationService()
+    }
+
+    private func getTrendingRestaurant() {
+        viewModel.getTrendingRestaurant(limit: 25) { [weak self] (result) in
+            guard let this = self else { return }
+            switch result {
+            case .success:
+                this.tableView.reloadData()
+                this.getMoreInformationForCell()
+            case .failure(let error):
+                this.alert(msg: error.localizedDescription, handler: nil)
             }
         }
     }
 
-    private func showAlert(error: String) {
-        let alert = UIAlertController(title: "Fail to get restaurant", message: error + "\n Please come back later", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
+    private func getMoreInformationForCell() {
+        for cell in tableView.visibleCells {
+            if let cell = cell as? TrendingCell {
+                cell.getInformation { (result) in
+                    switch result {
+                    case .success:
+                        break
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        }
     }
 
     // MARK: - Objc functions
     @objc private func refreshRestaurantData(_ sender: Any) {
-        loadApi()
+        getTrendingRestaurant()
         refreshControl.endRefreshing()
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.stopAnimating()
@@ -170,28 +176,12 @@ extension HomeViewController: UIScrollViewDelegate {
 
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
-            for cell in tableView.visibleCells {
-                if let cell = cell as? TrendingCell {
-                    cell.getInformation { (done, error) in
-                        if !done {
-                            self.showAlert(error: error)
-                        }
-                    }
-                }
-            }
+            getMoreInformationForCell()
         }
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        for cell in tableView.visibleCells {
-            if let cell = cell as? TrendingCell {
-                cell.getInformation { (done, error) in
-                    if !done {
-                        self.showAlert(error: error)
-                    }
-                }
-            }
-        }
+        getMoreInformationForCell()
     }
 }
 
