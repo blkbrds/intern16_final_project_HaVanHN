@@ -8,11 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner">
-            <connections>
-                <outlet property="photoImage" destination="2wy-xD-Yqf" id="pOT-CQ-OZQ"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PhotoCell" customModule="EateryTour" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="139" height="144"/>
@@ -21,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="139" height="144"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="macaron" translatesAutoresizingMaskIntoConstraints="NO" id="2wy-xD-Yqf" customClass="ImageView">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="macaron" translatesAutoresizingMaskIntoConstraints="NO" id="2wy-xD-Yqf" customClass="ImageView" customModule="EateryTour" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="139" height="144"/>
                     </imageView>
                 </subviews>
@@ -34,6 +30,9 @@
                 <constraint firstItem="2wy-xD-Yqf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="bQr-Tw-Nto"/>
             </constraints>
             <size key="customSize" width="139" height="144"/>
+            <connections>
+                <outlet property="photoImage" destination="2wy-xD-Yqf" id="t5R-iO-LIJ"/>
+            </connections>
             <point key="canvasLocation" x="176.08695652173915" y="44.196428571428569"/>
         </collectionViewCell>
     </objects>

@@ -12,7 +12,7 @@ final class PhotoCollectionCell: TableCell {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var collectionView: CollectionView!
-    
+
     // MARK: - Propeties
     var viewModel: PhotoCollectionCellViewModel? {
         didSet {

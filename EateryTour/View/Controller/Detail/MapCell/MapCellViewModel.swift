@@ -9,10 +9,10 @@
 import Foundation
 
 final class MapCellViewModel {
-    
+
     private(set) var openToday: String
     private(set) var openHours: String
-    
+
     init(openToday: String, openHours: String) {
         self.openToday = openToday
         self.openHours = openHours

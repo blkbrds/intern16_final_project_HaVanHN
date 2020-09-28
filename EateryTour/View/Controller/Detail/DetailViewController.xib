@@ -20,18 +20,18 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gm4-No-GP8" customClass="TableView" customModule="EateryTour" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gm4-No-GP8" customClass="TableView" customModule="EateryTour" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="gm4-No-GP8" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="G7y-tz-XDt"/>
+                <constraint firstItem="gm4-No-GP8" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="G7y-tz-XDt"/>
                 <constraint firstItem="gm4-No-GP8" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="IbO-lu-cE8"/>
                 <constraint firstItem="gm4-No-GP8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="erD-2w-wn8"/>
-                <constraint firstItem="gm4-No-GP8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="r53-4M-ZwS"/>
+                <constraint firstItem="gm4-No-GP8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="r53-4M-ZwS"/>
             </constraints>
             <point key="canvasLocation" x="111.59420289855073" y="75.669642857142847"/>
         </view>

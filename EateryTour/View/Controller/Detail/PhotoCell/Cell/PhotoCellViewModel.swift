@@ -9,9 +9,9 @@
 import Foundation
 
 final class PhotoCellViewModel {
-    
+
     private(set) var imageURL: String
-    
+
     init(imageURL: String) {
         self.imageURL = imageURL
     }

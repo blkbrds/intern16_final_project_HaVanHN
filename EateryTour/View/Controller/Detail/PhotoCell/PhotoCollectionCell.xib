@@ -18,8 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="430" height="209"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="TUD-K0-lPx" customClass="CollectionView" customModule="EateryTour" customModuleProvider="target">
-                        <rect key="frame" x="10" y="42" width="410" height="162"/>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="TUD-K0-lPx" customClass="CollectionView" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="20" y="42" width="390" height="162"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NzM-8q-191">
                             <size key="itemSize" width="128" height="128"/>
@@ -29,18 +29,19 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOT-FB-fb2">
-                        <rect key="frame" x="10" y="15" width="61" height="22"/>
+                        <rect key="frame" x="20" y="15" width="390" height="22"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="TUD-K0-lPx" firstAttribute="trailing" secondItem="SOT-FB-fb2" secondAttribute="trailing" id="4WB-t6-y39"/>
                     <constraint firstItem="SOT-FB-fb2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="6Wr-Jo-QGc"/>
                     <constraint firstAttribute="bottom" secondItem="TUD-K0-lPx" secondAttribute="bottom" constant="5" id="7vr-qW-EDD"/>
                     <constraint firstItem="TUD-K0-lPx" firstAttribute="leading" secondItem="SOT-FB-fb2" secondAttribute="leading" id="B8G-NY-1Ws"/>
-                    <constraint firstAttribute="trailing" secondItem="TUD-K0-lPx" secondAttribute="trailing" constant="10" id="ddM-7w-05a"/>
-                    <constraint firstItem="SOT-FB-fb2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="idy-JE-Zt1"/>
+                    <constraint firstAttribute="trailing" secondItem="SOT-FB-fb2" secondAttribute="trailing" constant="20" id="JMg-iN-Kmz"/>
+                    <constraint firstItem="SOT-FB-fb2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="idy-JE-Zt1"/>
                     <constraint firstItem="TUD-K0-lPx" firstAttribute="top" secondItem="SOT-FB-fb2" secondAttribute="bottom" constant="5" id="roT-D3-dmu"/>
                 </constraints>
             </tableViewCellContentView>

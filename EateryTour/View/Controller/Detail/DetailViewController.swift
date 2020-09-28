@@ -15,26 +15,27 @@ final class DetailViewController: ViewController {
 
     // MARK: - Propeties
     private var viewModel = DetailViewModel()
-    
+
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
+        configNavigationBar()
     }
     // MARK: - Override functions
 
     // MARK: - Private functions
     private func configTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
         let informationCell = UINib(nibName: "InformationCell", bundle: Bundle.main)
         tableView.register(informationCell, forCellReuseIdentifier: "InformationCell")
         let mapCell = UINib(nibName: "MapCell", bundle: Bundle.main)
         tableView.register(mapCell, forCellReuseIdentifier: "MapCell")
         let photoCell = UINib(nibName: "PhotoCollectionCell", bundle: Bundle.main)
         tableView.register(photoCell, forCellReuseIdentifier: "PhotoCollectionCell")
+        tableView.delegate = self
+        tableView.dataSource = self
     }
-    
+
     private func configNavigationBar() {
         navigationController?.navigationBar.isHidden = true
     }
@@ -50,7 +51,7 @@ final class DetailViewController: ViewController {
 extension DetailViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 3
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,5 +81,16 @@ extension DetailViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch viewModel.sectionType(atSection: indexPath.section) {
+        case .information:
+            return 250
+        case .map:
+            return 250
+        case .photo:
+            return 200
+        }
     }
 }

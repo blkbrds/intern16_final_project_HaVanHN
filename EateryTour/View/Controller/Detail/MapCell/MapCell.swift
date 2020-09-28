@@ -48,6 +48,4 @@ final class MapCell: TableCell {
     // MARK: - Objc functions
 
     // MARK: - IBActions
-
-    
 }

@@ -15,7 +15,7 @@ enum DetailSection {
 }
 
 final class DetailViewModel {
-    
+
     func sectionType(atSection section: Int) -> DetailSection {
         switch section {
         case 0:
@@ -28,15 +28,15 @@ final class DetailViewModel {
             return .photo
         }
     }
-    
+
     func getCellForRowAtInformationSection(atIndexPath indexPath: IndexPath) -> InformationCellViewModel? {
         return nil
     }
-    
+
     func getCellForRowAtMapSection(atIndexPath indexPath: IndexPath) -> MapCellViewModel? {
         return nil
     }
-    
+
     func getCellForRowAtPhotoSection(atIndexPath indexPath: IndexPath) -> PhotoCollectionCellViewModel? {
         return nil
     }

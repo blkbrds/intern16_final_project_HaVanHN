@@ -13,7 +13,7 @@ final class PhotoCollectionCellViewModel {
     private(set) var imageList: [String] = []
 
     private func getImageURL() {
-        
+
     }
 
     func getCellForRowAt(atIndexPath indexPath: IndexPath) -> PhotoCellViewModel? {

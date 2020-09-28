@@ -53,9 +53,12 @@ final class InformationCell: TableCell {
     }
 
     private func configFavoriteButton() {
-        favoriteButton.layer.cornerRadius = 15
+        favoriteButton.layer.cornerRadius = 20
         favoriteButton.layer.shadowColor = UIColor.black.cgColor
-        favoriteButton.layer.shadowPath = CGPath(rect: CGRect(x: 0, y: 0, width: 5, height: 5), transform: nil)
+        favoriteButton.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        favoriteButton.layer.shadowOpacity = 1.0
+        favoriteButton.layer.shadowRadius = 20
+        favoriteButton.layer.masksToBounds = false
     }
     // MARK: - Public functions
 
@@ -63,7 +66,9 @@ final class InformationCell: TableCell {
 
     // MARK: - IBActions
 
-    @IBAction func favoriteButtonTouchUpInside(_ sender: Button) {
-    
+    @IBAction private func favoriteButtonTouchUpInside(_ sender: Button) {
+    print("tap")
+    }
+    @IBAction private func backButtonTouchUpInside(_ sender: Button) {
     }
 }
