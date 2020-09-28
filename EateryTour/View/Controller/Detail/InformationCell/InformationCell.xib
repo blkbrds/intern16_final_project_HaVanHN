@@ -89,7 +89,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6L-Zm-09w">
-                        <rect key="frame" x="8" y="8" width="30" height="30"/>
+                        <rect key="frame" x="8" y="15" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="g2w-31-Ad5"/>
                             <constraint firstAttribute="width" secondItem="Z6L-Zm-09w" secondAttribute="height" id="qOX-kX-vyd"/>
@@ -109,7 +109,7 @@
                     <constraint firstItem="9zI-zK-hcC" firstAttribute="trailing" secondItem="nYp-JN-mvV" secondAttribute="trailing" id="3VM-vX-UNE"/>
                     <constraint firstItem="cow-zV-CgZ" firstAttribute="trailing" secondItem="IA1-i9-wWM" secondAttribute="trailing" constant="-3" id="5dT-k7-rur"/>
                     <constraint firstItem="wgr-cI-bGp" firstAttribute="trailing" secondItem="cow-zV-CgZ" secondAttribute="trailing" id="649-ln-3tH"/>
-                    <constraint firstItem="Z6L-Zm-09w" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="6sM-q8-inU"/>
+                    <constraint firstItem="Z6L-Zm-09w" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="6sM-q8-inU"/>
                     <constraint firstItem="Fl4-b6-xnZ" firstAttribute="bottom" secondItem="cow-zV-CgZ" secondAttribute="bottom" constant="-5" id="8Ej-5r-vI3"/>
                     <constraint firstAttribute="trailing" secondItem="hIK-Ua-5Lv" secondAttribute="trailing" id="Evn-jb-A68"/>
                     <constraint firstItem="9zI-zK-hcC" firstAttribute="top" secondItem="nYp-JN-mvV" secondAttribute="bottom" constant="8" id="GAY-F8-fWz"/>

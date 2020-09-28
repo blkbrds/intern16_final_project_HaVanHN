@@ -21,6 +21,7 @@ final class DetailViewController: ViewController {
         super.viewDidLoad()
         configTableView()
         configNavigationBar()
+        configStatusBar()
     }
     // MARK: - Override functions
 
@@ -34,7 +35,15 @@ final class DetailViewController: ViewController {
         tableView.register(photoCell, forCellReuseIdentifier: "PhotoCollectionCell")
         tableView.delegate = self
         tableView.dataSource = self
-        //self.extendedLayoutIncludesOpaqueBars = .
+    }
+
+    private func configStatusBar() {
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
+        statusBarStyle = .lightContent
     }
 
     private func configNavigationBar() {

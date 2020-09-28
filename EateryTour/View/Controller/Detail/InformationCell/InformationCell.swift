@@ -69,6 +69,7 @@ final class InformationCell: TableCell {
     @IBAction private func favoriteButtonTouchUpInside(_ sender: Button) {
     print("tap")
     }
+
     @IBAction private func backButtonTouchUpInside(_ sender: Button) {
     }
 }
