@@ -24,6 +24,20 @@ final class DetailViewController: ViewController {
         configNavigationBar()
         configStatusBar()
     }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        view.layoutIfNeeded()
+        backButton.tintColor = .white
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
+    }
+
     // MARK: - Override functions
 
     // MARK: - Private functions
@@ -48,7 +62,7 @@ final class DetailViewController: ViewController {
     }
 
     private func configNavigationBar() {
-        navigationController?.navigationBar.isHidden = true
+       
     }
     // MARK: - Public functions
 

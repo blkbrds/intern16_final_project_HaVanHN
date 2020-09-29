@@ -36,7 +36,6 @@ class Button: UIButton, MVVM.View {
     }
 
     // MARK: - Life cycle
-
     override func awakeFromNib() {
         super.awakeFromNib()
         tintColor = .black

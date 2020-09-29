@@ -48,11 +48,12 @@ final class InformationCell: TableCell {
         nameLabel.text = viewModel.name
         addressLabel.text = viewModel.address
         currencyLabel.text = viewModel.currency
-        ratingLabel.text = viewModel.rating
+        ratingLabel.text = String(viewModel.rating)
         amountOfRatingLabel.text = viewModel.amountOfRating
     }
 
     private func configFavoriteButton() {
+        favoriteButton.tintColor = #colorLiteral(red: 0.10909646, green: 0.2660153806, blue: 0.2814711332, alpha: 1)
         favoriteButton.layer.cornerRadius = 20
         favoriteButton.layer.shadowColor = UIColor.black.cgColor
         favoriteButton.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
