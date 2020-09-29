@@ -20,6 +20,7 @@ final class DetailViewController: ViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configTabbar()
         configTableView()
         configStatusBar()
         getDataForPhotoCell()
@@ -28,10 +29,15 @@ final class DetailViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+
     }
     // MARK: - Override functions
 
     // MARK: - Private functions
+    private func configTabbar() {
+        tabBarController?.tabBar.isHidden = true
+    }
+
     private func configTableView() {
         let informationCell = UINib(nibName: "InformationCell", bundle: Bundle.main)
         tableView.register(informationCell, forCellReuseIdentifier: "InformationCell")
@@ -68,7 +74,9 @@ final class DetailViewController: ViewController {
     // MARK: - Objc functions
 
     // MARK: - IBActions
-
+    @IBAction private func backButtonTouchUpInside(_ sender: Button) {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -108,13 +116,6 @@ extension DetailViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch viewModel.sectionType(atSection: indexPath.section) {
-        case .information:
-            return 350
-        case .map:
-            return 250
-        case .photo:
-            return 200
-        }
+        return viewModel.getheightForRowAt(atIndexPath: indexPath)
     }
 }

@@ -12,9 +12,15 @@ final class MapCellViewModel {
 
     private(set) var openToday: String
     private(set) var openHours: String
+    private(set) var lat: String
+    private(set) var lng: String
 
-    init(openToday: String, openHours: String) {
+    init(openToday: String, openHours: String, lat: String, lng: String) {
         self.openToday = openToday
         self.openHours = openHours
+        self.lat = lat
+        self.lng = lng
     }
+    
+    
 }

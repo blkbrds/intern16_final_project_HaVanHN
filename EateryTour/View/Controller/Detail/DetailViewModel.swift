@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum DetailSection {
     case information
@@ -63,10 +64,10 @@ final class DetailViewModel {
         guard let detail = detail else { return nil }
             if detail.openDate == "" && detail.openTime == "" {
                 if detail.openStatus == "" {
-                    return MapCellViewModel(openToday: "Not updated yet", openHours: "Not updated yet")
+                    return MapCellViewModel(openToday: "Not updated yet", openHours: "Not updated yet", lat: detail.lng, lng: detail.lng)
                 }
             } else {
-                return MapCellViewModel(openToday: detail.openStatus, openHours: detail.openDate + " " + detail.openTime)
+                return MapCellViewModel(openToday: detail.openStatus, openHours: detail.openDate + " " + detail.openTime, lat: detail.lng, lng: detail.lng)
             }
         return nil
     }
@@ -77,5 +78,16 @@ final class DetailViewModel {
             imageURLList.append(photo.imageURL)
         }
         return PhotoCollectionCellViewModel(imageURLList: imageURLList)
+    }
+
+    func getheightForRowAt(atIndexPath indexPath: IndexPath) -> CGFloat {
+        switch sectionType(atSection: indexPath.section) {
+        case .information:
+            return UITableView.automaticDimension
+        case .map:
+            return 250
+        case .photo:
+            return 200
+        }
     }
 }
