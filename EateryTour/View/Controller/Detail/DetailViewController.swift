@@ -77,6 +77,10 @@ final class DetailViewController: ViewController {
         }
     }
     private func configNavigationBar() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature/detail/implement_ui_screen
     }
 
     // MARK: - Public functions
