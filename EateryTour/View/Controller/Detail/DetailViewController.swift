@@ -21,7 +21,7 @@ final class DetailViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
-        configNavigationBar()
+        configBackButton()
         configStatusBar()
     }
 
@@ -29,7 +29,6 @@ final class DetailViewController: ViewController {
         super.viewDidLayoutSubviews()
         view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         view.layoutIfNeeded()
-        backButton.tintColor = .white
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -61,8 +60,8 @@ final class DetailViewController: ViewController {
         navigationController?.navigationBar.barStyle = .black
     }
 
-    private func configNavigationBar() {
-
+    private func configBackButton() {
+        backButton.tintColor = .white
     }
     // MARK: - Public functions
 

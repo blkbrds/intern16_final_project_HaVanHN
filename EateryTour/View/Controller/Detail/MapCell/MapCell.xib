@@ -44,9 +44,23 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yL5-0U-g7R" customClass="Button" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="287" y="98" width="40" height="40"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="yL5-0U-g7R" secondAttribute="height" id="C6c-4W-6UM"/>
+                            <constraint firstAttribute="height" constant="40" id="Mf0-MH-QSs"/>
+                        </constraints>
+                        <color key="tintColor" red="0.26044052839999998" green="0.4870451093" blue="0.43136829139999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <state key="normal" image="paperplane.fill" catalog="system">
+                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="yL5-0U-g7R" firstAttribute="width" secondItem="yL5-0U-g7R" secondAttribute="height" id="3sY-xb-3uY"/>
                     <constraint firstItem="Nz6-b7-FDp" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.7" id="9Ms-rg-e1y"/>
+                    <constraint firstAttribute="trailing" secondItem="yL5-0U-g7R" secondAttribute="trailing" constant="15" id="FOs-eI-XVK"/>
                     <constraint firstItem="Uc8-8Q-j5N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Ji6-nq-qMa"/>
                     <constraint firstItem="4Vm-F1-uT5" firstAttribute="leading" secondItem="qcQ-yX-4g6" secondAttribute="leading" id="NX2-iL-kTR"/>
                     <constraint firstAttribute="trailingMargin" secondItem="4Vm-F1-uT5" secondAttribute="trailing" id="TL0-bN-wf7"/>
@@ -61,10 +75,12 @@
                     <constraint firstItem="Nz6-b7-FDp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nfX-qz-6LK"/>
                     <constraint firstItem="4Vm-F1-uT5" firstAttribute="bottom" secondItem="Uc8-8Q-j5N" secondAttribute="bottom" id="uWR-fs-HQQ"/>
                     <constraint firstItem="Uc8-8Q-j5N" firstAttribute="top" secondItem="Nz6-b7-FDp" secondAttribute="bottom" constant="8" id="vFT-Xx-919"/>
+                    <constraint firstItem="4Vm-F1-uT5" firstAttribute="top" secondItem="yL5-0U-g7R" secondAttribute="bottom" constant="15" id="vYW-CB-fER"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="locationButton" destination="yL5-0U-g7R" id="2o9-Fx-uos"/>
                 <outlet property="mapView" destination="Nz6-b7-FDp" id="IxI-xo-Vng"/>
                 <outlet property="openHoursLabel" destination="qcQ-yX-4g6" id="C97-KG-z3v"/>
                 <outlet property="openTodayLabel" destination="4Vm-F1-uT5" id="Rxq-gF-LwC"/>
@@ -72,4 +88,7 @@
             <point key="canvasLocation" x="-155.07246376811597" y="64.620535714285708"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="paperplane.fill" catalog="system" width="128" height="118"/>
+    </resources>
 </document>

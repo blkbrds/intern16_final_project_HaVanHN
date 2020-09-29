@@ -61,6 +61,7 @@ final class InformationCell: TableCell {
         favoriteButton.layer.shadowRadius = 20
         favoriteButton.layer.masksToBounds = false
     }
+    
     // MARK: - Public functions
 
     // MARK: - Objc functions
