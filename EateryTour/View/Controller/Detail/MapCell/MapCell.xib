@@ -55,6 +55,9 @@
                         <state key="normal" image="paperplane.fill" catalog="system">
                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
                         </state>
+                        <connections>
+                            <action selector="locationButtonTouchUpInside:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mAC-Ut-dCG"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
