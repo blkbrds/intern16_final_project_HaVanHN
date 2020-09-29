@@ -62,7 +62,7 @@ final class DetailViewController: ViewController {
     }
 
     private func configNavigationBar() {
-       
+
     }
     // MARK: - Public functions
 

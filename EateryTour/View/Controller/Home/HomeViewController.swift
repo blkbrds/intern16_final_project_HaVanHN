@@ -34,7 +34,7 @@ final class HomeViewController: ViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        statusBarStyle = .lightContent
+        tabBarController?.tabBar.isHidden = false
     }
 
     // MARK: - Private functions
