@@ -57,7 +57,7 @@ final class TrendingCell: TableCell {
         if restaurant.address != "" || restaurant.city != "" {
             addressAndCurrencyLabel.text = restaurant.address + restaurant.city + " - "
         }
-        guard let urlImage = URL(string: viewModel.image) else { return }
+        guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
         restaurantImageView.sd_setImage(with: urlImage)
     }
 
@@ -67,13 +67,13 @@ final class TrendingCell: TableCell {
             guard let this = self else { return }
             switch result {
             case .success:
-                guard let urlImage = URL(string: this.viewModel.image) else { return }
+                guard let detail = this.viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
                 if let restaurant = this.viewModel.restaurant {
                     this.delegate?.cell(this, needsPerform: .callApiSuccess(restaurant: restaurant))
                 }
                 this.restaurantImageView.sd_setImage(with: urlImage)
-                this.addressAndCurrencyLabel.text = this.viewModel.currency
-                this.ratingLabel.text = String(this.viewModel.rating)
+                this.addressAndCurrencyLabel.text = detail.currency
+                this.ratingLabel.text = String(detail.rating)
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))

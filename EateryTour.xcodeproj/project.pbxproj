@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		522025182522D2BF004EAA17 /* Api.Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522025172522D2BF004EAA17 /* Api.Photo.swift */; };
+		5220251E2522D7E0004EAA17 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5220251D2522D7E0004EAA17 /* Photo.swift */; };
 		5223A6BD2520A1F000C7D71A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5223A6BB2520A1F000C7D71A /* DetailViewController.swift */; };
 		5223A6BE2520A1F000C7D71A /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5223A6BC2520A1F000C7D71A /* DetailViewController.xib */; };
 		5223A6C22520A23900C7D71A /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5223A6C12520A23900C7D71A /* DetailViewModel.swift */; };
@@ -106,6 +108,8 @@
 
 /* Begin PBXFileReference section */
 		0C96F09816CD072C31584617 /* Pods-EateryTour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EateryTour.debug.xcconfig"; path = "Target Support Files/Pods-EateryTour/Pods-EateryTour.debug.xcconfig"; sourceTree = "<group>"; };
+		522025172522D2BF004EAA17 /* Api.Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.Photo.swift; sourceTree = "<group>"; };
+		5220251D2522D7E0004EAA17 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		5223A6BB2520A1F000C7D71A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5223A6BC2520A1F000C7D71A /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		5223A6C12520A23900C7D71A /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -361,6 +365,7 @@
 				52E27F6E251D8B5300678E52 /* Detail.swift */,
 				52E27F6F251D8B5300678E52 /* LocationManager.swift */,
 				52E27F70251D8B5300678E52 /* Restaurant.swift */,
+				5220251D2522D7E0004EAA17 /* Photo.swift */,
 			);
 			path = Schema;
 			sourceTree = "<group>";
@@ -523,6 +528,7 @@
 		A3F622A225060E800024976E /* API */ = {
 			isa = PBXGroup;
 			children = (
+				522025172522D2BF004EAA17 /* Api.Photo.swift */,
 				52E27F78251D8BC800678E52 /* Api.Detail.swift */,
 				52E27F79251D8BC800678E52 /* Api.Trending.swift */,
 				A3F622A325060E800024976E /* Core */,
@@ -795,6 +801,7 @@
 				A3F622AD25060E800024976E /* UIViewExt.swift in Sources */,
 				A3F622BA25060E800024976E /* Button.swift in Sources */,
 				A3F622C125060E800024976E /* Api.swift in Sources */,
+				522025182522D2BF004EAA17 /* Api.Photo.swift in Sources */,
 				A3F622F4250637890024976E /* ViewModel.swift in Sources */,
 				A3F622AE25060E800024976E /* UIViewControllerExt.swift in Sources */,
 				A3F622C025060E800024976E /* ResponseSerializer.swift in Sources */,
@@ -834,6 +841,7 @@
 				5223A6D32520F43300C7D71A /* MapCell.swift in Sources */,
 				52E27F73251D8B5300678E52 /* Restaurant.swift in Sources */,
 				522A5C742519BCEB00829199 /* SearchViewController.swift in Sources */,
+				5220251E2522D7E0004EAA17 /* Photo.swift in Sources */,
 				A3F622B725060E800024976E /* TableView.swift in Sources */,
 				523F27A5251D8DF400373CAC /* SlideCellViewModel.swift in Sources */,
 				A3F622B125060E800024976E /* CollectionCell.swift in Sources */,

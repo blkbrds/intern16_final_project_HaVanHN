@@ -48,7 +48,7 @@ final class InformationCell: TableCell {
         nameLabel.text = viewModel.name
         addressLabel.text = viewModel.address
         currencyLabel.text = viewModel.currency
-        ratingLabel.text = viewModel.rating
+        ratingLabel.text = String(viewModel.rating)
         amountOfRatingLabel.text = viewModel.amountOfRating
     }
 

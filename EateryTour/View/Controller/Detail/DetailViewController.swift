@@ -15,14 +15,19 @@ final class DetailViewController: ViewController {
     @IBOutlet private weak var backButton: Button!
 
     // MARK: - Propeties
-    private var viewModel = DetailViewModel()
+    var viewModel = DetailViewModel()
 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
-        configNavigationBar()
         configStatusBar()
+        getDataForPhotoCell()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
     }
     // MARK: - Override functions
 
@@ -47,9 +52,17 @@ final class DetailViewController: ViewController {
         navigationController?.navigationBar.barStyle = .black
     }
 
-    private func configNavigationBar() {
-        navigationController?.navigationBar.isHidden = true
+    private func getDataForPhotoCell() {
+        viewModel.getDataForCellPhoto { (result) in
+            switch result {
+            case .success:
+                self.tableView.reloadData()
+            case .failure(let err):
+                self.alert(msg: err.localizedDescription, handler: nil)
+            }
+        }
     }
+
     // MARK: - Public functions
 
     // MARK: - Objc functions

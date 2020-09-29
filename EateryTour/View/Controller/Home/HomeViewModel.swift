@@ -14,7 +14,7 @@ final class HomeViewModel: ViewModel {
 
     // MARK: - Properties
     private(set) var imageListSlide: [UIImage] = [#imageLiteral(resourceName: "slideFood3"), #imageLiteral(resourceName: "slideFood1"), #imageLiteral(resourceName: "slideFood4"), #imageLiteral(resourceName: "slideFood5"), #imageLiteral(resourceName: "slideFood2")]
-    private var restaurants: [Restaurant] = []
+    private(set) var restaurants: [Restaurant] = []
 
     // MARK: - Public functions
     func getImageForSlide(atIndexPath indexPath: IndexPath) -> SlideCellViewModel? {

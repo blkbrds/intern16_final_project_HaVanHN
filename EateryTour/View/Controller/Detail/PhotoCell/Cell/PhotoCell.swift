@@ -24,6 +24,7 @@ final class PhotoCell: CollectionCell {
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        configUI()
     }
 
     // MARK: - Override functions
@@ -33,6 +34,12 @@ final class PhotoCell: CollectionCell {
         guard let viewModel = viewModel, let urlImage = URL(string: viewModel.imageURL) else { return }
         photoImage.sd_setImage(with: urlImage)
     }
+
+    private func configUI() {
+        photoImage.layer.cornerRadius = 15
+        photoImage.clipsToBounds = true
+    }
+
     // MARK: - Public functions
 
     // MARK: - Objc functions

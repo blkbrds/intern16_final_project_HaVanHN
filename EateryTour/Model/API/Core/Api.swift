@@ -19,6 +19,8 @@ final class Api {
 
     struct Detail {}
 
+    struct Photo {}
+
     struct Search {
         let id: String
         let key: String
@@ -38,6 +40,14 @@ extension Api.Path {
             return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)"
         }
         static var path: String { return baseURL / "\(id)?\(filter)" }
+    }
+
+    struct Photo {
+        static var id: String = "abc"
+        static var filter: String {
+            return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)&group=venue"
+        }
+        static var path: String { return baseURL / id / "photos?\(filter)" }
     }
 }
 

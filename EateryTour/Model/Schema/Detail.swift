@@ -25,6 +25,7 @@ final class Detail: Mappable {
     var openDate: String = ""
     var openTime: String = ""
     var isOpen: Bool = false
+    var openStatus: String = ""
 
     init?(map: Map) {
     }
@@ -62,5 +63,6 @@ final class Detail: Mappable {
                 }
             }
         }
+        openStatus <- map["response.venue.hours.status"]
     }
 }

@@ -16,7 +16,7 @@ final class PhotoCollectionCell: TableCell {
     // MARK: - Propeties
     var viewModel: PhotoCollectionCellViewModel? {
         didSet {
-            updateUI()
+            self.collectionView.reloadData()
         }
     }
     // MARK: - Initialize
@@ -54,7 +54,8 @@ final class PhotoCollectionCell: TableCell {
 extension PhotoCollectionCell: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        guard let viewModel = viewModel else { return 10 }
+        return viewModel.numberOfItemInSection()
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -68,10 +69,10 @@ extension PhotoCollectionCell: UICollectionViewDataSource {
 extension PhotoCollectionCell: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        return 8
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        return 8
     }
 }

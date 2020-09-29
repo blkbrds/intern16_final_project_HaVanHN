@@ -34,7 +34,7 @@ final class HomeViewController: ViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        statusBarStyle = .lightContent
+        navigationController?.navigationBar.isHidden = false
     }
 
     // MARK: - Private functions
@@ -147,6 +147,11 @@ extension HomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
+        detailVC.viewModel.id = viewModel.restaurants[indexPath.row].id
+        guard let cell = tableView.cellForRow(at: indexPath) as? TrendingCell else {
+            return
+        }
+        detailVC.viewModel.detail = cell.viewModel.detail
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

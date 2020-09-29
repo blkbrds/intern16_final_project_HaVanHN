@@ -10,17 +10,21 @@ import Foundation
 
 final class PhotoCollectionCellViewModel {
 
-    private(set) var imageList: [String] = []
+    private(set) var imageURLList: [String]
+
+    init(imageURLList: [String]) {
+        self.imageURLList = imageURLList
+    }
 
     private func getImageURL() {
 
     }
 
     func getCellForRowAt(atIndexPath indexPath: IndexPath) -> PhotoCellViewModel? {
-        return PhotoCellViewModel(imageURL: imageList[indexPath.row])
+        return PhotoCellViewModel(imageURL: imageURLList[indexPath.row])
     }
 
-    func numberOfRowInSection() -> Int {
-        return imageList.count
+    func numberOfItemInSection() -> Int {
+        return imageURLList.count
     }
 }

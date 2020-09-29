@@ -16,6 +16,10 @@ enum DetailSection {
 
 final class DetailViewModel {
 
+    var id: String = ""
+    var photoList: [Photo] = []
+    var detail: Detail?
+
     func sectionType(atSection section: Int) -> DetailSection {
         switch section {
         case 0:
@@ -29,15 +33,49 @@ final class DetailViewModel {
         }
     }
 
+    func getDataForCellPhoto(completion: @escaping APICompletion) {
+        let params = Api.Photo.QueryParams(limit: 20)
+        Api.Photo().getPhoto(params: params, restaurantId: id) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    self.photoList = data
+                    completion(.success)
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+
     func getCellForRowAtInformationSection(atIndexPath indexPath: IndexPath) -> InformationCellViewModel? {
-        return nil
+        if let detail = detail {
+            return InformationCellViewModel(imageURL: detail.bestPhoto,
+                                            name: detail.name, currency: detail.currency,
+                                            address: detail.address, rating: detail.rating,
+                                            amountOfRating: detail.sumaryLikes)
+        } else {
+            return nil
+        }
     }
 
     func getCellForRowAtMapSection(atIndexPath indexPath: IndexPath) -> MapCellViewModel? {
+        guard let detail = detail else { return nil }
+            if detail.openDate == "" && detail.openTime == "" {
+                if detail.openStatus == "" {
+                    return MapCellViewModel(openToday: "Not updated yet", openHours: "Not updated yet")
+                }
+            } else {
+                return MapCellViewModel(openToday: detail.openStatus, openHours: detail.openDate + " " + detail.openTime)
+            }
         return nil
     }
 
     func getCellForRowAtPhotoSection(atIndexPath indexPath: IndexPath) -> PhotoCollectionCellViewModel? {
-        return nil
+        var imageURLList: [String] = []
+        for photo in photoList {
+            imageURLList.append(photo.imageURL)
+        }
+        return PhotoCollectionCellViewModel(imageURLList: imageURLList)
     }
 }
