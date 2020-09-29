@@ -29,7 +29,7 @@ final class DetailViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-
+        tabBarController?.tabBar.isHidden = true
     }
 
     override func viewDidLayoutSubviews() {
@@ -37,12 +37,6 @@ final class DetailViewController: ViewController {
         view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         view.layoutIfNeeded()
         backButton.tintColor = .white
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
-        tabBarController?.tabBar.isHidden = true
     }
 
     // MARK: - Override functions

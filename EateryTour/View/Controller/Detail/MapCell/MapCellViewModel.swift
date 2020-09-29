@@ -21,6 +21,4 @@ final class MapCellViewModel {
         self.lat = lat
         self.lng = lng
     }
-    
-    
 }
