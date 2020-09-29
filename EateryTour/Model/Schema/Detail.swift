@@ -14,8 +14,8 @@ final class Detail: Mappable {
     var id: String = ""
     var name: String = ""
     var address: String =  ""
-    var lat: String = ""
-    var lng: String = ""
+    var lat: Float = 0.0
+    var lng: Float = 0.0
     var state: String = ""
     var country: String = ""
     var currency: String = ""

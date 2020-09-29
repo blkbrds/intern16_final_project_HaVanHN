@@ -64,10 +64,10 @@ final class DetailViewModel {
         guard let detail = detail else { return nil }
             if detail.openDate == "" && detail.openTime == "" {
                 if detail.openStatus == "" {
-                    return MapCellViewModel(openToday: "Not updated yet", openHours: "Not updated yet", lat: detail.lng, lng: detail.lng)
+                    return MapCellViewModel(openToday: "Not updated yet", openHours: "Not updated yet", lat: detail.lat, lng: detail.lng, name: detail.name, address: detail.address)
                 }
             } else {
-                return MapCellViewModel(openToday: detail.openStatus, openHours: detail.openDate + " " + detail.openTime, lat: detail.lng, lng: detail.lng)
+                return MapCellViewModel(openToday: detail.openStatus, openHours: detail.openDate + " " + detail.openTime, lat: detail.lat, lng: detail.lng, name: detail.name, address: detail.address)
             }
         return nil
     }

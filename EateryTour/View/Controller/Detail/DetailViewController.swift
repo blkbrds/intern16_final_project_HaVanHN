@@ -111,6 +111,7 @@ extension DetailViewController: UITableViewDataSource {
         case .map:
             guard let mapCell = tableView.dequeueReusableCell(withIdentifier: "MapCell", for: indexPath) as? MapCell else { return UITableViewCell() }
             mapCell.viewModel = viewModel.getCellForRowAtMapSection(atIndexPath: indexPath)
+            mapCell.delegate = self
             return mapCell
         case .photo:
             guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "PhotoCollectionCell", for: indexPath) as? PhotoCollectionCell else { return UITableViewCell() }
@@ -129,5 +130,18 @@ extension DetailViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return viewModel.getheightForRowAt(atIndexPath: indexPath)
+    }
+}
+
+// MARK: - MapCellDelegate
+extension DetailViewController: MapCellDelegate {
+
+    func view(_ view: MapCell, needsPerform action: MapCell.Action) {
+        switch action {
+        case .pushToMapDetail(lat: let lat, lng: let lng):
+            let mapDetailVC = MapDetailViewController()
+            mapDetailVC.viewModel = MapDetailViewModel(lat: lat, lng: lng)
+            navigationController?.pushViewController(mapDetailVC, animated: true)
+        }
     }
 }

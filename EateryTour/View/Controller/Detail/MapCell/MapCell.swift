@@ -9,6 +9,10 @@
 import UIKit
 import MapKit
 
+protocol MapCellDelegate: class {
+    func view(_ view: MapCell, needsPerform action: MapCell.Action)
+}
+
 final class MapCell: TableCell {
 
     // MARK: - IBOutlets
@@ -21,8 +25,13 @@ final class MapCell: TableCell {
     var viewModel: MapCellViewModel? {
         didSet {
             updateUI()
+            configRestaurantLocation()
+            addAnnotation()
         }
     }
+
+    weak var delegate: MapCellDelegate?
+
     // MARK: - Initialize
 
     // MARK: - Life cycle
@@ -53,12 +62,44 @@ final class MapCell: TableCell {
         locationButton.layer.borderColor = #colorLiteral(red: 0.10909646, green: 0.2660153806, blue: 0.2814711332, alpha: 1)
     }
 
+    private func configRestaurantLocation() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        let restaurantLocation = CLLocation(latitude: CLLocationDegrees(viewModel.lat), longitude: CLLocationDegrees(viewModel.lng))
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: restaurantLocation.coordinate, span: span)
+        mapView.region = region
+    }
+
+    func addAnnotation() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(viewModel.lat), longitude: CLLocationDegrees(viewModel.lng))
+        annotation.title = viewModel.name
+        annotation.subtitle = viewModel.address
+        mapView.addAnnotation(annotation)
+    }
+
     // MARK: - Public functions
 
     // MARK: - Objc functions
 
     // MARK: - IBActions
     @IBAction private func locationButtonTouchUpInside(_ sender: Button) {
+        guard let viewModel = viewModel else {
+            return
+        }
+        delegate?.view(self, needsPerform: .pushToMapDetail(lat: viewModel.lng, lng: viewModel.lng))
+    }
+}
 
+// MARK: - Extension
+extension MapCell {
+
+    enum Action {
+        case pushToMapDetail(lat: Float, lng: Float)
     }
 }

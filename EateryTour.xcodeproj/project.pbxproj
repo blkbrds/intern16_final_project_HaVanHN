@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		522025182522D2BF004EAA17 /* Api.Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522025172522D2BF004EAA17 /* Api.Photo.swift */; };
 		5220251E2522D7E0004EAA17 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5220251D2522D7E0004EAA17 /* Photo.swift */; };
+		5220253A2523A0A3004EAA17 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522025382523A0A2004EAA17 /* MapDetailViewController.swift */; };
+		5220253B2523A0A3004EAA17 /* MapDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522025392523A0A2004EAA17 /* MapDetailViewController.xib */; };
+		522025412523A0CC004EAA17 /* MapDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522025402523A0CC004EAA17 /* MapDetailViewModel.swift */; };
 		5223A6BD2520A1F000C7D71A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5223A6BB2520A1F000C7D71A /* DetailViewController.swift */; };
 		5223A6BE2520A1F000C7D71A /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5223A6BC2520A1F000C7D71A /* DetailViewController.xib */; };
 		5223A6C22520A23900C7D71A /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5223A6C12520A23900C7D71A /* DetailViewModel.swift */; };
@@ -110,6 +113,9 @@
 		0C96F09816CD072C31584617 /* Pods-EateryTour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EateryTour.debug.xcconfig"; path = "Target Support Files/Pods-EateryTour/Pods-EateryTour.debug.xcconfig"; sourceTree = "<group>"; };
 		522025172522D2BF004EAA17 /* Api.Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.Photo.swift; sourceTree = "<group>"; };
 		5220251D2522D7E0004EAA17 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		522025382523A0A2004EAA17 /* MapDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
+		522025392523A0A2004EAA17 /* MapDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapDetailViewController.xib; sourceTree = "<group>"; };
+		522025402523A0CC004EAA17 /* MapDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewModel.swift; sourceTree = "<group>"; };
 		5223A6BB2520A1F000C7D71A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5223A6BC2520A1F000C7D71A /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		5223A6C12520A23900C7D71A /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -231,6 +237,16 @@
 				88319D490829CB9599FF3C15 /* Pods_EateryTourTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		522025372523A07D004EAA17 /* MapDetail */ = {
+			isa = PBXGroup;
+			children = (
+				522025382523A0A2004EAA17 /* MapDetailViewController.swift */,
+				522025392523A0A2004EAA17 /* MapDetailViewController.xib */,
+				522025402523A0CC004EAA17 /* MapDetailViewModel.swift */,
+			);
+			path = MapDetail;
 			sourceTree = "<group>";
 		};
 		5223A6BA2520A1CA00C7D71A /* Detail */ = {
@@ -471,6 +487,7 @@
 		A3F6229025060E7F0024976E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				522025372523A07D004EAA17 /* MapDetail */,
 				5223A6BA2520A1CA00C7D71A /* Detail */,
 				522A5C662519BCEB00829199 /* Favorite */,
 				A3F622E925062E5F0024976E /* Home */,
@@ -679,6 +696,7 @@
 				522A5C752519BCEB00829199 /* SearchViewController.xib in Resources */,
 				522A5C772519BCEB00829199 /* SettingViewController.xib in Resources */,
 				A3AED35C251355E200B5E6D0 /* SF-Pro-Text-Bold.otf in Resources */,
+				5220253B2523A0A3004EAA17 /* MapDetailViewController.xib in Resources */,
 				A3F622F225062EB00024976E /* TutorialViewController.xib in Resources */,
 				5223A7052520F89700C7D71A /* PhotoCell.xib in Resources */,
 				A3AED35E251355E200B5E6D0 /* SF-Pro-Text-Medium.otf in Resources */,
@@ -808,6 +826,7 @@
 				5223A6DA2520F46300C7D71A /* MapCellViewModel.swift in Sources */,
 				5223A6CD2520F3DE00C7D71A /* InformationCellViewModel.swift in Sources */,
 				A3F622B025060E800024976E /* NSErrorExt.swift in Sources */,
+				5220253A2523A0A3004EAA17 /* MapDetailViewController.swift in Sources */,
 				A3F622B625060E800024976E /* ScrollView.swift in Sources */,
 				A3AED364251356DA00B5E6D0 /* Font.swift in Sources */,
 				52E27F77251D8BA200678E52 /* TrendingCellViewModel.swift in Sources */,
@@ -852,6 +871,7 @@
 				A3F622AF25060E800024976E /* CollectionExt.swift in Sources */,
 				A3F622BD25060E800024976E /* RequestSerializer.swift in Sources */,
 				A3F622E325061ABD0024976E /* App.swift in Sources */,
+				522025412523A0CC004EAA17 /* MapDetailViewModel.swift in Sources */,
 				522A5C762519BCEB00829199 /* SettingViewController.swift in Sources */,
 				A3F622B525060E800024976E /* CollectionView.swift in Sources */,
 				5223A6E72520F4CA00C7D71A /* PhotoCollectionCellViewModel.swift in Sources */,
