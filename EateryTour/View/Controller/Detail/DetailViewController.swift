@@ -22,6 +22,7 @@ final class DetailViewController: ViewController {
         super.viewDidLoad()
         configTabbar()
         configTableView()
+        configBackButton()
         configStatusBar()
         getDataForPhotoCell()
     }
@@ -36,7 +37,6 @@ final class DetailViewController: ViewController {
         super.viewDidLayoutSubviews()
         view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         view.layoutIfNeeded()
-        backButton.tintColor = .white
     }
 
     // MARK: - Override functions
@@ -76,7 +76,9 @@ final class DetailViewController: ViewController {
             }
         }
     }
-    private func configNavigationBar() {
+
+    private func configBackButton() {
+        backButton.tintColor = .white
     }
 
     // MARK: - Public functions
