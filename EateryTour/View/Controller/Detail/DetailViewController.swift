@@ -31,6 +31,20 @@ final class DetailViewController: ViewController {
         navigationController?.navigationBar.isHidden = true
 
     }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        view.layoutIfNeeded()
+        backButton.tintColor = .white
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
+    }
+
     // MARK: - Override functions
 
     // MARK: - Private functions
@@ -67,6 +81,8 @@ final class DetailViewController: ViewController {
                 self.alert(msg: err.localizedDescription, handler: nil)
             }
         }
+    }
+    private func configNavigationBar() {
     }
 
     // MARK: - Public functions
