@@ -59,6 +59,6 @@ final class MapCell: TableCell {
 
     // MARK: - IBActions
     @IBAction private func locationButtonTouchUpInside(_ sender: Button) {
-        
+
     }
 }
