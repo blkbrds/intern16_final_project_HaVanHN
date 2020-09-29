@@ -12,6 +12,7 @@ final class DetailViewController: ViewController {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var tableView: TableView!
+    @IBOutlet private weak var backButton: Button!
 
     // MARK: - Propeties
     private var viewModel = DetailViewModel()
@@ -43,7 +44,7 @@ final class DetailViewController: ViewController {
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
-        statusBarStyle = .lightContent
+        navigationController?.navigationBar.barStyle = .black
     }
 
     private func configNavigationBar() {
