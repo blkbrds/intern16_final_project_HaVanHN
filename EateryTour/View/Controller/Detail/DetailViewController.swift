@@ -107,6 +107,7 @@ extension DetailViewController: UITableViewDataSource {
         case .information:
             guard let informationCell = tableView.dequeueReusableCell(withIdentifier: "InformationCell", for: indexPath) as? InformationCell else { return UITableViewCell() }
             informationCell.viewModel = viewModel.getCellForRowAtInformationSection(atIndexPath: indexPath)
+            informationCell.delegate = self
             return informationCell
         case .map:
             guard let mapCell = tableView.dequeueReusableCell(withIdentifier: "MapCell", for: indexPath) as? MapCell else { return UITableViewCell() }
@@ -142,6 +143,24 @@ extension DetailViewController: MapCellDelegate {
             let mapDetailVC = MapDetailViewController()
             mapDetailVC.viewModel = MapDetailViewModel(lat: lat, lng: lng)
             navigationController?.pushViewController(mapDetailVC, animated: true)
+        }
+    }
+}
+
+// MARK: - InformationCellDelegate
+extension DetailViewController: InformationCellDelegate {
+
+    func cell(_ cell: InformationCell, needsPerform action: InformationCell.Action) {
+        switch action {
+        case .saveDataIntoRealm:
+            viewModel.addDetailIntoRealm { (result) in
+                switch result {
+                case .success:
+                    print("hihi")
+                case .failure:
+                    print("huhu")
+                }
+            }
         }
     }
 }

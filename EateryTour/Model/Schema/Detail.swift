@@ -8,28 +8,41 @@
 
 import Foundation
 import ObjectMapper
+import RealmSwift
 
-final class Detail: Mappable {
+@objcMembers final class Detail: Object, Mappable {
 
-    var id: String = ""
-    var name: String = ""
-    var address: String =  ""
-    var lat: Float = 0.0
-    var lng: Float = 0.0
-    var state: String = ""
-    var country: String = ""
-    var currency: String = ""
-    var sumaryLikes: String = ""
-    var rating: Float = 0.0
-    var bestPhoto: String = ""
-    var openDate: String = ""
-    var openTime: String = ""
-    var isOpen: Bool = false
-    var openStatus: String = ""
+    // MARK: - Properties
+    dynamic var id: String = ""
+    dynamic var name: String = ""
+    dynamic var address: String =  ""
+    dynamic var lat: Float = 0.0
+    dynamic var lng: Float = 0.0
+    dynamic var state: String = ""
+    dynamic var country: String = ""
+    dynamic var currency: String = ""
+    dynamic var sumaryLikes: String = ""
+    dynamic var rating: Float = 0.0
+    dynamic var bestPhoto: String = ""
+    dynamic var openDate: String = ""
+    dynamic var openTime: String = ""
+    dynamic var isOpen: Bool = false
+    dynamic var openStatus: String = ""
+    var isFavorite: Bool = false
 
+    // MARK: - Initialize
     init?(map: Map) {
     }
 
+    required init() {
+    }
+
+    // MARK: - Override functions
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+
+    // MARK: - Public functions
     func mapping(map: Map) {
         id <- map["response.venue.id"]
         name <- map["response.venue.name"]

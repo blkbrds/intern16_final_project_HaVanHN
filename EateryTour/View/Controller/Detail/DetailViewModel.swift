@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 enum DetailSection {
     case information
@@ -20,6 +21,7 @@ final class DetailViewModel {
     var id: String = ""
     var photoList: [Photo] = []
     var detail: Detail?
+    var isFavorite: Bool = false
 
     func sectionType(atSection section: Int) -> DetailSection {
         switch section {
@@ -88,6 +90,31 @@ final class DetailViewModel {
             return 250
         case .photo:
             return 200
+        }
+    }
+    
+    func addDetailIntoRealm(completion: @escaping APICompletion) {
+        do {
+            let realm = try Realm()
+            let predicate = NSPredicate(format: "id = %@ ", id)
+            if let favoriteDetail = realm.objects(Detail.self).filter(predicate).first {
+                favoriteDetail.isFavorite = !favoriteDetail.isFavorite
+                    try realm.write {
+                        realm.create(Detail.self, value: favoriteDetail, update: .modified)
+                        completion(.success)
+                    }
+            } else {
+                try realm.write {
+                    if let detail = detail {
+                        realm.create(Detail.self, value: detail, update: .all)
+                        isFavorite = !isFavorite
+                        completion(.success)
+                    }
+            }
+            
+        }
+        } catch {
+            completion(.failure(error))
         }
     }
 }

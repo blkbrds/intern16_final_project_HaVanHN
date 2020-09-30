@@ -252,12 +252,12 @@
 		5223A6BA2520A1CA00C7D71A /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				5223A6DD2520F47700C7D71A /* PhotoCell */,
-				5223A6D02520F41C00C7D71A /* MapCell */,
-				5223A6C52520F36F00C7D71A /* InformationCell */,
 				5223A6BB2520A1F000C7D71A /* DetailViewController.swift */,
 				5223A6BC2520A1F000C7D71A /* DetailViewController.xib */,
 				5223A6C12520A23900C7D71A /* DetailViewModel.swift */,
+				5223A6C52520F36F00C7D71A /* InformationCell */,
+				5223A6D02520F41C00C7D71A /* MapCell */,
+				5223A6DD2520F47700C7D71A /* PhotoCell */,
 			);
 			path = Detail;
 			sourceTree = "<group>";

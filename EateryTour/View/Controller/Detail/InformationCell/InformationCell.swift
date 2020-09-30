@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol InformationCellDelegate: class {
+    func cell(_ cell: InformationCell, needsPerform action: InformationCell.Action)
+}
+
 final class InformationCell: TableCell {
 
     // MARK: - IBOutlets
@@ -25,6 +29,7 @@ final class InformationCell: TableCell {
             updateUI()
         }
     }
+    weak var delegate: InformationCellDelegate?
 
     // MARK: - Initialize
 
@@ -67,11 +72,16 @@ final class InformationCell: TableCell {
     // MARK: - Objc functions
 
     // MARK: - IBActions
-
     @IBAction private func favoriteButtonTouchUpInside(_ sender: Button) {
-    print("tap")
+        favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        delegate?.cell(self, needsPerform: .saveDataIntoRealm)
     }
+}
 
-    @IBAction private func backButtonTouchUpInside(_ sender: Button) {
+// MARK: - Extension
+extension InformationCell {
+
+    enum Action {
+        case saveDataIntoRealm
     }
 }
