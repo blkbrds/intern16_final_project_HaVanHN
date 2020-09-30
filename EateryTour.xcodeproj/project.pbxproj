@@ -12,6 +12,7 @@
 		5220253A2523A0A3004EAA17 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522025382523A0A2004EAA17 /* MapDetailViewController.swift */; };
 		5220253B2523A0A3004EAA17 /* MapDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522025392523A0A2004EAA17 /* MapDetailViewController.xib */; };
 		522025412523A0CC004EAA17 /* MapDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522025402523A0CC004EAA17 /* MapDetailViewModel.swift */; };
+		5220254E25248AA3004EAA17 /* MyPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5220254D25248AA3004EAA17 /* MyPin.swift */; };
 		5223A6BD2520A1F000C7D71A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5223A6BB2520A1F000C7D71A /* DetailViewController.swift */; };
 		5223A6BE2520A1F000C7D71A /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5223A6BC2520A1F000C7D71A /* DetailViewController.xib */; };
 		5223A6C22520A23900C7D71A /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5223A6C12520A23900C7D71A /* DetailViewModel.swift */; };
@@ -116,6 +117,7 @@
 		522025382523A0A2004EAA17 /* MapDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
 		522025392523A0A2004EAA17 /* MapDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapDetailViewController.xib; sourceTree = "<group>"; };
 		522025402523A0CC004EAA17 /* MapDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewModel.swift; sourceTree = "<group>"; };
+		5220254D25248AA3004EAA17 /* MyPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPin.swift; sourceTree = "<group>"; };
 		5223A6BB2520A1F000C7D71A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5223A6BC2520A1F000C7D71A /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		5223A6C12520A23900C7D71A /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				52E27F6F251D8B5300678E52 /* LocationManager.swift */,
 				52E27F70251D8B5300678E52 /* Restaurant.swift */,
 				5220251D2522D7E0004EAA17 /* Photo.swift */,
+				5220254D25248AA3004EAA17 /* MyPin.swift */,
 			);
 			path = Schema;
 			sourceTree = "<group>";
@@ -847,6 +850,7 @@
 				A3F622E725062C9C0024976E /* StringExt.swift in Sources */,
 				52E27F69251D873000678E52 /* HomeViewModel.swift in Sources */,
 				52E27F7A251D8BC800678E52 /* Api.Detail.swift in Sources */,
+				5220254E25248AA3004EAA17 /* MyPin.swift in Sources */,
 				A3F622B225060E800024976E /* CollectionViewHeaderView.swift in Sources */,
 				523F27A4251D8DF400373CAC /* SliderCell.swift in Sources */,
 				A3AED3622513564E00B5E6D0 /* UIFontExt.swift in Sources */,

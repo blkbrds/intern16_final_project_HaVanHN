@@ -92,12 +92,13 @@ final class DetailViewModel {
             return 200
         }
     }
-    
+
     func addDetailIntoRealm(completion: @escaping APICompletion) {
         do {
             let realm = try Realm()
             let predicate = NSPredicate(format: "id = %@ ", id)
-            if let favoriteDetail = realm.objects(Detail.self).filter(predicate).first {
+            let filterPredicate = realm.objects(Detail.self).filter(predicate)
+            if let favoriteDetail = filterPredicate.first {
                 favoriteDetail.isFavorite = !favoriteDetail.isFavorite
                     try realm.write {
                         realm.create(Detail.self, value: favoriteDetail, update: .modified)
@@ -110,8 +111,7 @@ final class DetailViewModel {
                         isFavorite = !isFavorite
                         completion(.success)
                     }
-            }
-            
+                }
         }
         } catch {
             completion(.failure(error))

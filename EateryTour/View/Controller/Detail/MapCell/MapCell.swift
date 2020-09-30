@@ -70,6 +70,7 @@ final class MapCell: TableCell {
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: restaurantLocation.coordinate, span: span)
         mapView.region = region
+        mapView.delegate = self
     }
 
     func addAnnotation() {
@@ -102,4 +103,24 @@ extension MapCell {
     enum Action {
         case pushToMapDetail(lat: Float, lng: Float)
     }
+}
+
+// MARK: - MKMapViewDelegate
+extension MapCell: MKMapViewDelegate {
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            guard let annotation = annotation as? MyPin else { return nil }
+            let identifier = "mypin"
+            var view: MKAnnotationView
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
+                dequeuedView.annotation = annotation
+                view = dequeuedView
+            } else {
+                view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view.image = #imageLiteral(resourceName: "img-location-detail")
+                //view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                view.leftCalloutAccessoryView = UIImageView(image: #imageLiteral(resourceName: "img-open-detail"))
+            }
+            return view
+        }
 }
