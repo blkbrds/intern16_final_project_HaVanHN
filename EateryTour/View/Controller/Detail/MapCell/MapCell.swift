@@ -86,7 +86,7 @@ final class MapCell: TableCell {
         guard let viewModel = viewModel else {
             return
         }
-        delegate?.view(self, needsPerform: .pushToMapDetail(lat: viewModel.lng, lng: viewModel.lng))
+        delegate?.view(self, needsPerform: .pushToMapDetail(lat: viewModel.lat, lng: viewModel.lng))
     }
 }
 

@@ -33,13 +33,12 @@ final class DetailViewController: ViewController {
         tabBarController?.tabBar.isHidden = true
     }
 
+    // MARK: - Override functions
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         view.layoutIfNeeded()
     }
-
-    // MARK: - Override functions
 
     // MARK: - Private functions
     private func configTabbar() {
@@ -80,10 +79,6 @@ final class DetailViewController: ViewController {
     private func configBackButton() {
         backButton.tintColor = .white
     }
-
-    // MARK: - Public functions
-
-    // MARK: - Objc functions
 
     // MARK: - IBActions
     @IBAction private func backButtonTouchUpInside(_ sender: Button) {
@@ -141,7 +136,8 @@ extension DetailViewController: MapCellDelegate {
         switch action {
         case .pushToMapDetail(lat: let lat, lng: let lng):
             let mapDetailVC = MapDetailViewController()
-            mapDetailVC.viewModel = MapDetailViewModel(lat: lat, lng: lng)
+            guard let detail = viewModel.detail else { return }
+            mapDetailVC.viewModel = MapDetailViewModel(lat: lat, lng: lng, name: detail.name, address: detail.address)
             navigationController?.pushViewController(mapDetailVC, animated: true)
         }
     }
