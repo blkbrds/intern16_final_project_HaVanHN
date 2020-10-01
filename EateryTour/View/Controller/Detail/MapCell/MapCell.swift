@@ -27,12 +27,10 @@ final class MapCell: TableCell {
             updateUI()
             configRestaurantLocation()
             addAnnotation()
+            configButton()
         }
     }
-
     weak var delegate: MapCellDelegate?
-
-    // MARK: - Initialize
 
     // MARK: - Life cycle
     override func awakeFromNib() {
@@ -83,10 +81,6 @@ final class MapCell: TableCell {
         mapView.addAnnotation(annotation)
     }
 
-    // MARK: - Public functions
-
-    // MARK: - Objc functions
-
     // MARK: - IBActions
     @IBAction private func locationButtonTouchUpInside(_ sender: Button) {
         guard let viewModel = viewModel else {
@@ -108,20 +102,12 @@ extension MapCell {
 extension MapCell: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            guard let annotation = annotation as? MyPin else { return nil }
-            let identifier = "mypin"
-            var view: MKAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
-                dequeuedView.annotation = annotation
-                view = dequeuedView
-            } else {
-                view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                view.image = #imageLiteral(resourceName: "img-location-detail")
-                // view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-               view.leftCalloutAccessoryView = UIImageView(image: #imageLiteral(resourceName: "img-open-detail"))
-                view.canShowCallout = true
-                view.annotation = annotation
-            }
-            return view
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "AnnotationView")
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationView")
+        }
+        annotationView?.image = #imageLiteral(resourceName: "ic-location-map").sd_resizedImage(with: CGSize(width: 40, height: 40), scaleMode: .aspectFill)
+        annotationView?.canShowCallout = true
+        return annotationView
         }
 }
