@@ -10,10 +10,16 @@ import Foundation
 import UIKit
 import CoreLocation
 
+enum HomeSectionType {
+    case trending
+    case recommend
+}
+
 final class HomeViewModel: ViewModel {
 
     // MARK: - Properties
-    private(set) var restaurants: [Restaurant] = []
+    private(set) var restaurantsTrending: [Restaurant] = []
+    private(set) var restaurantsRecommend: [Restaurant] = []
 
     // MARK: - Public functions
 
@@ -26,7 +32,8 @@ final class HomeViewModel: ViewModel {
             Api.Trending.getTrending(params: params) { result in
                 switch result {
                 case .success(let rest):
-                    self.restaurants = rest
+                    print("data: \(rest.count)")
+                    self.restaurantsTrending = rest
                     completion(.success)
                 case .failure(let err):
                     completion(.failure(err))
@@ -35,17 +42,55 @@ final class HomeViewModel: ViewModel {
         }
     }
 
-    func updateApiSuccess(newRestaurant: Restaurant) {
-        for (index, restaurant) in restaurants.enumerated() where restaurant.id == newRestaurant.id {
-            restaurants[index] = newRestaurant
+    func getCellForRowAt(atIndexPath indexPath: IndexPath) -> CellViewModel {
+        switch sectionType(inSection: indexPath.section) {
+        case .trending:
+            print("trendingRestaurant: \(restaurantsTrending)")
+            return CellViewModel(restaurants: restaurantsTrending)
+        case .recommend:
+            return CellViewModel(restaurants: restaurantsRecommend)
         }
     }
 
-    func getCellForRowAt(atIndexPath indexPath: IndexPath) -> TrendingCellViewModel {
-        return TrendingCellViewModel(restaurant: restaurants[indexPath.row])
+    func viewModelForItemAt(indexPath: IndexPath) -> CellViewModel {
+        return CellViewModel(restaurants: restaurantsTrending)
     }
 
-    func numberOfItems(inSection section: Int) -> Int {
-        return restaurants.count
+    func sectionType(inSection section: Int) -> HomeSectionType {
+        switch section {
+        case 0:
+            return .trending
+        case 1:
+            return .recommend
+        default:
+            return .recommend
+        }
+    }
+
+    func viewForHeaderInSection(inSection section: Int) -> CustomHeaderViewModel? {
+        switch sectionType(inSection: section) {
+        case .trending:
+            return CustomHeaderViewModel(name: "Trending")
+        case .recommend:
+            return CustomHeaderViewModel(name: "Recommend")
+        }
+    }
+
+    func numberOfRowInSection(inSection section: Int) -> Int {
+        switch sectionType(inSection: section) {
+        case .trending:
+            return 1
+        case .recommend:
+            return 20
+        }
+    }
+
+    func heightForRowAt(atIndexPath indexPath: IndexPath) -> CGFloat {
+        switch sectionType(inSection: indexPath.section) {
+        case .trending:
+            return 260
+        case .recommend:
+            return 120
+        }
     }
 }

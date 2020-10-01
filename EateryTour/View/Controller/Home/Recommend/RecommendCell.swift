@@ -18,7 +18,7 @@ final class RecommendCell: TableCell {
     @IBOutlet private weak var ratingLabel: Label!
 
     // MARK: - Propeties
-    var viewModel: RecommendCellViewModel? {
+    var viewModel: CellViewModel? {
         didSet {
             updateUI()
         }
@@ -38,7 +38,6 @@ final class RecommendCell: TableCell {
 
     // MARK: - Private functions
     private func updateUI() {
-
     }
 
     private func configUI() {

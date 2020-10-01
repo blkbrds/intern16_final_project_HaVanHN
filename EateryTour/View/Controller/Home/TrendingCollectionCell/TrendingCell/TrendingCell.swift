@@ -24,7 +24,7 @@ final class TrendingCell: CollectionCell {
     @IBOutlet private weak var addressAndCurrencyLabel: Label!
 
     // MARK: - Propeties
-    var viewModel = TrendingCellViewModel() {
+    var viewModel: TrendingCellViewModel? {
         didSet {
             updateUI()
         }
@@ -54,6 +54,7 @@ final class TrendingCell: CollectionCell {
     }
 
     private func updateUI() {
+        guard let viewModel = viewModel else { return }
         guard let restaurant = viewModel.restaurant else { return }
         restaurantNameLabel.text = restaurant.name
         if restaurant.address != "" || restaurant.city != "" {
@@ -65,17 +66,18 @@ final class TrendingCell: CollectionCell {
 
     // MARK: - Public functions
     func getInformation(completion: @escaping APICompletion) {
+        guard let viewModel = viewModel else { return }
         viewModel.loadMoreInformation(completion: { [weak self] (result) in
             guard let this = self else { return }
             switch result {
             case .success:
-                guard let urlImage = URL(string: this.viewModel.image) else { return }
-                if let restaurant = this.viewModel.restaurant {
+                guard let newViewModel = this.viewModel, let urlImage = URL(string: newViewModel.image) else { return }
+                if let restaurant = newViewModel.restaurant {
                     this.delegate?.cell(this, needsPerform: .callApiSuccess(restaurant: restaurant))
                 }
                 this.restaurantImageView.sd_setImage(with: urlImage)
-                this.addressAndCurrencyLabel.text = this.viewModel.currency
-                this.ratingLabel.text = String(this.viewModel.rating)
+                this.addressAndCurrencyLabel.text = newViewModel.currency
+                this.ratingLabel.text = String(newViewModel.rating)
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))

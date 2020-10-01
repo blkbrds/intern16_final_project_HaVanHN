@@ -13,8 +13,6 @@ final class HomeViewController: ViewController {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var tableView: TableView!
-    @IBOutlet private weak var collectionView: CollectionView!
-    @IBOutlet private weak var pageControl: UIPageControl!
 
     // MARK: - Propeties
     private var viewModel = HomeViewModel()
@@ -25,7 +23,6 @@ final class HomeViewController: ViewController {
         super.viewDidLoad()
         configTableView()
         configNavigationBar()
-        configCollectionView()
         configRefreshControl()
         configLocation()
         getTrendingRestaurant()
@@ -42,13 +39,10 @@ final class HomeViewController: ViewController {
         tableView.delegate = self
         let recommendCell = UINib(nibName: "RecommendCell", bundle: Bundle.main)
         tableView.register(recommendCell, forCellReuseIdentifier: "RecommendCell")
-    }
-
-    private func configCollectionView() {
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        let trendingCell = UINib(nibName: "TrendingCell", bundle: Bundle.main)
-        collectionView.register(trendingCell, forCellWithReuseIdentifier: "TrendingCell")
+        let trendingCollectionCell = UINib(nibName: "TrendingCollectionCell", bundle: .main)
+        tableView.register(trendingCollectionCell, forCellReuseIdentifier: "TrendingCollectionCell")
+        let customHeader = UINib(nibName: "CustomHeader", bundle: Bundle.main)
+        tableView.register(customHeader, forHeaderFooterViewReuseIdentifier: "CustomHeader")
     }
 
     private func configNavigationBar() {
@@ -72,29 +66,13 @@ final class HomeViewController: ViewController {
     }
 
     private func getTrendingRestaurant() {
-        viewModel.getTrendingRestaurant(limit: 25) { [weak self] (result) in
+        viewModel.getTrendingRestaurant(limit: 20) { [weak self] (result) in
             guard let this = self else { return }
             switch result {
             case .success:
-                this.collectionView.reloadData()
-                this.getMoreInformationForCell()
+                this.tableView.reloadData()
             case .failure(let error):
                 this.alert(msg: error.localizedDescription, handler: nil)
-            }
-        }
-    }
-
-    private func getMoreInformationForCell() {
-        for cell in  collectionView.visibleCells {
-            if let cell = cell as? TrendingCell {
-                cell.getInformation { (result) in
-                    switch result {
-                    case .success:
-                        break
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                    }
-                }
             }
         }
     }
@@ -111,13 +89,26 @@ final class HomeViewController: ViewController {
 // MARK: - UITableViewDataSource
 extension HomeViewController: UITableViewDataSource {
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        print(viewModel.numberOfRowInSection(inSection: section))
+        return viewModel.numberOfRowInSection(inSection: section)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let recommendCell = tableView.dequeueReusableCell(withIdentifier: "RecommendCell", for: indexPath) as? RecommendCell else { return UITableViewCell() }
-        return recommendCell
+        switch viewModel.sectionType(inSection: indexPath.section) {
+        case .trending:
+           guard let trendingCell = tableView.dequeueReusableCell(withIdentifier: "TrendingCollectionCell", for: indexPath) as? TrendingCollectionCell else { return UITableViewCell() }
+            trendingCell.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
+            return trendingCell
+        case .recommend:
+            guard let recommentCell = tableView.dequeueReusableCell(withIdentifier: "RecommendCell", for: indexPath) as? RecommendCell else { return UITableViewCell() }
+            recommentCell.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
+            return recommentCell
+        }
     }
 }
 
@@ -125,57 +116,12 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
-    }
-}
-
-// MARK: - UICollectionViewDataSource
-extension HomeViewController: UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.restaurants.count
+        return viewModel.heightForRowAt(atIndexPath: indexPath)
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let trendingCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCell", for: indexPath) as? TrendingCell else { return CollectionCell() }
-        trendingCell.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
-        return trendingCell
-    }
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width / 1.5 + 20, height: 210)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-    }
-}
-
-// MARK: - UIScrollViewDelegate
-extension HomeViewController: UIScrollViewDelegate {
-
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if !decelerate {
-            getMoreInformationForCell()
-        }
-    }
-
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        getMoreInformationForCell()
-    }
-}
-
-// MARK: - TrendingCellDelegate
-extension HomeViewController: TrendingCellDelegate {
-
-    func cell(_ cell: TrendingCell, needsPerform action: TrendingCell.Action) {
-        switch action {
-        case .callApiSuccess(restaurant: let restaurant):
-            viewModel.updateApiSuccess(newRestaurant: restaurant)
-        }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+       guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CustomHeader") as? CustomHeader else { return nil }
+        view.viewModel = viewModel.viewForHeaderInSection(inSection: section)
+        return view
     }
 }
