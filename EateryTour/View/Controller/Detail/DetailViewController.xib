@@ -26,14 +26,15 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWt-p6-gzH" customClass="Button" customModule="EateryTour" customModuleProvider="target">
-                    <rect key="frame" x="10" y="44" width="30" height="30"/>
+                    <rect key="frame" x="10" y="44" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="XWt-p6-gzH" secondAttribute="height" id="E3y-gg-Y4f"/>
-                        <constraint firstAttribute="height" constant="30" id="p2X-bh-L2r"/>
+                        <constraint firstAttribute="height" constant="40" id="p2X-bh-L2r"/>
                     </constraints>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" image="chevron.left" catalog="system">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="medium" weight="regular"/>
                     </state>
                 </button>
             </subviews>

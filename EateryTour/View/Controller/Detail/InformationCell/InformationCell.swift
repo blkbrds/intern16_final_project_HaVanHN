@@ -23,6 +23,7 @@ final class InformationCell: TableCell {
     var viewModel: InformationCellViewModel? {
         didSet {
             updateUI()
+            configFavoriteButton()
         }
     }
 
@@ -31,7 +32,6 @@ final class InformationCell: TableCell {
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        configFavoriteButton()
     }
 
     // MARK: - Override functions
@@ -58,7 +58,7 @@ final class InformationCell: TableCell {
         favoriteButton.layer.shadowColor = UIColor.black.cgColor
         favoriteButton.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
         favoriteButton.layer.shadowOpacity = 1.0
-        favoriteButton.layer.shadowRadius = 20
+        favoriteButton.layer.shadowRadius = 10
         favoriteButton.layer.masksToBounds = false
     }
 

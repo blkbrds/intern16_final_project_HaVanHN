@@ -63,7 +63,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.8" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cow-zV-CgZ" customClass="Label" customModule="EateryTour" customModuleProvider="target">
-                        <rect key="frame" x="321" y="304" width="33" height="23"/>
+                        <rect key="frame" x="325" y="304" width="29" height="23"/>
                         <color key="tintColor" red="1" green="0.75335672799999998" blue="0.2887301243" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="19"/>
                         <color key="textColor" systemColor="systemYellowColor"/>
@@ -76,7 +76,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Fl4-b6-xnZ" customClass="ImageView" customModule="EateryTour" customModuleProvider="target">
-                        <rect key="frame" x="301" y="308.5" width="15" height="15"/>
+                        <rect key="frame" x="305" y="308.5" width="15" height="15"/>
                         <color key="tintColor" red="1" green="0.75335672801792297" blue="0.28873012432526968" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="JCM-qA-QL5"/>
@@ -86,7 +86,6 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="hIK-Ua-5Lv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="0aN-Py-gF9"/>
-                    <constraint firstItem="Fl4-b6-xnZ" firstAttribute="leading" secondItem="wgr-cI-bGp" secondAttribute="leading" constant="5" id="2Yq-bU-Pl5"/>
                     <constraint firstItem="9zI-zK-hcC" firstAttribute="trailing" secondItem="nYp-JN-mvV" secondAttribute="trailing" id="3VM-vX-UNE"/>
                     <constraint firstItem="cow-zV-CgZ" firstAttribute="trailing" secondItem="IA1-i9-wWM" secondAttribute="trailing" constant="-3" id="5dT-k7-rur"/>
                     <constraint firstItem="wgr-cI-bGp" firstAttribute="trailing" secondItem="cow-zV-CgZ" secondAttribute="trailing" id="649-ln-3tH"/>
