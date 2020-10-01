@@ -118,8 +118,10 @@ extension MapCell: MKMapViewDelegate {
             } else {
                 view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 view.image = #imageLiteral(resourceName: "img-location-detail")
-                //view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-                view.leftCalloutAccessoryView = UIImageView(image: #imageLiteral(resourceName: "img-open-detail"))
+                // view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+               view.leftCalloutAccessoryView = UIImageView(image: #imageLiteral(resourceName: "img-open-detail"))
+                view.canShowCallout = true
+                view.annotation = annotation
             }
             return view
         }
