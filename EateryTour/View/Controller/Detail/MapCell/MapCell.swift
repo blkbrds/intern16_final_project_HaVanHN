@@ -37,7 +37,6 @@ final class MapCell: TableCell {
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        configButton()
     }
 
     // MARK: - Override functions
