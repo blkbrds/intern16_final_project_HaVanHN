@@ -46,7 +46,7 @@ final class TrendingCell: CollectionCell {
 
     // MARK: - Private functions
     private func configUI() {
-        restaurantImageView.layer.cornerRadius = 10
+        restaurantImageView.layer.cornerRadius = 7
         restaurantImageView.clipsToBounds = true
         distanceButton.layer.cornerRadius = 15
         distanceButton.clipsToBounds = true
@@ -61,9 +61,9 @@ final class TrendingCell: CollectionCell {
         addressAndCurrencyLabel.text = viewModel.getAddressAndCurrencyLabel()
         distanceButton.setTitle(String(restaurant.distance), for: .normal)
         ratingLabel.text = String(restaurant.rating)
-        guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
-        restaurantImageView.sd_setImage(with: urlImage)
-        amountOfRatingLabel.text = detail.sumaryLikes
+//        guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
+//        restaurantImageView.sd_setImage(with: urlImage)
+//        amountOfRatingLabel.text = detail.sumaryLikes
     }
 
     // MARK: - Public functions

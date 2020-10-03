@@ -18,7 +18,7 @@ class TrendingCollectionCell: TableCell {
         didSet {
             getMoreInformationForCell()
             collectionView.reloadData()
-            getMoreInformationForCell()
+            //getMoreInformationForCell()
         }
     }
     // MARK: - Initialize
@@ -69,11 +69,11 @@ class TrendingCollectionCell: TableCell {
 extension TrendingCollectionCell: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 260)
+        return CGSize(width: UIScreen.main.bounds.width - 40, height: 260)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        return UIEdgeInsets(top: 0, left: 5, bottom: 5, right: 0)
     }
 }
 
@@ -95,7 +95,6 @@ extension TrendingCollectionCell: UIScrollViewDelegate {
 extension TrendingCollectionCell: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //guard let viewModel = viewModel else { return 10 }
         return viewModel.numberOfRowInSection()
     }
 

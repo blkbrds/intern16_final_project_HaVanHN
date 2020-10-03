@@ -15,9 +15,6 @@ final class RestaurantCellViewModel {
 
     init( restaurant: Restaurant? = nil) {
         self.restaurant = restaurant
-//        if let restaurant = restaurant {
-//            self.detail?.bestPhoto = restaurant
-//        }
     }
 
     func loadMoreInformation(completion: @escaping APICompletion) {

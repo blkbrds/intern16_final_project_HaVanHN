@@ -100,9 +100,9 @@ final class HomeViewModel: ViewModel {
     func heightForRowAt(atIndexPath indexPath: IndexPath) -> CGFloat {
         switch sectionType(inSection: indexPath.section) {
         case .trending:
-            return 260
+            return 280
         case .recommend:
-            return 120
+            return UITableView.automaticDimension
         }
     }
 }

@@ -50,12 +50,6 @@ extension Api.Path {
     }
 }
 
-//    struct Search {
-//        let id: String
-//        let key: String
-//        var path: String { return baseURL / clientKeySecret / "&\(key)" / "\(id)" }
-//    }
-
 protocol URLStringConvertible {
     var urlString: String { get }
 }

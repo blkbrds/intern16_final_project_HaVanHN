@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="394" height="265"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ebj-xZ-DK0" customClass="ImageView" customModule="EateryTour" customModuleProvider="target">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="macaron" translatesAutoresizingMaskIntoConstraints="NO" id="ebj-xZ-DK0" customClass="ImageView" customModule="EateryTour" customModuleProvider="target">
                         <rect key="frame" x="8" y="8" width="378" height="185.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tokazaky Restaurant" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2c-Tn-nj3" customClass="Label" customModule="EateryTour" customModuleProvider="target">
@@ -116,6 +116,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="macaron" width="520" height="346.5"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
