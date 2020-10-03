@@ -10,21 +10,22 @@ import Foundation
 
 final class TrendingCellViewModel {
 
-    var id: String = ""
-    var name: String = ""
-    var address: String = ""
-    var lat: Float = 0.0
-    var lng: Float = 0.0
-    var city: String = ""
-    var rating: Float = 0.0
-    var currency: String = ""
-    var image: String = ""
+//    var id: String = ""
+//    var name: String = ""
+//    var address: String = ""
+//    var lat: Float = 0.0
+//    var lng: Float = 0.0
+//    var city: String = ""
+//    var rating: Float = 0.0
+//    var currency: String = ""
+//    var image: String = ""
+    var detail: Detail?
     var restaurant: Restaurant?
 
     init( restaurant: Restaurant? = nil) {
         self.restaurant = restaurant
-        if let a = restaurant?.image {
-            self.image = a
+        if let restaurantImage = restaurant?.image {
+            self.detail?.bestPhoto = restaurantImage
         }
     }
 
@@ -36,9 +37,9 @@ final class TrendingCellViewModel {
             guard let this = self else { return }
             switch result {
             case .success(let data):
-                this.rating = data.rating
-                this.currency = data.currency
-                this.image = data.bestPhoto
+                this.detail?.rating = data.rating
+                this.detail?.currency = data.currency
+                this.detail?.sumaryLikes = data.sumaryLikes
                 this.restaurant?.isLoadApiCompleted = true
                 this.restaurant?.image = data.bestPhoto
                 completion(.success)

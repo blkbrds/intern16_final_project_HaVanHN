@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomHeader: UITableViewHeaderFooterView {
+final class CustomHeader: UITableViewHeaderFooterView {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var nameLabel: Label!

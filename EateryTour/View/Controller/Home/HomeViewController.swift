@@ -110,6 +110,12 @@ extension HomeViewController: UITableViewDataSource {
             return recommentCell
         }
     }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+       guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CustomHeader") as? CustomHeader else { return nil }
+        view.viewModel = viewModel.viewForHeaderInSection(inSection: section)
+        return view
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -119,9 +125,7 @@ extension HomeViewController: UITableViewDelegate {
         return viewModel.heightForRowAt(atIndexPath: indexPath)
     }
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-       guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CustomHeader") as? CustomHeader else { return nil }
-        view.viewModel = viewModel.viewForHeaderInSection(inSection: section)
-        return view
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
 }

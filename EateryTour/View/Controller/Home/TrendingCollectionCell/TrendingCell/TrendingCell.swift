@@ -22,7 +22,8 @@ final class TrendingCell: CollectionCell {
     @IBOutlet private weak var distanceButton: Button!
     @IBOutlet private weak var restaurantNameLabel: Label!
     @IBOutlet private weak var addressAndCurrencyLabel: Label!
-
+    @IBOutlet private weak var amountOfRatingLabel: Label!
+    
     // MARK: - Propeties
     var viewModel: TrendingCellViewModel? {
         didSet {
@@ -60,8 +61,9 @@ final class TrendingCell: CollectionCell {
         if restaurant.address != "" || restaurant.city != "" {
             addressAndCurrencyLabel.text = restaurant.address + restaurant.city + " - "
         }
-        guard let urlImage = URL(string: viewModel.image) else { return }
+        guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
         restaurantImageView.sd_setImage(with: urlImage)
+        addressAndCurrencyLabel.text? += detail.currency
     }
 
     // MARK: - Public functions
@@ -71,13 +73,14 @@ final class TrendingCell: CollectionCell {
             guard let this = self else { return }
             switch result {
             case .success:
-                guard let newViewModel = this.viewModel, let urlImage = URL(string: newViewModel.image) else { return }
+                guard let newViewModel = this.viewModel, let detail = newViewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
                 if let restaurant = newViewModel.restaurant {
                     this.delegate?.cell(this, needsPerform: .callApiSuccess(restaurant: restaurant))
                 }
                 this.restaurantImageView.sd_setImage(with: urlImage)
-                this.addressAndCurrencyLabel.text = newViewModel.currency
-                this.ratingLabel.text = String(newViewModel.rating)
+                this.addressAndCurrencyLabel.text = detail.currency
+                this.ratingLabel.text = String(detail.rating)
+                this.amountOfRatingLabel.text = detail.sumaryLikes
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))
