@@ -64,7 +64,7 @@ final class HomeViewModel: ViewModel {
     }
 
     func getCellRecommendForRowAt(atIndexPath indexPath: IndexPath) -> RestaurantCellViewModel? {
-        guard 0 < indexPath.row && indexPath.row < restaurantsRecommend.count else { return nil }
+        guard 0 <= indexPath.row && indexPath.row < restaurantsRecommend.count else { return nil }
         return RestaurantCellViewModel(restaurant: restaurantsRecommend[indexPath.row])
     }
 
