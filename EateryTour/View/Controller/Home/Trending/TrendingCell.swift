@@ -22,6 +22,7 @@ final class TrendingCell: TableCell {
     @IBOutlet private weak var distanceButton: Button!
     @IBOutlet private weak var restaurantNameLabel: Label!
     @IBOutlet private weak var addressAndCurrencyLabel: Label!
+    @IBOutlet private weak var amountOfLikesLabel: Label!
 
     // MARK: - Propeties
     var viewModel = TrendingCellViewModel() {
@@ -54,11 +55,11 @@ final class TrendingCell: TableCell {
     private func updateUI() {
         guard let restaurant = viewModel.restaurant else { return }
         restaurantNameLabel.text = restaurant.name
-        if restaurant.address != "" || restaurant.city != "" {
-            addressAndCurrencyLabel.text = restaurant.address + restaurant.city + " - "
-        }
+        addressAndCurrencyLabel.text = viewModel.getAddressAndCurrency()
         guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
         restaurantImageView.sd_setImage(with: urlImage)
+        amountOfLikesLabel.text = detail.amoutOfLikes
+        ratingLabel.text = String(detail.rating)
     }
 
     // MARK: - Public functions
@@ -72,8 +73,10 @@ final class TrendingCell: TableCell {
                     this.delegate?.cell(this, needsPerform: .callApiSuccess(restaurant: restaurant))
                 }
                 this.restaurantImageView.sd_setImage(with: urlImage)
-                this.addressAndCurrencyLabel.text = detail.currency
+                this.addressAndCurrencyLabel.text = this.viewModel.getAddressAndCurrency()
                 this.ratingLabel.text = String(detail.rating)
+                this.amountOfLikesLabel.text = detail.amoutOfLikes
+                this.distanceButton.setTitle(this.viewModel.calculateDistance(), for: .normal)
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))

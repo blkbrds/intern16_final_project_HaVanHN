@@ -103,6 +103,7 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="addressAndCurrencyLabel" destination="Lsy-S0-loS" id="jmf-na-7oF"/>
+                <outlet property="amountOfLikesLabel" destination="4ha-ws-wzU" id="nrq-cR-ltv"/>
                 <outlet property="cellView" destination="H2p-sc-9uM" id="c95-26-1RZ"/>
                 <outlet property="distanceButton" destination="Jha-C8-zPc" id="O3G-uk-ems"/>
                 <outlet property="ratingLabel" destination="Ql0-r3-Fq2" id="UC4-mn-gt2"/>

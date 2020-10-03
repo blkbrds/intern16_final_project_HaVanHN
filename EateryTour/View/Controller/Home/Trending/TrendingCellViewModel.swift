@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 final class TrendingCellViewModel {
 
@@ -36,5 +37,19 @@ final class TrendingCellViewModel {
                 completion(.failure(error))
             }
         }
+    }
+
+    func calculateDistance() -> String {
+        guard let userLocation = LocationManager.shared.currentLocation else { return "" }
+        guard let detail = detail else { return "" }
+        let restaurantLocation: CLLocation = CLLocation(latitude: CLLocationDegrees(detail.lat), longitude: CLLocationDegrees(detail.lng))
+        let distance = userLocation.distance(from: restaurantLocation)
+        let distanceKm = distance / 1000
+        return String(format: "%.2f", distanceKm) + " km"
+    }
+
+    func getAddressAndCurrency() -> String {
+        guard let detail = detail else { return "" }
+        return "\(detail.address), \(detail.country) - \(detail.currency)"
     }
 }

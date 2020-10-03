@@ -28,7 +28,8 @@ import RealmSwift
     dynamic var openTime: String = ""
     dynamic var isOpen: Bool = false
     dynamic var openStatus: String = ""
-    var isFavorite: Bool = false
+    dynamic var amoutOfLikes: String = ""
+    dynamic var isFavorite: Bool = false
 
     // MARK: - Initialize
     init?(map: Map) {
@@ -77,5 +78,6 @@ import RealmSwift
             }
         }
         openStatus <- map["response.venue.hours.status"]
+        amoutOfLikes <- map["response.venue.likes.summary"]
     }
 }

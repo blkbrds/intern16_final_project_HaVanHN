@@ -56,7 +56,7 @@ final class DetailViewModel {
             return InformationCellViewModel(imageURL: detail.bestPhoto,
                                             name: detail.name, currency: detail.currency,
                                             address: detail.address, rating: detail.rating,
-                                            amountOfRating: detail.sumaryLikes)
+                                            amountOfRating: detail.sumaryLikes, isFavorite: checkIsFavorite() ?? false)
         } else {
             return nil
         }
@@ -64,13 +64,13 @@ final class DetailViewModel {
 
     func getCellForRowAtMapSection(atIndexPath indexPath: IndexPath) -> MapCellViewModel? {
         guard let detail = detail else { return nil }
-            if detail.openDate == "" && detail.openTime == "" {
-                if detail.openStatus == "" {
-                    return MapCellViewModel(openToday: "Not updated yet", openHours: "Not updated yet", lat: detail.lat, lng: detail.lng, name: detail.name, address: detail.address)
-                }
-            } else {
-                return MapCellViewModel(openToday: detail.openStatus, openHours: detail.openDate + " " + detail.openTime, lat: detail.lat, lng: detail.lng, name: detail.name, address: detail.address)
+        if detail.openDate == "" && detail.openTime == "" {
+            if detail.openStatus == "" {
+                return MapCellViewModel(openToday: "Not updated yet", openHours: "Not updated yet", lat: detail.lat, lng: detail.lng, name: detail.name, address: detail.address)
             }
+        } else {
+            return MapCellViewModel(openToday: detail.openStatus, openHours: detail.openDate + " " + detail.openTime, lat: detail.lat, lng: detail.lng, name: detail.name, address: detail.address)
+        }
         return nil
     }
 
@@ -96,14 +96,14 @@ final class DetailViewModel {
     func addDetailIntoRealm(completion: @escaping APICompletion) {
         do {
             let realm = try Realm()
-            let predicate = NSPredicate(format: "id = %@ ", id)
+            let predicate = NSPredicate(format: "id = %@", id)
             let filterPredicate = realm.objects(Detail.self).filter(predicate)
             if let favoriteDetail = filterPredicate.first {
-                favoriteDetail.isFavorite = !favoriteDetail.isFavorite
-                    try realm.write {
-                        realm.create(Detail.self, value: favoriteDetail, update: .modified)
-                        completion(.success)
-                    }
+                try realm.write {
+                    favoriteDetail.isFavorite = !favoriteDetail.isFavorite
+                    realm.create(Detail.self, value: favoriteDetail, update: .modified)
+                    completion(.success)
+                }
             } else {
                 try realm.write {
                     if let detail = detail {
@@ -112,9 +112,25 @@ final class DetailViewModel {
                         completion(.success)
                     }
                 }
-        }
+            }
         } catch {
             completion(.failure(error))
         }
+    }
+
+    func checkIsFavorite() -> Bool? {
+        do {
+            let realm = try Realm()
+            let predicate = NSPredicate(format: "id = %@", id)
+            let filterPredicate = realm.objects(Detail.self).filter(predicate)
+            if let favoriteDetail = filterPredicate.first {
+                print("favorite: \(favoriteDetail.isFavorite)")
+                return favoriteDetail.isFavorite
+            }
+        } catch {
+            print("can't fetch data")
+            return nil
+        }
+        return nil
     }
 }

@@ -88,7 +88,9 @@ final class HomeViewController: ViewController {
     }
 
     private func getTrendingRestaurant() {
+        HUD.show()
         viewModel.getTrendingRestaurant(limit: 25) { [weak self] (result) in
+            HUD.popActivity()
             guard let this = self else { return }
             switch result {
             case .success:

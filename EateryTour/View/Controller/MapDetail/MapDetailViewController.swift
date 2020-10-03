@@ -75,12 +75,11 @@ final class MapDetailViewController: UIViewController {
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destination, addressDictionary: nil))
         request.requestsAlternateRoutes = false
         let directions = MKDirections(request: request)
-        directions.calculate { [unowned self] (response, _) in
+        directions.calculate { (response, _) in
             guard let response = response else { return }
-            for route in response.routes {
-                self.mapView.addOverlay(route.polyline)
-                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
-            }
+            guard let route: MKRoute = response.routes.first else { return }
+            self.mapView.addOverlay(route.polyline)
+            self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
         }
     }
 
