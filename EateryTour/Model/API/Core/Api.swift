@@ -18,7 +18,7 @@ final class Api {
     struct Trending {}
 
     struct Detail {}
-    
+
     struct Recommend {}
 
     struct Search {
@@ -33,12 +33,12 @@ extension Api.Path {
          static var filter: String { return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&v=\(APIKeys.dateVersion)&radius=10000" }
         static var path: String { return baseURL / "explore?\(filter)" }
     }
-    
+
     struct Recommend {
         static var filter: String {
             return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&v=\(APIKeys.dateVersion)"
         }
-        static var path: String { return baseURL / "\(filter)"}
+        static var path: String { return baseURL / "\(filter)" }
     }
 
     struct Detail {

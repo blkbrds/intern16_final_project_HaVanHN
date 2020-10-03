@@ -14,10 +14,10 @@ final class Comment: Mappable {
     var lastName: String = ""
     var text: String = ""
     var photoURL: String = ""
-    
+
     init?(map: Map) {
     }
-    
+
     func mapping(map: Map) {
         firstName <- map["user.firstName"]
         lastName <- map["user.lastName"]

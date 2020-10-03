@@ -26,8 +26,8 @@ final class HomeViewController: ViewController {
         configRefreshControl()
         configLocation()
         configTableView()
-        getTrendingRestaurant()
         getRecommendRestaurant()
+        getTrendingRestaurant()
     }
 
     override func viewWillAppear(_ animated: Bool) {

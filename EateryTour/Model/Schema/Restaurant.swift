@@ -27,11 +27,14 @@ final class Restaurant: Mappable {
     func mapping(map: Map) {
         id <- map["venue.id"]
         name <- map["venue.name"]
+        print(name)
         lat <- map["venue.location.lat"]
         lng <- map["venue.location.lng"]
         formattedAddress <- map["venue.location.formattedAddress"]
         distance <- map["venue.location.distance"]
+        print(distance)
         currency <- map["venue.price.currency"]
+        print("currency: \(currency)")
         rating <- map["venue.rating"]
     }
 }

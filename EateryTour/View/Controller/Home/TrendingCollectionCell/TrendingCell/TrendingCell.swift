@@ -23,7 +23,7 @@ final class TrendingCell: CollectionCell {
     @IBOutlet private weak var restaurantNameLabel: Label!
     @IBOutlet private weak var addressAndCurrencyLabel: Label!
     @IBOutlet private weak var amountOfRatingLabel: Label!
-    
+
     // MARK: - Propeties
     var viewModel: RestaurantCellViewModel? {
         didSet {

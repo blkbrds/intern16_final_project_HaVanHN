@@ -11,7 +11,7 @@ import Alamofire
 import ObjectMapper
 
 extension Api.Recommend {
-    
+
     struct QueryParams {
         var section: String
         var query: String
@@ -54,4 +54,3 @@ extension Api.Recommend {
         }
     }
 }
-

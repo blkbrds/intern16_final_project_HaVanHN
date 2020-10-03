@@ -38,6 +38,12 @@ final class RecommendCell: TableCell {
 
     // MARK: - Private functions
     private func updateUI() {
+        guard let viewModel = viewModel, let restaurant = viewModel.restaurant else { return }
+        addressAndCurrencyLabel.text = viewModel.getAddressAndCurrencyLabel()
+        nameLabel.text = restaurant.name
+        ratingLabel.text = String(restaurant.rating)
+        guard let detail = viewModel.detail else { return }
+        amountOfRatingLabel.text = detail.sumaryLikes
     }
 
     private func configUI() {
