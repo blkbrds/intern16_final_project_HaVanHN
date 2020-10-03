@@ -68,7 +68,9 @@ final class HomeViewController: ViewController {
     }
 
     private func getTrendingRestaurant() {
+        HUD.show()
         viewModel.getTrendingRestaurant(limit: 10) { [weak self] (result) in
+            HUD.popActivity()
             guard let this = self else { return }
             switch result {
             case .success:
@@ -82,7 +84,9 @@ final class HomeViewController: ViewController {
     }
 
     private func getRecommendRestaurant() {
+        HUD.show()
         viewModel.getRecommendRestaurant(limit: 20) { [weak self] (result) in
+            HUD.popActivity()
             guard let this = self else { return }
             switch result {
             case.success:
