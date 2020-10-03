@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class CellViewModel {
+final class TrendingCollectionCellViewModel {
 
     var restaurants: [Restaurant]
 
@@ -16,8 +16,8 @@ final class CellViewModel {
         self.restaurants = restaurants
     }
 
-    func getCellForRowAt(atIndexPath indexPath: IndexPath) -> TrendingCellViewModel? {
-        return TrendingCellViewModel(restaurant: restaurants[indexPath.row])
+    func getCellForRowAt(atIndexPath indexPath: IndexPath) -> RestaurantCellViewModel? {
+        return RestaurantCellViewModel(restaurant: restaurants[indexPath.row])
     }
 
     func numberOfRowInSection() -> Int {

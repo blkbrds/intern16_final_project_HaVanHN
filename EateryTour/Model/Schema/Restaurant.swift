@@ -13,14 +13,13 @@ final class Restaurant: Mappable {
 
     var id: String = ""
     var name: String = ""
-    var address: String = ""
     var lat: Float = 0.0
     var lng: Float = 0.0
-    var distance: Int = 0
-    var city: String = ""
-    var detail: Detail?
+    var formattedAddress: [String] = []
+    var distance: Float = 0.0
+    var currency: String = ""
+    var rating: Float = 0.0
     var isLoadApiCompleted: Bool = false
-    var image: String = ""
 
     init?(map: Map) {
     }
@@ -28,10 +27,11 @@ final class Restaurant: Mappable {
     func mapping(map: Map) {
         id <- map["venue.id"]
         name <- map["venue.name"]
-        address <- map["venue.location.address"]
         lat <- map["venue.location.lat"]
         lng <- map["venue.location.lng"]
-        distance <- map["location.distance"]
-        city <- map["location.city"]
+        formattedAddress <- map["venue.location.formattedAddress"]
+        distance <- map["venue.location.distance"]
+        currency <- map["venue.price.currency"]
+        rating <- map["venue.rating"]
     }
 }

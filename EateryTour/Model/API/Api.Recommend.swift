@@ -8,25 +8,31 @@
 
 import Foundation
 import Alamofire
+import ObjectMapper
 
 extension Api.Recommend {
     
     struct QueryParams {
+        var section: String
         var query: String
         var location: String
         var limit: String
+        var price: String
 
         func toJSON() -> Parameters {
             let parameters: Parameters = [
-                "limit": limit,
+                "section": section,
                 "query": query,
-                "ll": location
+                "ll": location,
+                "limit": limit,
+                "price": price
             ]
             return parameters
         }
     }
+
     @discardableResult
-    static func getTrending(params: QueryParams, completion: @escaping Completion<[Restaurant]>) -> Request? {
+    static func getRecommend(params: QueryParams, completion: @escaping Completion<[Restaurant]>) -> Request? {
         let path = Api.Path.Trending.path
         return api.request(method: .get, urlString: path, parameters: params.toJSON()) { result in
             DispatchQueue.main.async {

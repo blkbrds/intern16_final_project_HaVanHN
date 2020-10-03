@@ -14,7 +14,7 @@ class TrendingCollectionCell: TableCell {
     @IBOutlet weak var collectionView: CollectionView!
 
     // MARK: - Propeties
-    var viewModel = CellViewModel() {
+    var viewModel = TrendingCollectionCellViewModel() {
         didSet {
             getMoreInformationForCell()
             collectionView.reloadData()

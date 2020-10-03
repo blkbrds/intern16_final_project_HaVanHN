@@ -25,7 +25,7 @@ final class TrendingCell: CollectionCell {
     @IBOutlet private weak var amountOfRatingLabel: Label!
     
     // MARK: - Propeties
-    var viewModel: TrendingCellViewModel? {
+    var viewModel: RestaurantCellViewModel? {
         didSet {
             updateUI()
         }
@@ -58,12 +58,12 @@ final class TrendingCell: CollectionCell {
         guard let viewModel = viewModel else { return }
         guard let restaurant = viewModel.restaurant else { return }
         restaurantNameLabel.text = restaurant.name
-        if restaurant.address != "" || restaurant.city != "" {
-            addressAndCurrencyLabel.text = restaurant.address + restaurant.city + " - "
-        }
+        addressAndCurrencyLabel.text = viewModel.getAddressAndCurrencyLabel()
+        distanceButton.setTitle(String(restaurant.distance), for: .normal)
+        ratingLabel.text = String(restaurant.rating)
         guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
         restaurantImageView.sd_setImage(with: urlImage)
-        addressAndCurrencyLabel.text? += detail.currency
+        amountOfRatingLabel.text = detail.sumaryLikes
     }
 
     // MARK: - Public functions
@@ -78,8 +78,6 @@ final class TrendingCell: CollectionCell {
                     this.delegate?.cell(this, needsPerform: .callApiSuccess(restaurant: restaurant))
                 }
                 this.restaurantImageView.sd_setImage(with: urlImage)
-                this.addressAndCurrencyLabel.text = detail.currency
-                this.ratingLabel.text = String(detail.rating)
                 this.amountOfRatingLabel.text = detail.sumaryLikes
                 completion(.success)
             case .failure(let error):

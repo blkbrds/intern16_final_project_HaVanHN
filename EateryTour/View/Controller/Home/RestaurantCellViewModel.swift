@@ -8,25 +8,16 @@
 
 import Foundation
 
-final class TrendingCellViewModel {
+final class RestaurantCellViewModel {
 
-//    var id: String = ""
-//    var name: String = ""
-//    var address: String = ""
-//    var lat: Float = 0.0
-//    var lng: Float = 0.0
-//    var city: String = ""
-//    var rating: Float = 0.0
-//    var currency: String = ""
-//    var image: String = ""
     var detail: Detail?
     var restaurant: Restaurant?
 
     init( restaurant: Restaurant? = nil) {
         self.restaurant = restaurant
-        if let restaurantImage = restaurant?.image {
-            self.detail?.bestPhoto = restaurantImage
-        }
+//        if let restaurant = restaurant {
+//            self.detail?.bestPhoto = restaurant
+//        }
     }
 
     func loadMoreInformation(completion: @escaping APICompletion) {
@@ -37,15 +28,22 @@ final class TrendingCellViewModel {
             guard let this = self else { return }
             switch result {
             case .success(let data):
-                this.detail?.rating = data.rating
-                this.detail?.currency = data.currency
                 this.detail?.sumaryLikes = data.sumaryLikes
+                this.detail?.comments = data.comments
+                this.detail?.bestPhoto = data.bestPhoto
+                this.detail?.openDate = data.openDate
+                this.detail?.openTime = data.openTime
+                this.detail?.isOpen = data.isOpen
                 this.restaurant?.isLoadApiCompleted = true
-                this.restaurant?.image = data.bestPhoto
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))
             }
         }
+    }
+    
+    func getAddressAndCurrencyLabel() -> String {
+        guard let restaurant = restaurant else { return "" }
+        return "\(restaurant.formattedAddress[0]), \(restaurant.formattedAddress[1]) - \(restaurant.currency)"
     }
 }

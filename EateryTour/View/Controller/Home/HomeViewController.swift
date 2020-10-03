@@ -17,6 +17,8 @@ final class HomeViewController: ViewController {
     // MARK: - Propeties
     private var viewModel = HomeViewModel()
     private var refreshControl = UIRefreshControl()
+    private var isReloadDataRecommend: Bool = false
+    private var isReloadDataTrending: Bool = false
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -26,6 +28,7 @@ final class HomeViewController: ViewController {
         configRefreshControl()
         configLocation()
         getTrendingRestaurant()
+        getRecommendRestaurant()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -66,11 +69,23 @@ final class HomeViewController: ViewController {
     }
 
     private func getTrendingRestaurant() {
-        viewModel.getTrendingRestaurant(limit: 20) { [weak self] (result) in
+        viewModel.getTrendingRestaurant(limit: 10) { [weak self] (result) in
             guard let this = self else { return }
             switch result {
             case .success:
-                this.tableView.reloadData()
+                this.isReloadDataTrending = true
+            case .failure(let error):
+                this.alert(msg: error.localizedDescription, handler: nil)
+            }
+        }
+    }
+
+    private func getRecommendRestaurant() {
+        viewModel.getRecommendRestaurant(limit: 20) { [weak self] (result) in
+            guard let this = self else { return }
+            switch result {
+            case.success:
+                this.isReloadDataRecommend = true
             case .failure(let error):
                 this.alert(msg: error.localizedDescription, handler: nil)
             }
@@ -94,7 +109,6 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(viewModel.numberOfRowInSection(inSection: section))
         return viewModel.numberOfRowInSection(inSection: section)
     }
 
@@ -102,11 +116,11 @@ extension HomeViewController: UITableViewDataSource {
         switch viewModel.sectionType(inSection: indexPath.section) {
         case .trending:
            guard let trendingCell = tableView.dequeueReusableCell(withIdentifier: "TrendingCollectionCell", for: indexPath) as? TrendingCollectionCell else { return UITableViewCell() }
-            trendingCell.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
+            trendingCell.viewModel = viewModel.getCellTrendingForRowAt(atIndexPath: indexPath)
             return trendingCell
         case .recommend:
             guard let recommentCell = tableView.dequeueReusableCell(withIdentifier: "RecommendCell", for: indexPath) as? RecommendCell else { return UITableViewCell() }
-            recommentCell.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
+            recommentCell.viewModel = viewModel.getCellRecommendForRowAt(atIndexPath: indexPath)
             return recommentCell
         }
     }

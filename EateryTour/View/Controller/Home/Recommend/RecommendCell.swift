@@ -18,7 +18,7 @@ final class RecommendCell: TableCell {
     @IBOutlet private weak var ratingLabel: Label!
 
     // MARK: - Propeties
-    var viewModel: CellViewModel? {
+    var viewModel: RestaurantCellViewModel? {
         didSet {
             updateUI()
         }
