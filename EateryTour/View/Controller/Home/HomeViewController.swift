@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import SVProgressHUD
 
 final class HomeViewController: ViewController {
 
@@ -17,16 +18,14 @@ final class HomeViewController: ViewController {
     // MARK: - Propeties
     private var viewModel = HomeViewModel()
     private var refreshControl = UIRefreshControl()
-    private var isReloadDataRecommend: Bool = false
-    private var isReloadDataTrending: Bool = false
 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configTableView()
         configNavigationBar()
         configRefreshControl()
         configLocation()
+        configTableView()
         getTrendingRestaurant()
         getRecommendRestaurant()
     }
@@ -73,7 +72,9 @@ final class HomeViewController: ViewController {
             guard let this = self else { return }
             switch result {
             case .success:
-                this.isReloadDataTrending = true
+                DispatchQueue.main.async {
+                    this.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+                }
             case .failure(let error):
                 this.alert(msg: error.localizedDescription, handler: nil)
             }
@@ -85,7 +86,9 @@ final class HomeViewController: ViewController {
             guard let this = self else { return }
             switch result {
             case.success:
-                this.isReloadDataRecommend = true
+                DispatchQueue.main.async {
+                    this.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+                }
             case .failure(let error):
                 this.alert(msg: error.localizedDescription, handler: nil)
             }
