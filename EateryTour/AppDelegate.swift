@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 enum RootType {
     case tutorial
@@ -15,6 +16,7 @@ enum RootType {
 
 let ud = UserDefaults.standard
 let screenSize = UIScreen.main.bounds
+typealias HUD = SVProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,7 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         configWindow()
+        configHUD()
         return true
+    }
+
+    private func configHUD() {
+        HUD.setDefaultMaskType(.clear)
     }
 
     private func configWindow() {

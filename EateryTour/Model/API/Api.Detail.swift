@@ -16,7 +16,6 @@ extension Api.Detail {
     static func getDetail(restaurantId: String, completion: @escaping Completion<Detail>) -> Request? {
         Api.Path.Detail.id = restaurantId
         let path = Api.Path.Detail.path
-        print(path)
         return api.request(method: .get, urlString: path) { result in
             DispatchQueue.main.async {
                 switch result {

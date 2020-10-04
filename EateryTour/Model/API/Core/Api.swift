@@ -19,6 +19,8 @@ final class Api {
 
     struct Detail {}
 
+    struct Recommend {}
+
     struct Search {
         let id: String
         let key: String
@@ -28,8 +30,15 @@ final class Api {
 extension Api.Path {
 
     struct Trending {
-         static var filter: String { return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)&radius=10000" }
+        static var filter: String { return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)&radius=10000" }
         static var path: String { return baseURL / "explore?\(filter)" }
+    }
+
+    struct Recommend {
+        static var filter: String {
+            return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)"
+        }
+        static var path: String { return baseURL / "\(filter)" }
     }
 
     struct Detail {
@@ -40,12 +49,6 @@ extension Api.Path {
         static var path: String { return baseURL / "\(id)?\(filter)" }
     }
 }
-
-//    struct Search {
-//        let id: String
-//        let key: String
-//        var path: String { return baseURL / clientKeySecret / "&\(key)" / "\(id)" }
-//    }
 
 protocol URLStringConvertible {
     var urlString: String { get }

@@ -10,27 +10,28 @@ import Foundation
 import UIKit
 import CoreLocation
 
+enum HomeSectionType {
+    case trending
+    case recommend
+}
+
 final class HomeViewModel: ViewModel {
 
     // MARK: - Properties
-    private(set) var imageListSlide: [UIImage] = [#imageLiteral(resourceName: "slideFood3"), #imageLiteral(resourceName: "slideFood1"), #imageLiteral(resourceName: "slideFood4"), #imageLiteral(resourceName: "slideFood5"), #imageLiteral(resourceName: "slideFood2")]
-    private var restaurants: [Restaurant] = []
+    private(set) var restaurantsTrending: [Restaurant] = []
+    private(set) var restaurantsRecommend: [Restaurant] = []
 
     // MARK: - Public functions
-    func getImageForSlide(atIndexPath indexPath: IndexPath) -> SlideCellViewModel? {
-        return SlideCellViewModel(image: imageListSlide[indexPath.row])
-    }
 
     func getTrendingRestaurant(limit: Int, completion: @escaping APICompletion) {
         if let lat = LocationManager.shared.currentLatitude,
             let lng = LocationManager.shared.currentLongitude {
             let locationString = String(lat) + "," + String(lng)
-            print(locationString)
             let params = Api.Trending.QueryParams(query: "restaurant", location: locationString, limit: String(limit))
             Api.Trending.getTrending(params: params) { result in
                 switch result {
                 case .success(let rest):
-                    self.restaurants = rest
+                    self.restaurantsTrending = rest
                     completion(.success)
                 case .failure(let err):
                     completion(.failure(err))
@@ -39,17 +40,73 @@ final class HomeViewModel: ViewModel {
         }
     }
 
-    func updateApiSuccess(newRestaurant: Restaurant) {
-        for (index, restaurant) in restaurants.enumerated() where restaurant.id == newRestaurant.id {
-            restaurants[index] = newRestaurant
+    func getRecommendRestaurant(limit: Int, completion: @escaping APICompletion) {
+        if let lat = LocationManager.shared.currentLatitude,
+            let lng = LocationManager.shared.currentLongitude {
+            let locationString = String(lat) + "," + String(lng)
+            let params = Api.Recommend.QueryParams(section: "food", query: "restaurant", location: locationString, limit: String(limit), price: "2,3")
+            Api.Recommend.getRecommend(params: params) { result in
+                switch result {
+                case .success(let rest):
+                    self.restaurantsRecommend = rest
+                    completion(.success)
+                case .failure(let err):
+                    completion(.failure(err))
+                }
+            }
         }
     }
 
-    func getCellForRowAt(atIndexPath indexPath: IndexPath) -> TrendingCellViewModel {
-        return TrendingCellViewModel(restaurant: restaurants[indexPath.row])
+    func getCellTrendingForRowAt(atIndexPath indexPath: IndexPath) -> TrendingCollectionCellViewModel {
+        return TrendingCollectionCellViewModel(restaurants: restaurantsTrending)
     }
 
-    func numberOfItems(inSection section: Int) -> Int {
-        return restaurants.count
+    func getCellRecommendForRowAt(atIndexPath indexPath: IndexPath) -> RestaurantCellViewModel? {
+        guard 0 <= indexPath.row && indexPath.row < restaurantsRecommend.count else { return nil }
+        return RestaurantCellViewModel(restaurant: restaurantsRecommend[indexPath.row])
+    }
+
+    func sectionType(inSection section: Int) -> HomeSectionType {
+        switch section {
+        case 0:
+            return .trending
+        case 1:
+            return .recommend
+        default:
+            return .recommend
+        }
+    }
+
+    func viewForHeaderInSection(inSection section: Int) -> CustomHeaderViewModel? {
+        switch sectionType(inSection: section) {
+        case .trending:
+            return CustomHeaderViewModel(name: "Trending Restaurants")
+        case .recommend:
+            return CustomHeaderViewModel(name: "Recommend Restaurants")
+        }
+    }
+
+    func numberOfRowInSection(inSection section: Int) -> Int {
+        switch sectionType(inSection: section) {
+        case .trending:
+            return 1
+        case .recommend:
+            return 20
+        }
+    }
+
+    func heightForRowAt(atIndexPath indexPath: IndexPath) -> CGFloat {
+        switch sectionType(inSection: indexPath.section) {
+        case .trending:
+            return 300
+        case .recommend:
+            return 120
+        }
+    }
+
+    func updateApiSuccess(newRestaurant: Restaurant) {
+        for (index, restaurant) in restaurantsRecommend.enumerated() where restaurant.id == newRestaurant.id {
+            restaurantsRecommend[index] = newRestaurant
+        }
     }
 }
