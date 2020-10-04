@@ -14,6 +14,7 @@ final class Comment: Mappable {
     var lastName: String = ""
     var text: String = ""
     var photoURL: String = ""
+    var createdAt: Int = 0
 
     init?(map: Map) {
     }
@@ -27,5 +28,6 @@ final class Comment: Mappable {
         prefix <- map["user.photo.prefix"]
         suffix <- map["user.photo.suffix"]
         photoURL = prefix + suffix
+        createdAt <- map["user.createdAt"]
     }
 }

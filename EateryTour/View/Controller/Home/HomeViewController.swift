@@ -154,6 +154,16 @@ extension HomeViewController: UITableViewDataSource {
         view.viewModel = viewModel.viewForHeaderInSection(inSection: section)
         return view
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch viewModel.sectionType(inSection: indexPath.section) {
+        case .recommend:
+            let detailVC = DetailViewController()
+            navigationController?.pushViewController(detailVC, animated: true)
+        default:
+            break
+        }
+    }
 }
 
 // MARK: - UITableViewDelegate

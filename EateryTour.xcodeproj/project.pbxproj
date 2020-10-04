@@ -40,6 +40,9 @@
 		527992D9252A181E009B5B1E /* InformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527992CA252A181E009B5B1E /* InformationCell.swift */; };
 		527992DA252A181E009B5B1E /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527992CB252A181E009B5B1E /* DetailViewModel.swift */; };
 		527992DB252A181E009B5B1E /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527992CC252A181E009B5B1E /* DetailViewController.xib */; };
+		527992E0252A18CF009B5B1E /* CommentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527992DF252A18CF009B5B1E /* CommentCellViewModel.swift */; };
+		527992E6252A18FC009B5B1E /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527992E4252A18FC009B5B1E /* CommentCell.swift */; };
+		527992E7252A18FC009B5B1E /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527992E5252A18FC009B5B1E /* CommentCell.xib */; };
 		5289C8212525931E00C91959 /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5289C8202525931E00C91959 /* CustomHeader.swift */; };
 		5289C8252525932C00C91959 /* CustomHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5289C8242525932C00C91959 /* CustomHeader.xib */; };
 		5289C8562526B20800C91959 /* Api.Recommend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5289C8552526B20800C91959 /* Api.Recommend.swift */; };
@@ -146,6 +149,9 @@
 		527992CA252A181E009B5B1E /* InformationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationCell.swift; sourceTree = "<group>"; };
 		527992CB252A181E009B5B1E /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		527992CC252A181E009B5B1E /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		527992DF252A18CF009B5B1E /* CommentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellViewModel.swift; sourceTree = "<group>"; };
+		527992E4252A18FC009B5B1E /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		527992E5252A18FC009B5B1E /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		5289C8202525931E00C91959 /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
 		5289C8242525932C00C91959 /* CustomHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomHeader.xib; sourceTree = "<group>"; };
 		5289C8552526B20800C91959 /* Api.Recommend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.Recommend.swift; sourceTree = "<group>"; };
@@ -318,6 +324,7 @@
 		527992B9252A181E009B5B1E /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				527992DE252A1880009B5B1E /* CommentCell */,
 				527992BA252A181E009B5B1E /* DetailViewController.swift */,
 				527992BB252A181E009B5B1E /* PhotoCell */,
 				527992C3252A181E009B5B1E /* MapCell */,
@@ -367,6 +374,16 @@
 				527992CA252A181E009B5B1E /* InformationCell.swift */,
 			);
 			path = InformationCell;
+			sourceTree = "<group>";
+		};
+		527992DE252A1880009B5B1E /* CommentCell */ = {
+			isa = PBXGroup;
+			children = (
+				527992E4252A18FC009B5B1E /* CommentCell.swift */,
+				527992E5252A18FC009B5B1E /* CommentCell.xib */,
+				527992DF252A18CF009B5B1E /* CommentCellViewModel.swift */,
+			);
+			path = CommentCell;
 			sourceTree = "<group>";
 		};
 		52E27F5E251D873000678E52 /* TrendingCollectionCell */ = {
@@ -709,6 +726,7 @@
 				A3F622F225062EB00024976E /* TutorialViewController.xib in Resources */,
 				522D589525223E1300C4E6A3 /* RecommendCell.xib in Resources */,
 				527992D2252A181E009B5B1E /* PhotoCollectionCell.xib in Resources */,
+				527992E7252A18FC009B5B1E /* CommentCell.xib in Resources */,
 				A3AED35E251355E200B5E6D0 /* SF-Pro-Text-Medium.otf in Resources */,
 				A3F622ED25062E700024976E /* HomeViewController.xib in Resources */,
 				522A5C732519BCEB00829199 /* FavoriteViewController.xib in Resources */,
@@ -838,6 +856,7 @@
 				A3F622B625060E800024976E /* ScrollView.swift in Sources */,
 				A3AED364251356DA00B5E6D0 /* Font.swift in Sources */,
 				52E27F77251D8BA200678E52 /* RestaurantCellViewModel.swift in Sources */,
+				527992E0252A18CF009B5B1E /* CommentCellViewModel.swift in Sources */,
 				52E27F75251D8B8C00678E52 /* APIKeys.swift in Sources */,
 				52359A8D25219CF500CEB92D /* UserDefaultKeys.swift in Sources */,
 				A3F622BE25060E800024976E /* Error.swift in Sources */,
@@ -876,6 +895,7 @@
 				A3F622B825060E800024976E /* TableCell.swift in Sources */,
 				A3F622BB25060E800024976E /* Errors.swift in Sources */,
 				A3F622F125062EB00024976E /* TutorialViewController.swift in Sources */,
+				527992E6252A18FC009B5B1E /* CommentCell.swift in Sources */,
 				A3F622AF25060E800024976E /* CollectionExt.swift in Sources */,
 				A3F622BD25060E800024976E /* RequestSerializer.swift in Sources */,
 				A3F622E325061ABD0024976E /* App.swift in Sources */,
