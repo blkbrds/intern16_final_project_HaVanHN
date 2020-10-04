@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -25,66 +26,65 @@
                 <rect key="frame" x="0.0" y="0.0" width="376" height="123"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="macaron" translatesAutoresizingMaskIntoConstraints="NO" id="gAf-af-2Gk" customClass="ImageView" customModule="EateryTour" customModuleProvider="target">
-                        <rect key="frame" x="15" y="10" width="100" height="100"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-default" translatesAutoresizingMaskIntoConstraints="NO" id="gAf-af-2Gk" customClass="ImageView" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="15" y="10" width="103" height="103"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="100" id="XSy-SU-cg8"/>
-                            <constraint firstAttribute="width" secondItem="gAf-af-2Gk" secondAttribute="height" id="gX6-UI-dXc"/>
+                            <constraint firstAttribute="width" secondItem="gAf-af-2Gk" secondAttribute="height" id="PhI-P3-WKz"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant's Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ut5-Lf-fyu" customClass="Label" customModule="EateryTour" customModuleProvider="target">
-                        <rect key="frame" x="123" y="25" width="243" height="20"/>
+                        <rect key="frame" x="123" y="24" width="243" height="23"/>
                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
                         <nil key="highlightedColor"/>
                         <size key="shadowOffset" width="0.0" height="0.0"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0w-fe-IoX" customClass="Label" customModule="EateryTour" customModuleProvider="target">
-                        <rect key="frame" x="123" y="53" width="243" height="14.5"/>
+                        <rect key="frame" x="123" y="55" width="243" height="14.5"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                         <size key="shadowOffset" width="0.0" height="0.0"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="(125 ratings)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZo-MU-0zb" customClass="Label" customModule="EateryTour" customModuleProvider="target">
-                        <rect key="frame" x="163" y="75.5" width="185" height="14.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="14.5" id="5Wb-rY-gV8"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="(125 ratings)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZo-MU-0zb" customClass="Label" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="163" y="77.5" width="183" height="14.5"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
+                        <size key="shadowOffset" width="0.0" height="0.0"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dYE-Ud-S53">
-                        <rect key="frame" x="123" y="74.5" width="15" height="15"/>
-                        <color key="tintColor" red="1" green="0.75335672799999998" blue="0.2887301243" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="15" id="b3Q-Fd-6lJ"/>
-                            <constraint firstAttribute="width" secondItem="dYE-Ud-S53" secondAttribute="height" id="wPf-K4-br0"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="6.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDe-5N-NC2" customClass="Label" customModule="EateryTour" customModuleProvider="target">
-                        <rect key="frame" x="141" y="76" width="19" height="14"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="6.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDe-5N-NC2" customClass="Label" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="141" y="77.5" width="19" height="14"/>
                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8XF-qc-W3U">
+                        <rect key="frame" x="123" y="77" width="16" height="16"/>
+                        <color key="tintColor" systemColor="systemYellowColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="kuT-2i-5WH"/>
+                            <constraint firstAttribute="width" secondItem="8XF-qc-W3U" secondAttribute="height" multiplier="1:1" id="tdg-s8-Oqi"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="gAf-af-2Gk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="BCG-AA-rvN"/>
-                    <constraint firstAttribute="trailing" secondItem="ut5-Lf-fyu" secondAttribute="trailing" constant="10" id="Dox-iV-qNq"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="sZo-MU-0zb" secondAttribute="trailing" constant="8" id="H9z-48-3Zm"/>
-                    <constraint firstItem="r0w-fe-IoX" firstAttribute="leading" secondItem="ut5-Lf-fyu" secondAttribute="leading" id="KBc-Ly-Kl9"/>
-                    <constraint firstItem="sZo-MU-0zb" firstAttribute="top" secondItem="r0w-fe-IoX" secondAttribute="bottom" constant="8" id="L9D-pE-Lkp"/>
-                    <constraint firstItem="MDe-5N-NC2" firstAttribute="bottom" secondItem="dYE-Ud-S53" secondAttribute="bottom" id="WrJ-Jf-aJe"/>
-                    <constraint firstItem="r0w-fe-IoX" firstAttribute="top" secondItem="ut5-Lf-fyu" secondAttribute="bottom" constant="8" id="YMh-ZB-ABp"/>
-                    <constraint firstItem="sZo-MU-0zb" firstAttribute="bottom" secondItem="dYE-Ud-S53" secondAttribute="bottom" id="Zhb-1u-E6n"/>
-                    <constraint firstItem="dYE-Ud-S53" firstAttribute="leading" secondItem="r0w-fe-IoX" secondAttribute="leading" id="aZn-PF-Lcv"/>
-                    <constraint firstItem="r0w-fe-IoX" firstAttribute="trailing" secondItem="ut5-Lf-fyu" secondAttribute="trailing" id="dhC-j7-GAB"/>
-                    <constraint firstItem="r0w-fe-IoX" firstAttribute="centerY" secondItem="gAf-af-2Gk" secondAttribute="centerY" id="fjH-ge-fzm"/>
-                    <constraint firstItem="MDe-5N-NC2" firstAttribute="leading" secondItem="dYE-Ud-S53" secondAttribute="trailing" constant="3" id="nlW-t8-yeR"/>
-                    <constraint firstItem="gAf-af-2Gk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="uMD-BB-0eQ"/>
-                    <constraint firstItem="ut5-Lf-fyu" firstAttribute="leading" secondItem="gAf-af-2Gk" secondAttribute="trailing" constant="8" id="wLC-52-QXd"/>
-                    <constraint firstItem="sZo-MU-0zb" firstAttribute="leading" secondItem="MDe-5N-NC2" secondAttribute="trailing" constant="3" id="wYF-Zg-xBo"/>
+                    <constraint firstItem="r0w-fe-IoX" firstAttribute="top" secondItem="ut5-Lf-fyu" secondAttribute="bottom" constant="8" id="0UD-k5-L8s"/>
+                    <constraint firstItem="8XF-qc-W3U" firstAttribute="leading" secondItem="r0w-fe-IoX" secondAttribute="leading" id="22P-df-TFI"/>
+                    <constraint firstItem="r0w-fe-IoX" firstAttribute="trailing" secondItem="ut5-Lf-fyu" secondAttribute="trailing" id="7BG-vw-63f"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="sZo-MU-0zb" secondAttribute="bottom" constant="20" id="7TE-6r-eWR"/>
+                    <constraint firstAttribute="trailing" secondItem="ut5-Lf-fyu" secondAttribute="trailing" constant="10" id="EAm-k5-ljA"/>
+                    <constraint firstItem="gAf-af-2Gk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Rwv-Ol-q60"/>
+                    <constraint firstItem="8XF-qc-W3U" firstAttribute="top" secondItem="r0w-fe-IoX" secondAttribute="bottom" constant="8" id="Smm-pg-iog"/>
+                    <constraint firstItem="r0w-fe-IoX" firstAttribute="leading" secondItem="ut5-Lf-fyu" secondAttribute="leading" id="Ubp-qh-26k"/>
+                    <constraint firstItem="sZo-MU-0zb" firstAttribute="top" secondItem="MDe-5N-NC2" secondAttribute="top" id="Vdt-Lj-cp2"/>
+                    <constraint firstItem="MDe-5N-NC2" firstAttribute="top" secondItem="8XF-qc-W3U" secondAttribute="top" id="dfX-7b-f0O"/>
+                    <constraint firstItem="ut5-Lf-fyu" firstAttribute="leading" secondItem="gAf-af-2Gk" secondAttribute="trailing" constant="5" id="ibn-RK-ssE"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="sZo-MU-0zb" secondAttribute="trailing" constant="10" id="sjG-vn-rbD"/>
+                    <constraint firstItem="ut5-Lf-fyu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="tkm-oi-D2U"/>
+                    <constraint firstItem="gAf-af-2Gk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="vpF-xt-9uz"/>
+                    <constraint firstItem="MDe-5N-NC2" firstAttribute="leading" secondItem="8XF-qc-W3U" secondAttribute="trailing" constant="2" id="wOp-RT-3VQ"/>
+                    <constraint firstItem="sZo-MU-0zb" firstAttribute="leading" secondItem="MDe-5N-NC2" secondAttribute="trailing" constant="3" id="xNC-WD-4Jw"/>
+                    <constraint firstAttribute="bottom" secondItem="gAf-af-2Gk" secondAttribute="bottom" constant="10" id="yml-R4-NnE"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -99,7 +99,10 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="macaron" width="520" height="346.5"/>
+        <image name="img-default" width="311" height="207.5"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

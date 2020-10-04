@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol RecommendCellDelegate: class {
+    func cell(_ cell: RecommendCell, needsPerform action: RecommendCell.Action)
+}
+
 final class RecommendCell: TableCell {
 
     // MARK: - IBOutlets
@@ -23,6 +27,7 @@ final class RecommendCell: TableCell {
             updateUI()
         }
     }
+    weak var delegate: RecommendCellDelegate?
     // MARK: - Initialize
 
     // MARK: - Life cycle
@@ -51,8 +56,33 @@ final class RecommendCell: TableCell {
         restaurantImage.clipsToBounds = true
     }
     // MARK: - Public functions
+    func loadMoreInformation(completion: @escaping APICompletion) {
+        guard let viewModel = viewModel else { return }
+        viewModel.loadMoreInformation { [weak self] result in
+            guard let this = self else { return }
+            switch result {
+            case .success:
+                guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
+                if let restaurant = viewModel.restaurant {
+                    this.delegate?.cell(this, needsPerform: .callApiSuccess(restaurant: restaurant))
+                }
+                this.restaurantImage.sd_setImage(with: urlImage)
+                this.amountOfRatingLabel.text = "(\(detail.sumaryLikes))"
+                completion(.success)
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 
     // MARK: - Objc functions
 
     // MARK: - IBActions
+}
+
+extension RecommendCell {
+
+    enum Action {
+        case callApiSuccess(restaurant: Restaurant)
+    }
 }

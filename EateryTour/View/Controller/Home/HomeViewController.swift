@@ -92,9 +92,25 @@ final class HomeViewController: ViewController {
             case.success:
                 DispatchQueue.main.async {
                     this.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+                    this.loadMoreInformationForRecommendRestaurant()
                 }
             case .failure(let error):
                 this.alert(msg: error.localizedDescription, handler: nil)
+            }
+        }
+    }
+
+    private func loadMoreInformationForRecommendRestaurant() {
+        for cell in tableView.visibleCells {
+            if let cell = cell as? RecommendCell {
+                cell.loadMoreInformation { result in
+                    switch result {
+                    case .success:
+                        break
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
             }
         }
     }
@@ -128,6 +144,7 @@ extension HomeViewController: UITableViewDataSource {
         case .recommend:
             guard let recommentCell = tableView.dequeueReusableCell(withIdentifier: "RecommendCell", for: indexPath) as? RecommendCell else { return UITableViewCell() }
             recommentCell.viewModel = viewModel.getCellRecommendForRowAt(atIndexPath: indexPath)
+            recommentCell.delegate = self
             return recommentCell
         }
     }
@@ -148,5 +165,30 @@ extension HomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
+    }
+}
+
+// MARK: - UIScrollViewDelegates
+extension HomeViewController: UIScrollViewDelegate {
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        loadMoreInformationForRecommendRestaurant()
+    }
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            loadMoreInformationForRecommendRestaurant()
+        }
+    }
+}
+
+// MARK: - RecommendCellDelegate
+extension HomeViewController: RecommendCellDelegate {
+
+    func cell(_ cell: RecommendCell, needsPerform action: RecommendCell.Action) {
+        switch action {
+        case .callApiSuccess(restaurant: let restaurant):
+            viewModel.updateApiSuccess(newRestaurant: restaurant)
+        }
     }
 }

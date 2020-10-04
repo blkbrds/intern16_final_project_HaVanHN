@@ -63,7 +63,7 @@ final class TrendingCell: CollectionCell {
         ratingLabel.text = String(restaurant.rating)
         guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
         restaurantImageView.sd_setImage(with: urlImage)
-        amountOfRatingLabel.text = detail.sumaryLikes
+        amountOfRatingLabel.text = "(\(detail.sumaryLikes))"
     }
 
     // MARK: - Public functions
@@ -73,12 +73,12 @@ final class TrendingCell: CollectionCell {
             guard let this = self else { return }
             switch result {
             case .success:
-                guard let newViewModel = this.viewModel, let detail = newViewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
-                if let restaurant = newViewModel.restaurant {
+                guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
+                if let restaurant = viewModel.restaurant {
                     this.delegate?.cell(this, needsPerform: .callApiSuccess(restaurant: restaurant))
                 }
                 this.restaurantImageView.sd_setImage(with: urlImage)
-                this.amountOfRatingLabel.text = detail.sumaryLikes
+                this.amountOfRatingLabel.text = "(\(detail.sumaryLikes))"
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))

@@ -80,9 +80,9 @@ final class HomeViewModel: ViewModel {
     func viewForHeaderInSection(inSection section: Int) -> CustomHeaderViewModel? {
         switch sectionType(inSection: section) {
         case .trending:
-            return CustomHeaderViewModel(name: "Trending")
+            return CustomHeaderViewModel(name: "Trending Restaurants")
         case .recommend:
-            return CustomHeaderViewModel(name: "Recommend")
+            return CustomHeaderViewModel(name: "Recommend Restaurants")
         }
     }
 
@@ -98,9 +98,15 @@ final class HomeViewModel: ViewModel {
     func heightForRowAt(atIndexPath indexPath: IndexPath) -> CGFloat {
         switch sectionType(inSection: indexPath.section) {
         case .trending:
-            return 280
+            return 300
         case .recommend:
             return 120
+        }
+    }
+
+    func updateApiSuccess(newRestaurant: Restaurant) {
+        for (index, restaurant) in restaurantsRecommend.enumerated() where restaurant.id == newRestaurant.id {
+            restaurantsRecommend[index] = newRestaurant
         }
     }
 }

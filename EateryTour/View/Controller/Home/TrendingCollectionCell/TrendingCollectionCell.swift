@@ -16,9 +16,7 @@ class TrendingCollectionCell: TableCell {
     // MARK: - Propeties
     var viewModel = TrendingCollectionCellViewModel() {
         didSet {
-            getMoreInformationForCell()
             collectionView.reloadData()
-            //getMoreInformationForCell()
         }
     }
     // MARK: - Initialize
@@ -27,6 +25,7 @@ class TrendingCollectionCell: TableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         configCollectionView()
+        getMoreInformationForCell()
     }
 
     // MARK: - Override functions
@@ -62,7 +61,7 @@ class TrendingCollectionCell: TableCell {
 extension TrendingCollectionCell: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width - 40, height: 260)
+        return CGSize(width: UIScreen.main.bounds.width - 40, height: 280)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -92,7 +91,6 @@ extension TrendingCollectionCell: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //guard let viewModel = viewModel else { return UICollectionViewCell() }
         guard let trendingCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCell", for: indexPath) as? TrendingCell else { return CollectionCell() }
         trendingCell.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
         trendingCell.delegate = self

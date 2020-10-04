@@ -25,13 +25,8 @@ final class RestaurantCellViewModel {
             guard let this = self else { return }
             switch result {
             case .success(let data):
-                this.detail?.sumaryLikes = data.sumaryLikes
-                this.detail?.comments = data.comments
-                this.detail?.bestPhoto = data.bestPhoto
-                this.detail?.openDate = data.openDate
-                this.detail?.openTime = data.openTime
-                this.detail?.isOpen = data.isOpen
-                this.restaurant?.isLoadApiCompleted = true
+                this.detail = data
+                restaurant.isLoadApiCompleted = true
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))
@@ -61,4 +56,9 @@ final class RestaurantCellViewModel {
         }
         return String(format: "%.2f", restaurant.distance / 1_000) + " km"
     }
+
+//    func formatRating() -> String {
+//        guard let restaurant = restaurant else { return "" }
+//        if restaurant.rating
+//    }
 }
