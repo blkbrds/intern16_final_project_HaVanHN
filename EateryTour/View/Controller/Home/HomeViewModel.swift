@@ -102,7 +102,7 @@ final class HomeViewModel: ViewModel {
         case .trending:
             return 280
         case .recommend:
-            return UITableView.automaticDimension
+            return 120
         }
     }
 }

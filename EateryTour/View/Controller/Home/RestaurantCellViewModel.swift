@@ -39,8 +39,8 @@ final class RestaurantCellViewModel {
         }
     }
 
-    func getAddressAndCurrencyLabel() -> String {
+    func formatAddress() -> String {
         guard let restaurant = restaurant else { return "" }
-        return "\(restaurant.formattedAddress.first ?? "Unknow address") - \(restaurant.currency)"
+        return "\(restaurant.formattedAddress.first ?? "Unknow address")"
     }
 }

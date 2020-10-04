@@ -21,7 +21,7 @@ final class TrendingCell: CollectionCell {
     @IBOutlet private weak var restaurantImageView: ImageView!
     @IBOutlet private weak var distanceButton: Button!
     @IBOutlet private weak var restaurantNameLabel: Label!
-    @IBOutlet private weak var addressAndCurrencyLabel: Label!
+    @IBOutlet private weak var addressLabel: Label!
     @IBOutlet private weak var amountOfRatingLabel: Label!
 
     // MARK: - Propeties
@@ -58,7 +58,7 @@ final class TrendingCell: CollectionCell {
         guard let viewModel = viewModel else { return }
         guard let restaurant = viewModel.restaurant else { return }
         restaurantNameLabel.text = restaurant.name
-        addressAndCurrencyLabel.text = viewModel.getAddressAndCurrencyLabel()
+        addressLabel.text = viewModel.formatAddress()
         distanceButton.setTitle(String(restaurant.distance), for: .normal)
         ratingLabel.text = String(restaurant.rating)
 //        guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
