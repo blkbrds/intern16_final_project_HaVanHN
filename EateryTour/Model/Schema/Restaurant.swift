@@ -16,8 +16,9 @@ final class Restaurant: Mappable {
     var lat: Float = 0.0
     var lng: Float = 0.0
     var formattedAddress: [String] = []
+    var phone: String = ""
     var distance: Float = 0.0
-    var currency: String = ""
+    var tier: Int = 0
     var rating: Float = 0.0
     var isLoadApiCompleted: Bool = false
 
@@ -30,8 +31,9 @@ final class Restaurant: Mappable {
         lat <- map["venue.location.lat"]
         lng <- map["venue.location.lng"]
         formattedAddress <- map["venue.location.formattedAddress"]
+        phone <- map["venue.contact.phone"]
         distance <- map["venue.location.distance"]
-        currency <- map["venue.price.currency"]
+        tier <- map["venue.price.tier"]
         rating <- map["venue.rating"]
     }
 }

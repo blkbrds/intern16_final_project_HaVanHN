@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="337" height="95"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="O1j-0U-Yle" customClass="CollectionView" customModule="EateryTour" customModuleProvider="target">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="O1j-0U-Yle" customClass="CollectionView" customModule="EateryTour" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="337" height="95"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wxO-3I-uFS">

@@ -39,8 +39,26 @@ final class RestaurantCellViewModel {
         }
     }
 
-    func formatAddress() -> String {
+    func formatAddresAndPrice() -> String {
         guard let restaurant = restaurant else { return "" }
-        return "\(restaurant.formattedAddress.first ?? "Unknow address")"
+        var price: String = ""
+        switch restaurant.tier {
+        case 1:
+            price = "$"
+        case 2:
+            price = "$$"
+        default:
+            price = "$$$"
+        }
+        return "\(restaurant.formattedAddress.first ?? "Unknow address") - \(price)"
+    }
+
+    func formatDistance() -> String {
+        guard let restaurant = restaurant else { return "" }
+        let distanceString: String = String(format: "%.2f", restaurant.distance / 1_000)
+        if distanceString.contains(".00") {
+            return String(Int(restaurant.distance / 1_000)) + " km"
+        }
+        return String(format: "%.2f", restaurant.distance / 1_000) + " km"
     }
 }

@@ -13,7 +13,7 @@ final class RecommendCell: TableCell {
     // MARK: - IBOutlets
     @IBOutlet private weak var restaurantImage: ImageView!
     @IBOutlet private weak var nameLabel: Label!
-    @IBOutlet private weak var addressLabel: Label!
+    @IBOutlet private weak var addressAndPriceLabel: Label!
     @IBOutlet private weak var amountOfRatingLabel: Label!
     @IBOutlet private weak var ratingLabel: Label!
 
@@ -39,7 +39,7 @@ final class RecommendCell: TableCell {
     // MARK: - Private functions
     private func updateUI() {
         guard let viewModel = viewModel, let restaurant = viewModel.restaurant else { return }
-        addressLabel.text = viewModel.formatAddress()
+        addressAndPriceLabel.text = viewModel.formatAddresAndPrice()
         nameLabel.text = restaurant.name
         ratingLabel.text = String(restaurant.rating)
         guard let detail = viewModel.detail else { return }

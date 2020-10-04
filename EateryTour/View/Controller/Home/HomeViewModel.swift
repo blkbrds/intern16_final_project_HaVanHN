@@ -50,7 +50,6 @@ final class HomeViewModel: ViewModel {
                 switch result {
                 case .success(let rest):
                     self.restaurantsRecommend = rest
-                    print("currency: \(self.restaurantsRecommend[0].currency)")
                     completion(.success)
                 case .failure(let err):
                     completion(.failure(err))

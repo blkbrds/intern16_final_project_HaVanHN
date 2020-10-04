@@ -216,9 +216,9 @@
 		5205774C2524F01F00C4BC79 /* CustomHeader */ = {
 			isa = PBXGroup;
 			children = (
-				5205775F2525774E00C4BC79 /* CustomHeaderViewModel.swift */,
 				5289C8202525931E00C91959 /* CustomHeader.swift */,
 				5289C8242525932C00C91959 /* CustomHeader.xib */,
+				5205775F2525774E00C4BC79 /* CustomHeaderViewModel.swift */,
 			);
 			path = CustomHeader;
 			sourceTree = "<group>";
@@ -290,8 +290,8 @@
 			children = (
 				5205776325257A8300C4BC79 /* TrendingCell */,
 				5205776A25257B3300C4BC79 /* TrendingCollectionCell.swift */,
-				522D589825223E4C00C4E6A3 /* TrendingCollectionCellViewModel.swift */,
 				5205776B25257B3300C4BC79 /* TrendingCollectionCell.xib */,
+				522D589825223E4C00C4E6A3 /* TrendingCollectionCellViewModel.swift */,
 			);
 			path = TrendingCollectionCell;
 			sourceTree = "<group>";
@@ -496,12 +496,12 @@
 		A3F622E925062E5F0024976E /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				52E27F76251D8BA200678E52 /* RestaurantCellViewModel.swift */,
 				5205774C2524F01F00C4BC79 /* CustomHeader */,
 				A3F622EA25062E700024976E /* HomeViewController.swift */,
 				A3F622EB25062E700024976E /* HomeViewController.xib */,
 				52E27F61251D873000678E52 /* HomeViewModel.swift */,
 				522D589025223DF000C4E6A3 /* Recommend */,
+				52E27F76251D8BA200678E52 /* RestaurantCellViewModel.swift */,
 				52E27F5E251D873000678E52 /* TrendingCollectionCell */,
 			);
 			path = Home;

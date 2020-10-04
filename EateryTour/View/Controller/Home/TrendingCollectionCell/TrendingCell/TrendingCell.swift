@@ -21,7 +21,7 @@ final class TrendingCell: CollectionCell {
     @IBOutlet private weak var restaurantImageView: ImageView!
     @IBOutlet private weak var distanceButton: Button!
     @IBOutlet private weak var restaurantNameLabel: Label!
-    @IBOutlet private weak var addressLabel: Label!
+    @IBOutlet private weak var addressAndPriceLabel: Label!
     @IBOutlet private weak var amountOfRatingLabel: Label!
 
     // MARK: - Propeties
@@ -48,7 +48,7 @@ final class TrendingCell: CollectionCell {
     private func configUI() {
         restaurantImageView.layer.cornerRadius = 7
         restaurantImageView.clipsToBounds = true
-        distanceButton.layer.cornerRadius = 15
+        distanceButton.layer.cornerRadius = 13
         distanceButton.clipsToBounds = true
         self.layer.cornerRadius = 10
         self.clipsToBounds = true
@@ -58,12 +58,12 @@ final class TrendingCell: CollectionCell {
         guard let viewModel = viewModel else { return }
         guard let restaurant = viewModel.restaurant else { return }
         restaurantNameLabel.text = restaurant.name
-        addressLabel.text = viewModel.formatAddress()
-        distanceButton.setTitle(String(restaurant.distance), for: .normal)
+        addressAndPriceLabel.text = viewModel.formatAddresAndPrice()
+        distanceButton.setTitle(viewModel.formatDistance(), for: .normal)
         ratingLabel.text = String(restaurant.rating)
-//        guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
-//        restaurantImageView.sd_setImage(with: urlImage)
-//        amountOfRatingLabel.text = detail.sumaryLikes
+        guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
+        restaurantImageView.sd_setImage(with: urlImage)
+        amountOfRatingLabel.text = detail.sumaryLikes
     }
 
     // MARK: - Public functions
