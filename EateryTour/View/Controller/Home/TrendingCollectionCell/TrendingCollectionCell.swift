@@ -56,13 +56,6 @@ class TrendingCollectionCell: TableCell {
             }
         }
     }
-
-    // MARK: - Public functions
-
-    // MARK: - Objc functions
-
-    // MARK: - IBActions
-
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

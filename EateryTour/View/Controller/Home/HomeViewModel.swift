@@ -27,7 +27,6 @@ final class HomeViewModel: ViewModel {
         if let lat = LocationManager.shared.currentLatitude,
             let lng = LocationManager.shared.currentLongitude {
             let locationString = String(lat) + "," + String(lng)
-            print(locationString)
             let params = Api.Trending.QueryParams(query: "restaurant", location: locationString, limit: String(limit))
             Api.Trending.getTrending(params: params) { result in
                 switch result {
