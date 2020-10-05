@@ -30,9 +30,15 @@ final class DetailViewController: ViewController {
         getDataForPhotoCell()
     }
 
+    override func viewWillLayoutSubviews() {
+        view.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
+        view.layoutIfNeeded()
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
     }
 
     // MARK: - Override functions
@@ -53,11 +59,6 @@ final class DetailViewController: ViewController {
     }
 
     private func configStatusBar() {
-        if #available(iOS 11.0, *) {
-            tableView.contentInsetAdjustmentBehavior = .never
-        } else {
-            automaticallyAdjustsScrollViewInsets = false
-        }
         navigationController?.navigationBar.barStyle = .black
     }
 
