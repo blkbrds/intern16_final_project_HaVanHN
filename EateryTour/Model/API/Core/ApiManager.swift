@@ -11,7 +11,6 @@ import Alamofire
 
 typealias JSObject = [String: Any]
 typealias JSArray = [JSObject]
-
 typealias Completion<Value> = (Result<Value>) -> Void
 typealias APICompletion = (APIResult) -> Void
 

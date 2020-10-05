@@ -51,3 +51,18 @@ final class TabbarViewController: TabBarController {
         tabBar.clipsToBounds = true
     }
 }
+
+// MARK: - UITabBarControllerDelegate
+extension TabbarViewController: UITabBarControllerDelegate {
+  override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+    let bounceAnimation: CAKeyframeAnimation = {
+      let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+      bounceAnimation.values = [1.2, 1.4, 1.6, 1.8, 2.0, 1.8, 1.6, 1.4, 1.2]
+      bounceAnimation.duration = TimeInterval(0.4)
+      return bounceAnimation
+    }()
+    guard let index = tabBar.items?.firstIndex(of: item), tabBar.subviews.count > index + 1,
+          let imageView = tabBar.subviews[index + 1].subviews.compactMap({ $0 as? UIImageView }).first else { return }
+    imageView.layer.add(bounceAnimation, forKey: nil)
+  }
+}

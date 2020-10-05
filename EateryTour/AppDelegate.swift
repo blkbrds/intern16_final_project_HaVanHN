@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 enum RootType {
     case tutorial
@@ -15,6 +16,7 @@ enum RootType {
 
 let ud = UserDefaults.standard
 let screenSize = UIScreen.main.bounds
+typealias HUD = SVProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,23 +32,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         configWindow()
+        configHUD()
         return true
+    }
+
+    private func configHUD() {
+        HUD.setDefaultMaskType(.clear)
     }
 
     private func configWindow() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
-        let secondUse = UserDefaults.standard.bool(forKey: "secondUse")
-        print(secondUse)
-        if secondUse {
-            changeRoot(rootType: .tabbar)
+        if Session.shared.secondUse {
+            setRoot(rootType: .tabbar)
         } else {
-            changeRoot(rootType: .tutorial)
+            setRoot(rootType: .tutorial)
         }
+        let vc = TutorialViewController()
+        window?.rootViewController = vc
         window?.makeKeyAndVisible()
     }
 
-    func changeRoot(rootType: RootType) {
+    func setRoot(rootType: RootType) {
         switch rootType {
         case .tutorial:
             window?.rootViewController = TutorialViewController()
