@@ -30,6 +30,8 @@ final class TutorialViewController: ViewController {
         super.viewDidLoad()
         configUI()
         configScrollView()
+        configSecondUse()
+        configLocationManager()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -42,18 +44,22 @@ final class TutorialViewController: ViewController {
         getStartedButton.layer.cornerRadius = 10
     }
 
+    private func configLocationManager() {
+        LocationManager.shared.configLocationService()
+    }
+
     private func configScrollView() {
         scrollView.delegate = self
         scrollView.showsHorizontalScrollIndicator = false
     }
 
-    private func configFirstUse() {
-        ud.set(true, forKey: UserDefaultKeys.secondUse)
+    private func configSecondUse() {
+        Session.shared.secondUse = true
     }
 
     // MARK: - IBActions
     @IBAction private func getStartedButtonTouchUpInside(_ sender: Button) {
-        AppDelegate.shared.changeRoot(rootType: .tabbar)
+        AppDelegate.shared.setRoot(rootType: .tabbar)
     }
 }
 

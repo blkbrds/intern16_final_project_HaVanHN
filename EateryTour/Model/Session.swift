@@ -13,6 +13,16 @@ final class Session {
     static let shared = Session()
 
     private init() {}
+
+    var secondUse: Bool {
+        get {
+            return ud.bool(forKey: App.UserDefaultKeys.secondUse)
+        }
+        set {
+            ud.set(newValue, forKey: App.UserDefaultKeys.secondUse)
+        }
+    }
+
 }
 
 // MARK: - Protocol
