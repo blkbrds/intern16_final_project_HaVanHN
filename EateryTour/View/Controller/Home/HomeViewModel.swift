@@ -80,9 +80,9 @@ final class HomeViewModel: ViewModel {
     func viewForHeaderInSection(inSection section: Int) -> CustomHeaderViewModel? {
         switch sectionType(inSection: section) {
         case .trending:
-            return CustomHeaderViewModel(name: "Trending Restaurants")
+            return CustomHeaderViewModel(name: "Popular")
         case .recommend:
-            return CustomHeaderViewModel(name: "Recommend Restaurants")
+            return CustomHeaderViewModel(name: "Recommend")
         }
     }
 
