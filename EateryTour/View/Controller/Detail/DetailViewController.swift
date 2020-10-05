@@ -25,30 +25,25 @@ final class DetailViewController: ViewController {
         configStatusBar()
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        view.layoutIfNeeded()
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-        tabBarController?.tabBar.isHidden = true
     }
 
     // MARK: - Override functions
 
     // MARK: - Private functions
     private func configTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
         let informationCell = UINib(nibName: "InformationCell", bundle: Bundle.main)
         tableView.register(informationCell, forCellReuseIdentifier: "InformationCell")
         let mapCell = UINib(nibName: "MapCell", bundle: Bundle.main)
         tableView.register(mapCell, forCellReuseIdentifier: "MapCell")
         let photoCell = UINib(nibName: "PhotoCollectionCell", bundle: Bundle.main)
         tableView.register(photoCell, forCellReuseIdentifier: "PhotoCollectionCell")
-        tableView.delegate = self
-        tableView.dataSource = self
+        let commentCell = UINib(nibName: "CommentCell", bundle: Bundle.main)
+        tableView.register(commentCell, forCellReuseIdentifier: "CommentCell")
     }
 
     private func configStatusBar() {
@@ -75,11 +70,11 @@ final class DetailViewController: ViewController {
 extension DetailViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.numberOfItems(inSection: section)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -96,6 +91,10 @@ extension DetailViewController: UITableViewDataSource {
             guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "PhotoCollectionCell", for: indexPath) as? PhotoCollectionCell else { return UITableViewCell() }
             photoCell.viewModel = viewModel.getCellForRowAtPhotoSection(atIndexPath: indexPath)
             return photoCell
+        case .comment:
+            guard let commentCell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as? CommentCell else { return UITableViewCell() }
+            commentCell.viewModel = viewModel.getCellForRowAtCommentSection(atIndexPath: indexPath)
+            return commentCell
         }
     }
 }
@@ -108,13 +107,6 @@ extension DetailViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch viewModel.sectionType(atSection: indexPath.section) {
-        case .information:
-            return 350
-        case .map:
-            return 250
-        case .photo:
-            return 200
-        }
+        return viewModel.getHeightForRowAt(atIndexPath: indexPath)
     }
 }

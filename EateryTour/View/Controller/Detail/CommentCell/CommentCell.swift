@@ -37,7 +37,7 @@ final class CommentCell: UITableViewCell {
 
     // MARK: - Private functions
     private func configUI() {
-        imageView?.layer.cornerRadius = 15
+        imageView?.layer.cornerRadius = 20
         imageView?.clipsToBounds = true
     }
 

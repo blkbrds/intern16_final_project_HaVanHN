@@ -9,7 +9,7 @@
 import Foundation
 
 final class CommentCellViewModel {
-    
+
     var imageURL: String
     var name: String
     var createdAt: String

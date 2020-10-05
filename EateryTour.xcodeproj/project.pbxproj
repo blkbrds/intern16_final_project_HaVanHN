@@ -326,11 +326,11 @@
 			children = (
 				527992DE252A1880009B5B1E /* CommentCell */,
 				527992BA252A181E009B5B1E /* DetailViewController.swift */,
-				527992BB252A181E009B5B1E /* PhotoCell */,
-				527992C3252A181E009B5B1E /* MapCell */,
-				527992C7252A181E009B5B1E /* InformationCell */,
-				527992CB252A181E009B5B1E /* DetailViewModel.swift */,
 				527992CC252A181E009B5B1E /* DetailViewController.xib */,
+				527992CB252A181E009B5B1E /* DetailViewModel.swift */,
+				527992C7252A181E009B5B1E /* InformationCell */,
+				527992C3252A181E009B5B1E /* MapCell */,
+				527992BB252A181E009B5B1E /* PhotoCell */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
