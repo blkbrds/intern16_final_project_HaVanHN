@@ -85,7 +85,7 @@ final class DetailViewModel: ViewModel {
             return InformationCellViewModel(imageURL: detail.bestPhoto,
                                             name: restaurant.name, price: formatPrice(),
                                             address: formatAddress(), rating: restaurant.rating,
-                                            amountOfRating: detail.sumaryLikes)
+                                            amountOfRating: detail.sumaryLikes, isFavorite: isFavorite)
         } else {
             return nil
         }

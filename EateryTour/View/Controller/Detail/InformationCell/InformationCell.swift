@@ -31,6 +31,7 @@ final class InformationCell: TableCell {
         }
     }
     weak var delegate: InformationCellDelegate?
+    private var isFavorite: Bool?
 
     // MARK: - Initialize
 
@@ -65,6 +66,8 @@ final class InformationCell: TableCell {
         favoriteButton.layer.shadowOpacity = 1.0
         favoriteButton.layer.shadowRadius = 10
         favoriteButton.layer.masksToBounds = false
+        
+        
     }
 
     // MARK: - Public functions
