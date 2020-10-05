@@ -52,7 +52,7 @@ final class InformationCell: TableCell {
         restaurantImage.sd_setImage(with: urlImage)
         nameLabel.text = viewModel.name
         addressLabel.text = viewModel.address
-        currencyLabel.text = viewModel.currency
+        currencyLabel.text = viewModel.price
         ratingLabel.text = String(viewModel.rating)
         amountOfRatingLabel.text = viewModel.amountOfRating
     }

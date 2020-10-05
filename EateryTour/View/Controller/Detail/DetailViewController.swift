@@ -15,12 +15,15 @@ final class DetailViewController: ViewController {
     @IBOutlet private weak var backButton: Button!
 
     // MARK: - Propeties
-    var viewModel = DetailViewModel()
+    var viewModel: DetailViewModel? {
+        didSet {
+            print("hihi detail")
+        }
+    }
 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configTabbar()
         configTableView()
         configBackButton()
         configStatusBar()
@@ -30,31 +33,23 @@ final class DetailViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-        tabBarController?.tabBar.isHidden = true
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        view.layoutIfNeeded()
     }
 
     // MARK: - Override functions
 
     // MARK: - Private functions
-    private func configTabbar() {
-        tabBarController?.tabBar.isHidden = true
-    }
 
     private func configTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
         let informationCell = UINib(nibName: "InformationCell", bundle: Bundle.main)
         tableView.register(informationCell, forCellReuseIdentifier: "InformationCell")
         let mapCell = UINib(nibName: "MapCell", bundle: Bundle.main)
         tableView.register(mapCell, forCellReuseIdentifier: "MapCell")
         let photoCell = UINib(nibName: "PhotoCollectionCell", bundle: Bundle.main)
         tableView.register(photoCell, forCellReuseIdentifier: "PhotoCollectionCell")
-        tableView.delegate = self
-        tableView.dataSource = self
+        let commentCell = UINib(nibName: "CommentCell", bundle: Bundle.main)
+        tableView.register(commentCell, forCellReuseIdentifier: "CommentCell")
     }
 
     private func configStatusBar() {
@@ -67,6 +62,7 @@ final class DetailViewController: ViewController {
     }
 
     private func getDataForPhotoCell() {
+         guard let viewModel = viewModel else { return }
         viewModel.getDataForCellPhoto { (result) in
             switch result {
             case .success:
@@ -95,14 +91,16 @@ final class DetailViewController: ViewController {
 extension DetailViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+                guard let viewModel = viewModel else { return 2 }
+        return viewModel.numberOfItems(inSection: section)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+         guard let viewModel = viewModel else { return UITableViewCell() }
         switch viewModel.sectionType(atSection: indexPath.section) {
         case .information:
             guard let informationCell = tableView.dequeueReusableCell(withIdentifier: "InformationCell", for: indexPath) as? InformationCell else { return UITableViewCell() }
@@ -118,6 +116,10 @@ extension DetailViewController: UITableViewDataSource {
             guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "PhotoCollectionCell", for: indexPath) as? PhotoCollectionCell else { return UITableViewCell() }
             photoCell.viewModel = viewModel.getCellForRowAtPhotoSection(atIndexPath: indexPath)
             return photoCell
+        case .comment:
+            guard let commentCell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as? CommentCell else { return UITableViewCell() }
+            commentCell.viewModel = viewModel.getCellForRowAtCommentSection(atIndexPath: indexPath)
+            return commentCell
         }
     }
 }
@@ -130,6 +132,7 @@ extension DetailViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+         guard let viewModel = viewModel else { return 200 }
         return viewModel.getheightForRowAt(atIndexPath: indexPath)
     }
 }
@@ -153,6 +156,7 @@ extension DetailViewController: InformationCellDelegate {
     func cell(_ cell: InformationCell, needsPerform action: InformationCell.Action) {
         switch action {
         case .saveDataIntoRealm:
+             guard let viewModel = viewModel else { return }
             viewModel.addDetailIntoRealm { (result) in
                 switch result {
                 case .success:

@@ -14,15 +14,23 @@ enum DetailSection {
     case information
     case map
     case photo
+    case comment
 }
 
-final class DetailViewModel {
-
-    var id: String = ""
-    var photoList: [Photo] = []
-    var detail: Detail?
-    var isFavorite: Bool = false
-
+final class DetailViewModel: ViewModel {
+    
+    private var id: String = ""
+    private var photoList: [Photo] = []
+    private var detail: Detail?
+    private var restaurant: Restaurant?
+    private var isFavorite: Bool = false
+    
+    init(id: String, detail: Detail, restaurant: Restaurant) {
+        self.id = id
+        self.detail = detail
+        self.restaurant = restaurant
+    }
+    
     func sectionType(atSection section: Int) -> DetailSection {
         switch section {
         case 0:
@@ -31,11 +39,13 @@ final class DetailViewModel {
             return .map
         case 2:
             return .photo
+        case 3:
+            return .comment
         default:
             return .photo
         }
     }
-
+    
     func getDataForCellPhoto(completion: @escaping APICompletion) {
         let params = Api.Photo.QueryParams(limit: 20)
         Api.Photo().getPhoto(params: params, restaurantId: id) { (result) in
@@ -50,28 +60,41 @@ final class DetailViewModel {
             }
         }
     }
-
+    
+    func formatPrice() -> String {
+        guard let restaurant = restaurant else { return "$" }
+        switch restaurant.tier {
+        case 1:
+            return "$"
+        case 2:
+            return "$$"
+        case 3:
+            return "$$$"
+        default:
+            return "$$$"
+        }
+    }
+    
+    func formatAddress() -> String {
+        guard let restaurant = restaurant, let address: String = restaurant.formattedAddress.first else { return "Not update yet" }
+        return address
+    }
+    
     func getCellForRowAtInformationSection(atIndexPath indexPath: IndexPath) -> InformationCellViewModel? {
-        if let detail = detail {
+        if let restaurant = restaurant, let detail = detail {
             return InformationCellViewModel(imageURL: detail.bestPhoto,
-                                            name: detail.name, currency: detail.currency,
-                                            address: detail.address, rating: detail.rating,
+                                            name: restaurant.name, price: formatPrice(),
+                                            address: formatAddress(), rating: restaurant.rating,
                                             amountOfRating: detail.sumaryLikes)
         } else {
             return nil
         }
     }
-
+    
     func getCellForRowAtMapSection(atIndexPath indexPath: IndexPath) -> MapCellViewModel? {
-        guard let detail = detail else { return nil }
-            if detail.openDate == "" && detail.openTime == "" {
-                if detail.openStatus == "" {
-                    return MapCellViewModel(openToday: "Not updated yet", openHours: "Not updated yet", lat: detail.lat, lng: detail.lng, name: detail.name, address: detail.address)
-                }
-            } else {
-                return MapCellViewModel(openToday: detail.openStatus, openHours: detail.openDate + " " + detail.openTime, lat: detail.lat, lng: detail.lng, name: detail.name, address: detail.address)
-            }
-        return nil
+        if let restaurant = restaurant, let detail = detail {
+        return MapCellViewModel(openToday: detail.openStatus, openHours: detail.openDate + " " + detail.openTime, lat: restaurant.lat, lng: restaurant.lng, name: restaurant.name, address: restaurant.address)
+        } el
     }
 
     func getCellForRowAtPhotoSection(atIndexPath indexPath: IndexPath) -> PhotoCollectionCellViewModel? {
@@ -82,6 +105,12 @@ final class DetailViewModel {
         return PhotoCollectionCellViewModel(imageURLList: imageURLList)
     }
 
+    func getCellForRowAtCommentSection(atIndexPath indexPath: IndexPath) -> CommentCellViewModel? {
+        guard let comments: [Comment] = detail?.comments else { return nil }
+        guard 0 <= indexPath.row && indexPath.row < comments.count else { return nil }
+        return CommentCellViewModel(comment: comments[indexPath.row])
+    }
+
     func getheightForRowAt(atIndexPath indexPath: IndexPath) -> CGFloat {
         switch sectionType(atSection: indexPath.section) {
         case .information:
@@ -90,20 +119,36 @@ final class DetailViewModel {
             return 250
         case .photo:
             return 200
+        case .comment:
+            return UITableView.automaticDimension
+        }
+    }
+
+    func numberOfItems(inSection section: Int) -> Int {
+        switch sectionType(atSection: section) {
+        case .information:
+            return 1
+        case .map:
+            return 1
+        case .photo:
+            return 1
+        case .comment:
+            guard let comments = detail?.comments else { return 5 }
+            return comments.count
         }
     }
 
     func addDetailIntoRealm(completion: @escaping APICompletion) {
         do {
             let realm = try Realm()
-            let predicate = NSPredicate(format: "id = %@ ", id)
+            let predicate = NSPredicate(format: "id = %@", id)
             let filterPredicate = realm.objects(Detail.self).filter(predicate)
             if let favoriteDetail = filterPredicate.first {
-                favoriteDetail.isFavorite = !favoriteDetail.isFavorite
-                    try realm.write {
-                        realm.create(Detail.self, value: favoriteDetail, update: .modified)
-                        completion(.success)
-                    }
+                try realm.write {
+                    favoriteDetail.isFavorite = !favoriteDetail.isFavorite
+                    realm.create(Detail.self, value: favoriteDetail, update: .modified)
+                    completion(.success)
+                }
             } else {
                 try realm.write {
                     if let detail = detail {
@@ -112,9 +157,25 @@ final class DetailViewModel {
                         completion(.success)
                     }
                 }
-        }
+            }
         } catch {
             completion(.failure(error))
         }
     }
+
+    func checkIsFavorite() -> Bool? {
+        do {
+            let realm = try Realm()
+            let predicate = NSPredicate(format: "id = %@", id)
+            let filterPredicate = realm.objects(Detail.self).filter(predicate)
+            if let favoriteDetail = filterPredicate.first {
+                print("favorite: \(favoriteDetail.isFavorite)")
+                return favoriteDetail.isFavorite
+            }
+        } catch {
+            print("can't fetch data")
+            return nil
+        }
+        return nil
+}
 }

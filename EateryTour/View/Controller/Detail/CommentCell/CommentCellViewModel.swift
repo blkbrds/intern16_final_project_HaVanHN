@@ -15,10 +15,10 @@ final class CommentCellViewModel {
     var createdAt: String
     var text: String
 
-    init(imageURL: String, name: String, createdAt: String, text: String) {
-        self.imageURL = imageURL
-        self.name = name
-        self.createdAt = createdAt
-        self.text = text
+    init(comment: Comment) {
+        self.imageURL = comment.photoURL
+        self.name = "\(comment.firstName) \(comment.lastName)"
+        self.createdAt = String(comment.createdAt)
+        self.text = comment.text
     }
 }

@@ -46,6 +46,8 @@ final class CommentCell: UITableViewCell {
         userNameLabel.text = viewModel.name
         createdAtLabel.text = viewModel.createdAt
         contentLabel.text = viewModel.text
+        let url = URL(fileURLWithPath: viewModel.imageURL)
+        imageView?.sd_setImage(with: url, completed: .none)
     }
     // MARK: - Public functions
 

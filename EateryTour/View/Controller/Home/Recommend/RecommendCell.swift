@@ -63,6 +63,7 @@ final class RecommendCell: TableCell {
             switch result {
             case .success:
                 guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
+                this.delegate?.cell(this, needsPerform: .pushDataIntoDetail(detail: detail))
                 if let restaurant = viewModel.restaurant {
                     this.delegate?.cell(this, needsPerform: .callApiSuccess(restaurant: restaurant))
                 }
@@ -84,5 +85,6 @@ extension RecommendCell {
 
     enum Action {
         case callApiSuccess(restaurant: Restaurant)
+        case pushDataIntoDetail(detail: Detail)
     }
 }

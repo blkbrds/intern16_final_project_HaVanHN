@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class TrendingCollectionCellViewModel {
+final class TrendingCollectionCellViewModel: ViewModel {
 
     var restaurants: [Restaurant]
 

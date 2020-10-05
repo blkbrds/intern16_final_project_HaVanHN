@@ -20,6 +20,7 @@ final class HomeViewModel: ViewModel {
     // MARK: - Properties
     private(set) var restaurantsTrending: [Restaurant] = []
     private(set) var restaurantsRecommend: [Restaurant] = []
+    private(set) var detail: Detail?
 
     // MARK: - Public functions
 
@@ -80,9 +81,9 @@ final class HomeViewModel: ViewModel {
     func viewForHeaderInSection(inSection section: Int) -> CustomHeaderViewModel? {
         switch sectionType(inSection: section) {
         case .trending:
-            return CustomHeaderViewModel(name: "Trending Restaurants")
+            return CustomHeaderViewModel(name: "Popular")
         case .recommend:
-            return CustomHeaderViewModel(name: "Recommend Restaurants")
+            return CustomHeaderViewModel(name: "Recommend")
         }
     }
 
@@ -108,5 +109,20 @@ final class HomeViewModel: ViewModel {
         for (index, restaurant) in restaurantsRecommend.enumerated() where restaurant.id == newRestaurant.id {
             restaurantsRecommend[index] = newRestaurant
         }
+    }
+
+    func pushDataToDetailVC(atIndexPath indexPath: IndexPath) -> DetailViewModel? {
+        switch sectionType(inSection: indexPath.section) {
+        case .trending:
+            guard let detail = detail else { return nil }
+            return DetailViewModel(id: restaurantsTrending[indexPath.row].id, detail: detail, restaurant: restaurantsTrending[indexPath.row])
+        case .recommend:
+            guard let detail = detail else { return nil }
+            return DetailViewModel(id: restaurantsRecommend[indexPath.row].id, detail: detail, restaurant: restaurantsRecommend[indexPath.row])
+        }
+    }
+
+    func getDetail(detail: Detail) {
+        self.detail = detail
     }
 }

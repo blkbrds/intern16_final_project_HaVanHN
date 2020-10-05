@@ -156,14 +156,10 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch viewModel.sectionType(inSection: indexPath.section) {
-        case .recommend:
             let detailVC = DetailViewController()
+            detailVC.viewModel = viewModel.pushDataToDetailVC(atIndexPath: indexPath)
             navigationController?.pushViewController(detailVC, animated: true)
-        default:
-            break
         }
-    }
 }
 
 // MARK: - UITableViewDelegate
@@ -199,6 +195,8 @@ extension HomeViewController: RecommendCellDelegate {
         switch action {
         case .callApiSuccess(restaurant: let restaurant):
             viewModel.updateApiSuccess(newRestaurant: restaurant)
+        case .pushDataIntoDetail(detail: let detail):
+            viewModel.getDetail(detail: detail)
         }
     }
 }

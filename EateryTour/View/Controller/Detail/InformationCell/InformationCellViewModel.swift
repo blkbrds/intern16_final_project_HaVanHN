@@ -13,15 +13,15 @@ final class InformationCellViewModel {
 
     private(set) var imageURL: String
     private(set) var name: String
-    private(set) var currency: String
+    private(set) var price: String
     private(set) var address: String
     private(set) var rating: Float
     private(set) var amountOfRating: String
 
-    init(imageURL: String, name: String, currency: String, address: String, rating: Float, amountOfRating: String) {
+    init(imageURL: String, name: String, price: String, address: String, rating: Float, amountOfRating: String) {
         self.imageURL = imageURL
         self.name = name
-        self.currency = currency
+        self.price = price
         self.address = address
         self.rating = rating
         self.amountOfRating = amountOfRating
