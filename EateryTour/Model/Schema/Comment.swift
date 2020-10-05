@@ -27,7 +27,7 @@ final class Comment: Mappable {
         var suffix: String = ""
         prefix <- map["user.photo.prefix"]
         suffix <- map["user.photo.suffix"]
-        photoURL = prefix + suffix
-        createdAt <- map["user.createdAt"]
+        photoURL = prefix + "200x200" + suffix
+        createdAt <- map["createdAt"]
     }
 }

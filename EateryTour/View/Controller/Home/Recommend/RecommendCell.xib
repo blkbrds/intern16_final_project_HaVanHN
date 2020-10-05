@@ -32,14 +32,14 @@
                             <constraint firstAttribute="width" secondItem="gAf-af-2Gk" secondAttribute="height" id="PhI-P3-WKz"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant's Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ut5-Lf-fyu" customClass="Label" customModule="EateryTour" customModuleProvider="target">
-                        <rect key="frame" x="123" y="24" width="243" height="23"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant's Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ut5-Lf-fyu" customClass="Label" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="123" y="24" width="201" height="23"/>
                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
                         <nil key="highlightedColor"/>
                         <size key="shadowOffset" width="0.0" height="0.0"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0w-fe-IoX" customClass="Label" customModule="EateryTour" customModuleProvider="target">
-                        <rect key="frame" x="123" y="55" width="243" height="14.5"/>
+                        <rect key="frame" x="123" y="55" width="201" height="14.5"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -52,11 +52,12 @@
                         <nil key="highlightedColor"/>
                         <size key="shadowOffset" width="0.0" height="0.0"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="6.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDe-5N-NC2" customClass="Label" customModule="EateryTour" customModuleProvider="target">
-                        <rect key="frame" x="141" y="77.5" width="19" height="14"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="6.0" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDe-5N-NC2" customClass="Label" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="141" y="77.5" width="19" height="14.5"/>
                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
+                        <size key="shadowOffset" width="0.0" height="0.0"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8XF-qc-W3U">
                         <rect key="frame" x="123" y="77" width="16" height="16"/>
@@ -66,23 +67,34 @@
                             <constraint firstAttribute="width" secondItem="8XF-qc-W3U" secondAttribute="height" multiplier="1:1" id="tdg-s8-Oqi"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rT7-bf-vuu">
+                        <rect key="frame" x="326" y="24" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="4uY-oi-d2I"/>
+                            <constraint firstAttribute="width" secondItem="rT7-bf-vuu" secondAttribute="height" id="dJP-pi-pfA"/>
+                        </constraints>
+                        <color key="tintColor" red="0.217035383" green="0.40452584619999998" blue="0.36078119279999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <state key="normal" image="heart.fill" catalog="system"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="r0w-fe-IoX" firstAttribute="top" secondItem="ut5-Lf-fyu" secondAttribute="bottom" constant="8" id="0UD-k5-L8s"/>
                     <constraint firstItem="8XF-qc-W3U" firstAttribute="leading" secondItem="r0w-fe-IoX" secondAttribute="leading" id="22P-df-TFI"/>
                     <constraint firstItem="r0w-fe-IoX" firstAttribute="trailing" secondItem="ut5-Lf-fyu" secondAttribute="trailing" id="7BG-vw-63f"/>
                     <constraint firstAttribute="bottomMargin" secondItem="sZo-MU-0zb" secondAttribute="bottom" constant="20" id="7TE-6r-eWR"/>
-                    <constraint firstAttribute="trailing" secondItem="ut5-Lf-fyu" secondAttribute="trailing" constant="10" id="EAm-k5-ljA"/>
                     <constraint firstItem="gAf-af-2Gk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Rwv-Ol-q60"/>
                     <constraint firstItem="8XF-qc-W3U" firstAttribute="top" secondItem="r0w-fe-IoX" secondAttribute="bottom" constant="8" id="Smm-pg-iog"/>
                     <constraint firstItem="r0w-fe-IoX" firstAttribute="leading" secondItem="ut5-Lf-fyu" secondAttribute="leading" id="Ubp-qh-26k"/>
                     <constraint firstItem="sZo-MU-0zb" firstAttribute="top" secondItem="MDe-5N-NC2" secondAttribute="top" id="Vdt-Lj-cp2"/>
+                    <constraint firstItem="rT7-bf-vuu" firstAttribute="top" secondItem="ut5-Lf-fyu" secondAttribute="top" id="Y42-nW-avL"/>
                     <constraint firstItem="MDe-5N-NC2" firstAttribute="top" secondItem="8XF-qc-W3U" secondAttribute="top" id="dfX-7b-f0O"/>
                     <constraint firstItem="ut5-Lf-fyu" firstAttribute="leading" secondItem="gAf-af-2Gk" secondAttribute="trailing" constant="5" id="ibn-RK-ssE"/>
+                    <constraint firstItem="rT7-bf-vuu" firstAttribute="leading" secondItem="ut5-Lf-fyu" secondAttribute="trailing" constant="2" id="qoH-NL-3Up"/>
                     <constraint firstAttribute="trailingMargin" secondItem="sZo-MU-0zb" secondAttribute="trailing" constant="10" id="sjG-vn-rbD"/>
                     <constraint firstItem="ut5-Lf-fyu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="tkm-oi-D2U"/>
                     <constraint firstItem="gAf-af-2Gk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="vpF-xt-9uz"/>
                     <constraint firstItem="MDe-5N-NC2" firstAttribute="leading" secondItem="8XF-qc-W3U" secondAttribute="trailing" constant="2" id="wOp-RT-3VQ"/>
+                    <constraint firstItem="rT7-bf-vuu" firstAttribute="trailing" secondItem="sZo-MU-0zb" secondAttribute="trailing" id="xGs-hy-4GM"/>
                     <constraint firstItem="sZo-MU-0zb" firstAttribute="leading" secondItem="MDe-5N-NC2" secondAttribute="trailing" constant="3" id="xNC-WD-4Jw"/>
                     <constraint firstAttribute="bottom" secondItem="gAf-af-2Gk" secondAttribute="bottom" constant="10" id="yml-R4-NnE"/>
                 </constraints>
@@ -99,6 +111,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="img-default" width="311" height="207.5"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemYellowColor">

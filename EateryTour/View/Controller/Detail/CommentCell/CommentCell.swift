@@ -37,17 +37,18 @@ final class CommentCell: UITableViewCell {
 
     // MARK: - Private functions
     private func configUI() {
-        imageView?.layer.cornerRadius = 15
-        imageView?.clipsToBounds = true
+        userImage.layer.cornerRadius = userImage.bounds.height / 2
+        userImage.clipsToBounds = true
+        userImage.layer.borderWidth = 1
     }
 
     private func updateUI() {
         guard let viewModel = viewModel else { return }
         userNameLabel.text = viewModel.name
-        createdAtLabel.text = viewModel.createdAt
-        contentLabel.text = viewModel.text
-        let url = URL(fileURLWithPath: viewModel.imageURL)
-        imageView?.sd_setImage(with: url, completed: .none)
+        createdAtLabel.text = viewModel.formatCreatedAtDate()
+        contentLabel.text = "'\(viewModel.text)'"
+        guard let url = URL(string: viewModel.imageURL) else { return }
+        userImage.sd_setImage(with: url)
     }
     // MARK: - Public functions
 

@@ -24,7 +24,7 @@ extension Api.Photo {
     }
 
     @discardableResult
-    func getPhoto(params: QueryParams, restaurantId: String, completion: @escaping Completion<[Photo]>) -> Request? {
+    static func getPhoto(params: QueryParams, restaurantId: String, completion: @escaping Completion<[Photo]>) -> Request? {
         Api.Path.Photo.id = restaurantId
         let path = Api.Path.Photo.path
         print(path)

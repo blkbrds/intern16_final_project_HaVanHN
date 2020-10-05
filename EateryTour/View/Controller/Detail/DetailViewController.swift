@@ -17,7 +17,7 @@ final class DetailViewController: ViewController {
     // MARK: - Propeties
     var viewModel: DetailViewModel? {
         didSet {
-            print("hihi detail")
+            getInformationForDetail()
         }
     }
 
@@ -30,11 +30,6 @@ final class DetailViewController: ViewController {
         getDataForPhotoCell()
     }
 
-    override func viewWillLayoutSubviews() {
-        view.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
-        view.layoutIfNeeded()
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
@@ -42,9 +37,12 @@ final class DetailViewController: ViewController {
     }
 
     // MARK: - Override functions
+    override func viewWillLayoutSubviews() {
+        view.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
+        view.layoutIfNeeded()
+    }
 
     // MARK: - Private functions
-
     private func configTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -76,6 +74,19 @@ final class DetailViewController: ViewController {
 
     private func configBackButton() {
         backButton.tintColor = .white
+    }
+
+    private func getInformationForDetail() {
+        HUD.show()
+        viewModel?.getInformation(completion: { result in
+            HUD.popActivity()
+            switch result {
+            case .success:
+                self.tableView.reloadData()
+            case .failure(let error):
+                self.alert(msg: error.localizedDescription, handler: nil)
+            }
+        })
     }
 
     // MARK: - Public functions
