@@ -85,7 +85,7 @@ final class DetailViewModel: ViewModel {
             return InformationCellViewModel(imageURL: detail.bestPhoto,
                                             name: restaurant.name, price: formatPrice(),
                                             address: formatAddress(), rating: restaurant.rating,
-                                            amountOfRating: detail.sumaryLikes, isFavorite: isFavorite)
+                                            amountOfRating: detail.sumaryLikes, isFavorite: checkIsFavorite())
         } else {
             return nil
         }
@@ -182,7 +182,7 @@ final class DetailViewModel: ViewModel {
         }
     }
 
-    func checkIsFavorite() -> Bool? {
+    func checkIsFavorite() -> Bool {
         do {
             let realm = try Realm()
             let predicate = NSPredicate(format: "id = %@", id)
@@ -191,10 +191,10 @@ final class DetailViewModel: ViewModel {
                 print("favorite: \(favoriteDetail.isFavorite)")
                 return favoriteDetail.isFavorite
             }
+            return false
         } catch {
             print("can't fetch data")
-            return nil
+            return false
         }
-        return nil
-}
+    }
 }
