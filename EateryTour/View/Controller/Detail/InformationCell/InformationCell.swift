@@ -33,8 +33,6 @@ final class InformationCell: TableCell {
     weak var delegate: InformationCellDelegate?
     private var isFavorite: Bool?
 
-    // MARK: - Initialize
-
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -66,8 +64,13 @@ final class InformationCell: TableCell {
         favoriteButton.layer.shadowOpacity = 1.0
         favoriteButton.layer.shadowRadius = 10
         favoriteButton.layer.masksToBounds = false
-        
-        
+        guard let viewModel = viewModel else { return }
+        isFavorite = viewModel.isFavorite
+        if viewModel.isFavorite {
+            favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
     }
 
     // MARK: - Public functions
@@ -76,14 +79,21 @@ final class InformationCell: TableCell {
 
     // MARK: - IBActions
     @IBAction private func favoriteButtonTouchUpInside(_ sender: Button) {
-        favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        guard var isFavorite = isFavorite else { return }
+        if isFavorite {
+            favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        } else {
+            favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }
+        isFavorite = !isFavorite
+        self.isFavorite = isFavorite
         delegate?.cell(self, needsPerform: .saveDataIntoRealm)
     }
 }
 
 // MARK: - Extension
 extension InformationCell {
-
+    
     enum Action {
         case saveDataIntoRealm
     }
