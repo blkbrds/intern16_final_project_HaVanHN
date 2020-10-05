@@ -43,6 +43,12 @@
 		527992E0252A18CF009B5B1E /* CommentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527992DF252A18CF009B5B1E /* CommentCellViewModel.swift */; };
 		527992E6252A18FC009B5B1E /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527992E4252A18FC009B5B1E /* CommentCell.swift */; };
 		527992E7252A18FC009B5B1E /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527992E5252A18FC009B5B1E /* CommentCell.xib */; };
+		52849957252ADD9200394658 /* MyPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52849955252ADD9200394658 /* MyPin.swift */; };
+		52849958252ADD9200394658 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52849956252ADD9200394658 /* Photo.swift */; };
+		5284995D252ADDB200394658 /* MapDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5284995A252ADDB200394658 /* MapDetailViewController.xib */; };
+		5284995E252ADDB200394658 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5284995B252ADDB200394658 /* MapDetailViewController.swift */; };
+		5284995F252ADDB200394658 /* MapDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5284995C252ADDB200394658 /* MapDetailViewModel.swift */; };
+		52849961252ADE1B00394658 /* Api.Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52849960252ADE1B00394658 /* Api.Photo.swift */; };
 		5289C8212525931E00C91959 /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5289C8202525931E00C91959 /* CustomHeader.swift */; };
 		5289C8252525932C00C91959 /* CustomHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5289C8242525932C00C91959 /* CustomHeader.xib */; };
 		5289C8562526B20800C91959 /* Api.Recommend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5289C8552526B20800C91959 /* Api.Recommend.swift */; };
@@ -152,6 +158,12 @@
 		527992DF252A18CF009B5B1E /* CommentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellViewModel.swift; sourceTree = "<group>"; };
 		527992E4252A18FC009B5B1E /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		527992E5252A18FC009B5B1E /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
+		52849955252ADD9200394658 /* MyPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPin.swift; sourceTree = "<group>"; };
+		52849956252ADD9200394658 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		5284995A252ADDB200394658 /* MapDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapDetailViewController.xib; sourceTree = "<group>"; };
+		5284995B252ADDB200394658 /* MapDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
+		5284995C252ADDB200394658 /* MapDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailViewModel.swift; sourceTree = "<group>"; };
+		52849960252ADE1B00394658 /* Api.Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.Photo.swift; sourceTree = "<group>"; };
 		5289C8202525931E00C91959 /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
 		5289C8242525932C00C91959 /* CustomHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomHeader.xib; sourceTree = "<group>"; };
 		5289C8552526B20800C91959 /* Api.Recommend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.Recommend.swift; sourceTree = "<group>"; };
@@ -326,11 +338,11 @@
 			children = (
 				527992DE252A1880009B5B1E /* CommentCell */,
 				527992BA252A181E009B5B1E /* DetailViewController.swift */,
-				527992BB252A181E009B5B1E /* PhotoCell */,
-				527992C3252A181E009B5B1E /* MapCell */,
-				527992C7252A181E009B5B1E /* InformationCell */,
-				527992CB252A181E009B5B1E /* DetailViewModel.swift */,
 				527992CC252A181E009B5B1E /* DetailViewController.xib */,
+				527992CB252A181E009B5B1E /* DetailViewModel.swift */,
+				527992C7252A181E009B5B1E /* InformationCell */,
+				527992C3252A181E009B5B1E /* MapCell */,
+				527992BB252A181E009B5B1E /* PhotoCell */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -386,6 +398,16 @@
 			path = CommentCell;
 			sourceTree = "<group>";
 		};
+		52849959252ADDB200394658 /* MapDetail */ = {
+			isa = PBXGroup;
+			children = (
+				5284995A252ADDB200394658 /* MapDetailViewController.xib */,
+				5284995B252ADDB200394658 /* MapDetailViewController.swift */,
+				5284995C252ADDB200394658 /* MapDetailViewModel.swift */,
+			);
+			path = MapDetail;
+			sourceTree = "<group>";
+		};
 		52E27F5E251D873000678E52 /* TrendingCollectionCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +422,8 @@
 		52E27F6D251D8B5300678E52 /* Schema */ = {
 			isa = PBXGroup;
 			children = (
+				52849955252ADD9200394658 /* MyPin.swift */,
+				52849956252ADD9200394658 /* Photo.swift */,
 				5289C8842528190500C91959 /* Comment.swift */,
 				52E27F6E251D8B5300678E52 /* Detail.swift */,
 				52E27F6F251D8B5300678E52 /* LocationManager.swift */,
@@ -509,6 +533,7 @@
 		A3F6229025060E7F0024976E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				52849959252ADDB200394658 /* MapDetail */,
 				527992B9252A181E009B5B1E /* Detail */,
 				522A5C662519BCEB00829199 /* Favorite */,
 				A3F622E925062E5F0024976E /* Home */,
@@ -566,6 +591,7 @@
 		A3F622A225060E800024976E /* API */ = {
 			isa = PBXGroup;
 			children = (
+				52849960252ADE1B00394658 /* Api.Photo.swift */,
 				52E27F78251D8BC800678E52 /* Api.Detail.swift */,
 				5289C8552526B20800C91959 /* Api.Recommend.swift */,
 				52E27F79251D8BC800678E52 /* Api.Trending.swift */,
@@ -734,6 +760,7 @@
 				527992D6252A181E009B5B1E /* MapCell.xib in Resources */,
 				A3AED35F251355E200B5E6D0 /* SF-Pro-Text-Semibold.otf in Resources */,
 				52E27F68251D873000678E52 /* TrendingCell.xib in Resources */,
+				5284995D252ADDB200394658 /* MapDetailViewController.xib in Resources */,
 				522A5C792519BCEB00829199 /* MapViewController.xib in Resources */,
 				A3AED35B251355E200B5E6D0 /* SF-Pro-Text-Light.otf in Resources */,
 				A3AED35D251355E200B5E6D0 /* SF-Pro-Text-Regular.otf in Resources */,
@@ -836,6 +863,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5284995F252ADDB200394658 /* MapDetailViewModel.swift in Sources */,
 				A3F622B925060E800024976E /* ImageView.swift in Sources */,
 				A3F622B425060E800024976E /* ViewController.swift in Sources */,
 				523F27A1251D8DD800373CAC /* TrendingCell.swift in Sources */,
@@ -843,6 +871,7 @@
 				A3F622E125061AB70024976E /* String.swift in Sources */,
 				A3F622F6250638B90024976E /* TabBarController.swift in Sources */,
 				A3F622AD25060E800024976E /* UIViewExt.swift in Sources */,
+				52849957252ADD9200394658 /* MyPin.swift in Sources */,
 				A3F622BA25060E800024976E /* Button.swift in Sources */,
 				A3F622C125060E800024976E /* Api.swift in Sources */,
 				527992CD252A181E009B5B1E /* DetailViewController.swift in Sources */,
@@ -867,6 +896,8 @@
 				522D589425223E1300C4E6A3 /* RecommendCell.swift in Sources */,
 				527992D5252A181E009B5B1E /* MapCellViewModel.swift in Sources */,
 				A3F622E525062BC20024976E /* NSURLExt.swift in Sources */,
+				5284995E252ADDB200394658 /* MapDetailViewController.swift in Sources */,
+				52849958252ADD9200394658 /* Photo.swift in Sources */,
 				527992D9252A181E009B5B1E /* InformationCell.swift in Sources */,
 				52359A8725219BAD00CEB92D /* OptionalExt.swift in Sources */,
 				A3F622F8250698EE0024976E /* DataExt.swift in Sources */,
@@ -898,6 +929,7 @@
 				527992E6252A18FC009B5B1E /* CommentCell.swift in Sources */,
 				A3F622AF25060E800024976E /* CollectionExt.swift in Sources */,
 				A3F622BD25060E800024976E /* RequestSerializer.swift in Sources */,
+				52849961252ADE1B00394658 /* Api.Photo.swift in Sources */,
 				A3F622E325061ABD0024976E /* App.swift in Sources */,
 				522A5C762519BCEB00829199 /* SettingViewController.swift in Sources */,
 				A3F622B525060E800024976E /* CollectionView.swift in Sources */,

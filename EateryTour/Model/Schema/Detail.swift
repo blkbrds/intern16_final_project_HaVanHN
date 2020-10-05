@@ -8,18 +8,23 @@
 
 import Foundation
 import ObjectMapper
+import RealmSwift
 
-final class Detail: Mappable {
+@objcMembers final class Detail: Object, Mappable {
 
-    var id: String = ""
+    dynamic var id: String = ""
     var sumaryLikes: String = ""
     var bestPhoto: String = ""
     var openDate: String = ""
     var openTime: String = ""
     var isOpen: Bool = false
     var comments: [Comment] = []
+    dynamic var isFavorite: Bool = false
 
     init?(map: Map) {
+    }
+    
+    required init() {
     }
 
     func mapping(map: Map) {
@@ -53,4 +58,14 @@ final class Detail: Mappable {
         guard let commentList = groupSecond["items"] as? JSArray else { return }
         comments = Mapper<Comment>().mapArray(JSONArray: commentList)
     }
+
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+
+    override class func ignoredProperties() -> [String] {
+        return ["sumaryLikes", "bestPhoto", "openDate", "openTime", "isOpen", "comments"]
+    }
+
+    
 }
