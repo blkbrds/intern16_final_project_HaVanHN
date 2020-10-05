@@ -41,8 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             setRoot(rootType: .tutorial)
         }
-        let vc = TutorialViewController()
-        window?.rootViewController = vc
         window?.makeKeyAndVisible()
     }
 
