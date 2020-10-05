@@ -16,13 +16,15 @@ final class MapCellViewModel {
     private(set) var lng: Float
     private(set) var name: String
     private(set) var address: String
+    private(set) var contact: String
 
-    init(openToday: String, openHours: String, lat: Float, lng: Float, name: String, address: String) {
+    init(openToday: String, openHours: String, lat: Float, lng: Float, name: String, address: String, contact: String) {
         self.openToday = openToday
         self.openHours = openHours
         self.lat = lat
         self.lng = lng
         self.name = name
         self.address = address
+        self.contact = contact
     }
 }

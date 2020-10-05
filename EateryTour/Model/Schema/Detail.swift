@@ -12,59 +12,35 @@ import RealmSwift
 
 @objcMembers final class Detail: Object, Mappable {
 
-    // MARK: - Properties
     dynamic var id: String = ""
-    dynamic var name: String = ""
-    dynamic var address: String =  ""
-    dynamic var lat: Float = 0.0
-    dynamic var lng: Float = 0.0
-    dynamic var state: String = ""
-    dynamic var country: String = ""
-    dynamic var currency: String = ""
-    dynamic var sumaryLikes: String = ""
-    dynamic var rating: Float = 0.0
-    dynamic var bestPhoto: String = ""
-    dynamic var openDate: String = ""
-    dynamic var openTime: String = ""
-    dynamic var isOpen: Bool = false
-    dynamic var openStatus: String = ""
-    dynamic var amoutOfLikes: String = ""
+    var sumaryLikes: String = ""
+    var bestPhoto: String = ""
+    var openDate: String = ""
+    var openTime: String = ""
+    var openState: String = ""
+    var comments: [Comment] = []
     dynamic var isFavorite: Bool = false
 
-    // MARK: - Initialize
     init?(map: Map) {
     }
 
     required init() {
     }
 
-    // MARK: - Override functions
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-
-    // MARK: - Public functions
     func mapping(map: Map) {
         id <- map["response.venue.id"]
-        name <- map["response.venue.name"]
-        address <- map["response.venue.location.address"]
-        lat <- map["response.venue.location.lat"]
-        lng <- map["response.venue.location.lng"]
-        state <- map["response.venue.location.state"]
-        country <- map["response.venue.location.country"]
-        currency <- map["response.venue.price.currency"]
         sumaryLikes <- map["response.venue.likes.summary"]
-        rating <- map["response.venue.rating"]
         var prefix: String = ""
         var suffix: String = ""
         var width: Int = 0
         var height: Int = 0
+        var groups: JSArray = [[:]]
         prefix <- map["response.venue.bestPhoto.prefix"]
         suffix <- map["response.venue.bestPhoto.suffix"]
         width <- map["response.venue.bestPhoto.width"]
         height <- map["response.venue.bestPhoto.height"]
         bestPhoto = prefix + "\(width)x\(height)" + suffix
-        isOpen <- map["response.venue.hours.isOpen"]
+        openState <- map["response.venue.hours.status"]
         var timeFrames: JSArray = [[:]]
         timeFrames <- map["response.venue.hours.timeframes"]
         if let firstTimeFrames = timeFrames.first {
@@ -77,7 +53,17 @@ import RealmSwift
                 }
             }
         }
-        openStatus <- map["response.venue.hours.status"]
-        amoutOfLikes <- map["response.venue.likes.summary"]
+        groups <- map["response.venue.tips.groups"]
+        let groupSecond = groups[1]
+        guard let commentList = groupSecond["items"] as? JSArray else { return }
+        comments = Mapper<Comment>().mapArray(JSONArray: commentList)
+    }
+
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+
+    override class func ignoredProperties() -> [String] {
+        return ["sumaryLikes", "bestPhoto", "openDate", "openTime", "isOpen", "comments"]
     }
 }

@@ -1,51 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="207" id="KGk-i7-Jjw" customClass="MapCell" customModule="EateryTour" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="342" height="207"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="280" id="KGk-i7-Jjw" customClass="MapCell" customModule="EateryTour" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="342" height="280"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="342" height="207"/>
+                <rect key="frame" x="0.0" y="0.0" width="342" height="280"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Nz6-b7-FDp">
-                        <rect key="frame" x="0.0" y="0.0" width="342" height="145"/>
+                        <rect key="frame" x="0.0" y="0.0" width="342" height="196"/>
                     </mapView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Today:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uc8-8Q-j5N">
-                        <rect key="frame" x="20" y="153" width="41" height="16"/>
+                        <rect key="frame" x="20" y="204" width="41" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hours:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fN2-Sl-Rnu">
-                        <rect key="frame" x="20" y="177" width="41" height="16"/>
+                        <rect key="frame" x="20" y="228" width="41" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NiM-gQ-Vej">
+                        <rect key="frame" x="20" y="252" width="52" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon-Sun 10:00 AM–10:00 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcQ-yX-4g6">
-                        <rect key="frame" x="66" y="177" width="256" height="16"/>
+                        <rect key="frame" x="66" y="228" width="256" height="16"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open until 10:00 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Vm-F1-uT5">
-                        <rect key="frame" x="66" y="153" width="256" height="16"/>
+                        <rect key="frame" x="66" y="204" width="256" height="16"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yL5-0U-g7R" customClass="Button" customModule="EateryTour" customModuleProvider="target">
-                        <rect key="frame" x="287" y="98" width="40" height="40"/>
+                        <rect key="frame" x="287" y="149" width="40" height="40"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="yL5-0U-g7R" secondAttribute="height" id="C6c-4W-6UM"/>
@@ -59,8 +64,16 @@
                             <action selector="locationButtonTouchUpInside:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mAC-Ut-dCG"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="013045036938" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKz-aZ-ER8">
+                        <rect key="frame" x="66" y="252" width="256" height="16"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="NiM-gQ-Vej" firstAttribute="top" secondItem="fN2-Sl-Rnu" secondAttribute="bottom" constant="8" id="2g6-65-qDo"/>
+                    <constraint firstItem="eKz-aZ-ER8" firstAttribute="leading" secondItem="qcQ-yX-4g6" secondAttribute="leading" id="3Ne-Vt-ohb"/>
                     <constraint firstItem="yL5-0U-g7R" firstAttribute="width" secondItem="yL5-0U-g7R" secondAttribute="height" id="3sY-xb-3uY"/>
                     <constraint firstItem="Nz6-b7-FDp" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.7" id="9Ms-rg-e1y"/>
                     <constraint firstAttribute="trailing" secondItem="yL5-0U-g7R" secondAttribute="trailing" constant="15" id="FOs-eI-XVK"/>
@@ -70,12 +83,15 @@
                     <constraint firstItem="fN2-Sl-Rnu" firstAttribute="top" secondItem="Uc8-8Q-j5N" secondAttribute="bottom" constant="8" id="ZMq-0Y-M9u"/>
                     <constraint firstItem="Nz6-b7-FDp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="btM-Rm-heW"/>
                     <constraint firstItem="fN2-Sl-Rnu" firstAttribute="trailing" secondItem="Uc8-8Q-j5N" secondAttribute="trailing" id="dBP-mG-qgv"/>
+                    <constraint firstItem="NiM-gQ-Vej" firstAttribute="leading" secondItem="fN2-Sl-Rnu" secondAttribute="leading" id="fkV-Uz-MYj"/>
                     <constraint firstItem="fN2-Sl-Rnu" firstAttribute="leading" secondItem="Uc8-8Q-j5N" secondAttribute="leading" id="hBv-zJ-0eV"/>
                     <constraint firstItem="qcQ-yX-4g6" firstAttribute="bottom" secondItem="fN2-Sl-Rnu" secondAttribute="bottom" id="ibf-xs-zOL"/>
                     <constraint firstItem="qcQ-yX-4g6" firstAttribute="trailing" secondItem="4Vm-F1-uT5" secondAttribute="trailing" id="iux-4y-iot"/>
                     <constraint firstAttribute="trailing" secondItem="Nz6-b7-FDp" secondAttribute="trailing" id="jRA-65-smf"/>
                     <constraint firstItem="qcQ-yX-4g6" firstAttribute="leading" secondItem="fN2-Sl-Rnu" secondAttribute="trailing" constant="5" id="mop-fV-bMX"/>
                     <constraint firstItem="Nz6-b7-FDp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nfX-qz-6LK"/>
+                    <constraint firstItem="eKz-aZ-ER8" firstAttribute="trailing" secondItem="qcQ-yX-4g6" secondAttribute="trailing" id="qQ5-m4-JiG"/>
+                    <constraint firstItem="eKz-aZ-ER8" firstAttribute="bottom" secondItem="NiM-gQ-Vej" secondAttribute="bottom" id="u0N-A1-Np7"/>
                     <constraint firstItem="4Vm-F1-uT5" firstAttribute="bottom" secondItem="Uc8-8Q-j5N" secondAttribute="bottom" id="uWR-fs-HQQ"/>
                     <constraint firstItem="Uc8-8Q-j5N" firstAttribute="top" secondItem="Nz6-b7-FDp" secondAttribute="bottom" constant="8" id="vFT-Xx-919"/>
                     <constraint firstItem="4Vm-F1-uT5" firstAttribute="top" secondItem="yL5-0U-g7R" secondAttribute="bottom" constant="15" id="vYW-CB-fER"/>
@@ -83,15 +99,16 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="contactLabel" destination="eKz-aZ-ER8" id="Mcy-2Z-dKh"/>
                 <outlet property="locationButton" destination="yL5-0U-g7R" id="2o9-Fx-uos"/>
                 <outlet property="mapView" destination="Nz6-b7-FDp" id="IxI-xo-Vng"/>
                 <outlet property="openHoursLabel" destination="qcQ-yX-4g6" id="C97-KG-z3v"/>
                 <outlet property="openTodayLabel" destination="4Vm-F1-uT5" id="Rxq-gF-LwC"/>
             </connections>
-            <point key="canvasLocation" x="-155.07246376811597" y="64.620535714285708"/>
+            <point key="canvasLocation" x="-155.07246376811597" y="89.0625"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="paperplane.fill" catalog="system" width="128" height="118"/>
+        <image name="paperplane.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>

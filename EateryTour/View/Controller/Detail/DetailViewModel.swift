@@ -14,14 +14,22 @@ enum DetailSection {
     case information
     case map
     case photo
+    case comment
 }
 
-final class DetailViewModel {
+final class DetailViewModel: ViewModel {
 
-    var id: String = ""
-    var photoList: [Photo] = []
-    var detail: Detail?
-    var isFavorite: Bool = false
+    private var id: String = ""
+    private var photoList: [Photo] = []
+    private var detail: Detail?
+    private var restaurant: Restaurant?
+    private var isFavorite: Bool = false
+
+    init(id: String, detail: Detail, restaurant: Restaurant) {
+        self.id = id
+        self.detail = detail
+        self.restaurant = restaurant
+    }
 
     func sectionType(atSection section: Int) -> DetailSection {
         switch section {
@@ -31,6 +39,8 @@ final class DetailViewModel {
             return .map
         case 2:
             return .photo
+        case 3:
+            return .comment
         default:
             return .photo
         }
@@ -51,27 +61,59 @@ final class DetailViewModel {
         }
     }
 
+    func formatPrice() -> String {
+        guard let restaurant = restaurant else { return "$" }
+        switch restaurant.tier {
+        case 1:
+            return "$"
+        case 2:
+            return "$$"
+        case 3:
+            return "$$$"
+        default:
+            return "$$$"
+        }
+    }
+
+    func formatAddress() -> String {
+        guard let restaurant = restaurant, let address: String = restaurant.formattedAddress.first else { return "Not update yet" }
+        return address
+    }
+
     func getCellForRowAtInformationSection(atIndexPath indexPath: IndexPath) -> InformationCellViewModel? {
-        if let detail = detail {
+        if let restaurant = restaurant, let detail = detail {
             return InformationCellViewModel(imageURL: detail.bestPhoto,
-                                            name: detail.name, currency: detail.currency,
-                                            address: detail.address, rating: detail.rating,
-                                            amountOfRating: detail.sumaryLikes, isFavorite: checkIsFavorite() ?? false)
+                                            name: restaurant.name, price: formatPrice(),
+                                            address: formatAddress(), rating: restaurant.rating,
+                                            amountOfRating: detail.sumaryLikes, isFavorite: checkIsFavorite())
         } else {
             return nil
         }
     }
 
     func getCellForRowAtMapSection(atIndexPath indexPath: IndexPath) -> MapCellViewModel? {
-        guard let detail = detail else { return nil }
-        if detail.openDate == "" && detail.openTime == "" {
-            if detail.openStatus == "" {
-                return MapCellViewModel(openToday: "Not updated yet", openHours: "Not updated yet", lat: detail.lat, lng: detail.lng, name: detail.name, address: detail.address)
+        if let restaurant = restaurant, let detail = detail {
+            var newContact: String = restaurant.contact
+            if newContact == "" {
+                newContact = "Not updated yet"
             }
+            var newOpenState: String = detail.openState
+            if newOpenState == "" {
+                newOpenState = "Not updated yet"
+            }
+            var newOpenHours: String = detail.openDate + " " + detail.openTime
+            if newOpenHours == " " {
+                newOpenHours = "Not updated yet"
+            }
+            return MapCellViewModel(openToday: newOpenState,
+                                    openHours: newOpenHours,
+                                    lat: restaurant.lat, lng: restaurant.lng,
+                                    name: restaurant.name,
+                                    address: formatAddress(),
+                                    contact: newContact)
         } else {
-            return MapCellViewModel(openToday: detail.openStatus, openHours: detail.openDate + " " + detail.openTime, lat: detail.lat, lng: detail.lng, name: detail.name, address: detail.address)
+            return nil
         }
-        return nil
     }
 
     func getCellForRowAtPhotoSection(atIndexPath indexPath: IndexPath) -> PhotoCollectionCellViewModel? {
@@ -82,14 +124,36 @@ final class DetailViewModel {
         return PhotoCollectionCellViewModel(imageURLList: imageURLList)
     }
 
+    func getCellForRowAtCommentSection(atIndexPath indexPath: IndexPath) -> CommentCellViewModel? {
+        guard let comments: [Comment] = detail?.comments else { return nil }
+        guard 0 <= indexPath.row && indexPath.row < comments.count else { return nil }
+        return CommentCellViewModel(comment: comments[indexPath.row])
+    }
+
     func getheightForRowAt(atIndexPath indexPath: IndexPath) -> CGFloat {
         switch sectionType(atSection: indexPath.section) {
         case .information:
             return UITableView.automaticDimension
         case .map:
-            return 250
+            return 280
         case .photo:
             return 200
+        case .comment:
+            return UITableView.automaticDimension
+        }
+    }
+
+    func numberOfItems(inSection section: Int) -> Int {
+        switch sectionType(atSection: section) {
+        case .information:
+            return 1
+        case .map:
+            return 1
+        case .photo:
+            return 1
+        case .comment:
+            guard let comments = detail?.comments else { return 5 }
+            return comments.count
         }
     }
 
@@ -118,7 +182,7 @@ final class DetailViewModel {
         }
     }
 
-    func checkIsFavorite() -> Bool? {
+    func checkIsFavorite() -> Bool {
         do {
             let realm = try Realm()
             let predicate = NSPredicate(format: "id = %@", id)
@@ -127,10 +191,10 @@ final class DetailViewModel {
                 print("favorite: \(favoriteDetail.isFavorite)")
                 return favoriteDetail.isFavorite
             }
+            return false
         } catch {
             print("can't fetch data")
-            return nil
+            return false
         }
-        return nil
     }
 }

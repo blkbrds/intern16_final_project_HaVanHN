@@ -13,7 +13,7 @@ protocol TrendingCellDelegate: class {
     func cell(_ cell: TrendingCell, needsPerform action: TrendingCell.Action)
 }
 
-final class TrendingCell: TableCell {
+final class TrendingCell: CollectionCell {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var ratingLabel: Label!
@@ -21,11 +21,11 @@ final class TrendingCell: TableCell {
     @IBOutlet private weak var restaurantImageView: ImageView!
     @IBOutlet private weak var distanceButton: Button!
     @IBOutlet private weak var restaurantNameLabel: Label!
-    @IBOutlet private weak var addressAndCurrencyLabel: Label!
-    @IBOutlet private weak var amountOfLikesLabel: Label!
+    @IBOutlet private weak var addressAndPriceLabel: Label!
+    @IBOutlet private weak var amountOfRatingLabel: Label!
 
     // MARK: - Propeties
-    var viewModel = TrendingCellViewModel() {
+    var viewModel: RestaurantCellViewModel? {
         didSet {
             updateUI()
         }
@@ -46,37 +46,39 @@ final class TrendingCell: TableCell {
 
     // MARK: - Private functions
     private func configUI() {
-        restaurantImageView.layer.cornerRadius = 10
+        restaurantImageView.layer.cornerRadius = 7
         restaurantImageView.clipsToBounds = true
-        distanceButton.layer.cornerRadius = 15
+        distanceButton.layer.cornerRadius = 13
         distanceButton.clipsToBounds = true
+        self.layer.cornerRadius = 10
+        self.clipsToBounds = true
     }
 
     private func updateUI() {
+        guard let viewModel = viewModel else { return }
         guard let restaurant = viewModel.restaurant else { return }
         restaurantNameLabel.text = restaurant.name
-        addressAndCurrencyLabel.text = viewModel.getAddressAndCurrency()
+        addressAndPriceLabel.text = viewModel.formatAddresAndPrice()
+        distanceButton.setTitle(viewModel.formatDistance(), for: .normal)
+        ratingLabel.text = String(restaurant.rating)
         guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
         restaurantImageView.sd_setImage(with: urlImage)
-        amountOfLikesLabel.text = detail.amoutOfLikes
-        ratingLabel.text = String(detail.rating)
+        amountOfRatingLabel.text = "(\(detail.sumaryLikes))"
     }
 
     // MARK: - Public functions
     func getInformation(completion: @escaping APICompletion) {
+        guard let viewModel = viewModel else { return }
         viewModel.loadMoreInformation(completion: { [weak self] (result) in
             guard let this = self else { return }
             switch result {
             case .success:
-                guard let detail = this.viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
-                if let restaurant = this.viewModel.restaurant {
+                guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
+                if let restaurant = viewModel.restaurant {
                     this.delegate?.cell(this, needsPerform: .callApiSuccess(restaurant: restaurant))
                 }
                 this.restaurantImageView.sd_setImage(with: urlImage)
-                this.addressAndCurrencyLabel.text = this.viewModel.getAddressAndCurrency()
-                this.ratingLabel.text = String(detail.rating)
-                this.amountOfLikesLabel.text = detail.amoutOfLikes
-                this.distanceButton.setTitle(this.viewModel.calculateDistance(), for: .normal)
+                this.amountOfRatingLabel.text = "(\(detail.sumaryLikes))"
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))

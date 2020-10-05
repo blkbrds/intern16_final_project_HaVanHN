@@ -33,8 +33,6 @@ final class InformationCell: TableCell {
     weak var delegate: InformationCellDelegate?
     private var isFavorite: Bool?
 
-    // MARK: - Initialize
-
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,7 +51,7 @@ final class InformationCell: TableCell {
         restaurantImage.sd_setImage(with: urlImage)
         nameLabel.text = viewModel.name
         addressLabel.text = viewModel.address
-        currencyLabel.text = viewModel.currency
+        currencyLabel.text = viewModel.price
         ratingLabel.text = String(viewModel.rating)
         amountOfRatingLabel.text = viewModel.amountOfRating
     }
@@ -95,7 +93,7 @@ final class InformationCell: TableCell {
 
 // MARK: - Extension
 extension InformationCell {
-
+    
     enum Action {
         case saveDataIntoRealm
     }
