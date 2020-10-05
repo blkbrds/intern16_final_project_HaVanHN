@@ -20,6 +20,7 @@ final class MapCell: TableCell {
     @IBOutlet private weak var openTodayLabel: Label!
     @IBOutlet private weak var openHoursLabel: Label!
     @IBOutlet private weak var locationButton: Button!
+    @IBOutlet private weak var contactLabel: Label!
 
     // MARK: - Propeties
     var viewModel: MapCellViewModel? {
@@ -49,6 +50,7 @@ final class MapCell: TableCell {
         }
         openTodayLabel.text = viewModel.openToday
         openHoursLabel.text = viewModel.openHours
+        contactLabel.text = viewModel.contact
     }
 
     private func configButton() {

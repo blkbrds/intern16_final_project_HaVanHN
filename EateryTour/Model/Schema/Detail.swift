@@ -17,13 +17,13 @@ import RealmSwift
     var bestPhoto: String = ""
     var openDate: String = ""
     var openTime: String = ""
-    var isOpen: Bool = false
+    var openState: String = ""
     var comments: [Comment] = []
     dynamic var isFavorite: Bool = false
 
     init?(map: Map) {
     }
-    
+
     required init() {
     }
 
@@ -40,7 +40,7 @@ import RealmSwift
         width <- map["response.venue.bestPhoto.width"]
         height <- map["response.venue.bestPhoto.height"]
         bestPhoto = prefix + "\(width)x\(height)" + suffix
-        isOpen <- map["response.venue.hours.isOpen"]
+        openState <- map["response.venue.hours.status"]
         var timeFrames: JSArray = [[:]]
         timeFrames <- map["response.venue.hours.timeframes"]
         if let firstTimeFrames = timeFrames.first {
@@ -66,6 +66,4 @@ import RealmSwift
     override class func ignoredProperties() -> [String] {
         return ["sumaryLikes", "bestPhoto", "openDate", "openTime", "isOpen", "comments"]
     }
-
-    
 }

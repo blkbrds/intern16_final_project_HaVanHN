@@ -18,19 +18,19 @@ enum DetailSection {
 }
 
 final class DetailViewModel: ViewModel {
-    
+
     private var id: String = ""
     private var photoList: [Photo] = []
     private var detail: Detail?
     private var restaurant: Restaurant?
     private var isFavorite: Bool = false
-    
+
     init(id: String, detail: Detail, restaurant: Restaurant) {
         self.id = id
         self.detail = detail
         self.restaurant = restaurant
     }
-    
+
     func sectionType(atSection section: Int) -> DetailSection {
         switch section {
         case 0:
@@ -45,7 +45,7 @@ final class DetailViewModel: ViewModel {
             return .photo
         }
     }
-    
+
     func getDataForCellPhoto(completion: @escaping APICompletion) {
         let params = Api.Photo.QueryParams(limit: 20)
         Api.Photo().getPhoto(params: params, restaurantId: id) { (result) in
@@ -60,7 +60,7 @@ final class DetailViewModel: ViewModel {
             }
         }
     }
-    
+
     func formatPrice() -> String {
         guard let restaurant = restaurant else { return "$" }
         switch restaurant.tier {
@@ -74,12 +74,12 @@ final class DetailViewModel: ViewModel {
             return "$$$"
         }
     }
-    
+
     func formatAddress() -> String {
         guard let restaurant = restaurant, let address: String = restaurant.formattedAddress.first else { return "Not update yet" }
         return address
     }
-    
+
     func getCellForRowAtInformationSection(atIndexPath indexPath: IndexPath) -> InformationCellViewModel? {
         if let restaurant = restaurant, let detail = detail {
             return InformationCellViewModel(imageURL: detail.bestPhoto,
@@ -90,11 +90,30 @@ final class DetailViewModel: ViewModel {
             return nil
         }
     }
-    
+
     func getCellForRowAtMapSection(atIndexPath indexPath: IndexPath) -> MapCellViewModel? {
         if let restaurant = restaurant, let detail = detail {
-        return MapCellViewModel(openToday: detail.openStatus, openHours: detail.openDate + " " + detail.openTime, lat: restaurant.lat, lng: restaurant.lng, name: restaurant.name, address: restaurant.address)
-        } el
+            var newContact: String = restaurant.contact
+            if newContact == "" {
+                newContact = "Not updated yet"
+            }
+            var newOpenState: String = detail.openState
+            if newOpenState == "" {
+                newOpenState = "Not updated yet"
+            }
+            var newOpenHours: String = detail.openDate + " " + detail.openTime
+            if newOpenHours == " " {
+                newOpenHours = "Not updated yet"
+            }
+            return MapCellViewModel(openToday: newOpenState,
+                                    openHours: newOpenHours,
+                                    lat: restaurant.lat, lng: restaurant.lng,
+                                    name: restaurant.name,
+                                    address: formatAddress(),
+                                    contact: newContact)
+        } else {
+            return nil
+        }
     }
 
     func getCellForRowAtPhotoSection(atIndexPath indexPath: IndexPath) -> PhotoCollectionCellViewModel? {
@@ -116,7 +135,7 @@ final class DetailViewModel: ViewModel {
         case .information:
             return UITableView.automaticDimension
         case .map:
-            return 250
+            return 280
         case .photo:
             return 200
         case .comment:

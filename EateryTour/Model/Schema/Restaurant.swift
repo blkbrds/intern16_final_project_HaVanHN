@@ -21,6 +21,7 @@ final class Restaurant: Mappable {
     var tier: Int = 0
     var rating: Float = 0.0
     var isLoadApiCompleted: Bool = false
+    var contact: String = ""
 
     init?(map: Map) {
     }
@@ -35,5 +36,6 @@ final class Restaurant: Mappable {
         distance <- map["venue.location.distance"]
         tier <- map["venue.price.tier"]
         rating <- map["venue.rating"]
+        contact <- map["venue.contact.phone"]
     }
 }
