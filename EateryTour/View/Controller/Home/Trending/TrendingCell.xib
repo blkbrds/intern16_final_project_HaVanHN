@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrendingCell" customModule="EateryTour" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="235" id="KGk-i7-Jjw" customClass="TrendingCell" customModule="EateryTour" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="394" height="235"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="394" height="235"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ebj-xZ-DK0" customClass="ImageView" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="15" y="0.0" width="364" height="164.5"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tokazaky Restaurant" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2c-Tn-nj3" customClass="Label" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="15" y="169.5" width="364" height="21"/>
+                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                        <color key="textColor" systemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28 Hoàng Diệu " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lsy-S0-loS" customClass="Label" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="15" y="193.5" width="364" height="15"/>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
+                        <color key="textColor" systemColor="systemGrayColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(14 ratings)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ha-ws-wzU" customClass="Label" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="59.5" y="216" width="66" height="15"/>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
+                        <color key="textColor" systemColor="systemGrayColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="6.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ql0-r3-Fq2" customClass="Label" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="38" y="216" width="18.5" height="15"/>
+                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4FL-Fb-xxi" customClass="ImageView" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="15" y="212.5" width="20" height="17"/>
+                        <color key="tintColor" systemColor="systemYellowColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="4FL-Fb-xxi" secondAttribute="height" id="73e-Dv-CJY"/>
+                        </constraints>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="bold"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jha-C8-zPc" customClass="Button" customModule="EateryTour" customModuleProvider="target">
+                        <rect key="frame" x="301" y="129.5" width="70" height="27"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="2US-WR-9hi"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="2.4 km">
+                            <color key="titleColor" systemColor="viewFlipsideBackgroundColor"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="titleColorForDisabled">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="titleColorForHighlighted">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Lsy-S0-loS" firstAttribute="trailing" secondItem="y2c-Tn-nj3" secondAttribute="trailing" id="6BA-yM-PRv"/>
+                    <constraint firstItem="Ql0-r3-Fq2" firstAttribute="centerY" secondItem="4FL-Fb-xxi" secondAttribute="centerY" constant="2" id="G6M-KL-f0s"/>
+                    <constraint firstItem="4ha-ws-wzU" firstAttribute="centerY" secondItem="Ql0-r3-Fq2" secondAttribute="centerY" id="JTg-5X-yGI"/>
+                    <constraint firstItem="Lsy-S0-loS" firstAttribute="top" secondItem="y2c-Tn-nj3" secondAttribute="bottom" constant="3" id="NFd-2p-Htc"/>
+                    <constraint firstItem="ebj-xZ-DK0" firstAttribute="bottom" secondItem="Jha-C8-zPc" secondAttribute="bottom" constant="8" id="NLf-y4-uyR"/>
+                    <constraint firstItem="4ha-ws-wzU" firstAttribute="leading" secondItem="Ql0-r3-Fq2" secondAttribute="trailing" constant="3" id="OGR-UA-GgZ"/>
+                    <constraint firstItem="4FL-Fb-xxi" firstAttribute="top" secondItem="Lsy-S0-loS" secondAttribute="bottom" constant="3" id="OHU-UP-xn7"/>
+                    <constraint firstItem="y2c-Tn-nj3" firstAttribute="trailing" secondItem="ebj-xZ-DK0" secondAttribute="trailing" id="OZL-wl-rDE"/>
+                    <constraint firstItem="ebj-xZ-DK0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="P3O-rX-bub"/>
+                    <constraint firstItem="Lsy-S0-loS" firstAttribute="leading" secondItem="y2c-Tn-nj3" secondAttribute="leading" id="PKz-rs-0mO"/>
+                    <constraint firstItem="Ql0-r3-Fq2" firstAttribute="leading" secondItem="4FL-Fb-xxi" secondAttribute="trailing" constant="3" id="Uhy-WO-K8j"/>
+                    <constraint firstAttribute="trailing" secondItem="ebj-xZ-DK0" secondAttribute="trailing" constant="15" id="VKT-lB-Vaf"/>
+                    <constraint firstItem="4FL-Fb-xxi" firstAttribute="leading" secondItem="Lsy-S0-loS" secondAttribute="leading" id="ZHA-3z-WlC"/>
+                    <constraint firstItem="y2c-Tn-nj3" firstAttribute="top" secondItem="ebj-xZ-DK0" secondAttribute="bottom" constant="5" id="kbP-mG-CVg"/>
+                    <constraint firstItem="ebj-xZ-DK0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="pTD-pw-rIr"/>
+                    <constraint firstItem="ebj-xZ-DK0" firstAttribute="trailing" secondItem="Jha-C8-zPc" secondAttribute="trailing" constant="8" id="sCN-K4-HaT"/>
+                    <constraint firstItem="ebj-xZ-DK0" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.7" id="uo1-yT-n9o"/>
+                    <constraint firstItem="y2c-Tn-nj3" firstAttribute="leading" secondItem="ebj-xZ-DK0" secondAttribute="leading" id="x8z-r7-T3c"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="22"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="addressAndCurrencyLabel" destination="Lsy-S0-loS" id="jmf-na-7oF"/>
+                <outlet property="cellView" destination="H2p-sc-9uM" id="c95-26-1RZ"/>
+                <outlet property="distanceButton" destination="Jha-C8-zPc" id="O3G-uk-ems"/>
+                <outlet property="ratingLabel" destination="Ql0-r3-Fq2" id="UC4-mn-gt2"/>
+                <outlet property="restaurantImageView" destination="ebj-xZ-DK0" id="9ng-en-pif"/>
+                <outlet property="restaurantNameLabel" destination="y2c-Tn-nj3" id="boO-TF-s0n"/>
+            </connections>
+            <point key="canvasLocation" x="136.23188405797103" y="57.254464285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -12,9 +12,50 @@ import Alamofire
 final class Api {
 
     struct Path {
-        static let baseURL = "https://"
+        static let baseURL = "https://api.foursquare.com/v2/venues"
+    }
+
+    struct Trending {}
+
+    struct Detail {}
+
+    struct Photo {}
+
+    struct Search {
+        let id: String
+        let key: String
     }
 }
+
+extension Api.Path {
+
+    struct Trending {
+         static var filter: String { return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)&radius=10000" }
+        static var path: String { return baseURL / "explore?\(filter)" }
+    }
+
+    struct Detail {
+        static var id: String = "abc"
+        static var filter: String {
+            return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)"
+        }
+        static var path: String { return baseURL / "\(id)?\(filter)" }
+    }
+
+    struct Photo {
+        static var id: String = "abc"
+        static var filter: String {
+            return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)&group=venue"
+        }
+        static var path: String { return baseURL / id / "photos?\(filter)" }
+    }
+}
+
+//    struct Search {
+//        let id: String
+//        let key: String
+//        var path: String { return baseURL / clientKeySecret / "&\(key)" / "\(id)" }
+//    }
 
 protocol URLStringConvertible {
     var urlString: String { get }
