@@ -91,8 +91,8 @@ final class DetailViewModel: ViewModel {
     }
 
     func formatAddress() -> String {
-        guard let restaurant = restaurant, let address: String = restaurant.formattedAddress.first else { return "Not update yet" }
-        return address
+        guard let restaurant = restaurant, restaurant.address != "" else { return "Not update yet" }
+        return restaurant.address
     }
 
     func getCellForRowAtInformationSection(atIndexPath indexPath: IndexPath) -> InformationCellViewModel? {
@@ -172,23 +172,24 @@ final class DetailViewModel: ViewModel {
         }
     }
 
-    func addDetailIntoRealm(completion: @escaping APICompletion) {
+    func changeDataRealm(completion: @escaping APICompletion) {
         guard let restaurant = restaurant else { return }
         do {
             let realm = try Realm()
             let predicate = NSPredicate(format: "id = %@", restaurant.id)
-            let filterPredicate = realm.objects(Detail.self).filter(predicate)
-            if let favoriteDetail = filterPredicate.first {
+            let filterPredicateDetail = realm.objects(Detail.self).filter(predicate)
+            let filterPredicateRestaurant = realm.objects(Restaurant.self).filter(predicate)
+            if let favoriteRestaurant = filterPredicateRestaurant.first, let favoriteDetail = filterPredicateDetail.first {
                 try realm.write {
-                    favoriteDetail.isFavorite = !favoriteDetail.isFavorite
-                    realm.create(Detail.self, value: favoriteDetail, update: .modified)
+                    realm.delete(favoriteDetail)
+                    realm.delete(favoriteRestaurant)
                     completion(.success)
                 }
             } else {
                 try realm.write {
                     if let detail = detail {
                         realm.create(Detail.self, value: detail, update: .all)
-                        isFavorite = !isFavorite
+                        realm.create(Restaurant.self, value: restaurant, update: .all)
                         completion(.success)
                     }
                 }
@@ -203,10 +204,10 @@ final class DetailViewModel: ViewModel {
         do {
             let realm = try Realm()
             let predicate = NSPredicate(format: "id = %@", restaurant.id)
-            let filterPredicate = realm.objects(Detail.self).filter(predicate)
-            if let favoriteDetail = filterPredicate.first {
-                print("favorite: \(favoriteDetail.isFavorite)")
-                return favoriteDetail.isFavorite
+            let filterPredicateRestaurant = realm.objects(Restaurant.self).filter(predicate)
+            let filterPredicateDetail = realm.objects(Detail.self).filter(predicate)
+            if filterPredicateRestaurant.first != nil, filterPredicateDetail.first != nil {
+                return true
             }
             return false
         } catch {

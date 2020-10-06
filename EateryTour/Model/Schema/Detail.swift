@@ -13,13 +13,12 @@ import RealmSwift
 @objcMembers final class Detail: Object, Mappable {
 
     dynamic var id: String = ""
-    var sumaryLikes: String = ""
-    var bestPhoto: String = ""
-    var openDate: String = ""
-    var openTime: String = ""
-    var openState: String = ""
-    var comments: [Comment] = []
-    dynamic var isFavorite: Bool = false
+    dynamic var sumaryLikes: String = ""
+    dynamic var bestPhoto: String = ""
+    dynamic var openDate: String = ""
+    dynamic var openTime: String = ""
+    dynamic var openState: String = ""
+    dynamic var comments: [Comment] = []
 
     init?(map: Map) {
     }
@@ -61,9 +60,5 @@ import RealmSwift
 
     override class func primaryKey() -> String? {
         return "id"
-    }
-
-    override class func ignoredProperties() -> [String] {
-        return ["sumaryLikes", "bestPhoto", "openDate", "openTime", "isOpen", "comments"]
     }
 }

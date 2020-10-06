@@ -45,7 +45,11 @@ final class RestaurantCellViewModel {
         default:
             price = "$$$"
         }
-        return "\(restaurant.formattedAddress.first ?? "Unknow address") - \(price)"
+        if restaurant.address != "" {
+            return "\(restaurant.address) - \(price)"
+        } else {
+            return "Unknown address - \(price)"
+        }
     }
 
     func formatDistance() -> String {
@@ -56,9 +60,4 @@ final class RestaurantCellViewModel {
         }
         return String(format: "%.2f", restaurant.distance / 1_000) + " km"
     }
-
-//    func formatRating() -> String {
-//        guard let restaurant = restaurant else { return "" }
-//        if restaurant.rating
-//    }
 }

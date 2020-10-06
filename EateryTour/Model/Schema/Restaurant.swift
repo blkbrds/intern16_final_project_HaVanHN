@@ -8,22 +8,26 @@
 
 import Foundation
 import ObjectMapper
+import RealmSwift
 
-final class Restaurant: Mappable {
+@objcMembers final class Restaurant: Object, Mappable {
 
-    var id: String = ""
-    var name: String = ""
-    var lat: Float = 0.0
-    var lng: Float = 0.0
-    var formattedAddress: [String] = []
-    var phone: String = ""
-    var distance: Float = 0.0
-    var tier: Int = 0
-    var rating: Float = 0.0
-    var isLoadApiCompleted: Bool = false
-    var contact: String = ""
+    dynamic var id: String = ""
+    dynamic var name: String = ""
+    dynamic var lat: Float = 0.0
+    dynamic var lng: Float = 0.0
+    dynamic var address: String = ""
+    dynamic var phone: String = ""
+    dynamic var distance: Float = 0.0
+    dynamic var tier: Int = 0
+    dynamic var rating: Float = 0.0
+    dynamic var isLoadApiCompleted: Bool = false
+    dynamic var contact: String = ""
 
     init?(map: Map) {
+    }
+
+    required init() {
     }
 
     func mapping(map: Map) {
@@ -31,11 +35,19 @@ final class Restaurant: Mappable {
         name <- map["venue.name"]
         lat <- map["venue.location.lat"]
         lng <- map["venue.location.lng"]
+        var formattedAddress: [String] = []
         formattedAddress <- map["venue.location.formattedAddress"]
+        if let address = formattedAddress.first {
+            self.address = address
+        }
         phone <- map["venue.contact.phone"]
         distance <- map["venue.location.distance"]
         tier <- map["venue.price.tier"]
         rating <- map["venue.rating"]
         contact <- map["venue.contact.phone"]
+    }
+
+    override class func primaryKey() -> String? {
+        return "id"
     }
 }
