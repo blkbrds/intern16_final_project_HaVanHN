@@ -167,9 +167,9 @@ extension DetailViewController: InformationCellDelegate {
 
     func cell(_ cell: InformationCell, needsPerform action: InformationCell.Action) {
         switch action {
-        case .saveDataIntoRealm:
+        case .changeDataRealm:
              guard let viewModel = viewModel else { return }
-            viewModel.addDetailIntoRealm { (result) in
+            viewModel.changeDataRealm { (result) in
                 switch result {
                 case .success:
                     print("hihi")
