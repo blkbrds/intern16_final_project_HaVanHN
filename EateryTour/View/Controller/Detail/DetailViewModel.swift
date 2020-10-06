@@ -19,15 +19,12 @@ enum DetailSection {
 
 final class DetailViewModel: ViewModel {
 
-    private var id: String = ""
     private var photoList: [Photo] = []
     private var detail: Detail?
     private var restaurant: Restaurant?
     private var isFavorite: Bool = false
 
-    init(id: String, detail: Detail, restaurant: Restaurant) {
-        self.id = id
-        self.detail = detail
+    init(restaurant: Restaurant) {
         self.restaurant = restaurant
     }
 
@@ -48,11 +45,29 @@ final class DetailViewModel: ViewModel {
 
     func getDataForCellPhoto(completion: @escaping APICompletion) {
         let params = Api.Photo.QueryParams(limit: 20)
-        Api.Photo().getPhoto(params: params, restaurantId: id) { (result) in
+        guard let restaurant = restaurant else { return }
+        Api.Photo.getPhoto(params: params, restaurantId: restaurant.id) { [weak self] result in
+            guard let this = self else { return }
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
-                    self.photoList = data
+                    this.photoList = data
+                    completion(.success)
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+
+    func getInformation(completion: @escaping APICompletion) {
+        guard let restaurant = restaurant else { return }
+        Api.Detail.getDetail(restaurantId: restaurant.id) { [weak self] result in
+            guard let this = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    this.detail = data
                     completion(.success)
                 case .failure(let error):
                     completion(.failure(error))
@@ -158,9 +173,10 @@ final class DetailViewModel: ViewModel {
     }
 
     func addDetailIntoRealm(completion: @escaping APICompletion) {
+        guard let restaurant = restaurant else { return }
         do {
             let realm = try Realm()
-            let predicate = NSPredicate(format: "id = %@", id)
+            let predicate = NSPredicate(format: "id = %@", restaurant.id)
             let filterPredicate = realm.objects(Detail.self).filter(predicate)
             if let favoriteDetail = filterPredicate.first {
                 try realm.write {
@@ -183,9 +199,10 @@ final class DetailViewModel: ViewModel {
     }
 
     func checkIsFavorite() -> Bool {
+        guard let restaurant = restaurant else { return false }
         do {
             let realm = try Realm()
-            let predicate = NSPredicate(format: "id = %@", id)
+            let predicate = NSPredicate(format: "id = %@", restaurant.id)
             let filterPredicate = realm.objects(Detail.self).filter(predicate)
             if let favoriteDetail = filterPredicate.first {
                 print("favorite: \(favoriteDetail.isFavorite)")
