@@ -21,7 +21,7 @@ final class DetailViewModel: ViewModel {
 
     private var photoList: [Photo] = []
     private var detail: Detail?
-    private var restaurant: Restaurant?
+    private(set) var restaurant: Restaurant?
     private var isFavorite: Bool = false
 
     init(restaurant: Restaurant) {

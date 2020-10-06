@@ -154,9 +154,10 @@ extension DetailViewController: MapCellDelegate {
 
     func view(_ view: MapCell, needsPerform action: MapCell.Action) {
         switch action {
-        case .pushToMapDetail(lat: let lat, lng: let lng):
+        case .pushToMapDetail:
             let mapDetailVC = MapDetailViewController()
-            mapDetailVC.viewModel = MapDetailViewModel(lat: lat, lng: lng)
+            guard let viewModel = viewModel, let restaurant = viewModel.restaurant else { return }
+            mapDetailVC.viewModel = MapDetailViewModel(lat: restaurant.lat, lng: restaurant.lng, name: restaurant.name, address: restaurant.address)
             navigationController?.pushViewController(mapDetailVC, animated: true)
         }
     }

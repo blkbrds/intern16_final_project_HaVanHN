@@ -85,10 +85,7 @@ final class MapCell: TableCell {
 
     // MARK: - IBActions
     @IBAction private func locationButtonTouchUpInside(_ sender: Button) {
-        guard let viewModel = viewModel else {
-            return
-        }
-        delegate?.view(self, needsPerform: .pushToMapDetail(lat: viewModel.lat, lng: viewModel.lng))
+        delegate?.view(self, needsPerform: .pushToMapDetail)
     }
 }
 
@@ -96,7 +93,7 @@ final class MapCell: TableCell {
 extension MapCell {
 
     enum Action {
-        case pushToMapDetail(lat: Float, lng: Float)
+        case pushToMapDetail
     }
 }
 

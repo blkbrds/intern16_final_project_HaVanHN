@@ -44,7 +44,7 @@ final class TrendingCellViewModel {
         guard let detail = detail else { return "" }
         let restaurantLocation: CLLocation = CLLocation(latitude: CLLocationDegrees(detail.lat), longitude: CLLocationDegrees(detail.lng))
         let distance = userLocation.distance(from: restaurantLocation)
-        let distanceKm = distance / 1000
+        let distanceKm = distance / 1_000
         return String(format: "%.2f", distanceKm) + " km"
     }
 
