@@ -177,21 +177,16 @@ final class DetailViewModel: ViewModel {
         do {
             let realm = try Realm()
             let predicate = NSPredicate(format: "id = %@", restaurant.id)
-            let filterPredicateDetail = realm.objects(Detail.self).filter(predicate)
             let filterPredicateRestaurant = realm.objects(Restaurant.self).filter(predicate)
-            if let favoriteRestaurant = filterPredicateRestaurant.first, let favoriteDetail = filterPredicateDetail.first {
+            if let favoriteRestaurant = filterPredicateRestaurant.first {
                 try realm.write {
-                    realm.delete(favoriteDetail)
                     realm.delete(favoriteRestaurant)
                     completion(.success)
                 }
             } else {
                 try realm.write {
-                    if let detail = detail {
-                        realm.create(Detail.self, value: detail, update: .all)
-                        realm.create(Restaurant.self, value: restaurant, update: .all)
-                        completion(.success)
-                    }
+                    realm.create(Restaurant.self, value: restaurant, update: .all)
+                    completion(.success)
                 }
             }
         } catch {
@@ -205,8 +200,7 @@ final class DetailViewModel: ViewModel {
             let realm = try Realm()
             let predicate = NSPredicate(format: "id = %@", restaurant.id)
             let filterPredicateRestaurant = realm.objects(Restaurant.self).filter(predicate)
-            let filterPredicateDetail = realm.objects(Detail.self).filter(predicate)
-            if filterPredicateRestaurant.first != nil, filterPredicateDetail.first != nil {
+            if filterPredicateRestaurant.first != nil {
                 return true
             }
             return false

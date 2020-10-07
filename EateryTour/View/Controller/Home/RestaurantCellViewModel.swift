@@ -7,14 +7,17 @@
 //
 
 import Foundation
+import RealmSwift
 
 final class RestaurantCellViewModel {
 
     var detail: Detail?
     var restaurant: Restaurant?
+    var favorite: Bool = false
 
-    init( restaurant: Restaurant? = nil) {
+    init( restaurant: Restaurant? = nil, favorite: Bool = false) {
         self.restaurant = restaurant
+        self.favorite = favorite
     }
 
     func loadMoreInformation(completion: @escaping APICompletion) {
@@ -59,5 +62,24 @@ final class RestaurantCellViewModel {
             return String(Int(restaurant.distance / 1_000)) + " km"
         }
         return String(format: "%.2f", restaurant.distance / 1_000) + " km"
+    }
+
+    func checkIsFavorite() -> Bool {
+        guard let restaurant = restaurant else { return false }
+        do {
+            let realm = try Realm()
+            let predicate = NSPredicate(format: "id = %@", restaurant.id)
+            let filterPredicateRestaurant = realm.objects(Restaurant.self).filter(predicate)
+            if filterPredicateRestaurant.first != nil {
+                favorite = true
+                return favorite
+            }
+            favorite = false
+            return false
+        } catch {
+            favorite = false
+            print("can't fetch data")
+            return favorite
+        }
     }
 }

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreLocation
+import RealmSwift
 
 enum HomeSectionType {
     case trending
@@ -18,8 +19,10 @@ enum HomeSectionType {
 final class HomeViewModel: ViewModel {
 
     // MARK: - Properties
+    private var notificationToken: NotificationToken?
     private(set) var restaurantsTrending: [Restaurant] = []
     private(set) var restaurantsRecommend: [Restaurant] = []
+    private var favoriteRestaurantsRecommend: [Restaurant] = []
     private(set) var detail: Detail?
 
     // MARK: - Public functions
@@ -122,5 +125,55 @@ final class HomeViewModel: ViewModel {
 
     func getDetail(detail: Detail) {
         self.detail = detail
+    }
+
+    func getDataFromRealm(completion: @escaping APICompletion) {
+        do {
+            let realm = try Realm()
+            let filterPredicateRestaurant = realm.objects(Restaurant.self)
+            favoriteRestaurantsRecommend = Array(filterPredicateRestaurant)
+            completion(.success)
+        } catch {
+            print("Can't fetch data from Realm")
+            completion(.failure(error))
+        }
+    }
+
+    func setupObserver(completion: @escaping () -> Void) {
+        do {
+            let realm = try Realm()
+            notificationToken = realm.objects(Restaurant.self).observe({ [weak self] _ in
+                guard let this = self else { return }
+                this.getDataFromRealm { _ in
+                    completion()
+                }
+            })
+        } catch { }
+    }
+
+    func changeFavoriteRestaurant(withId id: String, completion: @escaping APICompletion) {
+        do {
+            let realm = try Realm()
+            let predicate = NSPredicate(format: "id = %@", id)
+            let result = realm.objects(Restaurant.self).filter(predicate)
+            if let restaurant = result.first {
+                try realm.write {
+                    realm.delete(restaurant)
+                    completion(.success)
+                }
+            } else {
+                try realm.write {
+                    for restaurant in restaurantsRecommend {
+                        if restaurant.id == id {
+                        realm.create(Restaurant.self, value: restaurant, update: .all)
+                    }
+                    }
+                    completion(.success)
+                }
+            }
+
+        } catch {
+            completion(.failure(error))
+        }
     }
 }

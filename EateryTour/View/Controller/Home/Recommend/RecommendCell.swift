@@ -20,6 +20,7 @@ final class RecommendCell: TableCell {
     @IBOutlet private weak var addressAndPriceLabel: Label!
     @IBOutlet private weak var amountOfRatingLabel: Label!
     @IBOutlet private weak var ratingLabel: Label!
+    @IBOutlet private weak var favoriteButton: Button!
 
     // MARK: - Propeties
     var viewModel: RestaurantCellViewModel? {
@@ -47,6 +48,11 @@ final class RecommendCell: TableCell {
         addressAndPriceLabel.text = viewModel.formatAddresAndPrice()
         nameLabel.text = restaurant.name
         ratingLabel.text = String(restaurant.rating)
+        if viewModel.checkIsFavorite() {
+            favoriteButton.setImage(#imageLiteral(resourceName: "ic-heart-fill"), for: .normal)
+        } else {
+            favoriteButton.setImage(#imageLiteral(resourceName: "ic-heart"), for: .normal)
+        }
         guard let detail = viewModel.detail else { return }
         amountOfRatingLabel.text = detail.sumaryLikes
     }
@@ -77,8 +83,17 @@ final class RecommendCell: TableCell {
     }
 
     // MARK: - Objc functions
-
     // MARK: - IBActions
+    @IBAction private func favoriteButtonTouchUpInside(_ sender: Button) {
+        guard let viewModel = viewModel, let restaurant = viewModel.restaurant else { return }
+        viewModel.favorite = false
+        if favoriteButton.currentImage == #imageLiteral(resourceName: "ic-heart-fill") {
+            favoriteButton.setImage(#imageLiteral(resourceName: "ic-heart"), for: .normal)
+        } else {
+            favoriteButton.setImage(#imageLiteral(resourceName: "ic-heart-fill"), for: .normal)
+        }
+        delegate?.cell(self, needsPerform: Action.changeFavoriteState(id: restaurant.id))
+    }
 }
 
 extension RecommendCell {
@@ -86,5 +101,6 @@ extension RecommendCell {
     enum Action {
         case callApiSuccess(restaurant: Restaurant)
         case pushDataIntoDetail(detail: Detail)
+        case changeFavoriteState(id: String)
     }
 }

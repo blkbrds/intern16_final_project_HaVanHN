@@ -67,7 +67,7 @@
                             <constraint firstAttribute="width" secondItem="8XF-qc-W3U" secondAttribute="height" multiplier="1:1" id="tdg-s8-Oqi"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rT7-bf-vuu">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rT7-bf-vuu" customClass="Button" customModule="EateryTour" customModuleProvider="target">
                         <rect key="frame" x="326" y="24" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="4uY-oi-d2I"/>
@@ -75,6 +75,9 @@
                         </constraints>
                         <color key="tintColor" red="0.217035383" green="0.40452584619999998" blue="0.36078119279999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <state key="normal" image="heart.fill" catalog="system"/>
+                        <connections>
+                            <action selector="favoriteButtonTouchUpInside:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DGe-qs-N1V"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -103,6 +106,7 @@
             <connections>
                 <outlet property="addressAndPriceLabel" destination="r0w-fe-IoX" id="ow6-5g-wdI"/>
                 <outlet property="amountOfRatingLabel" destination="sZo-MU-0zb" id="vx4-H9-V8Q"/>
+                <outlet property="favoriteButton" destination="rT7-bf-vuu" id="9gH-cm-KfO"/>
                 <outlet property="nameLabel" destination="ut5-Lf-fyu" id="Y0B-uC-qoR"/>
                 <outlet property="ratingLabel" destination="MDe-5N-NC2" id="Wo1-x9-lKy"/>
                 <outlet property="restaurantImage" destination="gAf-af-2Gk" id="Fda-If-FRc"/>

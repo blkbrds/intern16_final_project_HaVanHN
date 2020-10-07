@@ -28,6 +28,8 @@ final class HomeViewController: ViewController {
         configTableView()
         getRecommendRestaurant()
         getTrendingRestaurant()
+        getDataFromRealm()
+        addObserve()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -117,6 +119,24 @@ final class HomeViewController: ViewController {
         }
     }
 
+    private func addObserve() {
+        viewModel.setupObserver {
+            self.tableView.reloadData()
+        }
+    }
+
+    private func getDataFromRealm() {
+        viewModel.getDataFromRealm { [weak self] result in
+            guard let this = self else { return }
+            switch result {
+            case .success:
+                this.tableView.reloadData()
+            case .failure(let error):
+                this.alert(msg: error.localizedDescription, handler: nil)
+            }
+        }
+    }
+
     // MARK: - Objc functions
     @objc private func refreshRestaurantData(_ sender: Any) {
         getTrendingRestaurant()
@@ -199,6 +219,15 @@ extension HomeViewController: RecommendCellDelegate {
             viewModel.updateApiSuccess(newRestaurant: restaurant)
         case .pushDataIntoDetail(detail: let detail):
             viewModel.getDetail(detail: detail)
+        case .changeFavoriteState(id: let id):
+            viewModel.changeFavoriteRestaurant(withId: id) { result in
+                switch result {
+                case .success:
+                    self.getDataFromRealm()
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }
     }
 }
