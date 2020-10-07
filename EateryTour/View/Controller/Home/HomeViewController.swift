@@ -180,6 +180,7 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let detailVC = DetailViewController()
             detailVC.viewModel = viewModel.pushDataToDetailVC(atIndexPath: indexPath)
+            detailVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(detailVC, animated: true)
         }
 }

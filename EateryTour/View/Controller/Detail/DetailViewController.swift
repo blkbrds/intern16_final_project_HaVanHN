@@ -33,13 +33,6 @@ final class DetailViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-        tabBarController?.tabBar.isHidden = true
-    }
-
-    // MARK: - Override functions
-    override func viewWillLayoutSubviews() {
-        view.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
-        view.layoutIfNeeded()
     }
 
     // MARK: - Private functions
