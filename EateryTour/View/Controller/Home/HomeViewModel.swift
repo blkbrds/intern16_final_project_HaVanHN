@@ -163,10 +163,8 @@ final class HomeViewModel: ViewModel {
                 }
             } else {
                 try realm.write {
-                    for restaurant in restaurantsRecommend {
-                        if restaurant.id == id {
+                    for restaurant in restaurantsRecommend where restaurant.id == id {
                         realm.create(Restaurant.self, value: restaurant, update: .all)
-                    }
                     }
                     completion(.success)
                 }

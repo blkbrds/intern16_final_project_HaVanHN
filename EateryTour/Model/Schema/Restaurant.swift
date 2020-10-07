@@ -21,7 +21,7 @@ import RealmSwift
     dynamic var distance: Float = 0.0
     dynamic var tier: Int = 0
     dynamic var rating: Float = 0.0
-    dynamic var isLoadApiCompleted: Bool = false
+    var isLoadApiCompleted: Bool = false
     dynamic var contact: String = ""
 
     init?(map: Map) {
@@ -49,5 +49,9 @@ import RealmSwift
 
     override class func primaryKey() -> String? {
         return "id"
+    }
+
+    override class func ignoredProperties() -> [String] {
+        return ["isLoadApiCompleted"]
     }
 }
