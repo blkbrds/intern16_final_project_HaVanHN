@@ -21,7 +21,7 @@ final class RestaurantSearching: Mappable {
 
     init?(map: Map) {
     }
-    
+
     func mapping(map: Map) {
         id <- map["id"]
         name <- map["name"]

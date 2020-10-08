@@ -37,10 +37,11 @@ final class RecommendCell: TableCell {
         configUI()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
     // MARK: - Override functions
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        restaurantImage.image = nil
+    }
 
     // MARK: - Private functions
     private func updateUI() {
@@ -53,14 +54,17 @@ final class RecommendCell: TableCell {
         } else {
             favoriteButton.setImage(#imageLiteral(resourceName: "ic-heart"), for: .normal)
         }
-        guard let detail = viewModel.detail else { return }
-        amountOfRatingLabel.text = detail.sumaryLikes
+        if let urlImage = URL(string: restaurant.bestPhotoURL) {
+            restaurantImage.sd_setImage(with: urlImage)
+        }
+        amountOfRatingLabel.text = restaurant.summaryLikes
     }
 
     private func configUI() {
         restaurantImage.layer.cornerRadius = 5
         restaurantImage.clipsToBounds = true
     }
+
     // MARK: - Public functions
     func loadMoreInformation(completion: @escaping APICompletion) {
         guard let viewModel = viewModel else { return }
@@ -68,13 +72,12 @@ final class RecommendCell: TableCell {
             guard let this = self else { return }
             switch result {
             case .success:
-                guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
-                this.delegate?.cell(this, needsPerform: .pushDataIntoDetail(detail: detail))
+                guard let restaurant = viewModel.restaurant, let urlImage = URL(string: restaurant.bestPhotoURL) else { return }
                 if let restaurant = viewModel.restaurant {
                     this.delegate?.cell(this, needsPerform: .callApiSuccess(restaurant: restaurant))
                 }
                 this.restaurantImage.sd_setImage(with: urlImage)
-                this.amountOfRatingLabel.text = "(\(detail.sumaryLikes))"
+                this.amountOfRatingLabel.text = "(\(restaurant.summaryLikes))"
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))
@@ -82,7 +85,6 @@ final class RecommendCell: TableCell {
         }
     }
 
-    // MARK: - Objc functions
     // MARK: - IBActions
     @IBAction private func favoriteButtonTouchUpInside(_ sender: Button) {
         guard let viewModel = viewModel, let restaurant = viewModel.restaurant else { return }
@@ -100,7 +102,6 @@ extension RecommendCell {
 
     enum Action {
         case callApiSuccess(restaurant: Restaurant)
-        case pushDataIntoDetail(detail: Detail)
         case changeFavoriteState(id: String)
     }
 }

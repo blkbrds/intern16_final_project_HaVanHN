@@ -218,8 +218,6 @@ extension HomeViewController: RecommendCellDelegate {
         switch action {
         case .callApiSuccess(restaurant: let restaurant):
             viewModel.updateApiSuccess(newRestaurant: restaurant)
-        case .pushDataIntoDetail(detail: let detail):
-            viewModel.getDetail(detail: detail)
         case .changeFavoriteState(id: let id):
             viewModel.changeFavoriteRestaurant(withId: id) { result in
                 switch result {

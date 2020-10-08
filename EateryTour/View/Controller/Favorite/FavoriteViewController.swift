@@ -129,8 +129,6 @@ extension FavoriteViewController: RecommendCellDelegate {
             }
         case .callApiSuccess(restaurant:_):
             break
-        case .pushDataIntoDetail(detail:_):
-            break
         }
     }
 }

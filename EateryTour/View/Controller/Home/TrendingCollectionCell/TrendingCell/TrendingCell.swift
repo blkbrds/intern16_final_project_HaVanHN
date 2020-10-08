@@ -61,9 +61,9 @@ final class TrendingCell: CollectionCell {
         addressAndPriceLabel.text = viewModel.formatAddresAndPrice()
         distanceButton.setTitle(viewModel.formatDistance(), for: .normal)
         ratingLabel.text = String(restaurant.rating)
-        guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
+        guard let urlImage = URL(string: restaurant.bestPhotoURL) else { return }
         restaurantImageView.sd_setImage(with: urlImage)
-        amountOfRatingLabel.text = "(\(detail.sumaryLikes))"
+        amountOfRatingLabel.text = "(\(restaurant.summaryLikes))"
     }
 
     // MARK: - Public functions
@@ -73,12 +73,12 @@ final class TrendingCell: CollectionCell {
             guard let this = self else { return }
             switch result {
             case .success:
-                guard let detail = viewModel.detail, let urlImage = URL(string: detail.bestPhoto) else { return }
                 if let restaurant = viewModel.restaurant {
                     this.delegate?.cell(this, needsPerform: .callApiSuccess(restaurant: restaurant))
+                    guard let urlImage = URL(string: restaurant.bestPhotoURL) else { return }
+                    this.restaurantImageView.sd_setImage(with: urlImage)
+                    this.amountOfRatingLabel.text = "(\(restaurant.summaryLikes))"
                 }
-                this.restaurantImageView.sd_setImage(with: urlImage)
-                this.amountOfRatingLabel.text = "(\(detail.sumaryLikes))"
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))

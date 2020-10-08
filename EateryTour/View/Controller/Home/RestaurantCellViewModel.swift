@@ -11,25 +11,22 @@ import RealmSwift
 
 final class RestaurantCellViewModel {
 
-    var detail: Detail?
     var restaurant: Restaurant?
     var favorite: Bool = false
 
-    init( restaurant: Restaurant? = nil, favorite: Bool = false) {
+    init(restaurant: Restaurant? = nil, favorite: Bool = false) {
         self.restaurant = restaurant
         self.favorite = favorite
     }
 
     func loadMoreInformation(completion: @escaping APICompletion) {
-        guard let restaurant = restaurant, !restaurant.isLoadApiCompleted  else {
-            completion(.failure(Api.Error.invalid))
-            return }
+        guard let restaurant = restaurant, !restaurant.isLoadApiCompleted  else { return }
         Api.Detail.getDetail(restaurantId: restaurant.id) { [weak self] result in
-            guard let this = self else { return }
             switch result {
             case .success(let data):
-                this.detail = data
                 restaurant.isLoadApiCompleted = true
+                restaurant.summaryLikes = data.sumaryLikes
+                restaurant.bestPhotoURL = data.bestPhoto
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))
