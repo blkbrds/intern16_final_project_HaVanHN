@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="EateryTour" customModuleProvider="target">
             <connections>
+                <outlet property="containView" destination="AUa-iM-OPt" id="W4M-5F-WZW"/>
                 <outlet property="mapView" destination="96a-fA-csD" id="8U8-fW-vdE"/>
+                <outlet property="middleButton" destination="lxL-JG-Iht" id="bdh-n8-Pvy"/>
+                <outlet property="progressView" destination="Vsl-Mv-zTk" id="cFp-wf-LwR"/>
+                <outlet property="underButton" destination="ULm-Pc-pEs" id="NEX-Tb-lMg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,6 +28,54 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="96a-fA-csD">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </mapView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUa-iM-OPt" userLabel="containView">
+                    <rect key="frame" x="371.5" y="532" width="15" height="250"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vsl-Mv-zTk" userLabel="progressView">
+                            <rect key="frame" x="0.0" y="0.0" width="15" height="167"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CvZ-j7-Lg7" userLabel="TopButton" customClass="Button" customModule="EateryTour" customModuleProvider="target">
+                            <rect key="frame" x="-5.5" y="-5" width="25" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal">
+                                <imageReference key="image" image="circle.fill" catalog="system" symbolScale="large"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                            </state>
+                            <connections>
+                                <action selector="topButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="tsC-GW-o7O"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxL-JG-Iht" userLabel="MiddleButton" customClass="Button" customModule="EateryTour" customModuleProvider="target">
+                            <rect key="frame" x="-5.5" y="75" width="25" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal">
+                                <imageReference key="image" image="circle.fill" catalog="system" symbolScale="large"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                            </state>
+                            <connections>
+                                <action selector="middleButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="fp9-fS-2AE"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULm-Pc-pEs" userLabel="UnderButton" customClass="Button" customModule="EateryTour" customModuleProvider="target">
+                            <rect key="frame" x="-5" y="155" width="25" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal">
+                                <imageReference key="image" image="circle.fill" catalog="system" symbolScale="large"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                            </state>
+                            <connections>
+                                <action selector="UnderButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="xbs-fa-Jw9"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.217035383" green="0.40452584619999998" blue="0.36078119279999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="QC2-jy-dhN"/>
+                        <constraint firstAttribute="width" constant="15" id="tT5-pg-CuS"/>
+                    </constraints>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6F-HE-t2D" customClass="Button" customModule="EateryTour" customModuleProvider="target">
                     <rect key="frame" x="354" y="802" width="50" height="50"/>
                     <constraints>
@@ -40,15 +93,18 @@
             <constraints>
                 <constraint firstItem="96a-fA-csD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3gj-HW-PqW"/>
                 <constraint firstAttribute="bottom" secondItem="96a-fA-csD" secondAttribute="bottom" id="7bW-Cz-og8"/>
+                <constraint firstItem="AUa-iM-OPt" firstAttribute="centerX" secondItem="R6F-HE-t2D" secondAttribute="centerX" id="UBr-ED-APr"/>
                 <constraint firstItem="96a-fA-csD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="a9K-2T-ySA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="96a-fA-csD" secondAttribute="trailing" id="gy0-KT-qhm"/>
+                <constraint firstItem="R6F-HE-t2D" firstAttribute="top" secondItem="AUa-iM-OPt" secondAttribute="bottom" constant="20" id="kU9-vx-OFu"/>
                 <constraint firstAttribute="trailing" secondItem="R6F-HE-t2D" secondAttribute="trailing" constant="10" id="lKU-iE-MrO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="R6F-HE-t2D" secondAttribute="bottom" constant="10" id="wGi-xd-EC0"/>
             </constraints>
-            <point key="canvasLocation" x="-9" y="53"/>
+            <point key="canvasLocation" x="-10.144927536231885" y="52.901785714285715"/>
         </view>
     </objects>
     <resources>
+        <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="ic-location" width="256" height="256"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

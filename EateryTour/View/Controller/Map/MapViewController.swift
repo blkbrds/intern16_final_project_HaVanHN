@@ -13,12 +13,18 @@ import SDWebImage
 final class MapViewController: ViewController {
 
     // MARK: - IBOutlets
+    @IBOutlet private weak var progressView: UIView!
     @IBOutlet private weak var mapView: MKMapView!
+    @IBOutlet private weak var underButton: Button!
+    @IBOutlet private weak var middleButton: Button!
+    @IBOutlet private weak var containView: UIView!
+
     // MARK: - Propeties
     var pins = [MyPin]()
     var pinchGesture = UIPinchGestureRecognizer()
     var recognizerScale: CGFloat = 1.0
     var viewModel = MapViewModel()
+    private var radius = "3"
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -39,7 +45,7 @@ final class MapViewController: ViewController {
 
     // MARK: - Private functions
     private func getRestaurant() {
-        viewModel.exploringRestaurant(radius: "10") { [weak self] (result) in
+        viewModel.exploringRestaurant(radius: radius) { [weak self] (result) in
             guard let this = self else { return }
             switch result {
             case .success:
@@ -70,11 +76,7 @@ final class MapViewController: ViewController {
             self.alert(msg: "Can't find", handler: nil)
         }
     }
-    // MARK: - Public functions
 
-    // MARK: - Objc functions
-
-    // MARK: - IBActions
     private func center(location: CLLocation) {
         mapView.setCenter(location.coordinate, animated: true)
         let span = MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04)
@@ -84,11 +86,6 @@ final class MapViewController: ViewController {
         mapView.showsUserLocation = true
         //addAnnotation()
         mapView.addAnnotations(pins)
-    }
-
-    @IBAction func getLocationCurrent(_ sender: UIButton) {
-        guard let location = LocationManager.shared.currentLocation else { return }
-        self.center(location: location)
     }
 
     private func configMapView() {
@@ -119,12 +116,54 @@ final class MapViewController: ViewController {
         mapView.addGestureRecognizer(pinchGesture)
     }
 
-    @objc func pinch(pinch: UIPinchGestureRecognizer) {
+    // MARK: - Public functions
+
+    // MARK: - Objc functions
+    @objc private func pinch(pinch: UIPinchGestureRecognizer) {
         guard let transformScale = pinch.view?.transform.scaledBy(x: pinch.scale, y: pinch.scale) else {
             return
         }
             pinch.view?.transform = transformScale
             recognizerScale *= pinch.scale
+    }
+
+    // MARK: - IBActions
+    @IBAction private func getLocationCurrent(_ sender: UIButton) {
+        guard let location = LocationManager.shared.currentLocation else { return }
+        self.center(location: location)
+    }
+
+    @IBAction private func topButtonTouchUpInside(_ sender: Button) {
+        radius = "10"
+        UIView.animate(withDuration: 1.0) {
+            self.progressView.frame = CGRect(x: 0,
+                                             y: 0,
+                                             width: self.progressView.frame.width,
+                                             height: 0)
+        }
+        getRestaurant()
+        getDataPin()
+        addAnnotations()
+    }
+
+    @IBAction private func middleButtonTouchUpInside(_ sender: Button) {
+        radius = "5"
+        UIView.animate(withDuration: 1.0, animations: {
+            self.progressView.frame = CGRect(x: 0, y: 0, width: self.progressView.frame.width, height: self.middleButton.center.y)
+        }, completion: nil)
+        getRestaurant()
+        getDataPin()
+        addAnnotations()
+    }
+
+    @IBAction private func UnderButtonTouchUpInside(_ sender: Button) {
+        radius = "3"
+        UIView.animate(withDuration: 1.0, animations: {
+            self.progressView.frame = CGRect(x: 0, y: 0, width: self.progressView.frame.width, height: self.underButton.center.y)
+        }, completion: nil)
+        getRestaurant()
+        getDataPin()
+        addAnnotations()
     }
 }
 

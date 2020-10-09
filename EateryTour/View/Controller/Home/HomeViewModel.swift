@@ -115,6 +115,7 @@ final class HomeViewModel: ViewModel {
     }
 
     func pushDataToDetailVC(atIndexPath indexPath: IndexPath) -> DetailViewModel? {
+        guard indexPath.row >= 0 && indexPath.row < restaurantsTrending.count || indexPath.row < restaurantsRecommend.count else { return nil }
         switch sectionType(inSection: indexPath.section) {
         case .trending:
             return DetailViewModel(restaurant: restaurantsTrending[indexPath.row])

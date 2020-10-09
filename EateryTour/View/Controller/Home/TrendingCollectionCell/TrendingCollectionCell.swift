@@ -14,12 +14,7 @@ class TrendingCollectionCell: TableCell {
     @IBOutlet weak var collectionView: CollectionView!
 
     // MARK: - Propeties
-    var viewModel = TrendingCollectionCellViewModel() {
-        didSet {
-            collectionView.reloadData()
-            getMoreInformationForCell()
-        }
-    }
+    var viewModel = TrendingCollectionCellViewModel()
 
     // MARK: - Life cycle
     override func awakeFromNib() {
