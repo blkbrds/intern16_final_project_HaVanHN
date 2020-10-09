@@ -10,15 +10,19 @@ import Foundation
 import ObjectMapper
 import RealmSwift
 
-@objcMembers final class Detail: Object, Mappable {
+final class Detail: Mappable {
 
-    dynamic var id: String = ""
-    dynamic var sumaryLikes: String = ""
-    dynamic var bestPhoto: String = ""
-    dynamic var openDate: String = ""
-    dynamic var openTime: String = ""
-    dynamic var openState: String = ""
-    dynamic var comments: [Comment] = []
+    var id: String = ""
+    var sumaryLikes: String = ""
+    var bestPhoto: String = ""
+    var openDate: String = ""
+    var openTime: String = ""
+    var openState: String = ""
+    var phone: String = ""
+    var distance: Float = 0.0
+    var tier: Int = 0
+    var rating: Float = 0.0
+    var comments: [Comment] = []
 
     init?(map: Map) {
     }
@@ -53,12 +57,11 @@ import RealmSwift
             }
         }
         groups <- map["response.venue.tips.groups"]
-        let groupSecond = groups[1]
+        guard let groupSecond = groups.last else { return }
         guard let commentList = groupSecond["items"] as? JSArray else { return }
         comments = Mapper<Comment>().mapArray(JSONArray: commentList)
-    }
-
-    override class func primaryKey() -> String? {
-        return "id"
+        phone <- map["response.venue.contact.phone"]
+        tier <- map["response.venue.price.tier"]
+        rating <- map["response.venue.rating"]
     }
 }

@@ -10,7 +10,6 @@ import Foundation
 
 final class SearchCellViewModel {
     private(set) var restaurant: RestaurantSearching?
-    private(set) var detail: Detail?
 
     init(restaurant: RestaurantSearching) {
         self.restaurant = restaurant
@@ -32,7 +31,9 @@ final class SearchCellViewModel {
                 guard let this = self else { return }
                 switch result {
                 case .success(let detail):
-                    this.detail = detail
+                    restaurant.bestPhotoURL = detail.bestPhoto
+                    restaurant.summaryLikes = detail.sumaryLikes
+                    this.restaurant = restaurant
                     completion(.success)
                 case .failure(let error):
                     completion(.failure(error))

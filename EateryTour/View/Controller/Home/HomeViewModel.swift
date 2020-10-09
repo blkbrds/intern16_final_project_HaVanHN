@@ -102,9 +102,9 @@ final class HomeViewModel: ViewModel {
     func heightForRowAt(atIndexPath indexPath: IndexPath) -> CGFloat {
         switch sectionType(inSection: indexPath.section) {
         case .trending:
-            return 300
+            return 320
         case .recommend:
-            return 120
+            return UITableView.automaticDimension
         }
     }
 
@@ -121,10 +121,6 @@ final class HomeViewModel: ViewModel {
         case .recommend:
             return DetailViewModel( restaurant: restaurantsRecommend[indexPath.row])
         }
-    }
-
-    func getDetail(detail: Detail) {
-        self.detail = detail
     }
 
     func getDataFromRealm(completion: @escaping APICompletion) {

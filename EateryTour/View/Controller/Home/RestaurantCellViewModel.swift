@@ -21,7 +21,7 @@ final class RestaurantCellViewModel {
 
     func loadMoreInformation(completion: @escaping APICompletion) {
         guard let restaurant = restaurant, !restaurant.isLoadApiCompleted  else { return }
-        Api.Detail.getDetail(restaurantId: restaurant.id) { [weak self] result in
+        Api.Detail.getDetail(restaurantId: restaurant.id) { result in
             switch result {
             case .success(let data):
                 restaurant.isLoadApiCompleted = true

@@ -18,6 +18,9 @@ final class RestaurantSearching: Mappable {
     private(set) var lat: Float = 0.0
     private(set) var lng: Float = 0.0
     private(set) var distance: Int = 0
+    var bestPhotoURL: String = ""
+    var summaryLikes: String = ""
+    var isLoadApiCompleted: Bool = false
 
     init?(map: Map) {
     }

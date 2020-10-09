@@ -21,8 +21,8 @@ import RealmSwift
     dynamic var distance: Float = 0.0
     dynamic var tier: Int = 0
     dynamic var rating: Float = 0.0
-    dynamic var bestPhotoURL: String = ""
-    dynamic var summaryLikes: String = ""
+    var bestPhotoURL: String = ""
+    var summaryLikes: String = ""
     var isLoadApiCompleted: Bool = false
     dynamic var contact: String = ""
 
@@ -54,6 +54,6 @@ import RealmSwift
     }
 
     override class func ignoredProperties() -> [String] {
-        return ["isLoadApiCompleted"]
+        return ["bestPhotoURL", "isLoadApiCompleted", "summaryLikes"]
     }
 }

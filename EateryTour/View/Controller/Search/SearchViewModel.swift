@@ -42,4 +42,12 @@ final class SearchViewModel: ViewModel {
             }
         }
     }
+
+    func updateApiSuccess(newRestaurant: RestaurantSearching) {
+        guard var restaurants = restaurants else { return }
+        for (index, restaurant) in restaurants.enumerated() where restaurant.id == newRestaurant.id {
+            restaurants[index] = newRestaurant
+            self.restaurants = restaurants
+        }
+    }
 }

@@ -30,7 +30,6 @@ final class SearchViewController: ViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //statusBarStyle = .lightContent
         navigationController?.navigationBar.isHidden = true
     }
 
@@ -92,6 +91,8 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as? SearchCell else { return UITableViewCell() }
         cell.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
+        cell.getMoreInformationForCell()
+        cell.delegate = self
         return cell
     }
 }
@@ -102,5 +103,15 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.restaurants = []
         getSearchingList(searhKey: searchText)
+    }
+}
+
+extension SearchViewController: SearchCellDelegate {
+
+    func cell(_ cell: SearchCell, needsPerform action: SearchCell.Action) {
+        switch action {
+        case .callApiSuccess(restaurant: let restaurant):
+            viewModel.updateApiSuccess(newRestaurant: restaurant)
+        }
     }
 }

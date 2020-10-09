@@ -66,8 +66,8 @@ final class DetailViewModel: ViewModel {
             guard let this = self else { return }
             DispatchQueue.main.async {
                 switch result {
-                case .success(let data):
-                    this.detail = data
+                case .success(let detail):
+                    this.detail = detail
                     completion(.success)
                 case .failure(let error):
                     completion(.failure(error))
@@ -77,8 +77,8 @@ final class DetailViewModel: ViewModel {
     }
 
     func formatPrice() -> String {
-        guard let restaurant = restaurant else { return "$" }
-        switch restaurant.tier {
+        guard let detail = detail else { return "$" }
+        switch detail.tier {
         case 1:
             return "$"
         case 2:
