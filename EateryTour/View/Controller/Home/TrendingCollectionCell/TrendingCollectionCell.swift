@@ -17,9 +17,9 @@ class TrendingCollectionCell: TableCell {
     var viewModel = TrendingCollectionCellViewModel() {
         didSet {
             collectionView.reloadData()
+            getMoreInformationForCell()
         }
     }
-    // MARK: - Initialize
 
     // MARK: - Life cycle
     override func awakeFromNib() {

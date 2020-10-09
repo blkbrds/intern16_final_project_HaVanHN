@@ -24,6 +24,8 @@ final class Api {
     struct Photo {}
 
     struct Search {}
+
+    struct Map {}
 }
 
 extension Api.Path {
@@ -57,10 +59,15 @@ extension Api.Path {
     }
 
     struct Search {
-              static var filter: String {
-                  return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)&radius=1000&limit=10"
-              }
-       static var path: String { return baseURL / "search?\(filter)" }
+        static var filter: String {
+            return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)&radius=1000&limit=10"
+        }
+        static var path: String { return baseURL / "search?\(filter)" }
+    }
+
+    struct Map {
+        static var filter: String { return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)&limit=10" }
+        static var path: String { return baseURL / "explore?\(filter)" }
     }
 }
 

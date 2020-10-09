@@ -17,6 +17,8 @@ final class MapDetailViewController: UIViewController {
 
     // MARK: - Propeties
     var viewModel: MapDetailViewModel?
+    private var pinchGesture = UIPinchGestureRecognizer()
+    private var recognizerScale: CGFloat = 1.0
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -26,6 +28,7 @@ final class MapDetailViewController: UIViewController {
         addAnnotationRestaurant()
         addAnnotationUserLocation()
         configRouting()
+        configPinch()
     }
 
     // MARK: - Override functions
@@ -92,6 +95,19 @@ final class MapDetailViewController: UIViewController {
               let destination = CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
               routing(source: source, destination: destination)
         routing(source: source, destination: destination)
+    }
+
+    private func configPinch() {
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinch(pinch:)))
+        mapView.addGestureRecognizer(pinchGesture)
+    }
+
+    @objc func pinch(pinch: UIPinchGestureRecognizer) {
+        guard let transformScale = pinch.view?.transform.scaledBy(x: pinch.scale, y: pinch.scale) else {
+            return
+        }
+            pinch.view?.transform = transformScale
+            recognizerScale *= pinch.scale
     }
 
     // MARK: - IBActions

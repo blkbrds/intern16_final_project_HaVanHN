@@ -166,9 +166,9 @@ extension DetailViewController: InformationCellDelegate {
             viewModel.changeDataRealm { (result) in
                 switch result {
                 case .success:
-                    print("hihi")
+                    break
                 case .failure:
-                    print("huhu")
+                    print("can't change data")
                 }
             }
         }
