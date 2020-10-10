@@ -28,7 +28,7 @@ class MyPinView: MKPinAnnotationView {
             return self.imageView.image
         }
         set {
-            if let _ = imageView {
+            if imageView != nil {
                 self.imageView.image = newValue
             }
         }

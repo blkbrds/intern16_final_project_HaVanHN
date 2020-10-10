@@ -31,6 +31,11 @@ final class MapDetailViewController: UIViewController {
         configPinch()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+
     // MARK: - Override functions
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

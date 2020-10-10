@@ -82,10 +82,6 @@ final class DetailViewController: ViewController {
         })
     }
 
-    // MARK: - Public functions
-
-    // MARK: - Objc functions
-
     // MARK: - IBActions
     @IBAction private func backButtonTouchUpInside(_ sender: Button) {
         navigationController?.popViewController(animated: true)

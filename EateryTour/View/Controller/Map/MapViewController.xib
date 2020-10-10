@@ -16,6 +16,7 @@
                 <outlet property="mapView" destination="96a-fA-csD" id="8U8-fW-vdE"/>
                 <outlet property="middleButton" destination="lxL-JG-Iht" id="bdh-n8-Pvy"/>
                 <outlet property="progressView" destination="Vsl-Mv-zTk" id="cFp-wf-LwR"/>
+                <outlet property="topButton" destination="CvZ-j7-Lg7" id="Ri4-Wl-LwH"/>
                 <outlet property="underButton" destination="ULm-Pc-pEs" id="NEX-Tb-lMg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,16 +30,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </mapView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUa-iM-OPt" userLabel="containView">
-                    <rect key="frame" x="371.5" y="532" width="15" height="250"/>
+                    <rect key="frame" x="374" y="532" width="10" height="250"/>
                     <subviews>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vsl-Mv-zTk" userLabel="progressView">
-                            <rect key="frame" x="0.0" y="0.0" width="15" height="167"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vsl-Mv-zTk" userLabel="progressView">
+                            <rect key="frame" x="0.0" y="0.0" width="10" height="167"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="10" id="4RT-BJ-ZA0"/>
+                            </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CvZ-j7-Lg7" userLabel="TopButton" customClass="Button" customModule="EateryTour" customModuleProvider="target">
-                            <rect key="frame" x="-5.5" y="-5" width="25" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CvZ-j7-Lg7" userLabel="TopButton" customClass="Button" customModule="EateryTour" customModuleProvider="target">
+                            <rect key="frame" x="-7.5" y="-5" width="25" height="25"/>
                             <state key="normal">
                                 <imageReference key="image" image="circle.fill" catalog="system" symbolScale="large"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
@@ -47,9 +49,8 @@
                                 <action selector="topButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="tsC-GW-o7O"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxL-JG-Iht" userLabel="MiddleButton" customClass="Button" customModule="EateryTour" customModuleProvider="target">
-                            <rect key="frame" x="-5.5" y="75" width="25" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxL-JG-Iht" userLabel="MiddleButton" customClass="Button" customModule="EateryTour" customModuleProvider="target">
+                            <rect key="frame" x="-7.5" y="75" width="25" height="25"/>
                             <state key="normal">
                                 <imageReference key="image" image="circle.fill" catalog="system" symbolScale="large"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
@@ -58,9 +59,8 @@
                                 <action selector="middleButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="fp9-fS-2AE"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULm-Pc-pEs" userLabel="UnderButton" customClass="Button" customModule="EateryTour" customModuleProvider="target">
-                            <rect key="frame" x="-5" y="155" width="25" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULm-Pc-pEs" userLabel="UnderButton" customClass="Button" customModule="EateryTour" customModuleProvider="target">
+                            <rect key="frame" x="-7.5" y="155" width="25" height="25"/>
                             <state key="normal">
                                 <imageReference key="image" image="circle.fill" catalog="system" symbolScale="large"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
@@ -72,8 +72,17 @@
                     </subviews>
                     <color key="backgroundColor" red="0.217035383" green="0.40452584619999998" blue="0.36078119279999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
+                        <constraint firstItem="Vsl-Mv-zTk" firstAttribute="centerX" secondItem="lxL-JG-Iht" secondAttribute="centerX" id="BZy-Gx-h70"/>
+                        <constraint firstItem="ULm-Pc-pEs" firstAttribute="top" secondItem="lxL-JG-Iht" secondAttribute="bottom" constant="55" id="MkW-jQ-ppd"/>
                         <constraint firstAttribute="height" constant="250" id="QC2-jy-dhN"/>
-                        <constraint firstAttribute="width" constant="15" id="tT5-pg-CuS"/>
+                        <constraint firstItem="Vsl-Mv-zTk" firstAttribute="top" secondItem="AUa-iM-OPt" secondAttribute="top" id="Tbq-nj-Oki"/>
+                        <constraint firstItem="lxL-JG-Iht" firstAttribute="top" secondItem="AUa-iM-OPt" secondAttribute="top" constant="75" id="e4E-vM-bpM"/>
+                        <constraint firstItem="Vsl-Mv-zTk" firstAttribute="centerX" secondItem="ULm-Pc-pEs" secondAttribute="centerX" id="h9F-lG-dwy"/>
+                        <constraint firstItem="lxL-JG-Iht" firstAttribute="top" secondItem="CvZ-j7-Lg7" secondAttribute="bottom" constant="55" id="jTd-vd-Sc7"/>
+                        <constraint firstAttribute="bottom" secondItem="Vsl-Mv-zTk" secondAttribute="bottom" constant="83" id="lPL-Xa-5Aq"/>
+                        <constraint firstItem="Vsl-Mv-zTk" firstAttribute="centerX" secondItem="CvZ-j7-Lg7" secondAttribute="centerX" id="sCS-Wx-siV"/>
+                        <constraint firstAttribute="width" constant="10" id="tT5-pg-CuS"/>
+                        <constraint firstItem="Vsl-Mv-zTk" firstAttribute="leading" secondItem="AUa-iM-OPt" secondAttribute="leading" id="ueE-uU-PHs"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6F-HE-t2D" customClass="Button" customModule="EateryTour" customModuleProvider="target">

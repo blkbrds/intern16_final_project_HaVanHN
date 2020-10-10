@@ -15,15 +15,16 @@ final class MapViewController: ViewController {
     // MARK: - IBOutlets
     @IBOutlet private weak var progressView: UIView!
     @IBOutlet private weak var mapView: MKMapView!
+    @IBOutlet private weak var topButton: Button!
     @IBOutlet private weak var underButton: Button!
     @IBOutlet private weak var middleButton: Button!
     @IBOutlet private weak var containView: UIView!
 
     // MARK: - Propeties
-    var pins = [MyPin]()
-    var pinchGesture = UIPinchGestureRecognizer()
-    var recognizerScale: CGFloat = 1.0
-    var viewModel = MapViewModel()
+    private var pins = [MyPin]()
+    private var pinchGesture = UIPinchGestureRecognizer()
+    private var recognizerScale: CGFloat = 1.0
+    private var viewModel = MapViewModel()
     private var radius = "3"
 
     // MARK: - Life cycle
@@ -32,20 +33,28 @@ final class MapViewController: ViewController {
         getRestaurant()
         configMapView()
         addAnnotations()
-        configPinch()
+        configPinchGuesture()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         statusBarStyle = .lightContent
         navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = false
+        congfigButton(topButton)
+        congfigButton(middleButton)
+        congfigButton(underButton)
     }
 
-    // MARK: - Override functions
-
     // MARK: - Private functions
+    private func congfigButton(_ button: Button) {
+        button.tintColor = UIColor.yellow
+    }
+
     private func getRestaurant() {
+        HUD.show()
         viewModel.exploringRestaurant(radius: radius) { [weak self] (result) in
+            HUD.popActivity()
             guard let this = self else { return }
             switch result {
             case .success:
@@ -73,7 +82,7 @@ final class MapViewController: ViewController {
                 }
             }
         } else {
-            self.alert(msg: "Can't find", handler: nil)
+            self.alert(msg: "Can't find restaurant in the radius you want", handler: nil)
         }
     }
 
@@ -104,19 +113,16 @@ final class MapViewController: ViewController {
                             coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees(restaurants[i].lat), longitude: CLLocationDegrees(restaurants[i].lng)))
             pins.append(pin)
         }
-        print(pins)
     }
 
     private func addAnnotations() {
         mapView.addAnnotations(pins)
     }
 
-    private func configPinch() {
+    private func configPinchGuesture() {
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinch(pinch:)))
         mapView.addGestureRecognizer(pinchGesture)
     }
-
-    // MARK: - Public functions
 
     // MARK: - Objc functions
     @objc private func pinch(pinch: UIPinchGestureRecognizer) {
@@ -147,7 +153,7 @@ final class MapViewController: ViewController {
     }
 
     @IBAction private func middleButtonTouchUpInside(_ sender: Button) {
-        radius = "5"
+        radius = "7"
         UIView.animate(withDuration: 1.0, animations: {
             self.progressView.frame = CGRect(x: 0, y: 0, width: self.progressView.frame.width, height: self.middleButton.center.y)
         }, completion: nil)
@@ -157,7 +163,7 @@ final class MapViewController: ViewController {
     }
 
     @IBAction private func UnderButtonTouchUpInside(_ sender: Button) {
-        radius = "3"
+        radius = "5"
         UIView.animate(withDuration: 1.0, animations: {
             self.progressView.frame = CGRect(x: 0, y: 0, width: self.progressView.frame.width, height: self.underButton.center.y)
         }, completion: nil)
@@ -167,7 +173,7 @@ final class MapViewController: ViewController {
     }
 }
 
-// MARK: Extension: - MapView
+// MARK: Extension: - MKMapViewDelegate
 extension MapViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
