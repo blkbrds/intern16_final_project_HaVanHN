@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-final class RestaurantCellViewModel {
+final class RestaurantCellViewModel: ViewModel {
 
     var restaurant: Restaurant?
     var favorite: Bool = false
@@ -72,7 +72,7 @@ final class RestaurantCellViewModel {
                 return favorite
             }
             favorite = false
-            return false
+            return favorite
         } catch {
             favorite = false
             print("can't fetch data")

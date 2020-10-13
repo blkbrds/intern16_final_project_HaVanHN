@@ -13,15 +13,15 @@ import ObjectMapper
 extension Api.Map {
 
     struct QueryParams {
-        var radius: String
         var query: String
         var location: String
+        var limit: Int
 
         func toJSON() -> Parameters {
             let parameters: Parameters = [
-                "radius": radius,
                 "query": query,
-                "ll": location
+                "ll": location,
+                "limit": limit
             ]
             return parameters
         }

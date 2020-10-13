@@ -58,15 +58,8 @@ extension Api.Path {
         static var path: String { return baseURL / id / "photos?\(filter)" }
     }
 
-    struct Search {
-        static var filter: String {
-            return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)&radius=1000&limit=10"
-        }
-        static var path: String { return baseURL / "search?\(filter)" }
-    }
-
     struct Map {
-        static var filter: String { return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)&limit=10" }
+        static var filter: String { return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)&radius=100" }
         static var path: String { return baseURL / "explore?\(filter)" }
     }
 }

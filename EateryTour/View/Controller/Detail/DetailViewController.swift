@@ -25,9 +25,9 @@ final class DetailViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
-        configBackButton()
-        configStatusBar()
+        //configStatusBar()
         getDataForPhotoCell()
+        addObserve()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,9 +49,9 @@ final class DetailViewController: ViewController {
         tableView.register(commentCell, forCellReuseIdentifier: "CommentCell")
     }
 
-    private func configStatusBar() {
-        navigationController?.navigationBar.barStyle = .black
-    }
+//    private func configStatusBar() {
+//        navigationController?.navigationBar.barStyle = .black
+//    }
 
     private func getDataForPhotoCell() {
          guard let viewModel = viewModel else { return }
@@ -65,10 +65,6 @@ final class DetailViewController: ViewController {
         }
     }
 
-    private func configBackButton() {
-        backButton.tintColor = .white
-    }
-
     private func getInformationForDetail() {
         HUD.show()
         viewModel?.getInformation(completion: { result in
@@ -80,6 +76,13 @@ final class DetailViewController: ViewController {
                 self.alert(msg: error.localizedDescription, handler: nil)
             }
         })
+    }
+
+    private func addObserve() {
+        guard let viewModel = viewModel else { return }
+        viewModel.setupObserver {
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - IBActions
@@ -147,6 +150,7 @@ extension DetailViewController: MapCellDelegate {
             let mapDetailVC = MapDetailViewController()
             guard let viewModel = viewModel, let restaurant = viewModel.restaurant else { return }
             mapDetailVC.viewModel = MapDetailViewModel(lat: restaurant.lat, lng: restaurant.lng, name: restaurant.name, address: restaurant.address)
+            mapDetailVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(mapDetailVC, animated: true)
         }
     }

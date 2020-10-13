@@ -26,6 +26,13 @@ final class FavoriteViewModel: ViewModel {
         return RestaurantCellViewModel(restaurant: restautantList[indexPath.row])
     }
 
+    func updateApiSuccess(newRestaurant: Restaurant) {
+        guard var restaurants = restaurants else { return }
+        for (index, restaurant) in restaurants.enumerated() where restaurant.id == newRestaurant.id {
+            restaurants[index] = newRestaurant
+        }
+    }
+
     func getDataFromRealm(completion: @escaping APICompletion) {
         do {
             let realm = try Realm()

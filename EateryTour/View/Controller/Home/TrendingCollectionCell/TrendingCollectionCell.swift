@@ -14,18 +14,16 @@ class TrendingCollectionCell: TableCell {
     @IBOutlet weak var collectionView: CollectionView!
 
     // MARK: - Propeties
-    var viewModel = TrendingCollectionCellViewModel()
+    var viewModel: TrendingCollectionCellViewModel? {
+        didSet {
+            getMoreInformationForCell()
+        }
+    }
 
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         configCollectionView()
-        getMoreInformationForCell()
-    }
-
-    // MARK: - Override functions
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
     }
 
     // MARK: - Private functions
@@ -42,7 +40,7 @@ class TrendingCollectionCell: TableCell {
                 cell.getInformation { (result) in
                     switch result {
                     case .success:
-                        break
+                        self.collectionView.reloadData()
                     case .failure(let error):
                         print(error.localizedDescription)
                     }
@@ -64,6 +62,30 @@ extension TrendingCollectionCell: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - UICollectionViewDataSource
+extension TrendingCollectionCell: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let viewModel = viewModel else { return 0 }
+        return viewModel.numberOfRowInSection()
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let trendingCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCell", for: indexPath) as? TrendingCell, let viewModel = viewModel else { return CollectionCell() }
+        trendingCell.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
+        trendingCell.delegate = self
+        return trendingCell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        getMoreInformationForCell()
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        getMoreInformationForCell()
+    }
+}
+
 // MARK: - UIScrollViewDelegate
 extension TrendingCollectionCell: UIScrollViewDelegate {
 
@@ -78,27 +100,13 @@ extension TrendingCollectionCell: UIScrollViewDelegate {
     }
 }
 
-// MARK: - UICollectionViewDataSource
-extension TrendingCollectionCell: UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.numberOfRowInSection()
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let trendingCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendingCell", for: indexPath) as? TrendingCell else { return CollectionCell() }
-        trendingCell.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
-        trendingCell.delegate = self
-        return trendingCell
-    }
-}
-
 // MARK: - TrendingCellDelegate
 extension TrendingCollectionCell: TrendingCellDelegate {
 
     func cell(_ cell: TrendingCell, needsPerform action: TrendingCell.Action) {
         switch action {
         case .callApiSuccess(restaurant: let restaurant):
+            guard let viewModel = viewModel else { return }
             viewModel.updateApiSuccess(newRestaurant: restaurant)
         }
     }

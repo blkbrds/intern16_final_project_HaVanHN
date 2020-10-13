@@ -162,6 +162,7 @@ extension HomeViewController: UITableViewDataSource {
         case .trending:
             guard let trendingCell = tableView.dequeueReusableCell(withIdentifier: "TrendingCollectionCell", for: indexPath) as? TrendingCollectionCell else { return UITableViewCell() }
             trendingCell.viewModel = viewModel.getCellTrendingForRowAt(atIndexPath: indexPath)
+           // trendingCell.delegate = self
             return trendingCell
         case .recommend:
             guard let recommentCell = tableView.dequeueReusableCell(withIdentifier: "RecommendCell", for: indexPath) as? RecommendCell else { return UITableViewCell() }
@@ -180,7 +181,6 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let detailVC = DetailViewController()
             detailVC.viewModel = viewModel.pushDataToDetailVC(atIndexPath: indexPath)
-            detailVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(detailVC, animated: true)
         }
 }

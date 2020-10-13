@@ -45,6 +45,7 @@ final class FavoriteViewController: ViewController {
             switch result {
             case .success:
                 this.tableView.reloadData()
+                this.getMoreInformationForCell()
             case .failure(let error):
                 this.alert(msg: error.localizedDescription, handler: nil)
             }
@@ -63,6 +64,21 @@ final class FavoriteViewController: ViewController {
     private func addObserve() {
         viewModel.setupObserver {
             self.tableView.reloadData()
+        }
+    }
+
+    private func getMoreInformationForCell() {
+        for cell in tableView.visibleCells {
+            if let cell = cell as? RecommendCell {
+            cell.loadMoreInformation { result in
+                switch result {
+                case .success:
+                   break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
         }
     }
 
@@ -99,14 +115,6 @@ extension FavoriteViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath) as? RecommendCell else { return UITableViewCell() }
         cell.viewModel = viewModel.getCellForRowAt(atIndexPath: indexPath)
-        cell.loadMoreInformation { result in
-            switch result {
-            case .success:
-                self.tableView.reloadRows(at: [indexPath], with: .automatic)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
         cell.delegate = self
         return cell
     }
@@ -119,7 +127,6 @@ extension FavoriteViewController: RecommendCellDelegate {
         switch action {
         case .changeFavoriteState(id: let id):
             viewModel.deleteFavoriteRestaurant(withId: id) { result in
-                print(id)
                 switch result {
                 case .success:
                     self.getDataFromRealm()
@@ -127,8 +134,8 @@ extension FavoriteViewController: RecommendCellDelegate {
                     print(error)
                 }
             }
-        case .callApiSuccess(restaurant:_):
-            break
+        case .callApiSuccess(restaurant: let restaurant):
+            viewModel.updateApiSuccess(newRestaurant: restaurant)
         }
     }
 }

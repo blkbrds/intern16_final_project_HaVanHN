@@ -21,8 +21,6 @@
 		52359A8725219BAD00CEB92D /* OptionalExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52359A8625219BAD00CEB92D /* OptionalExt.swift */; };
 		52359A8D25219CF500CEB92D /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52359A8C25219CF500CEB92D /* UserDefaultKeys.swift */; };
 		5235E458252C130700EA15F7 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235E457252C130700EA15F7 /* FavoriteViewModel.swift */; };
-		5235E46C252DA42D00EA15F7 /* Api.Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235E46B252DA42D00EA15F7 /* Api.Search.swift */; };
-		5235E472252E9F6200EA15F7 /* RestaurantSearching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235E471252E9F6200EA15F7 /* RestaurantSearching.swift */; };
 		523F27A1251D8DD800373CAC /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F27A0251D8DD800373CAC /* TrendingCell.swift */; };
 		527992CD252A181E009B5B1E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527992BA252A181E009B5B1E /* DetailViewController.swift */; };
 		527992CE252A181E009B5B1E /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527992BD252A181E009B5B1E /* PhotoCell.swift */; };
@@ -138,8 +136,6 @@
 		52359A8625219BAD00CEB92D /* OptionalExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalExt.swift; sourceTree = "<group>"; };
 		52359A8C25219CF500CEB92D /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		5235E457252C130700EA15F7 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
-		5235E46B252DA42D00EA15F7 /* Api.Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.Search.swift; sourceTree = "<group>"; };
-		5235E471252E9F6200EA15F7 /* RestaurantSearching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSearching.swift; sourceTree = "<group>"; };
 		523F27A0251D8DD800373CAC /* TrendingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
 		527992BA252A181E009B5B1E /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		527992BD252A181E009B5B1E /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
@@ -350,8 +346,8 @@
 			isa = PBXGroup;
 			children = (
 				527992BD252A181E009B5B1E /* PhotoCell.swift */,
-				527992BE252A181E009B5B1E /* PhotoCellViewModel.swift */,
 				527992BF252A181E009B5B1E /* PhotoCell.xib */,
+				527992BE252A181E009B5B1E /* PhotoCellViewModel.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -360,8 +356,8 @@
 			isa = PBXGroup;
 			children = (
 				527992C4252A181E009B5B1E /* MapCell.swift */,
-				527992C5252A181E009B5B1E /* MapCellViewModel.swift */,
 				527992C6252A181E009B5B1E /* MapCell.xib */,
+				527992C5252A181E009B5B1E /* MapCellViewModel.swift */,
 			);
 			path = MapCell;
 			sourceTree = "<group>";
@@ -369,9 +365,9 @@
 		527992C7252A181E009B5B1E /* InformationCell */ = {
 			isa = PBXGroup;
 			children = (
-				527992C8252A181E009B5B1E /* InformationCellViewModel.swift */,
-				527992C9252A181E009B5B1E /* InformationCell.xib */,
 				527992CA252A181E009B5B1E /* InformationCell.swift */,
+				527992C9252A181E009B5B1E /* InformationCell.xib */,
+				527992C8252A181E009B5B1E /* InformationCellViewModel.swift */,
 			);
 			path = InformationCell;
 			sourceTree = "<group>";
@@ -415,7 +411,6 @@
 				52E27F6E251D8B5300678E52 /* Detail.swift */,
 				52E27F6F251D8B5300678E52 /* LocationManager.swift */,
 				52E27F70251D8B5300678E52 /* Restaurant.swift */,
-				5235E471252E9F6200EA15F7 /* RestaurantSearching.swift */,
 				5281B387252FF27800FC2157 /* MyPinView.swift */,
 				5281B38B252FF52B00FC2157 /* MyPin.swift */,
 			);
@@ -583,7 +578,6 @@
 				5281B37F252FEE7900FC2157 /* Api.Map.swift */,
 				52849960252ADE1B00394658 /* Api.Photo.swift */,
 				5289C8552526B20800C91959 /* Api.Recommend.swift */,
-				5235E46B252DA42D00EA15F7 /* Api.Search.swift */,
 				52E27F79251D8BC800678E52 /* Api.Trending.swift */,
 				A3F622A325060E800024976E /* Core */,
 			);
@@ -899,14 +893,12 @@
 				A3F622E725062C9C0024976E /* StringExt.swift in Sources */,
 				52E27F69251D873000678E52 /* HomeViewModel.swift in Sources */,
 				527992D1252A181E009B5B1E /* PhotoCollectionCell.swift in Sources */,
-				5235E46C252DA42D00EA15F7 /* Api.Search.swift in Sources */,
 				52E27F7A251D8BC800678E52 /* Api.Detail.swift in Sources */,
 				5289C8562526B20800C91959 /* Api.Recommend.swift in Sources */,
 				A3F622B225060E800024976E /* CollectionViewHeaderView.swift in Sources */,
 				A3AED3622513564E00B5E6D0 /* UIFontExt.swift in Sources */,
 				522D589925223E4C00C4E6A3 /* TrendingCollectionCellViewModel.swift in Sources */,
 				522A5C722519BCEB00829199 /* FavoriteViewController.swift in Sources */,
-				5235E472252E9F6200EA15F7 /* RestaurantSearching.swift in Sources */,
 				A3F622B325060E800024976E /* Label.swift in Sources */,
 				5205776C25257B3300C4BC79 /* TrendingCollectionCell.swift in Sources */,
 				522A5C652519BCCB00829199 /* TabbarViewController.swift in Sources */,

@@ -29,7 +29,6 @@ final class RecommendCell: TableCell {
         }
     }
     weak var delegate: RecommendCellDelegate?
-    // MARK: - Initialize
 
     // MARK: - Life cycle
     override func awakeFromNib() {

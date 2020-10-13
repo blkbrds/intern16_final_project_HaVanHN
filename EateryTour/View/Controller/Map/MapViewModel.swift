@@ -12,11 +12,11 @@ final class MapViewModel: ViewModel {
 
     private(set) var restaurants: [Restaurant]?
 
-    func exploringRestaurant(radius: String, completion: @escaping APICompletion) {
+    func exploringRestaurant(limit: Int, completion: @escaping APICompletion) {
         if let lat = LocationManager.shared.currentLatitude,
             let lng = LocationManager.shared.currentLongitude {
             let locationString = String(lat) + "," + String(lng)
-            let params = Api.Map.QueryParams(radius: radius, query: "restaurant", location: locationString)
+            let params = Api.Map.QueryParams(query: "restaurant", location: locationString, limit: limit)
             Api.Map.exploring(params: params) { result in
                 switch result {
                 case .success(let restaurants):

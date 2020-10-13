@@ -27,6 +27,7 @@ extension Api.Trending {
             return parameters
         }
     }
+
     @discardableResult
     static func getTrending(params: QueryParams, completion: @escaping Completion<[Restaurant]>) -> Request? {
         let path = Api.Path.Trending.path

@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class CustomHeaderViewModel {
+final class CustomHeaderViewModel: ViewModel {
 
     private(set) var name: String
 

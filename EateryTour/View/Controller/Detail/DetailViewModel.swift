@@ -21,7 +21,8 @@ final class DetailViewModel: ViewModel {
 
     private var photoList: [Photo] = []
     private var detail: Detail?
-    private(set) var restaurant: Restaurant?
+    var restaurant: Restaurant?
+    var notificationToken: NotificationToken?
     private var isFavorite: Bool = false
 
     init(restaurant: Restaurant) {
@@ -170,6 +171,15 @@ final class DetailViewModel: ViewModel {
             guard let comments = detail?.comments else { return 5 }
             return comments.count
         }
+    }
+
+    func setupObserver(completion: @escaping () -> Void) {
+        do {
+            let realm = try Realm()
+            notificationToken = realm.objects(Restaurant.self).observe({ _ in
+                completion()
+            })
+        } catch { }
     }
 
     func changeDataRealm(completion: @escaping APICompletion) {

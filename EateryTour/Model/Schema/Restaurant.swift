@@ -34,9 +34,6 @@ import RealmSwift
 
     func mapping(map: Map) {
         id <- map["venue.id"]
-//        if id.isEmpty {
-//            id <-
-//        }
         name <- map["venue.name"]
         lat <- map["venue.location.lat"]
         lng <- map["venue.location.lng"]

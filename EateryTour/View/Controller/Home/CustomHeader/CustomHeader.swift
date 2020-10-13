@@ -27,16 +27,8 @@ final class CustomHeader: UITableViewHeaderFooterView {
         self.clipsToBounds = true
     }
 
-    // MARK: - Override functions
-
     // MARK: - Private functions
     private func updateUI() {
         nameLabel.text = viewModel?.name
     }
-    // MARK: - Public functions
-
-    // MARK: - Objc functions
-
-    // MARK: - IBActions
-
 }

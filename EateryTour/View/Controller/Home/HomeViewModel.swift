@@ -61,7 +61,7 @@ final class HomeViewModel: ViewModel {
         }
     }
 
-    func getCellTrendingForRowAt(atIndexPath indexPath: IndexPath) -> TrendingCollectionCellViewModel {
+    func getCellTrendingForRowAt(atIndexPath indexPath: IndexPath) -> TrendingCollectionCellViewModel? {
         return TrendingCollectionCellViewModel(restaurants: restaurantsTrending)
     }
 
@@ -102,7 +102,7 @@ final class HomeViewModel: ViewModel {
     func heightForRowAt(atIndexPath indexPath: IndexPath) -> CGFloat {
         switch sectionType(inSection: indexPath.section) {
         case .trending:
-            return 320
+            return 300
         case .recommend:
             return UITableView.automaticDimension
         }
@@ -123,6 +123,11 @@ final class HomeViewModel: ViewModel {
             return DetailViewModel( restaurant: restaurantsRecommend[indexPath.row])
         }
     }
+
+//    func pushDataToDetailVCAtTrendingCell(with restaurant: Restaurant) -> DetailViewModel? {
+//            return DetailViewModel( restaurant: restaurantsRecommend[indexPath.row])
+//        }
+//    }
 
     func getDataFromRealm(completion: @escaping APICompletion) {
         do {
