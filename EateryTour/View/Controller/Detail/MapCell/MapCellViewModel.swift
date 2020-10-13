@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class MapCellViewModel {
+final class MapCellViewModel: ViewModel {
 
     private(set) var openToday: String
     private(set) var openHours: String

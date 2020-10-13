@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-final class CommentCell: UITableViewCell {
+final class CommentCell: TableCell {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var contentLabel: Label!
@@ -30,11 +30,6 @@ final class CommentCell: UITableViewCell {
         configUI()
     }
 
-    // MARK: - Override functions
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-
     // MARK: - Private functions
     private func configUI() {
         userImage.layer.cornerRadius = userImage.bounds.height / 2
@@ -50,9 +45,4 @@ final class CommentCell: UITableViewCell {
         guard let url = URL(string: viewModel.imageURL) else { return }
         userImage.sd_setImage(with: url)
     }
-    // MARK: - Public functions
-
-    // MARK: - Objc functions
-
-    // MARK: - IBActions
 }

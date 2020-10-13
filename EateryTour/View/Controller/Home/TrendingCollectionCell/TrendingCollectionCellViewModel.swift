@@ -10,12 +10,15 @@ import Foundation
 
 final class TrendingCollectionCellViewModel: ViewModel {
 
+    // MARK: - Properties
     var restaurants: [Restaurant]
 
+    // MARK: - Initialize
     init(restaurants: [Restaurant] = []) {
         self.restaurants = restaurants
     }
 
+    // MARK: - Public functions
     func getCellForRowAt(atIndexPath indexPath: IndexPath) -> RestaurantCellViewModel? {
         return RestaurantCellViewModel(restaurant: restaurants[indexPath.row])
     }

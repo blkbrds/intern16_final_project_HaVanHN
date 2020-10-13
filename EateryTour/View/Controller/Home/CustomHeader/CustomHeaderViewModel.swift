@@ -10,8 +10,10 @@ import Foundation
 
 final class CustomHeaderViewModel: ViewModel {
 
+    // MARK: - Properties
     private(set) var name: String
 
+    // MARK: - Initialize
     init(name: String) {
         self.name = name
     }

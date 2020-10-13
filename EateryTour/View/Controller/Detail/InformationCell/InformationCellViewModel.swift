@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-final class InformationCellViewModel {
+final class InformationCellViewModel: ViewModel {
 
     private(set) var imageURL: String
     private(set) var name: String

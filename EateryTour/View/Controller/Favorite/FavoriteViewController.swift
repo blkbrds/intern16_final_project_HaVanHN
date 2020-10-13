@@ -54,7 +54,7 @@ final class FavoriteViewController: ViewController {
 
     private func configNavigationBar() {
         navigationItem.title = "Favorite"
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1602264941, green: 0.4939214587, blue: 0.4291425645, alpha: 1)
+        navigationController?.navigationBar.barTintColor = App.Color.appColor
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         let deleteItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic-broken-heart"), style: .plain, target: self, action: #selector(tabOnDeleteButton))
         deleteItem.tintColor = UIColor.white
@@ -70,15 +70,15 @@ final class FavoriteViewController: ViewController {
     private func getMoreInformationForCell() {
         for cell in tableView.visibleCells {
             if let cell = cell as? RecommendCell {
-            cell.loadMoreInformation { result in
-                switch result {
-                case .success:
-                   break
-                case .failure(let error):
-                    print(error.localizedDescription)
+                cell.loadMoreInformation { result in
+                    switch result {
+                    case .success:
+                        break
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
                 }
             }
-        }
         }
     }
 
@@ -94,7 +94,6 @@ final class FavoriteViewController: ViewController {
             }
         }
     }
-
 }
 
 // MARK: - UITableViewDelegate

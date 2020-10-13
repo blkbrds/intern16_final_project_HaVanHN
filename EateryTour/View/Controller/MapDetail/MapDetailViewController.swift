@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-final class MapDetailViewController: UIViewController {
+final class MapDetailViewController: ViewController {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var backButton: Button!
@@ -95,7 +95,8 @@ final class MapDetailViewController: UIViewController {
         mapView.addGestureRecognizer(pinchGesture)
     }
 
-    @objc func pinch(pinch: UIPinchGestureRecognizer) {
+    // MARK: - Objc functions
+    @objc private func pinch(pinch: UIPinchGestureRecognizer) {
         guard let transformScale = pinch.view?.transform.scaledBy(x: pinch.scale, y: pinch.scale) else {
             return
         }

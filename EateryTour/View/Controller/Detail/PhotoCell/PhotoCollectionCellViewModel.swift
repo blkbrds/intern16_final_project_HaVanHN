@@ -8,16 +8,12 @@
 
 import Foundation
 
-final class PhotoCollectionCellViewModel {
+final class PhotoCollectionCellViewModel: ViewModel {
 
     private(set) var imageURLList: [String]
 
     init(imageURLList: [String]) {
         self.imageURLList = imageURLList
-    }
-
-    private func getImageURL() {
-
     }
 
     func getCellForRowAt(atIndexPath indexPath: IndexPath) -> PhotoCellViewModel? {

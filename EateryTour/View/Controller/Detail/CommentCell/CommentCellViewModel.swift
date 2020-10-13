@@ -8,12 +8,12 @@
 
 import Foundation
 
-final class CommentCellViewModel {
+final class CommentCellViewModel: ViewModel {
 
-    var imageURL: String
-    var name: String
-    var createdAt: Int
-    var text: String
+    private(set) var imageURL: String
+    private(set) var name: String
+    private(set) var createdAt: Int
+    private(set) var text: String
 
     init(comment: Comment) {
         self.imageURL = comment.photoURL
@@ -25,9 +25,11 @@ final class CommentCellViewModel {
     func formatCreatedAtDate() -> String {
         let date = Date(timeIntervalSince1970: Double(createdAt))
         let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+        // Set timezone that you want
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
         dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm" //Specify your format that you want
+        // Specify your format that you want
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         let strDate = dateFormatter.string(from: date)
         return strDate
     }

@@ -11,7 +11,7 @@ import UIKit
 class TrendingCollectionCell: TableCell {
 
     // MARK: - IBOutlets
-    @IBOutlet weak var collectionView: CollectionView!
+    @IBOutlet private weak var collectionView: CollectionView!
 
     // MARK: - Propeties
     var viewModel: TrendingCollectionCellViewModel? {

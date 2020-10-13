@@ -8,13 +8,15 @@
 
 import Foundation
 
-final class MapDetailViewModel {
+final class MapDetailViewModel: ViewModel {
 
+    // MARK: - Properties
     private(set) var lat: Float
     private(set) var lng: Float
     private(set) var name: String
     private(set) var address: String
 
+    // MARK: - Initialize
     init(lat: Float, lng: Float, name: String, address: String) {
         self.lat = lat
         self.lng = lng

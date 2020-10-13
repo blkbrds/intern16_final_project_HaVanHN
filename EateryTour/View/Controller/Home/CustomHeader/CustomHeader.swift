@@ -20,15 +20,9 @@ final class CustomHeader: UITableViewHeaderFooterView {
         }
     }
 
-    // MARK: - Life cycle
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.layer.borderWidth = 0
-        self.clipsToBounds = true
-    }
-
     // MARK: - Private functions
     private func updateUI() {
         nameLabel.text = viewModel?.name
+        nameLabel.tintColor = App.Color.appColor
     }
 }

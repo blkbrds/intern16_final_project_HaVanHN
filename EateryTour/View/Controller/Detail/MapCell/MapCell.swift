@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 
 protocol MapCellDelegate: class {
+
     func view(_ view: MapCell, needsPerform action: MapCell.Action)
 }
 
@@ -33,16 +34,6 @@ final class MapCell: TableCell {
     }
     weak var delegate: MapCellDelegate?
 
-    // MARK: - Life cycle
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    // MARK: - Override functions
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-
     // MARK: - Private functions
     private func updateUI() {
         guard let viewModel = viewModel else {
@@ -56,9 +47,9 @@ final class MapCell: TableCell {
     private func configButton() {
         locationButton.layer.cornerRadius = 20
         locationButton.clipsToBounds = true
-        locationButton.tintColor = #colorLiteral(red: 0.10909646, green: 0.2660153806, blue: 0.2814711332, alpha: 1)
+        locationButton.tintColor = App.Color.appColor
         locationButton.layer.borderWidth = 0.5
-        locationButton.layer.borderColor = #colorLiteral(red: 0.10909646, green: 0.2660153806, blue: 0.2814711332, alpha: 1)
+        locationButton.layer.borderColor = App.Color.appColor.cgColor
     }
 
     private func configRestaurantLocation() {
@@ -108,5 +99,5 @@ extension MapCell: MKMapViewDelegate {
         annotationView?.image = #imageLiteral(resourceName: "ic-location-map").sd_resizedImage(with: CGSize(width: 40, height: 40), scaleMode: .aspectFill)
         annotationView?.canShowCallout = true
         return annotationView
-        }
+    }
 }

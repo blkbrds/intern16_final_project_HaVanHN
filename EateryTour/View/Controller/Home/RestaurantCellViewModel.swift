@@ -11,14 +11,17 @@ import RealmSwift
 
 final class RestaurantCellViewModel: ViewModel {
 
+    // MARK: - Properties
     var restaurant: Restaurant?
     var favorite: Bool = false
 
+    // MARK: - Initialize
     init(restaurant: Restaurant? = nil, favorite: Bool = false) {
         self.restaurant = restaurant
         self.favorite = favorite
     }
 
+    // MARK: - Public functions
     func loadMoreInformation(completion: @escaping APICompletion) {
         guard let restaurant = restaurant, !restaurant.isLoadApiCompleted  else { return }
         Api.Detail.getDetail(restaurantId: restaurant.id) { result in

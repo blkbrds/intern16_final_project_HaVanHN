@@ -53,7 +53,7 @@ final class HomeViewController: ViewController {
 
     private func configNavigationBar() {
         navigationItem.title = "Eatery Tour"
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1602264941, green: 0.4939214587, blue: 0.4291425645, alpha: 1)
+        navigationController?.navigationBar.barTintColor = App.Color.appColor
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
 
@@ -63,7 +63,7 @@ final class HomeViewController: ViewController {
         } else {
             tableView.addSubview(refreshControl)
         }
-        refreshControl.tintColor = #colorLiteral(red: 0.10909646, green: 0.2660153806, blue: 0.2814711332, alpha: 1)
+        refreshControl.tintColor = App.Color.appColor
         refreshControl.addTarget(self, action: #selector(refreshRestaurantData(_:)), for: .valueChanged)
     }
 
@@ -78,9 +78,7 @@ final class HomeViewController: ViewController {
             guard let this = self else { return }
             switch result {
             case .success:
-                DispatchQueue.main.async {
-                    this.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-                }
+                this.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
             case .failure(let error):
                 this.alert(msg: error.localizedDescription, handler: nil)
             }
@@ -94,10 +92,8 @@ final class HomeViewController: ViewController {
             guard let this = self else { return }
             switch result {
             case.success:
-                DispatchQueue.main.async {
-                    this.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
-                    this.loadMoreInformationForRecommendRestaurant()
-                }
+                this.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+                this.loadMoreInformationForRecommendRestaurant()
             case .failure(let error):
                 this.alert(msg: error.localizedDescription, handler: nil)
             }
@@ -162,7 +158,6 @@ extension HomeViewController: UITableViewDataSource {
         case .trending:
             guard let trendingCell = tableView.dequeueReusableCell(withIdentifier: "TrendingCollectionCell", for: indexPath) as? TrendingCollectionCell else { return UITableViewCell() }
             trendingCell.viewModel = viewModel.getCellTrendingForRowAt(atIndexPath: indexPath)
-           // trendingCell.delegate = self
             return trendingCell
         case .recommend:
             guard let recommentCell = tableView.dequeueReusableCell(withIdentifier: "RecommendCell", for: indexPath) as? RecommendCell else { return UITableViewCell() }
@@ -179,10 +174,10 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            let detailVC = DetailViewController()
-            detailVC.viewModel = viewModel.pushDataToDetailVC(atIndexPath: indexPath)
-            navigationController?.pushViewController(detailVC, animated: true)
-        }
+        let detailVC = DetailViewController()
+        detailVC.viewModel = viewModel.pushDataToDetailVC(atIndexPath: indexPath)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 // MARK: - UITableViewDelegate

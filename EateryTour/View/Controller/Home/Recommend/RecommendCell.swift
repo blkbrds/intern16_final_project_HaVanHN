@@ -9,6 +9,7 @@
 import UIKit
 
 protocol RecommendCellDelegate: class {
+
     func cell(_ cell: RecommendCell, needsPerform action: RecommendCell.Action)
 }
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class PhotoCellViewModel {
+final class PhotoCellViewModel: ViewModel {
 
     private(set) var imageURL: String
 

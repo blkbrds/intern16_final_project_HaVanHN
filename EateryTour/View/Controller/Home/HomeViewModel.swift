@@ -26,10 +26,9 @@ final class HomeViewModel: ViewModel {
     private(set) var detail: Detail?
 
     // MARK: - Public functions
-
     func getTrendingRestaurant(limit: Int, completion: @escaping APICompletion) {
         if let lat = LocationManager.shared.currentLatitude,
-            let lng = LocationManager.shared.currentLongitude {
+           let lng = LocationManager.shared.currentLongitude {
             let locationString = String(lat) + "," + String(lng)
             let params = Api.Trending.QueryParams(query: "restaurant", location: locationString, limit: String(limit))
             Api.Trending.getTrending(params: params) { result in
@@ -46,7 +45,7 @@ final class HomeViewModel: ViewModel {
 
     func getRecommendRestaurant(limit: Int, completion: @escaping APICompletion) {
         if let lat = LocationManager.shared.currentLatitude,
-            let lng = LocationManager.shared.currentLongitude {
+           let lng = LocationManager.shared.currentLongitude {
             let locationString = String(lat) + "," + String(lng)
             let params = Api.Recommend.QueryParams(section: "food", query: "restaurant", location: locationString, limit: String(limit), price: "2,3")
             Api.Recommend.getRecommend(params: params) { result in
@@ -95,7 +94,7 @@ final class HomeViewModel: ViewModel {
         case .trending:
             return 1
         case .recommend:
-            return 20
+            return restaurantsRecommend.count
         }
     }
 
@@ -123,11 +122,6 @@ final class HomeViewModel: ViewModel {
             return DetailViewModel( restaurant: restaurantsRecommend[indexPath.row])
         }
     }
-
-//    func pushDataToDetailVCAtTrendingCell(with restaurant: Restaurant) -> DetailViewModel? {
-//            return DetailViewModel( restaurant: restaurantsRecommend[indexPath.row])
-//        }
-//    }
 
     func getDataFromRealm(completion: @escaping APICompletion) {
         do {
@@ -171,7 +165,6 @@ final class HomeViewModel: ViewModel {
                     completion(.success)
                 }
             }
-
         } catch {
             completion(.failure(error))
         }

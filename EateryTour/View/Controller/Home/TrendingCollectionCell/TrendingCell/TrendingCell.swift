@@ -10,6 +10,7 @@ import UIKit
 import SDWebImage
 
 protocol TrendingCellDelegate: class {
+
     func cell(_ cell: TrendingCell, needsPerform action: TrendingCell.Action)
 }
 

@@ -25,7 +25,6 @@ final class DetailViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
-        //configStatusBar()
         getDataForPhotoCell()
         addObserve()
     }
@@ -49,12 +48,8 @@ final class DetailViewController: ViewController {
         tableView.register(commentCell, forCellReuseIdentifier: "CommentCell")
     }
 
-//    private func configStatusBar() {
-//        navigationController?.navigationBar.barStyle = .black
-//    }
-
     private func getDataForPhotoCell() {
-         guard let viewModel = viewModel else { return }
+        guard let viewModel = viewModel else { return }
         viewModel.getDataForCellPhoto { (result) in
             switch result {
             case .success:
@@ -99,12 +94,12 @@ extension DetailViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-                guard let viewModel = viewModel else { return 2 }
+        guard let viewModel = viewModel else { return 2 }
         return viewModel.numberOfItems(inSection: section)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         guard let viewModel = viewModel else { return UITableViewCell() }
+        guard let viewModel = viewModel else { return UITableViewCell() }
         switch viewModel.sectionType(atSection: indexPath.section) {
         case .information:
             guard let informationCell = tableView.dequeueReusableCell(withIdentifier: "InformationCell", for: indexPath) as? InformationCell else { return UITableViewCell() }
@@ -131,12 +126,8 @@ extension DetailViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension DetailViewController: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-    }
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-         guard let viewModel = viewModel else { return 200 }
+        guard let viewModel = viewModel else { return 200 }
         return viewModel.getheightForRowAt(atIndexPath: indexPath)
     }
 }
@@ -162,7 +153,7 @@ extension DetailViewController: InformationCellDelegate {
     func cell(_ cell: InformationCell, needsPerform action: InformationCell.Action) {
         switch action {
         case .changeDataRealm:
-             guard let viewModel = viewModel else { return }
+            guard let viewModel = viewModel else { return }
             viewModel.changeDataRealm { (result) in
                 switch result {
                 case .success:

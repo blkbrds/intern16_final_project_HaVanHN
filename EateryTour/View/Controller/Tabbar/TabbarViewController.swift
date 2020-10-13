@@ -35,7 +35,7 @@ final class TabbarViewController: TabBarController {
 
         viewControllers = [homeNavigationController,
                            mapNavigationController, favoriteNavigationController]
-        tabBar.tintColor = #colorLiteral(red: 0.10909646, green: 0.2660153806, blue: 0.2814711332, alpha: 1)
+        tabBar.tintColor = App.Color.appColor
         tabBar.backgroundColor = UIColor.white
         tabBar.isTranslucent = false
         tabBar.clipsToBounds = true

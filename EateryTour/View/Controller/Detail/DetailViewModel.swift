@@ -19,11 +19,11 @@ enum DetailSection {
 
 final class DetailViewModel: ViewModel {
 
-    private var photoList: [Photo] = []
-    private var detail: Detail?
-    var restaurant: Restaurant?
-    var notificationToken: NotificationToken?
-    private var isFavorite: Bool = false
+    private(set) var photoList: [Photo] = []
+    private(set) var detail: Detail?
+    private(set) var restaurant: Restaurant?
+    private var notificationToken: NotificationToken?
+    private(set) var isFavorite: Bool = false
 
     init(restaurant: Restaurant) {
         self.restaurant = restaurant

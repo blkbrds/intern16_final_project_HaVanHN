@@ -19,15 +19,12 @@ final class PhotoCell: CollectionCell {
             updateUI()
         }
     }
-    // MARK: - Initialize
 
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         configUI()
     }
-
-    // MARK: - Override functions
 
     // MARK: - Private functions
     private func updateUI() {
@@ -39,10 +36,4 @@ final class PhotoCell: CollectionCell {
         photoImage.layer.cornerRadius = 15
         photoImage.clipsToBounds = true
     }
-
-    // MARK: - Public functions
-
-    // MARK: - Objc functions
-
-    // MARK: - IBActions
 }

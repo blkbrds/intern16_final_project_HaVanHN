@@ -170,13 +170,6 @@ extension MapViewController: MKMapViewDelegate {
         for restaurant in restaurants where restaurant.name == title {
             detailVC.viewModel = DetailViewModel(restaurant: restaurant)
         }
-        //        mapDetailVC.viewModel = MapDetailViewModel(lat: Float(annotation.coordinate.latitude),
-        //                                                   lng: Float(annotation.coordinate.longitude),
-        //                                                   name: title ?? "default name",
-        //                                                   address: subtitle ?? "default name")
-        //        mapDetailVC.hidesBottomBarWhenPushed = true
-        //        navigationController?.pushViewController(mapDetailVC, animated: true)
         navigationController?.pushViewController(detailVC, animated: true)
     }
-
 }

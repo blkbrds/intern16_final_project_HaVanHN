@@ -19,17 +19,11 @@ final class PhotoCollectionCell: TableCell {
             self.collectionView.reloadData()
         }
     }
-    // MARK: - Initialize
 
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         configCollectionView()
-    }
-
-    // MARK: - Override functions
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
     }
 
     // MARK: - Private functions
@@ -39,15 +33,6 @@ final class PhotoCollectionCell: TableCell {
         let nib = UINib(nibName: "PhotoCell", bundle: Bundle.main)
         collectionView.register(nib, forCellWithReuseIdentifier: "PhotoCell")
     }
-
-    private func updateUI() {
-
-    }
-    // MARK: - Public functions
-
-    // MARK: - Objc functions
-
-    // MARK: - IBActions
 }
 
 // MARK: - UICollectionViewDataSource
