@@ -119,6 +119,20 @@ extension FavoriteViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UIScrollViewDelegate
+extension FavoriteViewController: UIScrollViewDelegate {
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+       if !decelerate {
+            getMoreInformationForCell()
+        }
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        getMoreInformationForCell()
+    }
+}
+
 // MARK: - RecommendCellDelegate
 extension FavoriteViewController: RecommendCellDelegate {
 

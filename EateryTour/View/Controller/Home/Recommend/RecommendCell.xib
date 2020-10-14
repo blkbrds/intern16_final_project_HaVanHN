@@ -112,7 +112,7 @@
                 <outlet property="favoriteButton" destination="rT7-bf-vuu" id="9gH-cm-KfO"/>
                 <outlet property="nameLabel" destination="ut5-Lf-fyu" id="Y0B-uC-qoR"/>
                 <outlet property="ratingLabel" destination="MDe-5N-NC2" id="Wo1-x9-lKy"/>
-                <outlet property="restaurantImage" destination="gAf-af-2Gk" id="Fda-If-FRc"/>
+                <outlet property="restaurantImageView" destination="gAf-af-2Gk" id="Fda-If-FRc"/>
             </connections>
             <point key="canvasLocation" x="178.2608695652174" y="45.535714285714285"/>
         </tableViewCell>

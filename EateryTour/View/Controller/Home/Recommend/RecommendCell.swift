@@ -16,7 +16,7 @@ protocol RecommendCellDelegate: class {
 final class RecommendCell: TableCell {
 
     // MARK: - IBOutlets
-    @IBOutlet private weak var restaurantImage: ImageView!
+    @IBOutlet private weak var restaurantImageView: ImageView!
     @IBOutlet private weak var nameLabel: Label!
     @IBOutlet private weak var addressAndPriceLabel: Label!
     @IBOutlet private weak var amountOfRatingLabel: Label!
@@ -40,7 +40,7 @@ final class RecommendCell: TableCell {
     // MARK: - Override functions
     override func prepareForReuse() {
         super.prepareForReuse()
-        restaurantImage.image = nil
+        restaurantImageView.image = nil
     }
 
     // MARK: - Private functions
@@ -55,14 +55,14 @@ final class RecommendCell: TableCell {
             favoriteButton.setImage(#imageLiteral(resourceName: "ic-heart"), for: .normal)
         }
         if let urlImage = URL(string: restaurant.bestPhotoURL) {
-            restaurantImage.sd_setImage(with: urlImage)
+            restaurantImageView.sd_setImage(with: urlImage)
         }
         amountOfRatingLabel.text = restaurant.summaryLikes
     }
 
     private func configUI() {
-        restaurantImage.layer.cornerRadius = 5
-        restaurantImage.clipsToBounds = true
+        restaurantImageView.layer.cornerRadius = 5
+        restaurantImageView.clipsToBounds = true
     }
 
     // MARK: - Public functions
@@ -76,7 +76,7 @@ final class RecommendCell: TableCell {
                 if let restaurant = viewModel.restaurant {
                     this.delegate?.cell(this, needsPerform: .callApiSuccess(restaurant: restaurant))
                 }
-                this.restaurantImage.sd_setImage(with: urlImage)
+                this.restaurantImageView.sd_setImage(with: urlImage)
                 this.amountOfRatingLabel.text = "(\(restaurant.summaryLikes))"
                 completion(.success)
             case .failure(let error):
