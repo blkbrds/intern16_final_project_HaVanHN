@@ -18,7 +18,6 @@ final class MapDetailViewController: ViewController {
     // MARK: - Propeties
     var viewModel: MapDetailViewModel?
     private var pinchGesture = UIPinchGestureRecognizer()
-    private var recognizerScale: CGFloat = 1.0
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -101,7 +100,6 @@ final class MapDetailViewController: ViewController {
             return
         }
         pinch.view?.transform = transformScale
-        recognizerScale *= pinch.scale
     }
 
     // MARK: - IBActions

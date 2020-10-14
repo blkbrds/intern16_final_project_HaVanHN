@@ -20,7 +20,6 @@ final class MapViewController: ViewController {
     private var pinchGesture = UIPinchGestureRecognizer()
     private var recognizerScale: CGFloat = 1.0
     private var viewModel = MapViewModel()
-    private var limit: Int = 10
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -40,7 +39,7 @@ final class MapViewController: ViewController {
     // MARK: - Private functions
     private func getRestaurant() {
         HUD.show()
-        viewModel.exploringRestaurant(limit: limit) { [weak self] (result) in
+        viewModel.exploringRestaurant(limit: 20) { [weak self] (result) in
             HUD.popActivity()
             guard let this = self else { return }
             switch result {
@@ -73,7 +72,7 @@ final class MapViewController: ViewController {
         }
     }
 
-    private func center(location: CLLocation) {
+    private func getCenterOfMap(location: CLLocation) {
         mapView.setCenter(location.coordinate, animated: true)
         let span = MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
@@ -117,13 +116,12 @@ final class MapViewController: ViewController {
             return
         }
         pinch.view?.transform = transformScale
-        recognizerScale *= pinch.scale
     }
 
     // MARK: - IBActions
     @IBAction private func getLocationCurrent(_ sender: UIButton) {
         guard let location = LocationManager.shared.currentLocation else { return }
-        self.center(location: location)
+        self.getCenterOfMap(location: location)
     }
 }
 

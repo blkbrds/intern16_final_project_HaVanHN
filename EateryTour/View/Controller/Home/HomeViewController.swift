@@ -24,7 +24,7 @@ final class HomeViewController: ViewController {
         super.viewDidLoad()
         configNavigationBar()
         configRefreshControl()
-        configLocation()
+        //configLocation()
         configTableView()
         getRecommendRestaurant()
         getTrendingRestaurant()

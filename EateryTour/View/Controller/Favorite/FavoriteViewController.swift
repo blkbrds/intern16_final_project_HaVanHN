@@ -29,6 +29,7 @@ final class FavoriteViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.barStyle = .black
+        getMoreInformationForCell()
     }
 
     // MARK: - Private functions
@@ -40,7 +41,11 @@ final class FavoriteViewController: ViewController {
     }
 
     private func getDataFromRealm() {
+        HUD.show()
         viewModel.getDataFromRealm { [weak self] result in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                HUD.popActivity()
+            }
             guard let this = self else { return }
             switch result {
             case .success:
@@ -68,9 +73,11 @@ final class FavoriteViewController: ViewController {
     }
 
     private func getMoreInformationForCell() {
+        HUD.show()
         for cell in tableView.visibleCells {
             if let cell = cell as? RecommendCell {
                 cell.loadMoreInformation { result in
+                    HUD.popActivity()
                     switch result {
                     case .success:
                         break
