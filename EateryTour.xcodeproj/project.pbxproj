@@ -441,10 +441,10 @@
 				A3F622E425062BC20024976E /* NSURLExt.swift */,
 				52359A8625219BAD00CEB92D /* OptionalExt.swift */,
 				A3F622E625062C9C0024976E /* StringExt.swift */,
+				5281B3C625356A3200FC2157 /* UIColorExt.swift */,
 				A3AED3612513564E00B5E6D0 /* UIFontExt.swift */,
 				A3F6228C25060E7F0024976E /* UIViewControllerExt.swift */,
 				A3F6228B25060E7F0024976E /* UIViewExt.swift */,
-				5281B3C625356A3200FC2157 /* UIColorExt.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";

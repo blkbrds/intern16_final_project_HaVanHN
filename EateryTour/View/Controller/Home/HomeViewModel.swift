@@ -24,6 +24,7 @@ final class HomeViewModel: ViewModel {
     private(set) var restaurantsRecommend: [Restaurant] = []
     private var favoriteRestaurantsRecommend: [Restaurant] = []
     private(set) var detail: Detail?
+    private(set) var sectionType: [String] = ["Trending", "Recommend"]
 
     // MARK: - Public functions
     func getTrendingRestaurant(limit: Int, completion: @escaping APICompletion) {
@@ -58,6 +59,10 @@ final class HomeViewModel: ViewModel {
                 }
             }
         }
+    }
+
+    func numberOfSections() -> Int {
+        return sectionType.count
     }
 
     func getCellTrendingForRowAt(atIndexPath indexPath: IndexPath) -> TrendingCollectionCellViewModel? {
