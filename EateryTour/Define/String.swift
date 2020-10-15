@@ -5,21 +5,16 @@
 //  Created by Bien Le Q. on 8/26/19.
 //  Copyright © 2019 Asiantech. All rights reserved.
 //
-import Foundation
+import UIKit
 
 extension App {
 
-    /**
-     This file defines all localizable strings which are used in this application.
-     Please localize defined strings in `Resources/Localizable.strings`.
-     */
-
     struct String { }
+
+    struct Color {
+        static let appColor = UIColor.RGB(58, 128, 111)
+    }
 }
 
 extension App.String {
-}
-
-struct UserDefaultKeys {
-    static let secondUse = "secondUse"
 }

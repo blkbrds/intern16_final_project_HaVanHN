@@ -12,7 +12,55 @@ import Alamofire
 final class Api {
 
     struct Path {
-        static let baseURL = "https://"
+        static let baseURL = "https://api.foursquare.com/v2/venues"
+    }
+
+    struct Trending {}
+
+    struct Detail {}
+
+    struct Recommend {}
+
+    struct Photo {}
+
+    struct Search {}
+
+    struct Map {}
+}
+
+extension Api.Path {
+
+    struct Trending {
+        static var filter: String { return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)&radius=10000" }
+        static var path: String { return baseURL / "explore?\(filter)" }
+    }
+
+    struct Recommend {
+        static var filter: String {
+            return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)"
+        }
+        static var path: String { return baseURL / "\(filter)" }
+    }
+
+    struct Detail {
+        static var id: String = "abc"
+        static var filter: String {
+            return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)"
+        }
+        static var path: String { return baseURL / "\(id)?\(filter)" }
+    }
+
+    struct Photo {
+         static var id: String = "default_id"
+               static var filter: String {
+                   return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)"
+               }
+        static var path: String { return baseURL / id / "photos?\(filter)" }
+    }
+
+    struct Map {
+        static var filter: String { return "client_id=\(APIKeys.client_id)&client_secret=\(APIKeys.client_secret)&oauth_token=\(APIKeys.oauth_token)&v=\(APIKeys.dateVersion)&radius=100" }
+        static var path: String { return baseURL / "explore?\(filter)" }
     }
 }
 
