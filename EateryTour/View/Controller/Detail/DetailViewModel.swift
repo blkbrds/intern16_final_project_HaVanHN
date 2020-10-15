@@ -24,6 +24,7 @@ final class DetailViewModel: ViewModel {
     private(set) var restaurant: Restaurant?
     private var notificationToken: NotificationToken?
     private(set) var isFavorite: Bool = false
+    private var sectionType: [String] = ["information", "map", "photo", "comment"]
 
     init(restaurant: Restaurant) {
         self.restaurant = restaurant
@@ -168,9 +169,13 @@ final class DetailViewModel: ViewModel {
         case .photo:
             return 1
         case .comment:
-            guard let comments = detail?.comments else { return 5 }
+            guard let comments = detail?.comments else { return 0 }
             return comments.count
         }
+    }
+
+    func numberOfSections() -> Int {
+        return sectionType.count
     }
 
     func setupObserver(completion: @escaping () -> Void) {

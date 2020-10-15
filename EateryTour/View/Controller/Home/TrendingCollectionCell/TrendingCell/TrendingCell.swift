@@ -56,8 +56,7 @@ final class TrendingCell: CollectionCell {
     }
 
     private func updateUI() {
-        guard let viewModel = viewModel else { return }
-        guard let restaurant = viewModel.restaurant else { return }
+        guard let viewModel = viewModel, let restaurant = viewModel.restaurant else { return }
         restaurantNameLabel.text = restaurant.name
         addressAndPriceLabel.text = viewModel.formatAddresAndPrice()
         distanceButton.setTitle(viewModel.formatDistance(), for: .normal)

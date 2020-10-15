@@ -66,6 +66,7 @@ final class HomeViewModel: ViewModel {
     }
 
     func getCellTrendingForRowAt(atIndexPath indexPath: IndexPath) -> TrendingCollectionCellViewModel? {
+        guard 0 <= indexPath.row && indexPath.row < restaurantsTrending.count else { return nil }
         return TrendingCollectionCellViewModel(restaurants: restaurantsTrending)
     }
 

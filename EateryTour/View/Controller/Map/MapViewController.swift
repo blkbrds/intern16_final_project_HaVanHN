@@ -26,7 +26,7 @@ final class MapViewController: ViewController {
         super.viewDidLoad()
         getRestaurant()
         configMapView()
-        addAnnotations()
+        addRestaurantAnnotations()
         configPinchGuesture()
     }
 
@@ -34,6 +34,7 @@ final class MapViewController: ViewController {
         super.viewWillAppear(animated)
         statusBarStyle = .lightContent
         navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.barStyle = .default
     }
 
     // MARK: - Private functions
@@ -101,7 +102,7 @@ final class MapViewController: ViewController {
         }
     }
 
-    private func addAnnotations() {
+    private func addRestaurantAnnotations() {
         mapView.addAnnotations(pins)
     }
 

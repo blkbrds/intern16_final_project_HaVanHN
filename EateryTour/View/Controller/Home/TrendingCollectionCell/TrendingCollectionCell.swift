@@ -16,7 +16,7 @@ class TrendingCollectionCell: TableCell {
     // MARK: - Propeties
     var viewModel: TrendingCollectionCellViewModel? {
         didSet {
-            getMoreInformationForCell()
+            reloadData()
         }
     }
 
@@ -34,13 +34,19 @@ class TrendingCollectionCell: TableCell {
         collectionView.register(trendingCell, forCellWithReuseIdentifier: "TrendingCell")
     }
 
+    private func reloadData() {
+        collectionView.reloadData(moveTop: true) {
+            self.getMoreInformationForCell()
+        }
+    }
+
     private func getMoreInformationForCell() {
         for cell in  collectionView.visibleCells {
             if let cell = cell as? TrendingCell {
-                cell.getInformation { (result) in
+                cell.getInformation { result in
                     switch result {
                     case .success:
-                        self.collectionView.reloadData()
+                        break
                     case .failure(let error):
                         print(error.localizedDescription)
                     }
@@ -76,14 +82,6 @@ extension TrendingCollectionCell: UICollectionViewDataSource {
         trendingCell.delegate = self
         return trendingCell
     }
-
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        getMoreInformationForCell()
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        getMoreInformationForCell()
-//    }
 }
 
 // MARK: - UIScrollViewDelegate

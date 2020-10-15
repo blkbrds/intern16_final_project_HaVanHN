@@ -42,15 +42,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func configWindow() {
         window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
         window?.backgroundColor = .white
         if Session.shared.secondUse {
             setRoot(rootType: .tabbar)
         } else {
             setRoot(rootType: .tutorial)
         }
-        let vc = TutorialViewController()
-        window?.rootViewController = vc
-        window?.makeKeyAndVisible()
     }
 
     func setRoot(rootType: RootType) {

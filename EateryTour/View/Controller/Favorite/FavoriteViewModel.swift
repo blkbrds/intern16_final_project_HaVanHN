@@ -45,17 +45,20 @@ final class FavoriteViewModel: ViewModel {
         }
     }
 
-    func deleteFavoriteRestaurant(withId id: String, completion: @escaping APICompletion) {
+    func deleteFavoriteRestaurant(withId id: String, completion: @escaping (APIResult, IndexPath?) -> Void ) {
         do {
             let realm = try Realm()
-            let predicate = NSPredicate(format: "id = %@", id)
-            let result = realm.objects(Restaurant.self).filter(predicate)
-            try realm.write {
-                realm.delete(result)
-                completion(.success)
+            //let predicate = NSPredicate(format: "id = %@", id)
+            let restaurantArray: [Restaurant] = Array(realm.objects(Restaurant.self))
+            for index in 0...restaurantArray.count - 1 where restaurantArray[index].id == id {
+                try realm.write {
+                    realm.delete(restaurantArray[index])
+                }
+                restaurants?.remove(at: index)
+                completion(.success, IndexPath(row: index, section: 0))
             }
         } catch {
-            completion(.failure(error))
+            completion(.failure(error), nil)
         }
     }
 

@@ -24,6 +24,7 @@ final class DetailViewController: ViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUI()
         configTableView()
         getDataForPhotoCell()
         addObserve()
@@ -32,9 +33,14 @@ final class DetailViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.barStyle = .black
     }
 
     // MARK: - Private functions
+    private func updateUI() {
+        backButton.tintColor = .white
+    }
+
     private func configTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -50,7 +56,7 @@ final class DetailViewController: ViewController {
 
     private func getDataForPhotoCell() {
         guard let viewModel = viewModel else { return }
-        viewModel.getDataForCellPhoto { (result) in
+        viewModel.getDataForCellPhoto { result in
             switch result {
             case .success:
                 self.tableView.reloadData()
@@ -90,11 +96,12 @@ final class DetailViewController: ViewController {
 extension DetailViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        guard let viewModel = viewModel else { return 1 }
+        return viewModel.numberOfSections()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let viewModel = viewModel else { return 2 }
+        guard let viewModel = viewModel else { return 0 }
         return viewModel.numberOfItems(inSection: section)
     }
 

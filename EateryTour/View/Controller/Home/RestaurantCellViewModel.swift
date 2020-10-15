@@ -23,7 +23,10 @@ final class RestaurantCellViewModel: ViewModel {
 
     // MARK: - Public functions
     func loadMoreInformation(completion: @escaping APICompletion) {
-        guard let restaurant = restaurant, !restaurant.isLoadApiCompleted  else { return }
+        guard let restaurant = restaurant, !restaurant.isLoadApiCompleted  else {
+            completion(.success)
+            return
+        }
         Api.Detail.getDetail(restaurantId: restaurant.id) { result in
             switch result {
             case .success(let data):

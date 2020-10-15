@@ -21,7 +21,7 @@ final class FavoriteViewController: ViewController {
         super.viewDidLoad()
         configNavigationBar()
         configTableView()
-        getDataFromRealm()
+        getDataFromRealm(needReload: true)
         addObserve()
     }
 
@@ -40,7 +40,7 @@ final class FavoriteViewController: ViewController {
         tableView.register(cell, forCellReuseIdentifier: "FavoriteCell")
     }
 
-    private func getDataFromRealm() {
+    private func getDataFromRealm(needReload: Bool) {
         HUD.show()
         viewModel.getDataFromRealm { [weak self] result in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -49,8 +49,10 @@ final class FavoriteViewController: ViewController {
             guard let this = self else { return }
             switch result {
             case .success:
-                this.tableView.reloadData()
                 this.getMoreInformationForCell()
+                if needReload {
+                    this.tableView.reloadData()
+                }
             case .failure(let error):
                 this.alert(msg: error.localizedDescription, handler: nil)
             }
@@ -73,11 +75,9 @@ final class FavoriteViewController: ViewController {
     }
 
     private func getMoreInformationForCell() {
-        HUD.show()
         for cell in tableView.visibleCells {
             if let cell = cell as? RecommendCell {
                 cell.loadMoreInformation { result in
-                    HUD.popActivity()
                     switch result {
                     case .success:
                         break
@@ -95,7 +95,7 @@ final class FavoriteViewController: ViewController {
             guard let this = self else { return }
             switch result {
             case .success:
-                this.getDataFromRealm()
+                this.getDataFromRealm(needReload: true)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -146,12 +146,19 @@ extension FavoriteViewController: RecommendCellDelegate {
     func cell(_ cell: RecommendCell, needsPerform action: RecommendCell.Action) {
         switch action {
         case .changeFavoriteState(id: let id):
-            viewModel.deleteFavoriteRestaurant(withId: id) { result in
-                switch result {
-                case .success:
-                    self.getDataFromRealm()
-                case .failure(let error):
-                    print(error)
+            viewModel.deleteFavoriteRestaurant(withId: id) { [weak self] (result, indexPath) in
+                guard let this = self else { return }
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success:
+                        guard let indexPath = indexPath else { return }
+                        this.tableView.beginUpdates()
+                        this.tableView.deleteRows(at: [indexPath], with: .automatic)
+                        this.tableView.endUpdates()
+                        this.getMoreInformationForCell()
+                    case .failure(let error):
+                        this.alert(msg: error.localizedDescription, handler: nil)
+                    }
                 }
             }
         case .callApiSuccess(restaurant: let restaurant):

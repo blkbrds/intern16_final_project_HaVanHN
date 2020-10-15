@@ -22,7 +22,6 @@ final class MapDetailViewController: ViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configUI()
         configMapView()
         addAnnotationRestaurant()
         addAnnotationUserLocation()
@@ -30,25 +29,24 @@ final class MapDetailViewController: ViewController {
         configPinchGuesture()
     }
 
-    // MARK: - Private functions
-    private func configUI() {
-        backButton?.tintColor = .white
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barStyle = .default
     }
 
+    // MARK: - Private functions
     private func configMapView() {
         guard let viewModel = viewModel else { return }
         guard let latitude = LocationManager.shared.currentLatitude, let longtitude = LocationManager.shared.currentLongitude else { return }
         let location = CLLocation(latitude: (CLLocationDegrees(viewModel.lat) + latitude) / 2, longitude: (CLLocationDegrees(viewModel.lng) + longtitude) / 2)
-        let span = MKCoordinateSpan(latitudeDelta: 2, longitudeDelta: 1)
+        let span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
         mapView.setRegion(region, animated: true)
         mapView.delegate = self
     }
 
     private func addAnnotationRestaurant() {
-        guard let viewModel = viewModel else {
-            return
-        }
+        guard let viewModel = viewModel else { return }
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(viewModel.lat), longitude: CLLocationDegrees(viewModel.lng))
         annotation.title = viewModel.name
@@ -60,11 +58,11 @@ final class MapDetailViewController: ViewController {
         let annotation = MKPointAnnotation()
         guard let latitude = LocationManager.shared.currentLatitude, let longtitude = LocationManager.shared.currentLongitude else { return }
         annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
-        annotation.title = "user's location"
+        annotation.title = "User's location"
         mapView.addAnnotation(annotation)
     }
 
-    private func drawRoute(source: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
+    private func findRoute(source: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: source, addressDictionary: nil))
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destination, addressDictionary: nil))
@@ -74,19 +72,15 @@ final class MapDetailViewController: ViewController {
             guard let response = response else { return }
             guard let route: MKRoute = response.routes.first else { return }
             self.mapView.addOverlay(route.polyline)
-            self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+            self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30), animated: true)
         }
     }
 
     private func configRouting() {
-        guard let viewModel = viewModel else {
-            return
-        }
-        let source = CLLocationCoordinate2D(latitude: CLLocationDegrees(viewModel.lat), longitude: CLLocationDegrees(viewModel.lng))
-        guard let latitude = LocationManager.shared.currentLatitude, let longtitude = LocationManager.shared.currentLongitude else { return }
-        let destination = CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
-        drawRoute(source: source, destination: destination)
-        drawRoute(source: source, destination: destination)
+        guard let viewModel = viewModel, let latitude = LocationManager.shared.currentLatitude, let longtitude = LocationManager.shared.currentLongitude else { return }
+        let source = CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
+        let destination = CLLocationCoordinate2D(latitude: CLLocationDegrees(viewModel.lat), longitude: CLLocationDegrees(viewModel.lng))
+        findRoute(source: source, destination: destination)
     }
 
     private func configPinchGuesture() {
@@ -113,7 +107,7 @@ extension MapDetailViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = .green
+        renderer.strokeColor = App.Color.appColor
         renderer.lineWidth = 3.0
         return renderer
     }
